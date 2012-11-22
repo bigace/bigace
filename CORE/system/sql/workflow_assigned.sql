@@ -1,0 +1,1 @@
+SELECT * FROM {DB_PREFIX}item_future a WHERE a.cid='{CID}' AND a.itemtype='{ITEMTYPE}' AND a.num_5='{USER_ID}' ORDER BY a.id

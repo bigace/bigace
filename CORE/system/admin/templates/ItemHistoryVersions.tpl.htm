@@ -1,0 +1,90 @@
+<!-- $Id: ItemHistoryVersions.tpl.htm,v 1.4 2009/05/01 22:34:58 kpapst Exp $ -->
+
+<script language="JavaScript">
+<!--
+var ischecked = false;
+
+function checkAll()
+{
+    var myForm = document.getElementById('historyForm');
+    for (i=0; i<myForm.elements.length; i++)
+    {
+        if (myForm.elements[i].type == 'checkbox') {
+            if ( !myForm.elements[i].disabled )
+            {
+                myForm.elements[i].checked = !ischecked;
+            }
+        }
+    }
+    ischecked = !ischecked;
+}
+
+function showHistoryVersion(id)
+{
+    open ('{SHOW_HISTORY_LINK}' + id);
+}
+
+// -->
+</script>
+
+<form id="historyForm" action="{FORM_ACTION}" method="GET">
+<input type="hidden" name="data[id]" value="{ITEM_ID}">
+<input type="hidden" name="data[langid]" value="{ITEM_LANGUAGE_ID}">
+<input type="hidden" name="mode" value="{ADMIN_MODE}">
+
+<table class="tablesorter" cellspacing="0">
+<col />
+<col />
+<!-- col / -->
+<!-- col / -->
+<col />
+<!-- col / -->
+<col />
+<col />
+<col />
+<!-- BEGIN autoheader -->
+<thead>
+	<tr>
+		<th align="center">&nbsp;</th>
+		<th align="left">{TRANSLATION_name}</th>
+		<!-- th align="center">{TRANSLATION_description}</th -->
+		<!-- th align="center">{TRANSLATION_catchwords}</th -->
+		<th align="center">{TRANSLATION_last_edited}</th>
+		<!-- th align="center">{TRANSLATION_filename}</th -->
+		<th align="center">{TRANSLATION_preview}</th>
+		<th align="center">{TRANSLATION_history_refresh}</th>
+		<th align="center">{TRANSLATION_delete}</th>
+	</tr>
+</thead>
+<!-- END autoheader -->
+<tbody>
+    <!-- BEGIN row -->
+    <tr>
+        <td align="left">&nbsp;{HISTORY_CHECKBOX}</td>
+        <td align="left">{HISTORY_NAME}<br/>({HISTORY_SIZE} Bytes)</td>
+        <!-- td align="center">{HISTORY_DESCRIPTION}</td>
+        <td align="center">{HISTORY_CATCHWORDS}</td -->
+        <td align="center">{HISTORY_LAST_DATE_FORMAT}<br>{TRANSLATION_by} {HISTORY_LAST_NAME}</td>
+        <!-- td align="center">{HISTORY_FILENAME}</td -->
+        <td align="center"><a href="#" onclick="showHistoryVersion('{HISTORY_LAST_DATE}');return false;" title="{TRANSLATION_history_preview}"><img src="{AUTO_STYLE_DIR}preview.png" border="0" alt="{TRANSLATION_history_preview}" title="{TRANSLATION_history_preview}"></a></td>
+        <td align="center">{HISTORY_RECOVER_LINK}</td>
+        <td align="center"><a href="{HISTORY_DELETE_LINK}"><img src="{AUTO_STYLE_DIR}history_delete.png" border="0" alt="{TRANSLATION_delete}" title="{TRANSLATION_delete}"></a></td>
+    </tr>
+    <!-- END row -->
+    <tr class="{LAST_CSS}">
+        <td colspan="6" align="left"><a href="#" onclick="checkAll();return false;"><img src="{AUTO_STYLE_DIR}arrow_ltr.png" border="0"></a>
+            {TRANSLATION_choosen_objects}: &nbsp;<button type="submit" class="textLink">{TRANSLATION_delete}</button>
+        </td>
+    </tr>
+
+	</tbody>
+</table>
+
+</form>
+
+<script type="text/javascript">
+$(document).ready( function() { 
+		$(".tablesorter").tablesorter({ widgets: ['zebra'], headers: { 0: {sorter: false}, 1: {sorter: false}, 2: {sorter: false}, 3: {sorter: false}, 4: {sorter: false}, 5: {sorter: false} } }); 
+	} 
+);
+</script>

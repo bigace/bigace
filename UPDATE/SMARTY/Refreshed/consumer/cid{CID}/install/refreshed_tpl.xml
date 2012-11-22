@@ -1,0 +1,84 @@
+<content version="1.0">
+
+    <table name="template">
+        <row>
+            <name key="true">Refreshed</name>
+            <cid key="true">{CID}</cid>
+            <description>BIGACE free Template 'Refreshed' by TheJosher.com.</description>
+            <inwork>0</inwork>
+            <include>0</include>
+            <timestamp function="true">unix_timestamp()</timestamp>
+            <userid>1</userid>
+            <filename>Refreshed.tpl</filename>
+            <content><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<title>{$MENU->getName()}</title>
+	<meta http-equiv="Content-Type" content="text/HTML; charset=UTF-8" />
+	<meta name="generator" content="{bigace_version full='true'}">
+	<link rel="stylesheet" type="text/css" href="{$stylesheet}" />
+</head>
+<body>
+{load_item itemtype="1" id="-1" assign="topLevel"}
+<div class="header">
+  <h1>Website Name</h1>
+  <div class="nav"> <a href="{link item=$topLevel}">{$topLevel->getName()}</a> {navigation id="-1" suffix=" "}</div>
+</div>
+<div class="upperleft">
+  <div class="upperright">
+    <div class="lowerleft">
+      <div class="lowerright">
+        <div class="breadcrumb">You are here: {breadcrumb id=$MENU->getID() suffix='&nbsp;&raquo;'}</div>
+        {modul menu=$MENU}
+		<div class="footer">
+            Design by <a href="http://www.thejosher.com">TheJosher.com</a>
+                {if $USER->isAnonymous()}
+                    | <a href="{link_login}">Login</a>
+                {else}
+                    {permission_editcontent assign='allowEditor'}
+                    {if $allowEditor}
+                    | <a href="{link_editor id=$MENU->getID() language=$MENU->getLanguageID()}">Edit content</a>
+                    {/if}
+                    | <a href="{link_admin}">Admin</a>
+                    | <a href="{link_logout}">Logout</a>
+                {/if}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>]]></content>
+        </row>
+    </table>    
+
+    <table name="stylesheet">
+        <row>
+            <name key="true">Refreshed</name>
+            <cid key="true">{CID}</cid>
+            <description>Stylesheet for the 'Refreshed' Template.</description>
+            <filename>refreshed/style.css</filename>
+            <editorcss>Refreshed-Editor</editorcss>
+        </row>
+        <row>
+            <name key="true">Refreshed-Editor</name>
+            <cid key="true">{CID}</cid>
+            <description>Editor Stylesheet for the 'Refreshed' Template.</description>
+            <filename>refreshed/editor.css</filename>
+            <editorcss>Refreshed-Editor</editorcss>
+        </row>
+    </table>    
+
+    <table name="design">
+        <row>
+            <name key="true">Refreshed</name>
+            <cid key="true">{CID}</cid>
+            <description>Refreshed free Template port.</description>
+            <stylesheet>Refreshed</stylesheet>
+            <template>Refreshed</template>
+            <portlets>0</portlets>
+        </row>
+    </table>    
+
+</content>

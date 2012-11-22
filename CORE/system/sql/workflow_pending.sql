@@ -1,0 +1,1 @@
+SELECT a.* FROM {DB_PREFIX}item_future a, {DB_PREFIX}future_user_right b WHERE a.cid='{CID}' AND a.itemtype='{ITEMTYPE}' AND a.num_5='0' AND b.user_id='{USER_ID}' AND b.itemtype='{ITEMTYPE}' AND b.cid='{CID}' AND b.itemid=a.id AND b.value >= '{RIGHT_VALUE}' GROUP BY a.id

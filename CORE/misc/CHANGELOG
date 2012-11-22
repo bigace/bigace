@@ -1,0 +1,17 @@
+Version 2.7.4
+---------------------------------------------------------
+- fixed Portlet translations
+- copy permissions for a new uploaded file from its parent page (if selected)
+
+Version 2.7.3
+---------------------------------------------------------
+
+- editor: load only files in requested language
+- added installer translation for: Finnish
+- added installer translation for: Romanian
+- added installer translation for: Italian
+- added installer translation for: Turkish
+- installer loads fallback translations for keys without translations 
+- added italian language package as extension
+- added romanian language package as extension
+ 

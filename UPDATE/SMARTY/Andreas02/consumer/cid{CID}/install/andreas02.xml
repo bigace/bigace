@@ -1,0 +1,315 @@
+<content version="1.0">
+
+    <table name="template">
+        <row>
+            <name key="true">Andreas02 - Header</name>
+            <cid key="true">{CID}</cid>
+            <description>Andreas02: Header include</description>
+            <inwork>0</inwork>
+            <include>1</include>
+            <timestamp function="true">unix_timestamp()</timestamp>
+            <userid>1</userid>
+            <filename>Andreas02-Header.tpl</filename>
+            <content><![CDATA[<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="{$MENU->getLanguageID()}" lang="{$MENU->getLanguageID()}">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+	{metatags item=$MENU}
+	<link rel="stylesheet" type="text/css" href="{stylesheet name="andreas02"}" media="screen,projection" title="andreas02 (screen)" />
+	<link rel="stylesheet" type="text/css" href="{stylesheet name="andreas02_print"}" media="print" />
+	<link rel="stylesheet" type="text/css" href="{stylesheet name="andreas02-bigace"}" media="screen,projection" title="andreas02 (screen)" />
+{load_translation name="andreas02"}{configuration package="andreas02" key="top.navigation.id" assign="topNaviID"}
+{load_item id="-1" itemtype="1" assign="topLevel"}
+</head>
+<body>
+{if !is_null($topNaviID) && strlen($topNaviID) > 0}
+<div id="toptabs">
+	<p>{translate key="site_network"}
+	{if $MENU->getID() == -1}
+	<a class="activetoptab" href="{link item=$topLevel}">{$topLevel->getName()}</a><span class="hide"> | </span>
+	{else}
+	<a class="toptab" href="{link item=$topLevel}">{$topLevel->getName()}</a><span class="hide"> | </span>
+	{/if}
+	{navigation id=$topNaviID css="toptab" selected="activetoptab" last="" suffix='<span class="hide"> | </span>' activeInTree=true}
+	</p>
+</div>
+{/if}
+
+<div id="container">
+<div id="logo">
+<h1><a href="{link url="/"}">{sitename}</a></h1>
+</div>
+
+<div id="search">
+{translate key="search"} 
+<form id="searchForm" name="search" action="{link_search id=$MENU->getID()}" method="post">
+    <input type="hidden" name="language" value="{$MENU->getLanguageID()}" />
+    <input type="hidden" name="limit" value="5" />
+    <input type="text" class="text" id="s" name="search" value="" />
+	<button type="submit">{translate key="search_button"}</button>
+</form>
+</div>
+
+<div id="navitabs">
+<h2 class="hide">{translate key="site_menu"}</h2>
+{configuration package="andreas02" key="home.in.navigation" assign="homeInNavi"}
+{if $homeInNavi}<a href="{link url="/"}" class="{if $MENU->getID() == $topLevel->getID()}activenavitab{else}navitab{/if}">{$topLevel->getName()}</a><span class="hide"> | </span>{/if}
+{if $MENU->getID() == -1 || $MENU->getParentID() == -1}
+{navigation id=-1 css="navitab" selected="activenavitab" last="" suffix='<span class="hide"> | </span>'}
+{else}
+	{load_item id=$MENU->getParentID() itemtype="1" assign="parent"}
+	{if $MENU->getParentID() == $topNaviID} 
+	{navigation id=$MENU->getID() css="navitab" selected="activenavitab" activeInTree=true last="" suffix='<span class="hide"> | </span>'}
+	{elseif $parent->getParentID() == $topNaviID}
+	{navigation id=$parent->getID() css="navitab" selected="activenavitab" last="" activeInTree=true suffix='<span class="hide"> | </span>'}
+	{else}
+	{navigation id=$parent->getParentID() css="navitab" selected="activenavitab" last="" activeInTree=true suffix='<span class="hide"> | </span>'}
+	{/if}
+{/if}
+</div>
+	
+<div id="desc">
+{content name="Teaser" item=$MENU}
+{* <h2>Welcome to andreas02!</h2>
+<p>This is a free XHTML/CSS website template that you can use for any purpose without any obligations or limitations! 
+It was originally released in August 2005, and has since been updated several times. 
+It uses XHTML 1.0 Strict and CSS, and it has no tables at all.</p>
+<p class="right"><a href="#">{translate key="readmore"}</a> &raquo;</p> *}
+</div>
+
+<div id="main">
+            ]]></content>
+        </row>
+        <row>
+            <name key="true">Andreas02</name>
+            <cid key="true">{CID}</cid>
+            <description>Andreas02: Free template port by Kevin Papst</description>
+            <inwork>0</inwork>
+            <include>0</include>
+            <timestamp function="true">unix_timestamp()</timestamp>
+            <userid>1</userid>
+            <filename>Andreas02.tpl</filename>
+            <content><![CDATA[<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+{include file="Andreas02-Header.tpl"}
+{configuration cache="andreas02"}
+
+{if $MENU->getID() != -1}
+<div id="wayhome"><span>{translate key="you_are_here"} &raquo;&nbsp;</span>{breadcrumb prefix="&raquo;&nbsp;"}</div>
+{/if}
+{modul menu=$MENU}
+{configuration package="andreas02" key="page.credits" assign="showCredits"}
+{if $showCredits}
+<p style="font-size: x-small;">{translate key="written_at"} {$MENU->getCreateDate()|date_format:"%d. %B %Y"} {translate key="written_by"} {user id=$MENU->getCreateByID()}</p>
+{/if}
+{include file="Andreas02-Footer.tpl"}
+            ]]></content>
+        </row>
+        <row>
+            <name key="true">Andreas02 - Footer</name>
+            <cid key="true">{CID}</cid>
+            <description>Andreas02: Footer include</description>
+            <inwork>0</inwork>
+            <include>1</include>
+            <timestamp function="true">unix_timestamp()</timestamp>
+            <userid>1</userid>
+            <filename>Andreas02-Footer.tpl</filename>
+            <content><![CDATA[
+</div>
+
+<div id="sidebar">
+{configuration package="andreas02" key="social.bookmarks" assign="showBookmarking"}
+{if $showBookmarking}
+<div id="addthis">{addthis_widget_drop}</div>
+{/if}
+
+{if $MENU->getDescription() != ""}
+<h3>{translate key="more_infos"}</h3>
+<p>{$MENU->getDescription()}</p>
+{/if}
+
+{configuration package="andreas02" key="top.navigation.id" assign="topNaviID"}
+{if $MENU->getID() != -1 && $MENU->getParentID() != $topNaviID}
+<p>
+	{if $MENU->getParentID() == -1}
+		{navigation id=$MENU->getID() css="sidelink" last="" suffix='<span class="hide"> | </span>'}
+	{else if $MENU->getID() != -1}
+		{load_item id=$MENU->getParentID() itemtype="1" assign="parent"}
+		{if $parent->getParentID() == $topNaviID}
+		{navigation id=$MENU->getID() css="sidelink" last="" suffix='<span class="hide"> | </span>'}
+		{else}
+		{navigation id=$MENU->getParentID() css="sidelink" last="" suffix='<span class="hide"> | </span>'}
+		{/if}
+	{/if}
+</p>
+{/if}
+
+{content name="Menu-Column" item=$MENU}
+{*
+<h3>Links</h3>
+<p>
+<a class="sidelink" href="http://www.bigace.de/">BIGACE CMS</a><span class="hide"> | </span>
+<a class="sidelink" href="http://www.kevinpapst.de/">Kevin Papst</a><span class="hide"> | </span>
+<a class="sidelink" href="http://andreasviklund.com/">Andreas Viklund</a>
+</p>
+
+<h3>Image example</h3>
+<p><img class="photo" src="{directory}andreas02/test.jpg" height="100" width="130" alt="" />
+<br/>
+"It happens every day: information overload! Time for a reboot..."<br />
+(traditional haiku poem)</p>
+*}
+</div>
+    
+<div id="footer">
+Copyright &copy; {$smarty.now|date_format:"%Y"} {configuration package="andreas02" key="copyright"} &middot; 
+{if $USER->isAnonymous()}
+	Powered by {bigace_version full=true link=true} &middot;
+	{configuration package="andreas02" key="imprint.menu.id" assign="imprintID"} 
+	{configuration package="andreas02" key="contact.menu.id" assign="contactID"}
+	{if !is_null($contactID) && strlen($contactID) > 0}
+	{load_item id=$contactID itemtype="1" assign="contact"}
+	<a href="{link item=$contact}">{translate key="footer_contact"}</a> &middot;
+	{/if} 
+	{if !is_null($imprintID) && strlen($imprintID) > 0} 
+	{load_item id=$imprintID itemtype="1" assign="imprint"}
+	<a href="{link item=$imprint}">{translate key="footer_policy"}</a> &middot; 
+	{/if} 
+	<a target="_self" href="{link_login id=$MENU->getID()}">{translate key="login"}</a>
+{else}
+    <a target="_blank" href="{link_admin}">{translate key="admin"}</a> &middot; 
+	{permission_editcontent assign='allowEditor'}
+	{if $allowEditor}
+    <a target="_blank" href="{link_editor id=$MENU->getID() language=$MENU->getLanguageID()}">{translate key="editor"}</a> &middot; 
+	{/if}
+	<a target="_self" href="{link_logout id=$MENU->getID()}">{translate key="logout"}</a>
+{/if}
+</div>
+
+</div>
+</body>
+</html>
+            ]]></content>
+        </row>
+    </table>    
+
+    <table name="stylesheet">
+        <row>
+            <name key="true">andreas02</name>
+            <cid key="true">{CID}</cid>
+            <description>The default stylesheet for andreas02.</description>
+            <filename>andreas02/andreas02.css</filename>
+            <editorcss>andreas02_editor</editorcss>
+        </row>
+        <row>
+            <name key="true">andreas02-bigace</name>
+            <cid key="true">{CID}</cid>
+            <description>Extensions styles for Andreas02, different or new for BIGACE.</description>
+            <filename>andreas02/andreas02-bigace.css</filename>
+            <editorcss>andreas02_editor</editorcss>
+        </row>
+        <row>
+            <name key="true">andreas02_print</name>
+            <cid key="true">{CID}</cid>
+            <description>The printer friendly stylesheet for andreas02.</description>
+            <filename>andreas02/print.css</filename>
+            <editorcss>andreas02_editor</editorcss>
+        </row>
+        <row>
+            <name key="true">andreas02_editor</name>
+            <cid key="true">{CID}</cid>
+            <description>Editor stylesheet for andreas02.</description>
+            <filename>andreas02/editor.css</filename>
+            <editorcss>andreas02_editor</editorcss>
+        </row>
+    </table>    
+
+    <table name="design">
+        <row>
+            <name key="true">Andreas02</name>
+            <cid key="true">{CID}</cid>
+            <description>Andreas02 - free Template port</description>
+            <stylesheet>andreas02</stylesheet>
+            <template>Andreas02</template>
+            <portlets>1</portlets>
+        </row>
+    </table>
+
+    <table name="design_contents">
+        <row update="false">
+            <cid key="true">{CID}</cid>
+            <design key="true">Andreas02</design>
+            <name key="true">Teaser</name>
+        </row>
+        <row update="false">
+            <cid key="true">{CID}</cid>
+            <design key="true">Andreas02</design>
+            <name key="true">Menu-Column</name>
+        </row>
+    </table>    
+
+    <table name="configuration">
+        <row>
+            <cid key="true">{CID}</cid>
+            <package key="true">templates</package>
+            <name key="true">application.footer</name>
+            <value>Andreas02 - Footer</value>
+            <type>tpl_inc</type>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <package key="true">templates</package>
+            <name key="true">application.header</name>
+            <value>Andreas02 - Header</value>
+            <type>tpl_inc</type>
+        </row>
+        <row update="false">
+            <cid key="true">{CID}</cid>
+            <package key="true">andreas02</package>
+            <name key="true">top.navigation.id</name>
+            <value></value>
+            <type>menu_id</type>
+        </row>
+        <row update="false">
+            <cid key="true">{CID}</cid>
+            <package key="true">andreas02</package>
+            <name key="true">home.in.navigation</name>
+            <value>1</value>
+            <type>boolean</type>
+        </row>
+        <row update="false">
+            <cid key="true">{CID}</cid>
+            <package key="true">andreas02</package>
+            <name key="true">social.bookmarks</name>
+            <value>1</value>
+            <type>boolean</type>
+        </row>
+        <row update="false">
+            <cid key="true">{CID}</cid>
+            <package key="true">andreas02</package>
+            <name key="true">page.credits</name>
+            <value>1</value>
+            <type>boolean</type>
+        </row>
+        <row update="false">
+            <cid key="true">{CID}</cid>
+            <package key="true">andreas02</package>
+            <name key="true">contact.menu.id</name>
+            <value></value>
+            <type>menu_id</type>
+        </row>
+        <row update="false">
+            <cid key="true">{CID}</cid>
+            <package key="true">andreas02</package>
+            <name key="true">imprint.menu.id</name>
+            <value></value>
+            <type>menu_id</type>
+        </row>
+        <row update="false">
+            <cid key="true">{CID}</cid>
+            <package key="true">andreas02</package>
+            <name key="true">copyright</name>
+            <value></value>
+            <type>string</type>
+        </row>
+    </table>
+
+</content>

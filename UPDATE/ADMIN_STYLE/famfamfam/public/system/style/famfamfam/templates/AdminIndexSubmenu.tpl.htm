@@ -1,0 +1,49 @@
+
+    <script type="text/javascript">
+    <!-- 
+    	function changeLayout() {
+    		document.forms.layoutSelect.submit();
+    	}
+    // -->
+    </script>
+    
+    <table class="indexMenuTable" style="width:100%" cellspacing="5" cellpadding="5">
+    <!-- BEGIN menuRow -->
+        <tr>
+            <td align="left">
+                <h1><img src="{AUTO_STYLE_DIR}menu/{ID}.png" style="padding-right:10px;">{MENU}</h1>
+                <p><i>{DESCRIPTION}</i></p>
+            </td>
+        </tr>
+    <!-- END menuRow -->        
+        <tr>
+            <td>
+                <table style="border:1px solid #FFFFFF;width:100%" cellspacing="3" cellpadding="1">
+                    <tr>
+                        <th colspan="2" width="150">{TRANSLATION_name}</th>
+                        <th>{TRANSLATION_description}</th>
+                        <th>{TRANSLATION_menu_link}</th>
+                    </tr>
+                    <!-- BEGIN subMenu -->
+                    <tr>
+                        <td><a href="{SUBMENU_LINK}"><img src="{AUTO_STYLE_DIR}submenu/{SUBMENU_ID}.png" border="0"></a></td>
+                        <td style="padding-top:5px;" valign="center"><a href="{SUBMENU_LINK}">{SUBMENU_NAME}</a></td>
+                        <td>{SUBMENU_DESCRIPTION}</td>
+                        <td valign="center"><a href="{SUBMENU_LINK}">{TRANSLATION_menu_link}</a></td>
+                    </tr>
+                    <!-- END subMenu -->        
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td align="left">
+                &nbsp;<br>
+                <!-- BEGIN backlink -->
+                {BACK_LINK}
+                <!-- END backlink -->
+            </td>
+        </tr>
+    </table>
+
+    <!-- BEGIN infoBox -->
+    <!-- END infoBox -->        

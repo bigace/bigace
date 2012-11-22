@@ -1,0 +1,57 @@
+<link rel="stylesheet" type="text/css" href="{MARKITUP_DIR}skins/bigace/style.css" />
+<link rel="stylesheet" type="text/css" href="{MARKITUP_DIR}sets/smarty/style.css" />
+
+<script src="{MARKITUP_DIR}jquery.markitup.js" type="text/javascript"></script>
+<script src="{MARKITUP_DIR}sets/smarty/set.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+$(document).ready(function()	{
+	$('#tplEdit').markItUp(mySettings);
+});
+</script>
+
+<form action="{SAVE_URL}" method="post">
+<input type="hidden" name="templatename" value="{TEMPLATE_NAME}">
+{CSRF_TOKEN}
+
+<table border="0" width="{AUTO_SMALL_FORM}" cellspacing="5">
+<tr>
+    <td>
+        {TRANSLATION_name}: <b>{NAME}</b>
+        <br/>
+        {TRANSLATION_description}: <i><input type="text" name="description" value="{TEMPLATE_DESCRIPTION}" size="50"/></i>
+    </td>
+</tr>
+<tr>
+    <td>
+        <input type="checkbox" name="isinclude" value="1" {IS_INCLUDE_CHECKED} id="is_include"> <label for="is_include">{TRANSLATION_file_is_include}</label>
+        <br/>
+        {TRANSLATION_include_name}: <b>{FILENAME}</b>
+    </td>
+</tr>
+<tr>
+    <td>
+        <input type="radio" name="inwork" value="1" {INWORK_TRUE_CHECKED} id="inworkTrue" /> <label for="inworkTrue">{TRANSLATION_in_work_true}</label>
+        <br>
+        <input type="radio" name="inwork" value="0" {INWORK_FALSE_CHECKED} id="inworkFalse" /> <label for="inworkFalse">{TRANSLATION_in_work_false}</label>
+    </td>
+</tr>
+<tr>
+    <td>
+        {TRANSLATION_tpl_last_edited}: <b>{LAST_EDITED}</b></b>
+    </td>
+</tr>
+<tr>
+    <td><a name="editor"></a>
+<textarea name="content" id="tplEdit" style="width:{AUTO_SMALL_FORM};height:300px">{TEMPLATE_CONTENT}</textarea>
+    </td>
+</tr>
+<tr>
+    <td align="right">
+        <input type="submit" value="{TRANSLATION_save}">
+        <input type="button" onclick="javascript:location.href='{CANCEL_URL}'" value="{TRANSLATION_cancel}">
+    </td>
+</tr>
+</table>
+
+</form>

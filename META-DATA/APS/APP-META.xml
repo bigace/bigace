@@ -1,0 +1,202 @@
+<application xmlns="http://apstandard.com/ns/1">
+	<name>bigace</name>
+	<packager-uri>uuid:6a4005b3-a26a-49aa-adda-303789a23919</packager-uri>
+	<version>2.7</version>
+	<release>1</release>
+	<homepage>http://www.bigace.de/</homepage>
+	<package-homepage>http://www.kevinpapst.de/</package-homepage>
+	<default-prefix>bigace</default-prefix>
+	<summary>BIGACE is an web-based open source content-management-system with focus on usability and easy customization.</summary>
+	<description>
+		BIGACE is a web application platform written in PHP for the MySQL database. 
+		Its object orientation makes it an ideal tool for developing small or large community websites, 
+		intra company and corporate portals, weblogs and much more.
+	</description>
+
+	<icon path="images/icon.png"/>
+	<screenshot path="images/screenshot_admin.png">
+		<description>
+			This screen shows the administrator's control panel. Here you can manage all aspects of your Web site.
+		</description>
+	</screenshot>
+
+	<license must-accept="true">
+		<text>
+			<name>GNU GENERAL PUBLIC LICENSE Version 3</name>
+			<file>htdocs/misc/COPYING</file>
+		</text>
+	</license>
+
+	<configuration-script-language>php</configuration-script-language>
+
+	<changelog>
+		<version version="2.6" release="1">
+			<entry>Initial package version</entry>
+		</version>
+        <version version="2.6" release="2">
+            <entry>BIGACE 2.5 final, see http://www.bigace.de/BIGACE-2.5.html</entry>
+        </version>
+        <version version="2.6" release="3">
+            <entry>BIGACE 2.6 final, see http://www.bigace.de/BIGACE-2.6.html</entry>
+        </version>
+        <version version="2.6" release="4">
+            <entry>Metadata corrected</entry>
+        </version>
+        <version version="2.7" release="4">
+            <entry>Several enhancements. Fixed bugs and security vulnerabilities, see http://www.bigace.de/changelog-2-7.html</entry>
+        </version>
+        <version version="2.7" release="6">
+            <entry>Bugfix and security update, see http://www.bigace.de/BIGACE-2.7.2.html</entry>
+        </version>        
+	</changelog>
+
+	<entry-points>
+		<entry>
+			<path>/login.php</path>
+			<label>Login</label>
+		</entry>
+		<entry>
+			<path>/admin.php</path>
+			<label>Administration</label>
+		</entry>
+	</entry-points>
+
+	<installed-size>10092587</installed-size>
+
+	<categories>
+		<category>Web/Content management</category>
+		<category>Web/Blog</category>
+	</categories>
+
+	<languages>
+		<language>en</language>
+	</languages>
+
+	<settings>
+		<group>
+			<name>Administrator's preferences</name>
+			<setting id="admin_name" type="string" default-value="admin" min-length="1" max-length="32" regex="^[a-zA-Z][0-9a-zA-Z_\-]*">
+				<name>Administrator's login</name>
+				<error-message>Please make sure the text you entered starts with a letter and continues with either numbers, letters, underscores or hyphens.</error-message>
+			</setting>
+			<setting id="admin_password" type="password" min-length="1" >
+				<name>Password</name>
+			</setting>
+			<setting id="admin_email" type="email">
+				<name>Administrator's email</name>
+			</setting>
+		</group>
+
+		<group>
+			<name>System preferences</name>
+			<setting id="locale" type="enum" default-value="en-US">
+				<name>Interface language</name>
+				<choice id="en-US" >
+					<name>English</name>
+				</choice>
+				<choice id="de-DE" >
+					<name>German</name>
+				</choice>
+			</setting>
+		</group>
+
+        <group>
+          <name>Web Site preferences</name>
+          <setting id="title" type="string" default-value="BIGACE Web CMS" min-length="1">
+            <name>Site title</name>
+          </setting>
+        </group>
+	</settings>
+
+	<requirements xmlns:php="http://apstandard.com/ns/1/php" xmlns:db="http://apstandard.com/ns/1/db">
+        <php:version min="5.1"/>
+        <php:extension>mysql</php:extension>
+
+		<db:db>
+			<db:id>main</db:id>
+			<db:default-name>bigave</db:default-name>
+			<db:can-use-tables-prefix>true</db:can-use-tables-prefix>
+			<db:server-type>mysql</db:server-type>
+			<db:server-min-version>4.0</db:server-min-version>
+		</db:db>
+	</requirements>
+
+	<mapping url="/" path="htdocs" xmlns:php="http://apstandard.com/ns/1/php">
+		<php:handler>
+			<php:extension>php</php:extension>
+		</php:handler>
+
+		<mapping url="addon">
+			<mapping url="b2evo">
+			    <mapping url="b2evo_captcha_tmp">
+				    <php:permissions writable="true"/>
+			    </mapping>
+    		</mapping>
+			<mapping url="smarty">
+			    <mapping url="cache">
+				    <php:permissions writable="true"/>
+        		</mapping>
+			    <mapping url="configs">
+				    <php:permissions writable="true"/>
+			    </mapping>
+			    <mapping url="templates">
+				    <php:permissions writable="true"/>
+			    </mapping>
+			    <mapping url="templates_c">
+				    <php:permissions writable="true"/>
+			    </mapping>
+    		</mapping>
+		</mapping>
+
+		<mapping url="misc">
+			<mapping url="logging">
+				<php:permissions writable="true"/>
+    		</mapping>
+			<mapping url="updates">
+				<php:permissions writable="true"/>
+    		</mapping>
+		</mapping>
+
+		<mapping url="consumer">
+			<php:permissions writable="true"/>
+		</mapping>
+
+		<mapping url="plugins">
+			<php:permissions writable="true"/>
+		</mapping>
+
+		<mapping url="public">
+			<php:permissions writable="true"/>
+		</mapping>
+
+		<mapping url="system">
+			<mapping url="config">
+				<php:permissions writable="true"/>
+    		</mapping>
+			<mapping url="admin">
+				<mapping url="plugins">
+					<php:permissions writable="true"/>
+				    <mapping url="extensions">
+					    <php:permissions writable="true"/>
+				    </mapping>
+				</mapping>
+				<mapping url="smarty">
+					<php:permissions writable="true"/>
+				    <mapping url="cache">
+					    <php:permissions writable="true"/>
+				    </mapping>
+				    <mapping url="configs">
+					    <php:permissions writable="true"/>
+				    </mapping>
+				    <mapping url="templates">
+					    <php:permissions writable="true"/>
+				    </mapping>
+				    <mapping url="templates_c">
+					    <php:permissions writable="true"/>
+				    </mapping>
+				</mapping>
+			</mapping>
+		</mapping>
+	</mapping>
+
+</application>

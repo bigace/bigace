@@ -1,0 +1,1 @@
+SELECT count(id) FROM {DB_PREFIX}category WHERE parentid='{PARENT_ID}' AND cid='{CID}'

@@ -1,0 +1,15 @@
+Das Fotoalbum basiert auf einer einfachen Kategorien Verknüpfung.
+
+Sie müssen für jedes Fotoalbum das sie anlegen wollen so eine Kategorie in der Administration erstellen.
+Alle Fotos die in einem gemeinsamen Fotoalbum erscheinen sollen werden nun mit dieser Kategorie verlinkt.
+
+Jetzt stellen Sie für eine Seite das Modul "Fotoalbum" ein und öffnen diese Seite.
+Klicken Sie auf den Link und wählen Sie im folgenden Dialog die zuvor von Ihnen erstellte Kategorie aus.
+
+Wenn Sie nun zurück auf das Fotoalbum wehcseln sollen Sie die Vorschau aller von Ihnen kategorisierten Biler sehen.
+
+Wie sowas aussehen kann sehen Sie hier: Bilder von Königpythons
+
+Tips:
+    * Sollten Sie Ihr Fotoalbum noch einen Text hinzufügen wollen, so editieren Sie einfach den Inhalt der Seite, er wird oberhalb des Fotoalbums angezeigt!
+    * Sie können Fotos in beliebig viele Fotoalben einsortieren, verknüpfen Sie einfach mehrere Kategorien mit einem Bild.

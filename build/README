@@ -1,0 +1,67 @@
+This file contains URLs to third-party software.
+The packages linked here, need to exist on your computer, in order to create a valid release.
+
+AdoDB
+    - http://adodb.sourceforge.net/
+    - http://sourceforge.net/project/showfiles.php?group_id=42718
+    => Patch file adodb-xmlschema03.inc.php, line 508 because of unfixed bug
+		function addTableOpt( $opt ) {
+			if( $this->currentPlatform ) {
+			$this->opts[$this->parent->db->databaseType] = $opt;
+			}
+			return $this->opts;
+		}
+
+FCKeditor
+    - http://www.fckeditor.net/
+    - http://www.fckeditor.net/download
+     
+MarkItUp Editor 
+    - http://markitup.jaysalvat.com/
+    - http://markitup.jaysalvat.com/downloads/
+    => Copy latest jquery.pack.js to markitup subfolder!
+
+JQuery
+   - http://jquery.com/
+   - http://docs.jquery.com/Downloading_jQuery
+   => Download min Version (not packed) and rename the file to query.js BEFORE building 
+
+JQuery - UI
+   - http://ui.jquery.com/
+   - http://ui.jquery.com/download
+   => Download Development bundle 
+
+JQuery - Tablesorter
+   - http://plugins.jquery.com/project/tablesorter
+   => Download full package 
+
+JQuery - JGrowl
+   - http://www.stanlemon.net/projects/jgrowl.html
+   => Download full package and add only the deepest jgrowl folder 
+   
+B2evo Captcha
+    - http://b2evo-captcha.sourceforge.net/
+    - http://sourceforge.net/project/showfiles.php?group_id=158830
+    
+nuSoap
+    - http://sourceforge.net/projects/nusoap/
+    - http://sourceforge.net/project/showfiles.php?group_id=57663
+
+SimplePie
+    - http://simplepie.org/
+    - http://simplepie.org/downloads/?download
+===========================================================
+
+The following packages are used by official extensions, so: Get them as well!
+
+JS Calendar (The Coolest DHTML Calendar) 
+   - http://www.dynarch.com/projects/calendar/
+   - http://sourceforge.net/project/showfiles.php?group_id=75569
+
+TinyMCE
+   - http://tinymce.moxiecode.com/
+   - http://tinymce.moxiecode.com/download.php   
+
+Securimage
+   - http://www.phpcaptcha.org
+   - http://www.phpcaptcha.org/download/

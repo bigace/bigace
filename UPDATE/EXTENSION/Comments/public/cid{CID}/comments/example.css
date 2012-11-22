@@ -1,0 +1,17 @@
+@CHARSET "UTF-8";
+#comments {margin-top:20px;}
+#comments .spam {font-weight:bold;border:2px solid black;background-color:red;padding:3px;margin:3px 0px 3px 0px;color:yellow;}
+#comments .comment {margin-bottom:10px; border:1px solid #eeeeee; padding:5px;}
+#comments .commentMeta {font-size:75%;}
+#comments p {}
+#comments hr {display:block; clear:left; visibility:hidden; margin:0px;}
+#comments .commentName {font-weight:bold;}
+#comments .commentHint {font-size:75%; color:#000000; font-style:italic;}
+#comments .commentGravatar {float:left;margin-right:7px;}
+#commentForm {clear:both;}
+#commentForm .commentMissing {color:red; font-weight:bold;}
+#commentForm .commentFailure {}
+#commentForm input {border:1px solid #cccccc; width:300px;}
+#commentForm textarea {border:1px solid #cccccc; width:500px; height:200px;}
+#commentForm .previewButton {}
+#commentForm .createButton {}

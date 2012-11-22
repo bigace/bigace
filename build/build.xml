@@ -1,0 +1,88 @@
+<project name="BIGACE" default="help" basedir="..">
+
+	<!--
+	    ##########################################################
+		# Loads the main XML file to have a proper build         #
+		# environment. Adjust the settings in there, NOT HERE!   #
+	    ##########################################################
+	-->
+	<import file="./extensions.xml"/>
+
+	<description>
+        Build File for the BIGACE Web CMS.
+		
+		It helps, releasing a version or AddOns.
+		
+		See http://www.bigace.de/ for further informations.
+	
+	    BIGACE - a PHP and MySQL based Web CMS.
+	 	Copyright (C) Kevin Papst.
+		Distributed under the terms of the GNU General Public License.
+		
+		$Id: build.xml,v 1.65 2010/11/23 00:57:20 kpapst Exp $
+    </description>
+
+	<!--
+		#####################################################
+        ##   [START] RELEASE TASKS                         ##
+		#####################################################
+	-->
+	<target name="release.version" description="Creates a BIGACE release ZIP archive.">
+		<antcall target="create.version">
+			<param name="editor" value="${release.editor}"/>
+			<param name="release.path" value="${release.directory}/"/>
+		</antcall>
+	</target>
+
+	<target name="release.aps" description="Creates an APS packaged BIGACE release.">
+        <antcall target="create.aps">
+            <param name="editor" value="${release.editor}"/>
+            <param name="release.path" value="${release.directory}/"/>
+        </antcall>
+    </target>
+
+	<target name="release.upgrade" description="Creates everything for a new SF version.">
+		<antcall target="create.upgrade">
+			<param name="editor" value="${release.editor}"/>
+			<param name="release.path" value="${release.directory}/"/>
+		</antcall>
+	</target>
+
+	<!-- 
+		Does not include :
+		- packages.phptemplates
+		- packages.adminstyle
+		because PHP templates are deprecated and admin styles completely outdated
+		what both will likely confuse people. 
+	-->
+	<target name="release.extensions" description="[Local] Creates all Update ZIP Files that will be distributed." 
+		depends="		
+		packages.editor,
+		packages.languages,
+		packages.extensions,
+		packages.smarty
+		" />
+
+	<!--
+		#####################################################
+        ##   [START] HELP                                  ##
+		#####################################################
+	-->
+	<target name="help">
+		<echo taskname="INFO" level="info">
+BIGACE - a PHP and MySQL based Web CMS.
+Copyright (C) Kevin Papst.
+Distributed under the terms of the GNU General Public License.
+
+Adjust the settings in build.properties, before executing any Ant task!
+
+Common tasks:
+=============
+release.aps         - creates BIGACE as APS archive
+release.version 	- creates the BIGACE main ZIP archives
+release.extensions 	- creates all available BIGACE extensions
+release.upgrade 	- creates the BIGACE upgrade ZIP archives
+		</echo>
+	</target>
+	
+</project>

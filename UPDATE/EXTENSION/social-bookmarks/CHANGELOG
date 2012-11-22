@@ -1,0 +1,14 @@
+Version 0.6
+- Added configuration and some Russian social networks
+
+Version 0.5
+- css: added margin/padding 0 for ul.socials
+
+Version 0.4
+- Support {metatags} and content filter, no need for other template hooks
+
+Version 0.3
+- Fixed path for additional IE7 javascript
+
+Version 0.2
+- Added element to clear left floating

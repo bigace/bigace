@@ -1,0 +1,106 @@
+<script type="text/javascript">
+<!--
+
+	$(document).ready(function()
+	{
+		$("#bulkchecker").click(function()				
+		{
+			var checked_status = this.checked;
+			$("input:checkbox").each(function()
+			{
+				this.checked = checked_status;
+			});
+		});					
+	});
+
+    function switchPage(from) {
+       $('#startfrom').val(from);
+       $('#logform').submit();
+    }
+// -->
+</script>
+
+<form id="logform" method="POST" action="">
+<input id="startfrom" type="hidden" name="start" value="{START_ID}">
+<fieldset>
+    <legend>{TRANSLATION_legend}</legend>
+    <table border="0" cellpadding="0" cellspacing="5">
+        <col width="130"/>
+        <col />
+        <tr>
+            <td>{TRANSLATION_total}</td>
+            <td>{TOTAL}</td>
+        </tr>
+        <tr>
+            <td>{TRANSLATION_amount}</td>
+            <td>{ENTRYS_PER_PAGE}</td>
+        </tr>
+        <tr>
+            <td>{TRANSLATION_namespace}</td>
+            <td>{NAMESPACE_SELECT}</td>
+        </tr>
+        <tr>
+            <td>{TRANSLATION_filterlevel}</td>
+            <td>{LEVEL_SELECT} <input type="submit" value="{TRANSLATION_show}"></td>
+        </tr>
+        <tr>
+            <td valign="top">{TRANSLATION_pages}</td>
+            <td><!-- BEGIN pageSelect --><a href="#" onclick="{PAGE_URL}">{PAGE_ID}</a> <!-- END pageSelect --> </td>
+        </tr>
+    </table>
+</fieldset>
+</form>
+
+<br/>
+
+<form style="display:inline" id="bulk" action="{BULK_DELETE}" method="POST">
+<table class="tablesorter" cellspacing="0">
+<colgroup>
+    <col />
+    <col />
+    <col />
+    <col />
+    <col />
+    <col />
+</colgroup>
+<thead>
+	<tr>
+		<th align="center"><input type="checkbox" id="bulkchecker" value=""></th>	
+		<th>{TRANSLATION_message}</th>
+		<th>{TRANSLATION_namespace}</th>
+		<th>{TRANSLATION_level}</th>
+		<th>{TRANSLATION_date}</th>
+		<th>{TRANSLATION_delete}</th>
+	</tr>
+</thead>
+<tbody>
+    <!-- BEGIN row -->
+    <tr>
+		<td align="center"><input type="checkbox" name="{BULK_PARAMETER}" value="{ID}"></td>
+        <td><a class="preview" href="{INFO_URL}">{MESSAGE}</a></td>
+        <td>{NAMESPACE}</td>
+        <td valign="top">{LEVEL}</td>
+        <td>{TIMESTAMP}</td>
+        <td align="center" valign="middle">
+            <a href="{DELETE_URL}" class="delete imgbtn">{TRANSLATION_delete}</a>
+        </td>
+    </tr>
+    <!-- END row -->
+	</tbody>
+</table>
+
+<br/>
+
+<input type="submit" value="{TRANSLATION_deleteselected}">
+</form>
+<form style="display:inline" onsubmit="return confirm('{TRANSLATION_confirmdeleteall}')" method="post">
+<input type="hidden" name="action" value="deleteAll">
+<input type="submit" value="{TRANSLATION_deleteall}">
+</form>
+
+<script type="text/javascript">
+$(document).ready( function() { 
+        $(".tablesorter").tablesorter({ widgets: ['zebra'], headers: { 0: {sorter: false}, 6: {sorter: false} }}); 
+    } 
+);
+</script>

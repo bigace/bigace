@@ -1,0 +1,1 @@
+INSERT INTO {DB_PREFIX}{TABLE} (itemtype,cid,itemid,categoryid) VALUES ('{ITEMTYPE}', '{CID}','{ITEM_ID}','{CATEGORY_ID}')

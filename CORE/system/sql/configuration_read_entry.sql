@@ -1,0 +1,1 @@
+SELECT * FROM {DB_PREFIX}configuration WHERE cid='{CID}' AND package='{PACKAGE}' AND name='{NAME}'

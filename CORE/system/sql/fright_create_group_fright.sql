@@ -1,0 +1,1 @@
+INSERT INTO {DB_PREFIX}group_frights (cid,group_id,fright,value) VALUES ('{CID}','{GROUP_ID}','{FRIGHT}','{VALUE}')

@@ -1,0 +1,90 @@
+<!-- $Id: InstallCommunity.tpl.htm,v 1.5 2009/04/29 21:56:04 kpapst Exp $ -->
+
+<form action="{FORM_LINK}" method="post">
+
+<table class="tablesorter" cellspacing="0">
+<col />
+<col />
+<col />
+<col />
+<!-- BEGIN autoheader -->
+<thead>
+	<tr>
+		<th>{TRANSLATION_type}</th>
+		<th>{TRANSLATION_value}</th>
+		<th align="center">{TRANSLATION_help}</th>
+	</tr>
+</thead>
+<!-- END autoheader -->
+<tbody>
+    <tr class="row2">
+        <td valign="top" colspan="3"><b>{TRANSLATION_config_domain}</b></td>
+    </tr>
+    <tr class="row1">
+        <td valign="top">{TRANSLATION_new_domain}</td>
+        <td valign="top">{NEW_DOMAIN}</td>
+        <td align="center"><img class="helpImage" src="{AUTO_STYLE_DIR}info.png" onmouseover="tooltip('{TRANSLATION_new_domain_help}')" onMouseOut="nd();"></td>
+    </tr>
+    <tr class="row2">
+        <td valign="top" colspan="3"><b>{TRANSLATION_config_consumer}</b></td>
+    </tr>
+    <tr class="row1">
+        <td valign="top">{TRANSLATION_sitename}</td>
+        <td valign="top">{SITENAME}</td>
+        <td align="center"><img class="helpImage" src="{AUTO_STYLE_DIR}info.png" onmouseover="tooltip('{TRANSLATION_sitename_help}')" onMouseOut="nd();"></td>
+    </tr>
+    <tr class="row1">
+        <td valign="top">{TRANSLATION_mailserver}</td>
+        <td valign="top">{MAILSERVER}</td>
+        <td align="center"><img class="helpImage" src="{AUTO_STYLE_DIR}info.png" onmouseover="tooltip('{TRANSLATION_mailserver_help}')" onMouseOut="nd();"></td>
+    </tr>
+    <tr class="row1">
+        <td valign="top">{TRANSLATION_default_editor}</td>
+        <td valign="top">{EDITOR_CHOOSER}</td>
+        <td align="center"><img class="helpImage" src="{AUTO_STYLE_DIR}info.png" onmouseover="tooltip('{TRANSLATION_default_editor_help}')" onMouseOut="nd();"></td>
+    </tr>
+    <tr class="row1">
+        <td valign="top">{TRANSLATION_default_style}</td>
+        <td valign="top">{STYLE_CHOOSER}</td>
+        <td align="center"><img class="helpImage" src="{AUTO_STYLE_DIR}info.png" onmouseover="tooltip('{TRANSLATION_default_style_help}')" onMouseOut="nd();"></td>
+    </tr>
+    <tr class="row1">
+        <td valign="top">{TRANSLATION_default_language}</td>
+        <td valign="top">{DEFAULT_LANGUAGE}</td>
+        <td align="center"><img class="helpImage" src="{AUTO_STYLE_DIR}info.png" onmouseover="tooltip('{TRANSLATION_default_language_help}')" onMouseOut="nd();"></td>
+    </tr>
+    <tr class="row1">
+        <td valign="top">{TRANSLATION_statistics}</td>
+        <td valign="top">{STATISTIC_CHOOSER}</td>
+        <td align="center"><img class="helpImage" src="{AUTO_STYLE_DIR}info.png" onmouseover="tooltip('{TRANSLATION_statistics_help}')" onMouseOut="nd();"></td>
+    </tr>
+    <tr class="row2">
+        <td valign="top" colspan="3"><img src="{AUTO_STYLE_DIR}user.png"> <b>{TRANSLATION_config_admin}</b></td>
+    </tr>
+    <tr class="row1">
+        <td valign="top">{TRANSLATION_bigace_admin}</td>
+        <td valign="top">{ADMIN_NAME}</td>
+        <td align="center"><img class="helpImage" src="{AUTO_STYLE_DIR}info.png" onmouseover="tooltip('{TRANSLATION_bigace_admin_help}')" onMouseOut="nd();"></td>
+    </tr>
+    <tr class="row1">
+        <td valign="top">{TRANSLATION_webmastermail}</td>
+        <td valign="top">{SITE_EMAIL}</td>
+        <td align="center"><img class="helpImage" src="{AUTO_STYLE_DIR}info.png" onmouseover="tooltip('{TRANSLATION_webmastermail_help}')" onMouseOut="nd();"></td>
+    </tr>
+    <tr class="row1">
+        <td valign="top">{TRANSLATION_bigace_password}</td>
+        <td valign="top">{ADMIN_PWD_CHOOSE}</td>
+        <td align="center"><img class="helpImage" src="{AUTO_STYLE_DIR}info.png" onmouseover="tooltip('{TRANSLATION_bigace_password_help}')" onMouseOut="nd();"></td>
+    </tr>
+    <tr class="row1">
+        <td valign="top">{TRANSLATION_bigace_check}</td>
+        <td valign="top">{ADMIN_PWD_CHECK}</td>
+        <td align="center"><img class="helpImage" src="{AUTO_STYLE_DIR}info.png" onmouseover="tooltip('{TRANSLATION_bigace_check_help}')" onMouseOut="nd();"></td>
+    </tr>
+    <tr>
+        <td colspan="3"><button type="submit">{TRANSLATION_create_button}</button></td>
+    </tr>
+	</tbody>
+</table>
+
+</form>

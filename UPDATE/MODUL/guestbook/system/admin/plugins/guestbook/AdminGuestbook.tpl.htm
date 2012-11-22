@@ -1,0 +1,43 @@
+<!-- $Id: AdminGuestbook.tpl.htm,v 1.1 2009/05/11 21:48:28 kpapst Exp $ -->
+<table cellspacing="0" class="tablesorter">
+</colgroup>
+    <col width="100"/>
+    <col width="50"/>
+	<col />
+    <col width="120"/>
+    <col width="200"/>
+</colgroup>
+<!-- BEGIN autoheader -->
+<thead>
+    <tr>
+        <th align="left"><p>{TRANSLATION_gbUser}</p></td>
+		<th align="left"></td>
+        <th align="left"><p>{TRANSLATION_gbEntry}</p></td>
+        <th align="left"><p>{TRANSLATION_gbDate}</p></td>
+        <th align="center"><p>{TRANSLATION_action}</p></td>
+    </tr>
+</thead>
+<!-- END autoheader -->
+<tbody>
+    <!-- BEGIN row -->
+    <tr>
+    <td align="left">{GB_USER}</td>
+    <td align="center">{GB_HOMEPAGE}</td>
+    <td align="left">{GB_TITLE}</td>
+    <td align="left">{GB_DATE}</td>
+    <td align="center">
+	    <form action="{GB_LINK}" method="POST">
+	    <input type="hidden" name="data[gbid]" value="{GB_ID}">
+	    <input type="hidden" name="mode" value="edit">
+	    <button type="submit" class="edit">{TRANSLATION_edit}</button>
+	    </form>
+	    <form action="{GB_LINK}" onsubmit="return confirm('{TRANSLATION_gb_delete_entry}')" method="POST">
+	    <input type="hidden" name="data[gbid]" value="{GB_ID}">
+	    <input type="hidden" name="mode" value="delete">
+	    <button type="submit" class="delete">{TRANSLATION_delete}</button>
+	    </form>
+    </td>
+    </tr>
+    <!-- END row -->
+</tbody>
+</table>

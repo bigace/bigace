@@ -1,0 +1,66 @@
+<p>{BACK_LINK}</p>
+
+<table class="tablesorter" cellspacing="0">
+<col />
+<col />
+<col />
+<col />
+<!-- BEGIN autoheader -->
+<thead>
+    <tr>
+        <th>{TRANSLATION_update_name}</th>
+        <th>{TRANSLATION_update_directory}</th>
+        <th>{TRANSLATION_update_version}</th>
+        <th>{TRANSLATION_update_description}</th>
+    </tr>
+</thead>
+<tbody>
+    <tr>
+        <td>{UPDATE_NAME}</td>
+        <td>{UPDATE_DIRECTORY}</td>
+        <td>{UPDATE_VERSION}</td>
+        <td>{UPDATE_DESCRIPTION}</td>
+    </tr>
+</tbody>
+</table>
+
+<table class="tablesorter" cellspacing="0">
+<col />
+<col />
+<col />
+<col />
+<!-- BEGIN autoheader -->
+<thead>
+	<tr>
+		<!--th>{TRANSLATION_update_step}</th-->
+		<th>{TRANSLATION_update_state}</th>
+		<th>{TRANSLATION_update_message}</th>
+	</tr>
+</thead>
+<tbody>
+<!-- END autoheader -->
+<!-- BEGIN outer -->
+<!-- BEGIN row -->
+	<tr>
+		<!--td class="{CSS_CLASS}">{UPDATE_STEP}</td-->
+		<td class="{CSS_CLASS}">{UPDATE_STATE}</td>
+		<td class="{CSS_CLASS}">{UPDATE_MESSAGE}</td>
+	</tr>
+<!-- END row -->
+<!-- BEGIN separator -->
+	<tr>
+		<td colspan="2" class="{CSS_CLASS}" align="center"><b>{SEPARATOR_NAME}</b></td>
+	</tr>
+<!-- END separator -->
+<!-- END outer -->
+</tbody>
+</table>
+
+<p>{BACK_LINK}</p>
+
+<script type="text/javascript">
+$(document).ready( function() { 
+        $(".tablesorter").tablesorter({ widgets: ['zebra'], headers: { 0: {sorter: false}, 1: {sorter: false}, 2: {sorter: false} , 3: {sorter: false} } }); 
+    } 
+);
+</script>

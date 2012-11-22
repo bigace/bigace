@@ -1,0 +1,11 @@
+
+#guestbook .gbimpressum { padding-bottom:0px; }
+#guestbook .gbheader { height:100%;margin-bottom:10px;padding-bottom:10px;border-bottom:0px solid #999999; }
+#guestbook .pagelink { margin:6px;padding:2px 5px 2px 0px;border:1px solid #000000;background-color:#F6F6F6; }
+#guestbook .pagelinkSelected { margin:6px;padding:2px 5px 2px 0px;border:1px solid #000000;color:#000000;background-color:#ffffff; }
+#guestbook .imglink { padding-right:5px; }
+#guestbook .homelink { border-width:0px; }
+#guestbook .gbpages { margin:20px 0px 10px 0px;text-align:center; }
+#guestbook .gbEntry { width:450px;border:1px solid #C6C6CC;background-color:#F6F6F6;padding:5px;margin-bottom:10px }
+#guestbook .gbEntryTitle { font-weight:bold;margin-top:0px; }
+#guestbook .gbEntryComment { margin-bottom:0px; }

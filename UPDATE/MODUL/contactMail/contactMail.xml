@@ -1,0 +1,20 @@
+<content version="1.0">
+
+    <table name="frights">
+        <row>
+            <cid key="true">{CID}</cid>
+            <name key="true">webmail_admin</name>
+            <defaultvalue>N</defaultvalue>
+            <description>Allows to administrate settings of the ContactMail-Modul.</description>
+        </row>
+    </table>    
+
+    <table name="group_frights" update="false">
+        <row>
+            <cid key="true">{CID}</cid>
+            <group_id key="true">40</group_id>
+            <fright key="true">webmail_admin</fright>
+        </row>
+    </table>  
+    
+</content>

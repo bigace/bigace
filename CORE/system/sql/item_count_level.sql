@@ -1,0 +1,1 @@
+SELECT parentid FROM {DB_PREFIX}item_{ITEMTYPE} WHERE id='{ITEM_ID}' AND cid='{CID}'

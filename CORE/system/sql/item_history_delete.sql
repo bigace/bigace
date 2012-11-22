@@ -1,0 +1,1 @@
+DELETE FROM {DB_PREFIX}item_history WHERE itemtype='{ITEMTYPE}' AND id='{ITEM_ID}' AND language='{LANGUAGE_ID}' AND cid='{CID}' AND modifieddate ='{MODIFIED_DATE}'

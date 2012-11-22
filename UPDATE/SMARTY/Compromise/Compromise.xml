@@ -1,0 +1,222 @@
+<content version="1.0">
+
+    <table name="template">
+        <row>
+            <name key="true">Compromise</name>
+            <cid key="true">{CID}</cid>
+            <description>The Compromise main template.</description>
+            <inwork>0</inwork>
+            <include>0</include>
+            <timestamp function="true">unix_timestamp()</timestamp>
+            <userid>1</userid>
+            <filename>Compromise.tpl</filename>
+            <content><![CDATA[{include file="Compromise-Header.tpl"}
+		<div id="content">
+		{*
+			<div class="post">
+				<h1 class="title"><a href="#">Welcome to Compromise </a></h1>
+				<div class="entry">
+					<p>This is <strong>Compromise</strong>, a free, fully standards-compliant CSS template designed by FreeCssTemplates<a href="http://www.nodethirtythree.com/"></a> for <a href="http://www.freecsstemplates.org/">Free CSS Templates</a>. The photo used in this design is from <a href="http://www.pdphoto.org/">PDPhoto.rog</a>. This free template is released under a <a href="http://creativecommons.org/licenses/by/2.5/">Creative Commons Attributions 2.5</a> license, so you’re pretty much free to do whatever you want with it (even use it commercially) provided you keep the links in the footer intact. Aside from that, have fun with it :)</p>
+					<p>Sed lacus. Donec lectus. Nullam pretium nibh ut turpis. Nam bibendum. In nulla tortor, elementum ipsum. Proin imperdiet est. Phasellus dapibus semper urna. Pellentesque ornare, orci in felis. Donec ut ante. In id eros. Suspendisse lacus turpis, cursus egestas at sem.</p>
+				</div>
+				<p class="meta">Posted by <a href="#">Someone</a> on March 10, 2008
+					&nbsp;&bull;&nbsp; <a href="#" class="comments">Comments (64)</a> &nbsp;&bull;&nbsp; <a href="#" class="permalink">Full article</a></p>
+			</div>
+	    *}
+	    {modul menu=$MENU}
+		</div>
+{include file="Compromise-Footer.tpl"}
+            ]]></content>
+        </row>
+        <row>
+            <name key="true">Compromise-Header</name>
+            <cid key="true">{CID}</cid>
+            <description>Header of the Compromise Design.</description>
+            <inwork>0</inwork>
+            <include>1</include>
+            <timestamp function="true">unix_timestamp()</timestamp>
+            <userid>1</userid>
+            <filename>Compromise-Header.tpl</filename>
+            <content><![CDATA[
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+{*
+Design by Free CSS Templates
+Released for free under a Creative Commons Attribution 2.5 License
+
+Name       : Compromise
+Description: A two-column, fixed-width design with dark color scheme.
+Version    : 1.0
+Released   : 20081103
+Link       : http://www.freecsstemplates.org/preview/compromise
+*}
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+{metatags item=$MENU}
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link href="{stylesheet name="Compromise"}" rel="stylesheet" type="text/css" media="screen" />
+</head>
+<body>
+    {load_item id="-1" itemtype="1" assign="topLevel"}
+	<div id="header">
+		<div id="logo">
+			<h1><a href="{link item=$topLevel}">{sitename}</a></h1>
+			{if $MENU->getID() != $topLevel->getID()}
+			<p> - <a href="{link item=$MENU}">{$MENU->getName()}</a></p>
+			{/if}
+		</div>
+	</div>
+	<div id="menu">
+		<ul>
+			{if $MENU->getID() == $topLevel->getID()}
+			<li class="first"><a href="{link item=$topLevel}">{$topLevel->getName()}</a></li>
+			{else}
+			<li class="first-unselected"><a href="{link item=$topLevel}">{$topLevel->getName()}</a></li>
+			{/if}
+			{navigation id=$topLevel->getID() selected="current_page" prefix="<li>" suffix="</li>"}
+		</ul>
+	</div>
+<div id="wrapper">
+<div class="btm">
+	<div id="page">
+]]></content>
+        </row>
+        <row>
+            <name key="true">Compromise-Footer</name>
+            <cid key="true">{CID}</cid>
+            <description>Footer for the Compromise Design.</description>
+            <inwork>0</inwork>
+            <include>1</include>
+            <timestamp function="true">unix_timestamp()</timestamp>
+            <userid>1</userid>
+            <filename>Compromise-Footer.tpl</filename>
+            <content><![CDATA[
+		<div id="sidebar">
+			<ul>
+				{if $MENU->getID() != -1}
+				{load_item_childs id=$MENU->getID() language=$MENU->getLanguageID() assign="lm"}
+				{if count($lm) > 0}
+				<li>
+					<h2>{$MENU->getName()}</h2>
+					<ul>
+					    {foreach from=$lm item="lmi"}
+					    <li><a href="{link item=$lmi}">{$lmi->getName()}</a>{if strlen($lmi->getDescription()) > 0}<span>{$lmi->getDescription()}</span>{/if}</li>
+					    {/foreach}
+					</ul>
+				</li>
+				{/if}
+				{/if}
+			    {content item=$MENU name="Left-Column" assign="leftMenu"}
+			    {if trim(strlen($leftMenu)) > 0}
+				<li>
+					{$leftMenu}
+				</li>
+				{/if}
+				{*
+				<li>
+					<h2>Categories</h2>
+					<ul>
+						<li><a href="#">Uncategorized</a> (3)<span>Lorem Ipsum Dolor Sit Amit</span></li>
+						<li><a href="#">Lorem Ipsum</a> (42)<span>Lorem Ipsum Dolor Sit Amit</span></li>
+						<li><a href="#">Urna Congue Rutrum</a> (28)<span>Lorem Ipsum Dolor Sit Amit</span> </li>
+						<li><a href="#">Vivamus Fermentum</a> (13)<span>Lorem Ipsum Dolor Sit Amit</span> </li>
+					</ul>
+				</li>
+				<li>
+					<h2>Blogroll</h2>
+					<ul>
+						<li><a href="#">Phasellus Pellentesque</a><span>Lorem Ipsum Dolor Sit Amit</span> </li>
+						<li><a href="#">Consectetuer Adipiscing</a><span>Lorem Ipsum Dolor Sit Amit</span> </li>
+						<li><a href="#">Urna Congue Rutrum</a><span>Lorem Ipsum Dolor Sit Amit</span> </li>
+						<li><a href="#">Phasellus Pellentesque</a><span>Lorem Ipsum Dolor Sit Amit</span> </li>
+						<li><a href="#">Urna Congue Rutrum</a><span>Lorem Ipsum Dolor Sit Amit</span> </li>
+					</ul>
+				</li>
+				<li>
+					<h2>Archives</h2>
+					<ul>
+						<li><a href="#">December 2007</a>&nbsp;(29)<span>Lorem Ipsum Dolor Sit Amit</span></li>
+						<li><a href="#">November 2007</a>&nbsp;(30)<span>Lorem Ipsum Dolor Sit Amit</span></li>
+						<li><a href="#">October 2007</a>&nbsp;(31)<span>Lorem Ipsum Dolor Sit Amit</span></li>
+					</ul>
+				</li>
+				*}
+			</ul>
+		</div>
+		<div style="clear: both;">&nbsp;</div>
+	</div>
+</div>
+</div>
+	<div id="footer">
+		<p>Copyright (c) {$smarty.now|date_format:"%Y"} <a href="{link url="/"}">{configuration package="community" key="copyright.holder" default="Kevin Papst"}</a>. All rights reserved. 
+		Powered by {bigace_version link=true full=true}. Design by <a href="http://www.freecsstemplates.org/">Free CSS Templates</a>.</p>
+		{if !$USER->isAnonymous()}
+		  <p>
+			<a href="{link_admin}" target="_blank">Administration</a>
+			{permission_editcontent assign='allowEditor'}
+			{if $allowEditor}
+			<a href="{link_editor id=$MENU->getID() language=$MENU->getLanguageID()}" target="_blank">Editor</a>
+    		{/if}
+    	  </p>
+		{/if}
+	</div>
+</body>
+</html>
+            ]]></content>
+        </row>
+	</table>    
+
+    <table name="stylesheet">
+        <row>
+            <name key="true">Compromise</name>
+            <cid key="true">{CID}</cid>
+            <description>CSS definitions for the Compromise Layout.</description>
+            <filename>Compromise/style.css</filename>
+            <editorcss>Compromise_Editor</editorcss>
+        </row>
+
+        <row>
+            <name key="true">Compromise_Editor</name>
+            <cid key="true">{CID}</cid>
+            <description>CSS definitions for the Compromise theme, used in any WYSIWYG Editor.</description>
+            <filename>Compromise/editor.css</filename>
+            <editorcss>Compromise_Editor</editorcss>
+        </row>
+    </table>
+    
+    <table name="design_contents">
+        <row update="false">
+            <cid key="true">{CID}</cid>
+            <design key="true">Compromise</design>
+            <name key="true">Left-Column</name>
+        </row>
+    </table>    
+    
+    <table name="design">
+        <row>
+            <name key="true">Compromise</name>
+            <cid key="true">{CID}</cid>
+            <description>The Compromise design.</description>
+            <stylesheet>Compromise_Stylesheet</stylesheet>
+            <template>Compromise</template>
+            <portlets>0</portlets>
+        </row>
+    </table>
+
+    <table name="configuration">
+        <row>
+            <cid key="true">{CID}</cid>
+            <package key="true">templates</package>
+            <name key="true">application.footer</name>
+            <value>Compromise-Footer</value>
+            <type>tpl_inc</type>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <package key="true">templates</package>
+            <name key="true">application.header</name>
+            <value>Compromise-Header</value>
+            <type>tpl_inc</type>
+        </row>
+    </table>    
+
+</content>

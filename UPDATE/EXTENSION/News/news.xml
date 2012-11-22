@@ -1,0 +1,287 @@
+<content version="1.0">
+    <table name="frights">
+        <row>
+            <cid key="true">{CID}</cid>
+            <name key="true">news.edit</name>
+            <defaultvalue>N</defaultvalue>
+            <description>Allows to edit News entries.</description>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <name key="true">news.create</name>
+            <defaultvalue>N</defaultvalue>
+            <description>Allows to create News entries.</description>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <name key="true">news.delete</name>
+            <defaultvalue>N</defaultvalue>
+            <description>Allows to delete News entries.</description>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <name key="true">news.categories</name>
+            <defaultvalue>N</defaultvalue>
+            <description>Allows to manage News categories.</description>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <name key="true">news.remote.login</name>
+            <defaultvalue>N</defaultvalue>
+            <description>Allows to use remote blogging (XMLRPC) features.</description>
+        </row>
+    </table>    
+
+    <table name="template">
+        <row>
+            <name key="true">News-RSS-Latest</name>
+            <cid key="true">{CID}</cid>
+            <description>Renders an RSS Feed in Atom 2.0, displaying your latest News.</description>
+            <inwork>0</inwork>
+            <include>0</include>
+            <timestamp function="true">unix_timestamp()</timestamp>
+            <userid>1</userid>
+            <filename>News-RSS-Latest.tpl</filename>
+            <content><![CDATA[<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+	<title>{sitename|htmlspecialchars}</title>
+
+    <link>{link url="/"}</link>
+    <description>The latest News</description>
+    <generator>{bigace_version full=true}</generator>
+    <docs>http://blogs.law.harvard.edu/tech/rss</docs>
+
+    <language>en-en</language>
+    <copyright>Copyright holder</copyright>
+    <managingEditor>email@yourdomain.com (Your Name)</managingEditor>
+    <webMaster>email@yourdomain.com (Your Name)</webMaster>
+    <pubDate>{$smarty.now|news_date}</pubDate>
+    <lastBuildDate>{$smarty.now|news_date}</lastBuildDate>
+
+    <!-- image>
+      <url>URL where the image ist stored</url>
+      <title>Image title</title>
+      <link>where the image should link to</link>
+      <width>Image width in pixel</width>
+      <height>Image height in pixel</height>
+      <description>Image description</description>
+    </image -->
+	
+    <atom:link href="{link_news_rss}" rel="self" type="application/rss+xml"/>
+
+	{news assign="latest" limit="10"}
+	{foreach from=$latest item="news"}
+		<item>
+		  <title>{$news->getTitle()|htmlspecialchars}</title>
+		  <link>{link item=$news}</link>
+		  <description><![CDATA[
+		  {$news->getTeaser()|htmlspecialchars}<br/><a href="{link item=$news}">[...]</a>
+		  {if !is_null($news->getImageID())}
+		  {load_item itemtype=4 id=$news->getImageID() assign="newsImage"}
+		  <br /><img src="{link item=$newsImage}" alt="{$newsImage->getName()}" border="0">
+		  ]]]]><![CDATA[></description>
+		  <enclosure url="{link item=$newsImage}" length="{$newsImage->getSize()}" type="{$newsImage->getMimetype()}"/>
+		  {else}
+		  ]]]]><![CDATA[></description>
+		  {/if}
+		  <pubDate>{$news->getDate()|news_date}</pubDate>
+		  <guid isPermaLink="true">{link item=$news}</guid>
+		</item>
+	{/foreach}
+  </channel>  
+</rss>
+]]></content>
+        </row>
+        <row>
+            <name key="true">News-Entry</name>
+            <cid key="true">{CID}</cid>
+            <description>Display a single News item.</description>
+            <inwork>0</inwork>
+            <include>0</include>
+            <timestamp function="true">unix_timestamp()</timestamp>
+            <userid>1</userid>
+            <filename>News-Entry.tpl</filename>
+            <content><![CDATA[
+{include file="News-Header.tpl"}
+{load_translation name="news"}
+{news_item id=$MENU->getID() assign="newsPage"}
+<div class="news-entry">
+    {if !is_null($newsPage->getImageID())}
+	{load_item itemtype=4 id=$newsPage->getImageID() assign="newsImage"}
+	{if isset($newsImage)}
+	<a href="{link item=$newsPage}" title="{$newsImage->getName()}">
+    	<img src="{thumbnail id=$newsPage->getImageID() width="100"}" class="news-image" alt="{$newsImage->getName()}" align="left">
+	</a>
+	{/if}
+	{/if}
+	<h2>{$newsPage->getTitle()}</h2>
+    <p><em>{translate key="posted_at"} {$newsPage->getDate()|date_format:"%d %B, %Y"|utf8} {translate key="published_by"} {user id=$newsPage->getCreateByID()}</em></p>
+	<p><strong>{$newsPage->getTeaser()}</strong></p>
+	<div class="news-content">{$newsPage->getContent()}</div>
+	<p>{translate key="published_in"}: {news_category item=$newsPage suffix="," last=""} {translate key="published_by"} {user id=$newsPage->getCreateByID()}</p>
+	
+	{hooks_has_action name="comments_plugin" assign="commentsInstalled"}
+	{if $commentsInstalled}
+	{include file='Comments-Listing-Form.tpl'}
+	{/if}
+</div>            
+
+{include file="News-Footer.tpl"}
+]]></content>
+        </row>
+        <row>
+            <name key="true">News-Listing</name>
+            <cid key="true">{CID}</cid>
+            <description>Display all available News (aka News Home).</description>
+            <inwork>0</inwork>
+            <include>0</include>
+            <timestamp function="true">unix_timestamp()</timestamp>
+            <userid>1</userid>
+            <filename>News-Listing.tpl</filename>
+            <content><![CDATA[
+{include file="News-Header.tpl"}
+{load_translation name="news"}
+<div id="news-listing">
+{news assign="currentNews"}
+{foreach from=$currentNews item="newsPage"}
+  <div class="news-entry">
+    {if !is_null($newsPage->getImageID())}
+	{load_item itemtype=4 id=$newsPage->getImageID() assign="newsImage"}
+	<a href="{link item=$newsPage}" title="{$newsImage->getName()}">
+    	<img src="{thumbnail id=$newsPage->getImageID() width="100"}" class="news-image" alt="{$newsImage->getName()}" align="left">
+	</a>
+	{/if}
+	<h2><a href="{link item=$newsPage}" title="{$newsPage->getName()}">{$newsPage->getTitle()}</a></h2>
+	<p class="newsMeta">
+		{$newsPage->getDate()|date_format:"%d.%m.%Y"} | 
+		{news_category item=$newsPage suffix="," last=" | "}
+		{user id=$newsPage->getCreateByID()} 	
+		{hooks_has_action name="comments_plugin" assign="commentsInstalled"}
+		{if $commentsInstalled}
+			| <a href="{link item=$newsPage}#comments">{comment_counter item=$newsPage} {translate key="comments_number"}</a>
+		{/if}
+	</p>
+	<p>{$newsPage->getTeaser()}</p>
+	<p class="news-more"><a href="{link item=$newsPage}">{translate key="read_news"} &raquo;{$newsPage->getTitle()}&laquo;</a></p>
+  </div>
+{/foreach}
+</div>            
+
+{include file="News-Footer.tpl"}
+]]></content>
+        </row>
+        <row>
+            <name key="true">News-Header</name>
+            <cid key="true">{CID}</cid>
+            <description>Header of the default news templates.</description>
+            <inwork>0</inwork>
+            <include>1</include>
+            <timestamp function="true">unix_timestamp()</timestamp>
+            <userid>1</userid>
+            <filename>News-Header.tpl</filename>
+            <content><![CDATA[
+{configuration package="templates" key="application.header" default="APPLICATIONS-HEADER" assign="tplHeaderName"}
+{template name=$tplHeaderName assign="tplHeader"}
+{include file=$tplHeader->getFilename()}
+<link href="{stylesheet name="News"}" rel="stylesheet" type="text/css" />
+]]></content>
+        </row>
+        <row>
+            <name key="true">News-Footer</name>
+            <cid key="true">{CID}</cid>
+            <description>Footer of the default news templates.</description>
+            <inwork>0</inwork>
+            <include>1</include>
+            <timestamp function="true">unix_timestamp()</timestamp>
+            <userid>1</userid>
+            <filename>News-Footer.tpl</filename>
+            <content><![CDATA[
+{configuration package="templates" key="application.footer" default="APPLICATIONS-FOOTER" assign="tplFooterName"}
+{template name=$tplFooterName assign="tplFooter"}
+{include file=$tplFooter->getFilename()}
+]]></content>
+        </row>
+    </table>
+
+    <table name="stylesheet">
+        <row>
+            <name key="true">News</name>
+            <cid key="true">{CID}</cid>
+            <description>Stylesheet for the 'News' Template.</description>
+            <filename>news/news.css</filename>
+            <editorcss>News</editorcss>
+        </row>
+    </table>
+
+	<table name="design">
+        <row>
+            <name key="true">News-Entry</name>
+            <cid key="true">{CID}</cid>
+            <description>Demo for a News entry detail page.</description>
+            <stylesheet>News</stylesheet>
+            <template>News-Entry</template>
+            <portlets>0</portlets>
+        </row>
+        <row>
+            <name key="true">News-Home</name>
+            <cid key="true">{CID}</cid>
+            <description>Demo for the News start page.</description>
+            <stylesheet>News</stylesheet>
+            <template>News-Listing</template>
+            <portlets>0</portlets>
+        </row>
+    </table>    
+
+    <table name="configuration">
+        <row update="false">
+            <cid key="true">{CID}</cid>
+            <package key="true">news</package>
+            <name key="true">root.id</name>
+            <value></value>
+            <type>menu_id</type>
+        </row>
+        <row update="false">
+            <cid key="true">{CID}</cid>
+            <package key="true">news</package>
+            <name key="true">default.language</name>
+            <value></value>
+            <type>language</type>
+        </row>
+        <row update="false">
+            <cid key="true">{CID}</cid>
+            <package key="true">news</package>
+            <name key="true">category.id</name>
+            <value></value>
+            <type>category</type>
+        </row>
+        <row update="false">
+            <cid key="true">{CID}</cid>
+            <package key="true">news</package>
+            <name key="true">template.news</name>
+            <value>News-Entry</value>
+            <type>design</type>
+        </row>
+        <row update="false">
+            <cid key="true">{CID}</cid>
+            <package key="true">news</package>
+            <name key="true">unique.name.pattern</name>
+            <value></value>
+            <type>string</type>
+        </row>
+        <row update="false">
+            <cid key="true">{CID}</cid>
+            <package key="true">news</package>
+            <name key="true">unique.name.extension</name>
+            <value>.html</value>
+            <type>string</type>
+        </row>
+        <row update="false">
+            <cid key="true">{CID}</cid>
+            <package key="true">news</package>
+            <name key="true">rss.latest.template</name>
+            <value>News-RSS-Latest</value>
+            <type>template</type>
+        </row>
+    </table>
+
+</content>

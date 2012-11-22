@@ -1,0 +1,234 @@
+<content version="1.0">
+
+    <table name="template">
+        <row>
+            <name key="true">Ecobusiness</name>
+            <cid key="true">{CID}</cid>
+            <description>Ecobusiness: Free Studio7Design template ported by Kevin Papst</description>
+            <inwork>0</inwork>
+            <include>0</include>
+            <timestamp function="true">unix_timestamp()</timestamp>
+            <userid>1</userid>
+            <filename>Ecobusiness.tpl</filename>
+            <content><![CDATA[<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+{load_item id="-1" itemtype="1" assign="topLevel"}
+{include file="Ecobusiness-Header.tpl"}
+			<div class="article_wrapper">
+			<h2>{$MENU->getName()}</h2>
+			{modul menu=$MENU}
+			</div>
+{include file="Ecobusiness-Footer.tpl"}
+            ]]></content>
+        </row>
+        <row>
+            <name key="true">Ecobusiness-Header</name>
+            <cid key="true">{CID}</cid>
+            <description>Ecobusiness: the header include</description>
+            <inwork>0</inwork>
+            <include>1</include>
+            <timestamp function="true">unix_timestamp()</timestamp>
+            <userid>1</userid>
+            <filename>Ecobusiness-Header.tpl</filename>
+            <content><![CDATA[
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+	<link href="{stylesheet name="Ecobusiness"}" rel="stylesheet" type="text/css" />
+    <meta name="generator" content="{bigace_version full='true'}">
+	<meta name="description" content="{$MENU->getDescription()}" />
+	<meta name="author" content="Your Name in here" />
+	<meta name="robots" content="index, follow" />
+	<title>{$MENU->getName()} | Website Name</title>
+</head>
+<body>
+{if !isset($topLevel)}
+{load_item id="-1" itemtype="1" assign="topLevel"}
+{/if}
+	<!-- Start Header -->
+	<div id="header">
+		<div class="container">
+			<h1><a href="{link item=$topLevel}" title="Website Name">Website Name<span></span></a></h1>
+			<hr />
+			<!-- top navigation -->
+			<ul id="navigation">
+				{navigation id=$topLevel->getID() active='<li class="active">' prefix="<li>" suffix='</li>'}
+			</ul>
+			<hr />
+			<!-- banner message and building background -->
+			<div id="banner">
+				This is where your welcome message would appear, or perhaps a company description. Welcome to Eco Business - environmentally friendly solutions for the business world.
+			</div>
+			<hr />
+		</div>
+	</div>
+	<!-- Start Main Content -->
+	<div id="main" class="container">
+		<!-- left column (products and features) -->
+		<div id="leftcolumn">
+			<h3 class="leftbox">Navigation</h3>
+			<ul class="leftbox borderedlist">
+			{if $MENU->getID() == $topLevel->getID()}
+				{navigation id=$MENU->getID() prefix="<li>" suffix='</li>'}
+			{else}
+				{navigation id=$MENU->getParentID() prefix="<li>" suffix='</li>'}
+			{/if}
+			</ul>
+			<h3 class="leftbox header_small">Features</h3>
+			<div class="leftbox features">
+				<p>This week we have our one of a kind sale. Pick your one of a kind plant from our great selection and combine that with a planter box for $5.99.</p>
+				<p>Native plant seeds on sale!</p>
+			</div>
+			<hr />
+		</div>
+		<!-- main content area -->
+		<div id="center">
+            ]]></content>
+        </row>
+        <row>
+            <name key="true">Ecobusiness-Footer</name>
+            <cid key="true">{CID}</cid>
+            <description>Ecobusiness: the footer include</description>
+            <inwork>0</inwork>
+            <include>1</include>
+            <timestamp function="true">unix_timestamp()</timestamp>
+            <userid>1</userid>
+            <filename>Ecobusiness-Footer.tpl</filename>
+            <content><![CDATA[
+{if !isset($topLevel)}
+{load_item id="-1" itemtype="1" assign="topLevel"}
+{/if}
+			<hr />
+		</div>
+		<!-- product sales boxes -->
+		<div id="rightcolumn">
+			<div class="rightbox_wrapper">
+				<div class="rightbox">
+					<img src="{directory}ecobusiness/product.jpg" alt="Image:product" class="product_image" />
+					<div class="product_wrapper">
+						<h4>Product Sales</h4>
+						<p>Lorem ipsum dolor sit amet, consecing elit, sed diam nonummy nibh dunt ut laoreet dolore magna aliqupat. Ut wisi enim ad minim veniam,  exerci tation ullamcorper s... <a href="#" title="Read More">more</a></p>
+					</div>
+				</div>
+			</div>
+			<div class="rightbox_wrapper">
+				<div class="rightbox">
+					<img src="{directory}ecobusiness/product.jpg" alt="Image:product" class="product_image" />
+					<div class="product_wrapper">
+						<h4>Product Sales</h4>
+						<p>Lorem ipsum dolor sit amet, consecing elit, sed diam nonummy nibh dunt ut laoreet dolore magna aliqupat. Ut wisi enim ad minim veniam,  exerci tation ullamcorper s... <a href="#" title="Read More">more</a></p>
+					</div>
+				</div>
+			</div>
+			<div class="rightbox_wrapper lastbox">
+				<div class="rightbox">
+					<img src="{directory}ecobusiness/product.jpg" alt="Image:product" class="product_image" />
+					<div class="product_wrapper">
+						<h4>Product Sales</h4>
+						<p>Lorem ipsum dolor sit amet, consecing elit, sed diam nonummy nibh dunt ut laoreet dolore magna aliqupat. Ut wisi enim ad minim veniam,  exerci tation ullamcorper s... <a href="#" title="Read More">more</a></p>
+					</div>
+				</div>
+			</div>
+			<hr />
+		</div>
+	</div>
+	<!-- Start Bottom Information -->
+	<div id="bottominfo">
+		<div class="container">
+			<!-- bottom left information -->
+			<div class="bottomcolumn">
+				<h3>Links to Help You Succeed</h3>
+				<p>Follow these links to learn more great business tips</p>
+				<ul class="borderedlist iconlist">
+					<li><a href="#" title="Keep your clients in the know">Keep your clients in the know</a></li>
+					<li><a href="#" title="Current specials and discounts">Current specials and discounts</a></li>
+					<li><a href="#" title="Links to your services and promos">Links to your services and promos</a></li>
+				</ul>
+			</div>
+			<!-- bottom center information -->
+			<div class="bottomcolumn">
+				<h3>Recent Client Lists</h3>
+				<p>Here is a list of some of our satisfied customers.</p>
+				<ul class="borderedlist iconlist">
+					<li><a href="#" title="Keep your clients in the know">Keep your clients in the know</a></li>
+					<li><a href="#" title="Current specials and discounts">Current specials and discounts</a></li>
+					<li><a href="#" title="Links to your services and promos">Links to your services and promos</a></li>
+				</ul>
+			</div>
+			<!-- bottom right information -->
+			<div class="bottomcolumn bottomright">
+				<h3>Search us</h3>
+				<p>Looking for information, but couldn't find them?! Use our search modul for a quick lookup.</p>
+	            <form action="{link_search id=$MENU->getID()}" method="post">
+	                <fieldset>
+	                    <input type="text" name="search" value="" id="s" class="enewsbox" />
+	                    <input type="hidden" name="language" value="{$MENU->getLanguageID()}" />
+	                    <input type="submit" class="button" value="Search" id="searchbutton" name="searchbutton" />
+	                </fieldset>
+	            </form>
+			</div>
+			<hr />
+		</div>
+	</div>
+	<!-- Start Footer -->
+	<div id="footer">
+		<div class="container">
+			<a id="designby" href="http://www.studio7designs.com/" title="Design by STUDIO7DESIGNS" rel="nofollow">Design by STUDIO7DESIGNS</a>
+			<ul id="footer_navigation">
+			{if $USER->isAnonymous()}
+				<li>{bigace_version full=true link=true}</a>
+				<li><a href="{link item=$topLevel}" title="{$topLevel->getName()}">{$topLevel->getName()}</a></li>
+				{navigation id=$topLevel->getID() prefix="<li>" suffix='</li>'}
+			{else}
+				<li><a href="{link_admin}" target="_blank">Administration</a>
+				{permission_editcontent assign='allowEditor'}
+				{if $allowEditor}
+				<li><a href="{link_editor id=$MENU->getID() language=$MENU->getLanguageID()}" target="_blank">Editor</a>
+				{/if}
+	 			<li><a href="{link_logout}">Logout</a>
+			{/if}
+			</ul>
+		</div>
+	</div>
+</body>
+</html>
+            ]]></content>
+        </row>
+    </table>    
+
+    <table name="configuration">
+        <row>
+            <cid key="true">{CID}</cid>
+            <package key="true">templates</package>
+            <name key="true">application.footer</name>
+            <value>Ecobusiness-Footer</value>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <package key="true">templates</package>
+            <name key="true">application.header</name>
+            <value>Ecobusiness-Header</value>
+        </row>
+    </table>
+
+    <table name="stylesheet">
+        <row>
+            <name key="true">Ecobusiness</name>
+            <cid key="true">{CID}</cid>
+            <description>The default stylesheet for Ecobusiness.</description>
+            <filename>ecobusiness/common.css</filename>
+            <editorcss>Ecobusiness</editorcss>
+        </row>
+    </table>    
+
+    <table name="design">
+        <row>
+            <name key="true">Ecobusiness</name>
+            <cid key="true">{CID}</cid>
+            <description>Ecobusiness - a free Studio7Design Template</description>
+            <stylesheet>Ecobusiness</stylesheet>
+            <template>Ecobusiness</template>
+            <portlets>1</portlets>
+        </row>
+    </table>
+
+</content>

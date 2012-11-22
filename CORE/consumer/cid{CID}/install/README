@@ -1,0 +1,7 @@
+$Id: README,v 1.1 2007/04/01 10:41:53 kpapst Exp $
+
+This directory holds installation Files with the following extensions:
+- *.sql 
+- *.xml
+
+They will be automatically parsed and executed when installing a new Community.

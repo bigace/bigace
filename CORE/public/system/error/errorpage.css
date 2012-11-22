@@ -1,0 +1,42 @@
+body {
+	background-color:#EFEFEF;
+	margin:5px;
+}
+
+body, td {
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size:13px;
+	margin : 0;
+}
+
+img {
+    border-width:0px;
+}
+
+#dynamicLoginForm {
+    visibility:hidden;
+    display:none;
+}
+
+.error {
+    color: #b00;
+    background: #fdd url("error.png") no-repeat 10px 3px;
+    border: 1px solid #fbb;
+    padding: 5px 40px 3px 40px;
+    margin: .5em 0 1em 0;
+    font-size: 90%;
+    position: relative;
+    font-weight:bold;
+}
+.home { 
+    background:url(../images/home.gif) 0 0 no-repeat; 
+    padding-left:25px; 
+}
+.login { 
+    background:url(../images/login.gif) 0 0 no-repeat; 
+    padding-left:25px; 
+}
+.logout { 
+    background:url(../images/logout.gif) 0 0 no-repeat; 
+    padding-left:25px; 
+}

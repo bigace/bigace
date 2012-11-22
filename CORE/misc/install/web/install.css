@@ -1,0 +1,44 @@
+body {margin:0px; background-color:#ddd;} 
+tbody, td, p, th, div,input[type=text] { font: 16px "Lucida Grande", Tahoma, Verdana, Arial, Helvetica, sans-serif; }
+p { line-height:140%; margin:10px 0px 0px 0px; }
+.name {font-weight:bold;font-size:22px; }
+.langChooser { margin-left: 2px; margin-top: 2px; border:1px solid #333333; }
+.menu { border-bottom:1px solid #999999; padding:5px; background-color:#d3e6ea; }
+.menuEntry { padding:3px; text-align:center; }
+h1 { margin:0px; font-size:20px; }
+h2 { margin:0 0 6px 0; font-size:22px; }
+.header { color:#fff; height:80px; margin-top:10px; background-color: #003441; padding: 20px 0px 0px 20px; font-size: 28px; border: 1px solid #000; }
+.header span {display:block;font-size:16px;margin-top:10px;}
+.updateBox { margin-top:10px; width:800px; background-color:#ffffff; border:1px solid #999999; padding-bottom:10px; }
+.outer{ width:800px; margin:auto; }
+.navEntry { color:#fff; background-color:gray; font-weight:bold; border:1px solid #fff; padding:5px 0px 5px 5px; margin:5px; }
+.buttonLink { border:1px solid #000000; color:yellow; background-color:#333333; font-weight:bold; padding:4px;
+    font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size:15px; text-decoration:none; cursor:pointer; }
+a.noLink { color:#000000; text-decoration:none; }
+.contentTD { margin:10px; }
+.contentTD h1   { color: #0f337f; font-size: 20px; background-color: white; margin:25px 0px 10px 0px; 
+	text-align: left; padding: 0px 0px 2px 0px; border-bottom: 3px solid #e7ab0b; }
+.license {margin-top:10px;width:100%;height:300px;}
+.checkupInfo { line-height:20px; width:250px; vertical-align:top; }
+.checkupContent { background-color:#F6F6F6; border:1px solid #cccccc; width:440px; font-size:11px;
+    padding:2px; vertical-align:top; margin-left:10px; }
+.checkupLabel { font-weight:bold; }
+.tooltip { position:absolute; display:none; background-color:#F6F6F6; border:1px solid #cccccc; padding:5px; width:200px; }
+img {border-width:0px;}
+.helpImage {margin-left:10px;}
+.error { color:red; font-weight:bold; }
+.debug { color:#000000;font-weight:normal;font-style:italic }
+.info { color:#000000;font-weight:bold }
+.success { color:green;font-weight:normal;font-style:italic }
+.logMessages {}
+.logErrors { text-align:left; }
+.backLink { margin-top:30px; font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size:13px; }
+.error { color: #b00; background: #fdd url("error.gif") no-repeat 10px 3px; border: 1px solid #fbb; 
+    padding: 5px 40px 3px 40px; margin: .5em 0 1em 0; font-size: 90%; position: relative; font-weight:bold; }
+.info { color: #333333; background: #ffffff url("info.png") no-repeat 10px 3px; border: 1px solid #999999;
+    padding: 5px 40px 3px 40px; margin: .5em 0 1em 0; font-size: 90%; position: relative; font-weight:bold; }
+th {font-weight:bold;text-align:left;padding:3px;}
+.installTable {background-color:#ffffff;padding:0px 0px 10px 0px;}
+input[type=password],input[type=text],select {border:1px solid #666666;padding:2px;height:26px;width:300px;}
+textarea {border:1px solid #666666;padding:5px;}
+

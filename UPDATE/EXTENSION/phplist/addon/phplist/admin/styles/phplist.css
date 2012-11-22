@@ -1,0 +1,230 @@
+@import url(shader.css);
+* { font-size: 12px; }
+.footer {background-color:#dddddd; border: 1px solid #000; font-size:10px;padding: 1px 1px 1px 10px; margin-top:20px;}
+.footer * {font-size:10px;}
+.outerBody {width:100%; } 
+.error { font-weight:normal; }
+.error a, .error a:visited { color: blue; text-decoration:underline; font-weight:normal; }
+.error a:hover { color: blue; text-decoration:underline; font-weight:bold; }
+
+li{
+	font-size: 11px; color: #000; font-style: normal; font-family: verdana, sans-serif;
+}
+
+li li {
+	font-size: 11px;
+	color: #0000;
+	font-style: normal;
+	font-family: verdana, sans-serif;
+	list-style-type : square;
+}
+
+a:link {
+	font-size: 11px; color: #ff6600; font-style: normal; font-family: verdana, sans-serif; text-decoration: none;
+}
+a:active {
+	font-size: 11px; color: #ff6600; font-style: normal; font-family: verdana, sans-serif; text-decoration: none;
+}
+a:visited {
+	font-size: 11px; color: #ff6600; font-style: normal; font-family: verdana, sans-serif; text-decoration: none;
+}
+a:hover {font-size: 11px; color: #ff6600; font-style: normal; font-family: verdana, sans-serif;
+	text-decoration: underline;
+}
+p {
+	font-weight: normal; font-size: 11px; color: #666666; font-style: normal; font-family: verdana, sans-serif; text-decoration: none;
+}
+td {
+	font-weight: normal; font-size: 11px; color: #666666; font-style: normal; font-family: verdana, sans-serif; text-decoration: none;
+}
+
+ol {font-weight: normal; font-size: 11px; color: #666666; font-style: normal; font-family: verdana, sans-serif; text-decoration: none;}
+
+.disclist li {list-style-type : circle; padding: 5px;}
+
+h1 {font-weight: bold; font-size: 12px; color: #666666; font-style: normal; font-family: verdana, sans-serif; text-decoration: none;}
+
+h2 {font-weight: bold; font-size: 11px; color: #666666; font-style: normal; font-family: verdana, sans-serif; text-decoration: none;}
+
+h3 {font-weight: bold; font-size: 12px; color: #666666; font-style: normal; font-family: verdana, sans-serif; text-decoration: none; margin:0px; padding:0px;}
+
+hr {width : 100%; height : 1px; color: #ff9900; size:1px;}
+
+.leaftitle {font-weight: bold; font-size: 16px; color: #ff9900; font-style: normal; font-family: verdana, sans-serif; text-decoration: none;}
+
+.title {font-weight: bold; font-size: 11px; color: #999966; font-style: normal; font-family: verdana, sans-serif; text-decoration: none; padding-left:5px;}
+
+
+.phphead,
+a:active.phphead,
+a:link.phphead,
+a:hover.phphead,
+a:visited.phphead {font-size: 14px; color: #000000; font-style: normal; font-family: verdana, sans-serif; text-decoration: none; padding-left:20px;}
+
+.abouthead,
+a:active.abouthead,
+a:link.abouthead,
+a:hover.abouthead,
+a:visited.abouthead {
+	font-size: 18px;
+  color: #ff9900;
+  font-style: bold;
+  font-family: verdana, sans-serif;
+  text-decoration: none;
+  text-align: center;
+  border: 1px solid black;
+}
+
+.menulinkleft {margin : 0px; padding : 0px;}
+.menulinkleft a:link,
+.menulinkleft a:active,
+.menulinkleft a:visited {font-family: verdana, sans-serif;font-size : 11px; color : #000000;background-color : #F9F9F9; font-weight: normal; display : block; text-align : left; text-decoration : none; padding-left: 5px;line-height : 15px;border-top: 2px white solid;}
+.menulinkleft a:hover {font-family: verdana, sans-serif;font-size : 11px; color : #000000;background-color : #EBEBEB; font-weight: normal; display : block; text-align : left; text-decoration : none;}
+
+
+.menutable {background-color : white; border-left : 1px black solid; border-right : 1px black solid; display : block; width : 132px;}
+.menutableright {background-color : white; border-left : 1px black solid;  border-bottom : 1px black solid; display : block; width : 132px;}
+
+.menuhd {font-family: verdana, sans-serif;font-size : 11px; color : black;background-color : #CCCC99; font-weight: normal; border-top: 1px black solid;  border-bottom: 1px black solid;display : block; text-align : left; text-decoration : none; padding: 2px;vertical-align : top; padding-left : 3px;}
+
+.bottom {font-family: verdana, sans-serif;font-size : 10px; font-weight : bold; padding: 2px; padding-left:20px;}
+.input {font-family: verdana, sans-serif;font-size : 10px; font-weight : normal;}
+
+.searchBoxinput {font-family: verdana, sans-serif;font-size : 11px; font-weight : normal; margin : 0px; padding : 0px;color : #000000;border: 1px #999966 solid; padding-left:2px; height:15px; width:110px;}
+
+.dropdown {font-family: verdana, sans-serif;font-size : 11px; font-weight : normal; margin : 0px; padding : 0px;color : #000000;border: 1px #999966 solid; padding-left:5px; height:15px; width:250px;}
+
+.addbutton {font-family: verdana, sans-serif;font-size : 11px; font-weight : normal; margin : 0px; padding : 0px;color : #000000;border: 1px #999966 solid; height:15px; width:120px;}
+
+.submitsearch {font-family: verdana, sans-serif;font-size : 11px; font-weight : normal; margin : 0px; padding : 0px;background-color: #DEDEB6;color : #000000; border:1px #CCCC99 solid; height:15px;}
+
+.menufill {font-family: verdana, sans-serif;font-size : 11px; color : #000000;background-color : #CCCC99; font-weight: normal; text-align : left; text-decoration : none; padding: 0px;border-top: 1px white solid; border-bottom: 1px white solid; padding-left: 5px;}
+
+.rightmenufill {font-family: verdana, sans-serif;font-size : 11px; color : #000000;background-color : #CCCC99; font-weight: normal; text-align : left; text-decoration : none; padding: 0px;border-top: 1px white solid; border-bottom: 1px white solid; padding-left: 5px;}
+
+.delete {font-family: verdana, sans-serif;font-size : 11px; color : red;background-color : #DEDEB6; font-weight: bold; border-top: 1px black solid;  border-bottom: 1px black solid;display : block; text-align : right; text-decoration : none; padding: 2px;vertical-align : top; padding-left : 3px;}
+
+a.deletelink,
+a:link.deletelink,
+a:active.deletelink,
+a:visited.deletelink  {font-family: verdana, sans-serif;font-size : 12px; color : red; font-weight: bold; text-align : right; text-decoration : none;}
+a:hover.deletelink {color: #666633;}
+
+a.branches {padding :2px;}
+a:link.branches,
+a:active.branches,
+a:visited.branches  {font-family: verdana, sans-serif;font-size : 11px; color : #999966;background-color : #ffffff; font-weight: bold; text-align : middle; text-decoration : none; display:block;}
+a:hover.branches {color: #666633;}
+
+a.buttonpublish {border: 1px #999966 solid; padding :2px;}
+a:link.buttonpublish,
+a:active.buttonpublish,
+a:visited.buttonpublish  {font-family: verdana, sans-serif;font-size : 11px; color : #999966;background-color : #ffffff; font-weight: bold; text-align : middle; text-decoration : none;}
+a:hover.buttonpublish
+
+a.menuhelp {color : #000000;}
+a:link.menuhelp,
+a:active.menuhelp,
+a:visited.menuhelp  {font-family: verdana, sans-serif;font-size : 11px; color : #999933;background-color : #CCCC99; font-weight: normal; text-align : right; text-decoration : none; padding: 0px;}
+a:hover.menuhelp {font-family: verdana, sans-serif;font-size : 11px; color : #000000;background-color : #CCCC99; font-weight: normal; text-align : right; text-decoration : none; padding: 0px;}
+
+a:link.urhere,
+a:active.urhere,
+a:visited.urhere  {font-family: verdana, sans-serif; font-size : 10px; color : black; font-weight: normal; text-align : left; text-decoration : none;}
+a:hover.urhere  {font-family: verdana, sans-serif; font-size : 10px; color : #666666; font-weight: normal; text-align : left; text-decoration : none;}
+
+
+.webblermenu {
+	font-family: verdana, sans-serif;
+	font-size : 11px;
+  color : white;
+  font-weight: normal;
+  text-align : left;
+  text-decoration : none;
+  padding :5px;
+  background-color : #ff9900;
+  border: 1px solid black;
+  z-index: -10;
+}
+
+
+a:link.powered,
+a:active.powered,
+a:visited.powered  {font-family: verdana, sans-serif; font-size : 10px; color : #666666;font-weight: bold; text-align : left; text-decoration : none; padding: 2px;}
+a:hover.powered {color : #7D7B7B;}
+
+a.menusearch {color : #000000;}
+a:link.menusearch,
+a:active.menusearch,
+a:visited.menusearch  {font-family: verdana, sans-serif;font-size : 11px; color : #000000;background-color : #CCCC99; font-weight: normal; text-align : left; text-decoration : none; padding: 0px;border-left: 1px white solid;width:55px; padding-left: 5px;}
+a:hover.menusearch{font-family: verdana, sans-serif;font-size : 11px; color : #000000;background-color : #CCCC99; font-weight: normal; text-align : left; text-decoration : none;}
+
+.listinghdname {
+  font-family: verdana, sans-serif;
+  font-size : 11px;
+  color : black;
+  background-color : #e7be8f;
+  font-weight: bold;
+  border-top: 1px black solid;
+  border-bottom: 1px black solid;
+  display : block;
+  text-align : left;
+  text-decoration : none;
+  padding: 2px;
+  vertical-align : top;
+  padding-left : 3px;
+}
+.listingrowname {
+  font-family: verdana, sans-serif;
+  font-size : 11px;
+  color : black;
+  background-color : #e7be8f;
+  font-weight: bold;
+  display : block;
+  text-align : right;
+  text-decoration : none;
+  padding: 2px;
+  vertical-align : top;
+  padding-left : 3px;
+}
+.listinghdelement {
+	font-family: verdana, sans-serif;
+  font-size : 11px;
+  color : black;
+  background-color : #e7be8f;
+  font-weight: bold;
+  border-top: 1px black solid;
+  border-bottom: 1px black solid;
+  display : block;
+  text-align : right;
+  text-decoration : none;
+  padding: 2px;
+  vertical-align : top;
+  padding-left : 3px;
+}
+.listinghdelementright {
+	font-family: verdana, sans-serif;
+  font-size : 11px;
+  color : black;
+  background-color : #e7be8f;
+  font-weight: bold;
+  border-top: 1px black solid;
+  border-bottom: 1px black solid;
+  display : block;
+  text-align : left;
+  text-decoration : none;
+  padding: 2px;
+  vertical-align : top;
+  padding-left : 3px;
+}
+.listingelement {
+  font-size: 11px;
+  padding: 2px;
+	text-align: right;
+}
+
+a.listingname {padding :2px;}
+a:link.listingname,
+a:active.listingname,
+a:visited.listingname  {font-family: verdana, sans-serif;font-size : 11px; color : #999966;background-color : #ffffff; font-weight: bold; text-align : middle; text-decoration : none; display:block;}
+a:hover.listingname {color: #666633;}

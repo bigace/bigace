@@ -1,0 +1,97 @@
+<content version="1.0">
+
+    <table name="configuration">
+        <row>
+            <cid key="true">{CID}</cid>
+            <package key="true">ldap</package>
+            <name key="true">objectclass</name>
+            <value>person</value>
+            <type>string</type>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <package key="true">ldap</package>
+            <name key="true">account_prefix</name>
+            <value>cn=</value>
+            <type>string</type>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <package key="true">ldap</package>
+            <name key="true">account_suffix</name>
+            <value>,cn=test,dc=bigace</value>
+            <type>string</type>
+        </row>
+         <row>
+            <cid key="true">{CID}</cid>
+            <package key="true">ldap</package>
+            <name key="true">base_dn</name>
+            <value>dc=bigace</value>
+            <type>string</type>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <package key="true">ldap</package>
+            <name key="true">domain_controllers</name>
+            <value>localhost</value>
+            <type>string</type>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <package key="true">ldap</package>
+            <name key="true">username</name>
+            <value></value>
+            <type>string</type>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <package key="true">ldap</package>
+            <name key="true">password</name>
+            <value></value>
+            <type>string</type>
+        </row>
+ 		<row>
+            <cid key="true">{CID}</cid>
+            <package key="true">ldap</package>
+            <name key="true">use_ssl</name>
+            <value>TRUE</value>
+            <type>boolean</type>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <package key="true">ldap</package>
+            <name key="true">protocal_version</name>
+            <value>3</value>
+            <type>integer</type>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <package key="true">ldap</package>
+            <name key="true">auth_local</name>
+            <value>0</value>
+            <type>boolean</type>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <package key="true">ldap</package>
+            <name key="true">default_groups</name>
+            <value>0</value>
+            <type>string</type>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <package key="true">ldap</package>
+            <name key="true">group_attribute</name>
+            <value>gidNumber</value>
+            <type>string</type>
+        </row>
+        <!--  row>
+            <cid key="true">{CID}</cid>
+            <package key="true">ldap</package>
+            <name key="true">group_mappings</name>
+            <value>1002|35,1003|40</value>
+            <type>string</type>
+        </row -->
+    </table>    
+
+</content>

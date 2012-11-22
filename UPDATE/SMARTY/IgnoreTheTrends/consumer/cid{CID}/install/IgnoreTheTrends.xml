@@ -1,0 +1,163 @@
+<content version="1.0">
+
+    <table name="template">
+        <row>
+            <name key="true">IgnoreTheTrends (Footer)</name>
+            <cid key="true">{CID}</cid>
+            <description>Footer for the IgnoreTheTrends Design.</description>
+            <inwork>0</inwork>
+            <include>1</include>
+            <timestamp function="true">unix_timestamp()</timestamp>
+            <userid>1</userid>
+            <filename>IgnoreTheTrends_Footer.tpl</filename>
+            <content><![CDATA[
+</div>
+
+<div id="subcontent">
+
+{if $MENU->getDescription() != ''}
+<div class="small box">{$MENU->getDescription()}</div>
+{/if}
+
+{portlets assign="tplPortlets" id=$MENU->getID() lang=$MENU->getLanguageID()}
+{foreach from=$tplPortlets item='myPortlet'}
+   {$myPortlet->getJavascript()}
+   <h2>{$myPortlet->getTitle()}</h2>
+   {$myPortlet->getHtml()}
+{/foreach}
+
+<h2>Bookmarks</h2>
+
+<ul class="menublock">
+  <li><a href="http://wiki.bigace.de">Documentation</a></li>
+  <li><a href="http://www.bigace.de/">BIGACE CMS</a></li>
+  <li><a href="http://www.bigace.de/forum/">Community Forum</a></li>
+
+</ul>
+
+<div id="searchbar"><h2>Search this site</h2>
+            <form action="{link_search id=$MENU->getID()}" method="post" onSubmit="javascript:return doQuickSearch();">
+                <fieldset>
+                    <input type="text" name="search" value="" id="s" />
+                    <input type="hidden" name="language" value="{$MENU->getLanguageID()}" />
+                    <input type="submit" value="Search!" id="searchbutton" name="searchbutton" />
+                </fieldset>
+            </form>
+</div>
+
+</div>
+
+<div id="footer">
+<p>&copy; {$smarty.now|date_format:"%Y"} <a href="#">Your Name</a> | Ported for <a href="http://www.bigace.de/">BIGACE</a> by <a href="http://www.kevinpapst.de/">Kevin Papst</a> | Design by <a href="http://andreasviklund.com">Andreas Viklund</a></p>
+</div>
+
+</div>
+
+</body>
+</html>]]></content>
+        </row>
+        <row>
+            <name key="true">IgnoreTheTrends (Header)</name>
+            <cid key="true">{CID}</cid>
+            <description>Header for the IgnoreTheTrends Design.</description>
+            <inwork>0</inwork>
+            <include>1</include>
+            <timestamp function="true">unix_timestamp()</timestamp>
+            <userid>1</userid>
+            <filename>IgnoreTheTrends_Header.tpl</filename>
+            <content><![CDATA[<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<title>BIGACE | {$MENU->getName()}</title>
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+<meta name="generator" content="{bigace_version full='true'}">
+<meta name="description" content="Your website description goes here" />
+<meta name="keywords" content="your,keywords,goes,here" />
+<link rel="stylesheet" href="{stylesheet name="IgnoreTheTrends"}" type="text/css" media="screen, projection" >
+{foreach from=$tplPortlets item="myPortlet"}
+   {$myPortlet->getJavascript()}
+{/foreach}
+    <script type="text/javascript">
+    var xTerm1 = 'Your searchterm is empty!';
+    var xTerm2 = 'Your searchterm is too short!';
+    {literal}
+    function doQuickSearch()
+    {
+    	if(document.getElementById('s').value.length == 0) {
+            alert(xTerm1);
+            return false;
+        }
+        else if(document.getElementById('s').value.length < 4) {
+            alert(xTerm2);
+            return false;
+        }
+		return true;
+    }
+    {/literal}
+    </script>
+</head>
+
+
+<body>
+
+<div id="container" >
+
+<div id="header">
+<h1>BIGACE Web Content Management</h1>
+<h2>... easily manages your content!</h2>
+</div>
+
+<div id="navigation">
+<ul>
+{navigation id="-1" prefix="<li>" suffix="</li>" selected="selected"}
+</ul>
+</div>
+
+<div id="content">
+]]></content>
+        </row>
+        <row>
+            <name key="true">IgnoreTheTrends</name>
+            <cid key="true">{CID}</cid>
+            <description>Andreas Viklunds free Template 'Ignore the Trends'.</description>
+            <inwork>0</inwork>
+            <include>0</include>
+            <timestamp function="true">unix_timestamp()</timestamp>
+            <userid>1</userid>
+            <filename>IgnoreTheTrends.tpl</filename>
+            <content><![CDATA[{include file="IgnoreTheTrends_Header.tpl"}
+{modul menu=$MENU}
+{include file="IgnoreTheTrends_Footer.tpl"}
+]]></content>
+        </row>
+    </table>    
+
+    <table name="stylesheet">
+        <row>
+            <name key="true">IgnoreTheTrends</name>
+            <cid key="true">{CID}</cid>
+            <description>Stylesheet for the 'Ignore the Trends' Template.</description>
+            <filename>ignoreTheTrends/style.css</filename>
+            <editorcss>IgnoreTheTrends-Editor</editorcss>
+        </row>
+        <row>
+            <name key="true">IgnoreTheTrends-Editor</name>
+            <cid key="true">{CID}</cid>
+            <description>Editor Stylesheet for the 'Ignore the Trends' Template.</description>
+            <filename>ignoreTheTrends/editor.css</filename>
+            <editorcss>IgnoreTheTrends-Editor</editorcss>
+        </row>
+    </table>    
+
+    <table name="design">
+        <row>
+            <name key="true">IgnoreTheTrends</name>
+            <cid key="true">{CID}</cid>
+            <description>Andreas Viklunds centered and boxed free Template port.</description>
+            <stylesheet>IgnoreTheTrends</stylesheet>
+            <template>IgnoreTheTrends</template>
+            <portlets>1</portlets>
+        </row>
+    </table>    
+
+</content>

@@ -1,0 +1,183 @@
+<content version="1.0">
+
+    <table name="template">
+        <row>
+            <name key="true">SilverGlow-Header</name>
+            <cid key="true">{CID}</cid>
+            <description>SilverGlow - Header</description>
+            <inwork>0</inwork>
+            <include>1</include>
+            <timestamp function="true">unix_timestamp()</timestamp>
+            <userid>1</userid>
+            <filename>SilverGlow-Header.tpl</filename>
+            <content><![CDATA[<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="de" lang="de">
+<head>
+{metatags item=$MENU prefix="	"}	
+	<link href="{stylesheet name="SilverGlow"}" rel="stylesheet" type="text/css" />
+	<script type="text/javascript">
+    <!--
+      var xTerm1 = 'Der Suchbegriff ist leer!';
+	  var xTerm2 = 'Der Suchbegriff ist zu kurz!';
+	  {literal}
+	  function doQuickSearch()
+	  {
+	  	if(document.getElementById('s').value.length == 0) {
+	          alert(xTerm1);
+	  			return false;
+	      }
+	      else if(document.getElementById('s').value.length < 4) {
+	          alert(xTerm2);
+	  			return false;
+	      }
+	  return true;
+	}
+	{/literal}
+    // -->
+	</script>
+</head>
+{load_item itemtype="1" id="-1" assign="topLevel"}
+<body>
+<div class="holder">
+	<div class="top_curve"></div>
+	<div class="left_shade1"></div>
+	<div class="center_content">
+		<div class="header">
+		  <div style="float:left"><img src="{directory}SilverGlow/images/logo.gif" alt="logo" width="37" height="36" align="left" /> 
+		  	<div class="searchForm">
+		    <form action="{link_search id=$MENU->getID()}" method="post" onSubmit="javascript:return doQuickSearch();">
+		    <input type="text" name="search" value="" id="s" />
+		    <input type="hidden" name="language" value="{$MENU->getLanguageID()}" />
+		    <input type="image" src="{directory name="public"}system/images/search.gif" id="searchbutton" name="searchbutton" />
+		    </form>
+		    </div>
+		  </div>
+		
+			{load_item_childs id=$topLevel->getID() language=$topLevel->getLanguageID() assign="topMenus"}
+			<div class="navigation">
+			<a href="{link item=$topLevel}" class="nav">home</a>
+			{foreach from=$topMenus item="tMenu"}
+				 | <a href="{link item=$tMenu}" class="nav">{$tMenu->getName()}</a> 
+			{/foreach} 
+			</div>
+		</div>
+	
+		<div class="focus_block">
+			<div class="block_left"><div class="info_block_left">{$MENU->getDescription()}</div></div>
+			<div class="block_right">{$MENU->getName()}</div>
+			<br clear="all" />
+		</div>
+		
+		<div class="left_content">
+			{load_item_childs id=$MENU->getID() language=$MENU->getLanguageID() assign="leftMenus"}
+			{if count($leftMenus) == 0}
+				{load_item_childs id=$MENU->getParentID() language=$MENU->getLanguageID() assign="leftMenus"}
+			{/if}
+			{foreach from=$leftMenus item="cMenu"}
+				<h4><a href="{link item=$cMenu}">{$cMenu->getName()}</a></h4>
+				<p>{$cMenu->getDescription()} <a href="{link item=$cMenu}">&raquo; more</a></p>
+			{/foreach} 
+		</div>
+		<div class="right_content">
+			{if $MENU->getParentID() != -1}
+			<div class="wayhome">You are here: {breadcrumb top="-1" prefix="&raquo; "}</div>
+			{/if}
+		]]></content>
+        </row>
+        <row>
+            <name key="true">SilverGlow-Footer</name>
+            <cid key="true">{CID}</cid>
+            <description>SilverGlow - Footer</description>
+            <inwork>0</inwork>
+            <include>1</include>
+            <timestamp function="true">unix_timestamp()</timestamp>
+            <userid>1</userid>
+            <filename>SilverGlow-Footer.tpl</filename>
+            <content><![CDATA[
+		</div>
+	</div>
+	
+	<div class="right_shade1"></div>
+	<br clear="all" />
+</div>
+
+<div class="bottom_curve"></div>
+
+<div class="footer">&copy; {$smarty.now|date_format:"%Y"} {sitename} | Powered by {bigace_version link=true full=true}  
+        {if $USER->isAnonymous()}
+            | <a href="{link_login}">Login</a>
+        {else}
+            {permission_editcontent assign='allowEditor'}
+            {if $allowEditor}
+            | <a href="{link_editor id=$MENU->getID() language=$MENU->getLanguageID()}">Edit content</a>
+            {/if}
+            | <a href="{link_admin}">Administration</a>
+            | <a href="{link_logout}">Logout</a>
+        {/if}
+</div>
+
+</body>
+</html>
+]]></content>
+        </row>
+        <row>
+            <name key="true">SilverGlow</name>
+            <cid key="true">{CID}</cid>
+            <description>SilverGlow</description>
+            <inwork>0</inwork>
+            <include>0</include>
+            <timestamp function="true">unix_timestamp()</timestamp>
+            <userid>1</userid>
+            <filename>SilverGlow.tpl</filename>
+            <content><![CDATA[<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+{include file="SilverGlow-Header.tpl"}
+{modul menu=$MENU}
+{include file="SilverGlow-Footer.tpl"}
+]]></content>
+        </row>
+    </table>    
+
+    <table name="configuration">
+        <row>
+            <cid key="true">{CID}</cid>
+            <package key="true">templates</package>
+            <name key="true">application.footer</name>
+            <value>SilverGlow-Footer</value>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <package key="true">templates</package>
+            <name key="true">application.header</name>
+            <value>SilverGlow-Header</value>
+        </row>
+    </table>    
+    
+    <table name="stylesheet">
+        <row>
+            <name key="true">SilverGlow</name>
+            <cid key="true">{CID}</cid>
+            <description>Stylesheet for the 'SilverGlow' Template.</description>
+            <filename>SilverGlow/style.css</filename>
+            <editorcss>SilverGlow</editorcss>
+        </row>
+    </table>    
+
+    <table name="design">
+        <row>
+            <name key="true">SilverGlow</name>
+            <cid key="true">{CID}</cid>
+            <description>SilverGlow Template</description>
+            <stylesheet>SilverGlow</stylesheet>
+            <template>SilverGlow</template>
+            <portlets>0</portlets>
+        </row>
+        <row>
+            <name key="true">SilverGlow-News</name>
+            <cid key="true">{CID}</cid>
+            <description>SilverGlow - News entry</description>
+            <stylesheet>SilverGlow</stylesheet>
+            <template>SilverGlow-News</template>
+            <portlets>0</portlets>
+        </row>
+    </table>    
+
+</content>

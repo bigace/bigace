@@ -1,0 +1,96 @@
+html,body {
+	background-color: #D3E9D0;
+	font-family: Trebuchet MS, Verdana, Arial, sans-serif;
+	font-size: 10pt;
+	text-align:center;
+}
+
+h1 {
+	font-size: 14pt;
+	margin: 0%;
+}
+
+acronym {
+	cursor: help;
+}
+
+pre {
+	margin: 0%;
+}
+
+div.upperleft {
+	width: 520px;
+	margin-left: auto;
+	margin-right: auto;
+
+	background-color: #AED7A8;
+	background-image: url('upperleft.png');
+	background-repeat: no-repeat;
+	background-position: top left;
+	text-align:left;
+}
+
+div.upperright {
+	background-image: url('upperright.png');
+	background-repeat: no-repeat;
+	background-position: top right;
+}
+
+div.lowerleft {
+	background-image: url('lowerleft.png');
+	background-repeat: no-repeat;
+	background-position: bottom left;
+}
+
+div.lowerright {
+	background-image: url('lowerright.png');
+	background-repeat: no-repeat;
+	background-position: bottom right;
+	padding: 3% 3% 3% 3%;
+}
+
+div.header {
+	width: 520px;
+	height: 204px;
+	margin-left: auto;
+	margin-right: auto;
+	background-image: url(header.jpg);
+	margin-bottom: 20px;
+}
+
+div.header h1 {
+	font-size:24px;
+	color:#FFFFFF;
+	font-family: 'Lucida Grande', Verdana, Arial, Sans-Serif;
+	text-align:right;
+	padding-right:5px;
+}
+
+div.nav {
+	padding-top:149px;
+	padding-left:5px;
+	text-align:left;
+}
+
+.nav a, .nav a:hover, .nav a:visited {
+	color:#FFF0E6;
+	text-decoration:none;
+	margin-right:10px;
+	border-top:3px solid #333333;
+}
+
+.nav a:hover {
+	border-top:3px solid #FFFFFF;
+}
+
+div.footer {
+	background-image:url(footer.png);
+	text-align:center;
+	width:480px;
+	height:23px;
+	margin-left:auto;
+	margin-right:auto;
+}
+div.breadcrumb {
+    font-size:80%;
+}

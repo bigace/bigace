@@ -1,0 +1,5 @@
+Temporary Captcha files will be stored in this directory.
+Do not delete it!
+
+The Captcha script will cleanup old files, 
+you do not have to do this manually!

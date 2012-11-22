@@ -1,0 +1,1 @@
+SELECT * FROM {DB_PREFIX}{TABLE} WHERE itemtype='{ITEMTYPE}' AND cid='{CID}' AND itemid='{ITEM_ID}' AND categoryid='{CATEGORY_ID}'

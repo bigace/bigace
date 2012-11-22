@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<content version="1.0">
+
+    <table name="frights">
+        <row>
+            <cid key="true">{CID}</cid>
+            <name key="true">fotogallery_admin</name>
+            <defaultvalue>N</defaultvalue>
+            <description>Allow User to administrate the Foto Gallery settings.</description>
+        </row>
+    </table>  
+
+    <table name="group_frights" update="false">
+        <row>
+            <cid key="true">{CID}</cid>
+            <group_id key="true">40</group_id>
+            <fright key="true">fotogallery_admin</fright>
+        </row>
+    </table>  
+    
+    <table name="stylesheet">
+        <row>
+            <name key="true">Fotogallery</name>
+            <cid key="true">{CID}</cid>
+            <description>Fotogallery stylesheet with Lighbox integration.</description>
+            <filename>css/fotogallery.css</filename>
+            <editorcss>dummy_stylesheet</editorcss>
+        </row>
+    </table>  
+
+</content>        

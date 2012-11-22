@@ -1,0 +1,19 @@
+# Restrict editing to logged in and experienced users only!
+
+RewriteEngine On 
+
+## Not all installations will require the following line.  If you do, 
+## change "/bigace" to the path to your bigace directory relative
+## from your document root.
+#RewriteBase /bigace
+
+# Old style URLs, before BIGACE 2.4. Full URLs require complete rewriting
+RewriteRule ^bigace/(.*)/(.*)/(.*)	./public/index.php?cmd=$1&id=$2&name=$3&%{QUERY_STRING} [PT]
+# Probably a permalink with a unique URL
+RewriteRule ^bigace/(.*) 			./public/index.php?id=$1&%{QUERY_STRING} [PT]
+
+# If none of the above applied, this was probably a normal filesystem call.
+# But if the file or directory does not exist, treat it as permalink
+RewriteCond %{REQUEST_FILENAME}		!-f
+RewriteCond %{REQUEST_FILENAME}		!-d
+RewriteRule (.*)					./public/index.php?id=$1&%{QUERY_STRING} [PT]

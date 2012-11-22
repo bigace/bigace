@@ -1,0 +1,16 @@
+<refentry id="{@id libs}">
+ <refnamediv>
+  <refname>BIGACE Libraries</refname>
+ </refnamediv>
+ <refsynopsisdiv>
+  <author>
+   Kevin Papst
+  </author>
+ </refsynopsisdiv>
+ <refsect1 id="{@id libsintro}">
+  <title>{@link http://www.bigace.de BIGACE Web CMS} - Library Documentation</title>
+  <para>These are the default libs and functions that come with BIGACE.</para>
+  <para>Detailed documentation how to use this API can be found in our wiki:</para>
+  {@link http://wiki.bigace.de/ BIGACE Developer Documentation}
+ </refsect1>
+</refentry>

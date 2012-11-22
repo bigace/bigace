@@ -1,0 +1,88 @@
+
+body {
+	margin-top: 8px; margin-left: 8px; margin-right: 8px;margin-bottom: 8px; color: black;  
+	background-color:#ffffff; font-family: verdana,arial; font-size: 10pt;
+}
+
+
+table,tr,td
+{ color: black ;font-family: verdana,arial; font-size: 10pt}
+
+body
+{
+	scrollbar-arrow-color: #808080; scrollbar-base-color: white;
+	scrollbar-highlight-color : #808080; scrollbar-shadow-color : #000000;
+	SCROLLBAR-TRACK-COLOR: #cccccc;
+}
+
+#menu a {display: block;
+background-color:#ffffff;
+color:black; text-decoration:none ;font-family:verdana, sans-serif; font-size: 10pt;
+width:140px;
+
+border-bottom:solid 1px #ffffff;
+border-top:solid 1px #ffffff;
+}
+
+#menu a:visited{background-color:#ffffff;
+color:black;text-decoration:none;font-family:verdana, sans-serif; font-size: 10pt; width:140px;
+
+border-bottom:solid 1px #ffffff;
+border-top:solid 1px #ffffff;
+}
+
+#menu a:active{background-color:#ffffff; color:black;text-decoration:none;font-family:verdana, sans-serif; font-size: 10pt;width:140px;
+
+border-bottom:solid 1px #ffffff;
+border-top:solid 1px #ffffff;6;
+}
+
+#menu a:hover {background-color:#e6e6e6;
+color: black;
+text-decoration:none ;font-family:verdana, sans-serif; font-size:10pt;
+width:140px;
+
+border-bottom:solid 1px #000000;
+border-top:solid 1px #000000;
+}
+
+/* rubrikname*/
+
+.rubrik {
+background-color:#9198ab; 
+color:white;  
+text-decoration:none;
+font-family:verdana, sans-serif;
+font-size:10pt;
+width:140px;
+border-bottom:solid 1px #000000;
+border-top:solid 1px #000000;
+height:19px;
+}
+
+/* seitentitel, fuss und kopfleiste */
+
+.leiste {background-color:#9198ab; color:white;  text-decoration:none ;font-family:verdana, sans-serif; font-size: 10pt;
+
+height:17px;
+
+}
+
+
+/* allgemeine links im text */
+
+a:link{ color: black; text-decoration:underline; ;font-family: verdana; font-size: 10pt;}
+
+a:visited{color: black;text-decoration:underline;font-family: verdana; font-size: 10pt;}
+
+a:active{ color:black;text-decoration:underline;font-family: verdana; font-size: 10pt; }
+
+a:hover{ color: #ffffff;background-color:#9198ab;  text-decoration:none;font-family: verdana; font-size: 10pt; }
+
+form {margin-bottom:0px;}
+
+.footer { font-size:11px;color:#ffffff;text-decoration:none }
+
+a.footer { font-size:11px;color:#ffffff;text-decoration:none }
+a.footer:visited { font-size:11px;color:#ffffff;text-decoration:none }
+a.footer:hover { background-color:#cccccc;color:#000000; }

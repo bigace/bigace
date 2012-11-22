@@ -1,0 +1,113 @@
+<!-- $Id: ItemListing.tpl.htm,v 1.5 2009/05/01 23:42:25 kpapst Exp $ -->
+
+<script language="JavaScript">
+<!--
+var ischecked = false;
+
+function checkAll()
+{
+    var myForm = document.getElementById('itemEditForm');
+    for (i=0; i<myForm.elements.length; i++)
+    {
+        if (myForm.elements[i].type == 'checkbox') {
+            if ( !myForm.elements[i].disabled )
+            {
+                myForm.elements[i].checked = !ischecked;
+            }
+        }
+    }
+    ischecked = !ischecked;
+}
+
+function checkSubmitSettings() 
+{
+    var myForm = document.getElementById('itemEditForm');
+    if(myForm.mode.options[myForm.mode.selectedIndex].value == '{JS_MODE_ZIP}')
+    {
+        myForm.action = '{JS_DOWNLOAD_ACTION}';
+    }
+    else
+    {
+        myForm.action = '{JS_DEFAULT_ACTION}';
+    }
+    return true;
+}
+
+function changePage(amount,from) 
+{
+    $('#itemFrom').val(from);
+    $('#itemTo').val(amount);
+    $('#nextPage').submit();
+}
+        
+// -->
+</script>
+
+<form id="itemEditForm" name="itemEditForm" onSubmit="return checkSubmitSettings()" action="{FORM_ACTION}" method="POST">
+<input type="hidden" name="data[id]" value="{ITEM_ID}">
+<input type="hidden" name="data[langid]" value="{ITEM_LANGUAGE_ID}">
+<input type="hidden" name="mode" value="{ADMIN_MODE}">
+
+<table class="tablesorter" cellspacing="0">
+<col width="30" />
+<col width="20" />
+<col />
+<col />
+<col />
+<col />
+<col />
+<col />
+<col />
+<col />
+<!-- BEGIN autoheader -->
+<thead>
+	<tr>
+		<th align="center"><input type="checkbox" onclick="checkAll();" /></th>
+		<th align="center">&nbsp;</th>
+		<th align="left">{TRANSLATION_name}</th>
+		<th align="left">{TRANSLATION_unique_name}</th>
+		<th align="center">{TRANSLATION_language}</th>
+		<th align="center">{TRANSLATION_preview}</th>
+		<th align="center">{TRANSLATION_download}</th>
+		<th align="center">{TRANSLATION_rights}</th>
+		<th align="center">{TRANSLATION_delete}</th>
+		<th align="center" colspan="2">{TRANSLATION_position}</th>
+	</tr>
+</thead>
+<!-- END autoheader -->
+<tbody>
+    <!-- BEGIN row -->
+    <tr>
+        <td align="left">&nbsp;{HISTORY_CHECKBOX}</td>
+        <td align="left">{ITEM_MIMETYPE}</td>
+        <td align="left">{ITEM_NAME}</td>
+        <td align="left">{ITEM_URL}</td>
+		<td align="center">{ITEM_ADMIN}</td>
+		<td align="center">{ITEM_PREVIEW}</td>
+		<td align="center">{ITEM_DOWNLOAD}</td>
+		<td align="center">{ITEM_RIGHTS}</td>
+		<td align="center">{ITEM_DELETE}</td>
+		<td align="center">{ITEM_UP}</td>
+		<td align="center">{ITEM_DOWN}</td>
+    </tr>
+    <!-- END row -->
+	</tbody>
+</table>
+<p>
+  <a href="#" onclick="checkAll();return false;" style="margin-left:7px"><img src="{AUTO_STYLE_DIR}arrow_ltr.png" border="0"></a>
+  {TRANSLATION_choosen_objects}: &nbsp;{OPTION_MODE_SELECT} <button type="submit" class="textLink">{TRANSLATION_process}</button>
+</p>
+
+</form>
+
+<script type="text/javascript">
+var w = 0;
+var y = 0;
+$(document).ready( function() { 
+        $(".tablesorter").tablesorter({ 
+            widgets: ['zebra'], 
+            headers: { 0: {sorter: false}, 1: {sorter: false}, 4: {sorter: false}, 5: {sorter: false}, 6: {sorter: false}, 7: {sorter: false}, 8: {sorter: false}, 9: {sorter: false} }
+        }); 
+    } 
+);
+</script>

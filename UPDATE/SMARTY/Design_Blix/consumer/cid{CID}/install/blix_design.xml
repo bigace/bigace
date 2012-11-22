@@ -1,0 +1,390 @@
+<content version="1.0">
+
+    <table name="template">
+        <row>
+            <name key="true">BLIX</name>
+            <cid key="true">{CID}</cid>
+            <description>The default Template for BIGACE.</description>
+            <inwork>0</inwork>
+            <include>0</include>
+            <timestamp function="true">unix_timestamp()</timestamp>
+            <userid>1</userid>
+            <filename>BLIX.tpl</filename>
+            <content><![CDATA[<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="{$MENU->getLanguageID()}" lang="{$MENU->getLanguageID()}">
+{load_translation name="blix"}
+{load_translation name="bigace"}
+{load_item id="-1" itemtype="1" assign="topLevel"}
+{configuration cache="blix.design"}
+{portlets assign="blixPortlets"}
+{include file="BLIX+Header.tpl"}
+<hr class="low" />
+
+<div id="content">
+  <div class="entry single">
+	<h2><a href="{link item=$MENU}">{$MENU->getName()}</a></h2>
+	{modul menu=$MENU}
+	<p class="info">
+		<em class="date">{translate key="written_at"} {$MENU->getCreateDate()|date_format:"%d. %B %Y"} {translate key="written_by"} {user id=$MENU->getCreateByID()}</em>
+	</p>
+	
+	{hooks_action name="smarty_tpl_footer" item=$MENU}
+	
+  </div>
+</div>
+
+<hr class="low" />
+
+<div id="subcontent">
+
+{foreach from=$blixPortlets item="myPortlet"}
+   <h2><em>{$myPortlet->getTitle()}</em></h2>
+   {$myPortlet->getHtml()}
+{/foreach}
+
+</div>
+
+<hr class="low" />
+{include file="BLIX+Footer.tpl"}
+            ]]></content>
+        </row>
+        <row>
+            <name key="true">BLIX (Footer)</name>
+            <cid key="true">{CID}</cid>
+            <description>Footer for the BLIX Design.</description>
+            <inwork>0</inwork>
+            <include>1</include>
+            <timestamp function="true">unix_timestamp()</timestamp>
+            <userid>1</userid>
+            <filename>BLIX+Footer.tpl</filename>
+            <content><![CDATA[<div id="footer">
+    <p><strong>&copy; Copyright {$smarty.now|date_format:"%Y"} {configuration package="community" key="copyright.holder" default="BIGACE CMS"}. All rights reserved.</strong><br />
+    Powered by {bigace_version link=true full=true}. 
+{if $USER->isAnonymous()}
+	<a rel="nofollow" target="_self" href="{link_login id=$MENU->getID()}">{translate key="login"}</a>
+{else}
+    <a target="_blank" href="{link_admin}">{translate key="admin"}</a> | <a target="_self" href="{link_logout id=$MENU->getID()}">{translate key="logout"}</a>
+{/if}
+</p>
+</div>
+
+</div>
+</body>
+</html>
+            ]]></content>
+        </row>
+        <row>
+            <name key="true">BLIX (Header)</name>
+            <cid key="true">{CID}</cid>
+            <description>Header of the BLIX Design.</description>
+            <inwork>0</inwork>
+            <include>1</include>
+            <timestamp function="true">unix_timestamp()</timestamp>
+            <userid>1</userid>
+            <filename>BLIX+Header.tpl</filename>
+            <content><![CDATA[
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="{stylesheet name="blix_stylesheet_main"}" type="text/css" media="screen, projection" >
+    <link rel="stylesheet" href="{stylesheet name="blix_extension"}" type="text/css" media="screen, projection" >
+	<link rel="shortcut icon" type="image/x-icon" href="{directory name="public"}system/images/favicon.ico" />
+	{metatags item=$MENU}
+	{foreach from=$blixPortlets item="myPortlet"}
+	   {$myPortlet->getJavascript()}
+	{/foreach}
+    <script type="text/javascript">
+    {configuration package="search" key="minimum.word.length" default="4" assign="searchLength"}
+    {literal}
+    function doQuickSearch()
+    {
+    	if(document.getElementById('s').value.length == 0) {
+            {/literal}alert('{translate key="empty_searchterm"}');{literal}
+			return false;
+        }
+        else if(document.getElementById('s').value.length < {/literal}{$searchLength}{literal}) {
+            {/literal}alert('{translate key="short_searchterm"}');{literal}
+			return false;
+        }
+		return true;
+    }
+    {/literal}
+    </script>
+    {hooks_action name="smarty_tpl_header" item=$MENU}
+</head>
+<body>
+	<div id="container">
+	
+	<div id="header"> 
+	    <h1><a href="{link item=$topLevel}">{sitename|htmlspecialchars}</a></h1>
+	    <div class="languages">{languages assign="lngs"}
+		    {foreach from=$lngs key="k" item="i"}{switch_language languages="$k" locale="$k" hideactive="false"} {/foreach}
+	    </div>
+	</div>
+		
+	<div id="navigation">
+		<form action="{link_search id=$MENU->getID()}" method="post" onSubmit="return doQuickSearch();">
+		    <fieldset>
+		        <input type="text" name="search" value="" id="s" />
+		        <input type="hidden" name="language" value="{$MENU->getLanguageID()}" />
+		        <input type="submit" value="{translate key="search_button"}" id="searchbutton" name="searchbutton" />
+		    </fieldset>
+		</form>
+		
+	    <ul>
+			{configuration package="blix.design" key="show.home.in.topmenu" default=true assign="homeInMenu"}
+			{if $homeInMenu}
+			<li><a href="{link item="$topLevel"}"{if $MENU->getID() == $topLevel->getID()} class="selected"{/if}>{$topLevel->getName()}</a></li>
+			{/if}
+			{navigation id="-1" prefix="<li>" suffix="</li>" selected="selected"}
+	    </ul>
+	</div>
+]]></content>
+        </row>
+        <row>
+            <name key="true">BLIX (Header Applications)</name>
+            <cid key="true">{CID}</cid>
+            <description>Header for Applications, using the BLIX Design style.</description>
+            <inwork>0</inwork>
+            <include>1</include>
+            <timestamp function="true">unix_timestamp()</timestamp>
+            <userid>1</userid>
+            <filename>BLIX+Header+Applications.tpl</filename>
+            <content><![CDATA[<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="{$MENU->getLanguageID()}" lang="{$MENU->getLanguageID()}">
+{load_translation name="blix"}
+{load_item id="-1" itemtype="1" assign="topLevel"}
+{configuration cache="blix.design"}
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="{stylesheet name="blix_stylesheet_main"}" type="text/css" media="screen, projection" >
+	<link rel="stylesheet" href="{stylesheet name="blix_extension"}" type="text/css" media="screen, projection" >
+	{metatags item=$MENU}
+    <script type="text/javascript">
+    {literal}
+    function doQuickSearch()
+    {
+    	if(document.getElementById('s').value.length == 0) {
+            {/literal}alert('{translate key="empty_searchterm"}');{literal}
+			return false;
+        }
+        else if(document.getElementById('s').value.length < 4) {
+            {/literal}alert('{translate key="short_searchterm"}');{literal}
+			return false;
+        }
+		return true;
+    }
+    {/literal}
+    </script>
+</head>
+<body>
+	<div id="container">
+	
+	<div id="header">
+	{if isset($TITLE)}
+	    <h1>{$TITLE}</h1>
+	{elseif isset($MENU)}
+	    <h1>{$MENU->getName()}</h1>
+	{else}
+	    <h1>{sitename}</h1>
+	{/if}
+	    <div class="languages">{languages assign="lngs"}
+		    {foreach from=$lngs key="k" item="i"}{switch_language languages="$k" locale="$k" hideactive="false"} {/foreach}
+		</div>
+	</div>
+	
+	<div id="navigation">
+	    <form action="{link_search id=$MENU->getID()}" method="post" onSubmit="return doQuickSearch();">
+	        <fieldset>
+	            <input type="text" name="search" value="" id="s" />
+	            <input type="hidden" name="language" value="{$MENU->getLanguageID()}" />
+	            <input type="submit" value="{translate key="search_button"}" id="searchbutton" name="searchbutton" />
+	        </fieldset>
+	    </form>
+		<ul>
+			{configuration package="blix.design" key="show.home.in.topmenu" default=true assign="homeInMenu"}
+			{if $homeInMenu}
+			<li><a href="{link item="$topLevel"}">{$topLevel->getName()}</a></li>
+			{/if}
+			{navigation id="-1" prefix="<li>" suffix="</li>" selected="selected"}
+		</ul>
+	</div>
+
+<hr class="low" />
+
+<div id="content">
+]]></content>
+        </row>
+        <row>
+            <name key="true">BLIX (Footer Applications)</name>
+            <cid key="true">{CID}</cid>
+            <description>Footer for Applications, using the BLIX Design style.</description>
+            <inwork>0</inwork>
+            <include>1</include>
+            <timestamp function="true">unix_timestamp()</timestamp>
+            <userid>1</userid>
+            <filename>BLIX+Footer+Applications.tpl</filename>
+            <content><![CDATA[
+</div>
+
+<hr class="low" />
+
+<div id="subcontent">
+
+{portlets assign="blixPortlets" id=$MENU->getID() lang=$MENU->getLanguageID()}
+{foreach from=$blixPortlets item='myPortlet'}
+   {$myPortlet->getJavascript()}
+   <h2><em>{$myPortlet->getTitle()}</em></h2>
+   {$myPortlet->getHtml()}
+{/foreach}
+
+</div>
+
+<hr class="low" />
+
+<div id="footer">
+    <p><strong>&copy; Copyright {$smarty.now|date_format:"%Y"} {configuration package="community" key="copyright.holder" default="BIGACE CMS"}. All rights reserved.</strong><br />
+    Powered by {bigace_version link=true full=true}. 
+{if $USER->isAnonymous()}
+	<a target="_self" href="{link_login id=$MENU->getID()}">{translate key="login"}</a>
+{else}
+    <a target="_blank" href="{link_admin id=$MENU->getID()}">{translate key="admin"}</a> | <a target="_self" href="{link_logout id=$MENU->getID()}">{translate key="logout"}</a>
+{/if}
+</p>
+</div>
+
+</div>
+</body>
+</html>
+            ]]></content>
+        </row>
+	</table>    
+
+    <table name="stylesheet">
+        <row>
+            <name key="true">blix_stylesheet_main</name>
+            <cid key="true">{CID}</cid>
+            <description>The overall-default Style for the BLIX Layout.</description>
+            <filename>spring_flavour/style.css</filename>
+            <editorcss>blix_editor</editorcss>
+        </row>
+        <row>
+            <name key="true">blix_extension</name>
+            <cid key="true">{CID}</cid>
+            <description>BIGACE extension Styles for the BLIX Layout.</description>
+            <filename>spring_flavour/bigace_extension.css</filename>
+            <editorcss>blix_editor</editorcss>
+        </row>
+        <row>
+            <name key="true">blix_layout</name>
+            <cid key="true">{CID}</cid>
+            <description>The layout Stylesheet for BLIX.</description>
+            <filename>spring_flavour/layout.css</filename>
+            <editorcss>blix_editor</editorcss>
+        </row>
+        <row>
+            <name key="true">blix_spring_flavour</name>
+            <cid key="true">{CID}</cid>
+            <description>The spring flavour Stylesheet for BLIX.</description>
+            <filename>spring_flavour/spring_flavour.css</filename>
+            <editorcss>blix_editor</editorcss>
+        </row>
+        <row>
+            <name key="true">blix_editor</name>
+            <cid key="true">{CID}</cid>
+            <description>The FCKeditor Stylesheet for BLIX.</description>
+            <filename>spring_flavour/editor.css</filename>
+            <editorcss>blix_editor</editorcss>
+        </row>
+    </table>    
+
+    <table name="design">
+        <row>
+            <name key="true">BLIX</name>
+            <cid key="true">{CID}</cid>
+            <description>The default Style for the BLIX Layout.</description>
+            <stylesheet>blix_stylesheet_main</stylesheet>
+            <template>BLIX</template>
+            <portlets>1</portlets>
+        </row>
+        <!--row>
+            <name key="true">BLIX-Search</name>
+            <cid key="true">{CID}</cid>
+            <description>The Search result formular for the BLIX Layout.</description>
+            <stylesheet>blix_spring_flavour</stylesheet>
+            <template>BLIX-Search</template>
+            <portlets>1</portlets>
+        </row-->
+    </table>    
+
+    <table name="item_project_text" update="false">
+        <row>
+            <itemtype key="true">1</itemtype>
+            <id key="true">-1</id>
+            <cid key="true">{CID}</cid>
+            <language key="true">de</language>
+            <project_key key="true">portlet.config.column.1</project_key>
+            <project_value><![CDATA[<?xml version='1.0'?>
+<Portlets>
+	<ToolPortlet css="toolPortlet" login="1" home="" />
+	<NavigationPortlet css="navigationPortlet" hide.if.empty="1" language="" id="" />
+	<LastEditedItemsPortlet css="lastEditedItemsPortlet" language="" amount="5" />
+</Portlets>			
+           	]]></project_value>
+        </row>
+        <row>
+            <itemtype key="true">1</itemtype>
+            <id key="true">-1</id>
+            <cid key="true">{CID}</cid>
+            <language key="true">en</language>
+            <project_key key="true">portlet.config.column.1</project_key>
+            <project_value><![CDATA[<?xml version='1.0'?>
+<Portlets>
+	<ToolPortlet css="toolPortlet" login="1" home="" />
+	<NavigationPortlet css="navigationPortlet" hide.if.empty="1" language="" id="" />
+	<LastEditedItemsPortlet css="lastEditedItemsPortlet" language="" amount="5" />
+</Portlets>			
+           	]]></project_value>
+        </row>
+    </table>    
+
+    <table name="configuration" mode="install">
+        <row>
+            <cid key="true">{CID}</cid>
+            <package key="true">templates</package>
+            <name key="true">application.footer</name>
+            <value>BLIX (Footer Applications)</value>
+            <type>tpl_inc</type>
+            <extended></extended>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <package key="true">templates</package>
+            <name key="true">application.header</name>
+            <value>BLIX (Header Applications)</value>
+            <type>tpl_inc</type>
+            <extended></extended>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <package key="true">blix.design</package>
+            <name key="true">show.footer.login</name>
+            <value>TRUE</value>
+            <type>boolean</type>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <package key="true">blix.design</package>
+            <name key="true">show.home.in.topmenu</name>
+            <value>TRUE</value>
+            <type>boolean</type>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <package key="true">blix.design</package>
+            <name key="true">top.menu.start.id</name>
+            <value>-1</value>
+            <type>menu_id</type>
+        </row>
+    </table>    
+
+</content>

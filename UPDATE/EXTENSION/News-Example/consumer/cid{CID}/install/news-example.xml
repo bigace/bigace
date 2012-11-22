@@ -1,0 +1,370 @@
+<content version="1.0">
+
+    <table name="configuration">
+        <row>
+            <cid key="true">{CID}</cid>
+            <package key="true">news</package>
+            <name key="true">template.archive.year</name>
+            <value>News-Example-Archive-Year</value>
+            <type>design</type>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <package key="true">news</package>
+            <name key="true">template.archive.month</name>
+            <value>News-Example-Archive-Month</value>
+            <type>design</type>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <package key="true">news</package>
+            <name key="true">template.news</name>
+            <value>News-Example-Content</value>
+            <type>design</type>
+        </row>
+    </table>  
+
+
+    <table name="template">
+        <row>
+            <name key="true">News-Example-Archive-Year</name>
+            <cid key="true">{CID}</cid>
+            <description>Example template for the news year archive.</description>
+            <inwork>0</inwork>
+            <include>0</include>
+            <timestamp function="true">unix_timestamp()</timestamp>
+            <userid>1</userid>
+            <filename>News-Example-Archive-Year.tpl</filename>
+            <content><![CDATA[
+{include file="News-Example-Header.tpl"}        
+
+<center>! Year archives are not implemented yet !</center>
+
+{include file="News-Example-Footer.tpl"}        
+]]></content>
+        </row>
+        <row>
+            <name key="true">News-Example-Archive-Month</name>
+            <cid key="true">{CID}</cid>
+            <description>Example template for a news Month archive.</description>
+            <inwork>0</inwork>
+            <include>0</include>
+            <timestamp function="true">unix_timestamp()</timestamp>
+            <userid>1</userid>
+            <filename>News-Example-Archive-Month.tpl</filename>
+            <content><![CDATA[
+{include file="News-Example-Header.tpl"}        
+
+<center>! Monthly archives are not implemented yet !</center>
+
+{include file="News-Example-Footer.tpl"}        
+]]></content>
+        </row>
+        <row>
+            <name key="true">News-Example-Archive</name>
+            <cid key="true">{CID}</cid>
+            <description>Example template for a all existing news archives.</description>
+            <inwork>0</inwork>
+            <include>0</include>
+            <timestamp function="true">unix_timestamp()</timestamp>
+            <userid>1</userid>
+            <filename>News-Example-Archive.tpl</filename>
+            <content><![CDATA[
+{include file="News-Example-Header.tpl"}
+
+<center>! News archive is not implemented yet !</center>
+
+{include file="News-Example-Footer.tpl"}        
+]]></content>
+        </row>
+        <row>
+            <name key="true">News-Example-Content</name>
+            <cid key="true">{CID}</cid>
+            <description>Example template, displaying one single News.</description>
+            <inwork>0</inwork>
+            <include>0</include>
+            <timestamp function="true">unix_timestamp()</timestamp>
+            <userid>1</userid>
+            <filename>News-Example-Content.tpl</filename>
+            <content><![CDATA[
+{include file="News-Example-Header.tpl"}        
+
+{news_item id=$MENU->getID() assign="newsPage"}
+<div style="border:1px solid #000000;margin-bottom:10px;padding:2px;">
+	{load_item itemtype=4 id=$newsPage->getImageID() assign="newsImage"}
+	<a href="{link item=$newsPage}" title="{$newsImage->getName()}">
+    	<img src="{thumbnail id=$newsPage->getImageID() width="100"}" style="border:2px solid #cccccc;margin-right:5px;" alt="{$newsImage->getName()}" align="left">
+	</a>
+	<h2>{$newsPage->getTitle()}</h2>
+    <h3>posted on {$newsPage->getDate()|date_format:"%d %B, %Y"} by {user id=$newsPage->getCreateByID()}</h3>
+	<p><b>{$newsPage->getTeaser()}</b></p>
+	<p>{$newsPage->getContent()}</p>
+	<p>published in: {news_category item=$newsPage}</p>
+</div>
+
+{include file="News-Example-Footer.tpl"}        
+]]></content>
+        </row>
+        <row>
+            <name key="true">News-Example</name>
+            <cid key="true">{CID}</cid>
+            <description>Example template, displaying the News start page with newest entries, categories and archive.</description>
+            <inwork>0</inwork>
+            <include>0</include>
+            <timestamp function="true">unix_timestamp()</timestamp>
+            <userid>1</userid>
+            <filename>News-Example.tpl</filename>
+            <content><![CDATA[
+{include file="News-Example-Header.tpl"}        
+{include file="News-Example-Listing.tpl"}
+{include file="News-Example-Footer.tpl"}        
+]]></content>
+        </row>
+        <row>
+            <name key="true">News-Example-Listing</name>
+            <cid key="true">{CID}</cid>
+            <description>Example template, displaying all active news with teaser.</description>
+            <inwork>0</inwork>
+            <include>1</include>
+            <timestamp function="true">unix_timestamp()</timestamp>
+            <userid>1</userid>
+            <filename>News-Example-Listing.tpl</filename>
+            <content><![CDATA[
+{news assign="currentNews"}
+{foreach from=$currentNews item="newsPage"}
+<div style="border:1px solid #000000;margin-bottom:10px;padding:2px;">
+	{load_item itemtype=4 id=$newsPage->getImageID() assign="newsImage"}
+	<a href="{link item=$newsPage}" title="{$newsImage->getName()}">
+    	<img src="{thumbnail id=$newsPage->getImageID() width="100"}" style="border:2px solid #cccccc;margin-right:5px;" alt="{$newsImage->getName()}" align="left">
+	</a>
+	<h2>{$newsPage->getTitle()}</h2>
+	<p>{$newsPage->getTeaser()}</p>
+	<br clear="all" style="height:0px;"/>
+	<p style="margin:0px;padding:0px;" align="right"><a href="{link item=$newsPage}">Read more...</a></p>
+	<p style="border-top:1px dotted grey;margin:0px;padding:0px;">
+		{$newsPage->getDate()|date_format:"%d %B, %Y"} by {user id=$newsPage->getCreateByID()} | 
+		{news_category item=$newsPage}
+	</p>
+</div>
+{/foreach}
+]]></content>
+        </row>
+        <row>
+            <name key="true">News-Example-Header</name>
+            <cid key="true">{CID}</cid>
+            <description>Header for the News Example Templates.</description>
+            <inwork>0</inwork>
+            <include>1</include>
+            <timestamp function="true">unix_timestamp()</timestamp>
+            <userid>1</userid>
+            <filename>News-Example-Header.tpl</filename>
+            <content><![CDATA[<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title>BIGACE Web CMS - Example News</title>
+	<link href="{$stylesheet}" rel="stylesheet" type="text/css" />
+	<link rel="alternate" type="application/rss+xml" title="Latest News - RSS Feed" href="{directory name="addon_web"}rss/news.php" />
+</head>
+
+<body>
+
+<div id="header">
+
+ 	 <div id="logo">
+ 	   <h4>NEWS</h4>
+ 	 </div>
+ 	 
+ 	 {configuration package="news" key="root.id" assign="newsRootID"}
+ 	 {configuration package="news" key="archive.id" assign="newsArchiveID"}
+ 	 {news_item itemtype=1 id=$newsRootID assign="newsRoot"}
+ 	 {news_item itemtype=1 id=$newsArchiveID assign="newsArchive"}
+ 	 
+  			<div id="topmenu">
+			<a href="{link item=$newsRoot}">News</a> | 
+			<a href="{link item=$newsArchive}">News Archive</a>
+			</div>
+</div>
+
+	<div id="content">
+	
+	  <div id="maintext">
+]]></content>
+        </row>
+        <row>
+            <name key="true">News-Example-Footer</name>
+            <cid key="true">{CID}</cid>
+            <description>Footer for the News Example Templates.</description>
+            <inwork>0</inwork>
+            <include>1</include>
+            <timestamp function="true">unix_timestamp()</timestamp>
+            <userid>1</userid>
+            <filename>News-Example-Footer.tpl</filename>
+            <content><![CDATA[
+      </div>
+      	<div id="rightcol"><br/>
+		
+		  <div id="introduction">
+		  
+				<h3>Latest 5 News</h3>
+				<ul>
+					{news assign="currentNews" limit="5"}
+					{foreach from=$currentNews item="newsPage"}
+					<li><a href="{link item=$newsPage}">{$newsPage->getTitle()}</a></li>
+					{/foreach}
+					</li>
+				</ul>
+				<br />
+				
+				<h3>News Archives</h3>
+				<ul>
+					<li><a href="#">Example Link 1</a></li>
+					<li><a href="#">Example Link 2</a></li>
+				</ul>
+				<br />
+				
+				<h3>News Categories</h3>
+				{news_categories}
+		  </div>
+		</div>
+		
+	</div>
+    <div id="footer">
+      <p>&copy; 2006 Your Company Name &nbsp;|&nbsp; <a href="http://www.arbutusphotography.com">Design</a> <a href="http://www.weddingsvictoria.net/">By</a> <a href="http://www.studio7designs.com/">Studio7designs  </a></p>
+      
+</div>
+</body>
+</html>
+]]></content>
+        </row>
+        <!-- row>
+            <name key="true">News-Archives-and-Entries</name>
+            <cid key="true">{CID}</cid>
+            <description>Displays all available News Archives and entries.</description>
+            <inwork>0</inwork>
+            <include>1</include>
+            <timestamp function="true">unix_timestamp()</timestamp>
+            <userid>1</userid>
+            <filename>News-Archives-and-Entries.tpl</filename>
+            <content><![CDATA[
+			{configuration package="news" key="archive.id" assign="newsArchiveID"}
+			{load_item_childs orderby="name" order="DESC" id=$newsArchiveID assign="years"}
+			{foreach from=$years item="yearArchive"}
+			{assign var="yearName" value=$yearArchive->getName()}
+			<h1>News in {$yearName}</h1>
+			{load_item_childs orderby="name" order="DESC" id=$yearArchive->getID() assign="months"}
+			{foreach from=$months item="monthArchive"}
+				{assign var="monthName" value=$monthArchive->getName()}
+				<h3><a href="{link item=$monthArchive}">{"01.`$monthName`.`$yearName`"|date_format:"%B"}</a></h3>
+				{load_item_childs orderby="modifieddate" order="DESC" id=$monthArchive->getID() assign="days"}
+				<ul>
+				{foreach from=$days item="daysArchive"}
+					<li><a href="{link item=$daysArchive}">{$daysArchive->getName()}</a></li>
+				{/foreach}
+				</ul>
+			{/foreach}
+			{/foreach}
+]]></content>
+        </row>
+        <row>
+            <name key="true">News-Archives</name>
+            <cid key="true">{CID}</cid>
+            <description>Displays all available News Archives.</description>
+            <inwork>0</inwork>
+            <include>1</include>
+            <timestamp function="true">unix_timestamp()</timestamp>
+            <userid>1</userid>
+            <filename>News-Archives.tpl</filename>
+            <content><![CDATA[
+			{configuration package="news" key="archive.id" assign="newsArchiveID"}
+            {load_item_childs orderby="name" order="DESC" id=$newsArchiveID assign="years"}
+            {foreach from=$years item="yearArchive"}
+			{assign var="yearName" value=$yearArchive->getName()}
+			<h3>News in {$yearName}</h3>
+			<p>
+	            {load_item_childs orderby="name" order="DESC" id=$yearArchive->getID() assign="months"}
+	            {foreach from=$months item="monthArchive"}
+	            {assign var="monthName" value=$monthArchive->getName()}
+	            <a href="{link item=$monthArchive}">{"01.`$monthName`.`$yearName`"|date_format:"%B"}</a><br>
+	            {/foreach}
+			</p>
+			<br />
+            {/foreach}
+]]></content>
+        </row>
+        <row>
+            <name key="true">News-Month</name>
+            <cid key="true">{CID}</cid>
+            <description>Displays all news for one archived month.</description>
+            <inwork>0</inwork>
+            <include>1</include>
+            <timestamp function="true">unix_timestamp()</timestamp>
+            <userid>1</userid>
+            <filename>News-Month.tpl</filename>
+            <content><![CDATA[
+<div id="newsListing">
+	{load_item_childs orderby="modifieddate" order="DESC" id=$MENU->getID() assign="monthlyNews"}
+	{foreach from=$monthlyNews item="newsEntry"}
+		<h1>{$newsEntry->getName()}</h1>
+		<h3>posted on {$newsEntry->getDate()|date_format:"%B %d, %Y"}</h3>
+		<p>{$newsEntry->getDescription()}</p>
+		<div align="right" class="readmore"><a href="{link item=$newsEntry}">Read more...</a></div>
+	{/foreach}
+</div>
+]]></content>
+        </row -->
+	</table>    
+
+    <table name="stylesheet">
+        <row>
+            <name key="true">News-Example</name>
+            <cid key="true">{CID}</cid>
+            <description>Stylesheet for the 'News Example' Template.</description>
+            <filename>news-example/design.css</filename>
+            <editorcss>News-Example</editorcss>
+        </row>
+    </table>    
+
+    <table name="design">
+        <row>
+            <name key="true">News-Example</name>
+            <cid key="true">{CID}</cid>
+            <description>Demo for the News start page.</description>
+            <stylesheet>News-Example</stylesheet>
+            <template>News-Example</template>
+            <portlets>0</portlets>
+        </row>
+        <row>
+            <name key="true">News-Example-Content</name>
+            <cid key="true">{CID}</cid>
+            <description>Demo design for a single news entry.</description>
+            <stylesheet>News-Example</stylesheet>
+            <template>News-Example-Content</template>
+            <portlets>0</portlets>
+        </row>
+        <row>
+            <name key="true">News-Example-Archive</name>
+            <cid key="true">{CID}</cid>
+            <description>Demo design for the complete news archive.</description>
+            <stylesheet>News-Example</stylesheet>
+            <template>News-Example-Archive</template>
+            <portlets>0</portlets>
+        </row>
+        <row>
+            <name key="true">News-Example-Archive-Year</name>
+            <cid key="true">{CID}</cid>
+            <description>Demo design for a news year archive.</description>
+            <stylesheet>News-Example</stylesheet>
+            <template>News-Example-Archive-Year</template>
+            <portlets>0</portlets>
+        </row>
+        <row>
+            <name key="true">News-Example-Archive-Month</name>
+            <cid key="true">{CID}</cid>
+            <description>Demo design for a news month archive.</description>
+            <stylesheet>News-Example</stylesheet>
+            <template>News-Example-Archive-Month</template>
+            <portlets>0</portlets>
+        </row>
+	</table>
+</content>

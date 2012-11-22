@@ -1,0 +1,115 @@
+<content version="1.0">
+
+    <table name="item_1" update="false">
+        <row>
+            <id key="true">-1</id>
+            <cid key="true">{CID}</cid>
+            <language key="true">it</language>
+            <mimetype>text/html</mimetype>
+            <name>Home</name>
+            <parentid>-9999</parentid>
+            <description>Menu TOP-LEVEL</description>
+            <catchwords>BIGACE WEB CMS</catchwords>
+            <createdate function="true">unix_timestamp()</createdate>
+            <createby>1</createby>
+            <modifieddate function="true">unix_timestamp()</modifieddate>
+            <modifiedby>1</modifiedby>
+            <workflow></workflow>
+            <unique_name>index_it.html</unique_name>
+            <text_1>-1_it.html</text_1>
+            <text_2>-1_it.html</text_2>
+            <text_3>mostraContenuto</text_3>
+            <text_4>BLIX</text_4>
+            <text_5>CONGRATULAZIONI l'installazione del tuo BIGACE Content Management System è avvenuta con successo Dopo la creazione del tuo primo Sito Consumatore inizia la struttura dei Contenuti del tuo Sito Primo Step Accedi con il tuo Nomeutente Password digitate durante l'installazione Dopo l'accesso ulteriori icone appariranno la Barra degli strumenti conduce all'Amministrazione che da pieno controllo sul sistema BIGACE e i suoi componenti Contenuti apre un Editor che permette la modifica delle pagine correnti Link d'Aiuto trovano ulteriori informazioni sui Componenti di BIGACE visita il sito di BIGACE su Sourceforge alla pagina dei Progetti si troverà lultima versione di BIGACE diversi Downloads Documentazione ulteriori informazioni utili Temi d'Amministrazione Moduli Layout e altro, sarà apprezzata come richiesta l'invio per Email del logo del sito costruito con BIGACE e ulteriori informazioni e riferimenti di installazione del tuo sito Web</text_5>
+            <num_1 null="true" />
+            <num_2 null="true" />
+            <num_3>1</num_3>
+            <num_4>0</num_4>
+            <num_5>0</num_5>
+            <date_1>0</date_1>
+            <date_2>0</date_2>
+            <date_3>0</date_3>
+            <date_4>0</date_4>
+            <date_5>0</date_5>
+        </row>
+    </table>
+
+    <table name="item_4" update="false">
+        <row>
+            <id key="true">-1</id>
+            <cid key="true">{CID}</cid>
+            <language key="true">it</language>
+            <mimetype>image/gif</mimetype>
+            <name>Images</name>
+            <parentid>-9999</parentid>
+            <description>Immagine TOP-LEVEL</description>
+            <catchwords></catchwords>
+            <createdate function="true">unix_timestamp()</createdate>
+            <createby>1</createby>
+            <modifieddate function="true">unix_timestamp()</modifieddate>
+            <modifiedby>1</modifiedby>
+            <workflow></workflow>
+            <unique_name></unique_name>
+            <text_1>empty.gif</text_1>
+            <text_2></text_2>
+            <text_3></text_3>
+            <text_4></text_4>
+            <text_5></text_5>
+            <num_1 null="true" />
+            <num_2 null="true" />
+            <num_3>0</num_3>
+            <num_4>0</num_4>
+            <num_5>0</num_5>
+            <date_1>0</date_1>
+            <date_2>0</date_2>
+            <date_3>0</date_3>
+            <date_4>0</date_4>
+            <date_5>0</date_5>
+        </row>
+    </table>    
+
+    <table name="item_5" update="false">
+        <row>
+            <id key="true">-1</id>
+            <cid key="true">{CID}</cid>
+            <language key="true">it</language>
+            <mimetype>image/gif</mimetype>
+            <name>Documenti</name>
+            <parentid>-9999</parentid>
+            <description>Documenti TOP-LEVEL</description>
+            <catchwords></catchwords>
+            <createdate function="true">unix_timestamp()</createdate>
+            <createby>1</createby>
+            <modifieddate function="true">unix_timestamp()</modifieddate>
+            <modifiedby>1</modifiedby>
+            <workflow></workflow>
+            <unique_name></unique_name>
+            <text_1>empty.gif</text_1>
+            <text_2></text_2>
+            <text_3></text_3>
+            <text_4></text_4>
+            <text_5></text_5>
+            <num_1>0</num_1>
+            <num_2>0</num_2>
+            <num_3>0</num_3>
+            <num_4>0</num_4>
+            <num_5>0</num_5>
+            <date_1>0</date_1>
+            <date_2>0</date_2>
+            <date_3>0</date_3>
+            <date_4>0</date_4>
+            <date_5>0</date_5>
+        </row>
+    </table>    
+
+    <table name="unique_name" update="false">
+        <row>
+            <cid key="true">{CID}</cid>
+            <itemtype key="true">1</itemtype>
+            <itemid key="true">-1</itemid>
+            <language key="true">it</language>
+            <name>index_it.html</name>
+        </row>
+    </table>
+
+</content>

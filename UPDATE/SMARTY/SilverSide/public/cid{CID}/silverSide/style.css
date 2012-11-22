@@ -1,0 +1,278 @@
+/* CSS Document - Author: Shaibal Mandal */
+
+body 
+{
+	font-size: 11px;
+	font-family: Verdana, Arial, SunSans-Regular, Sans-Serif;
+	margin: 0px;
+	padding-left: 50%;
+	clear: both;
+	position: absolute;
+	background: url('bggrad2.jpg') repeat-x;
+	background-color: #464646;
+}
+
+a 
+{
+	text-decoration: none;
+	color: #747474;
+}
+
+a:hover 
+{
+	text-decoration: underline;
+	color: #000;
+}
+
+#container 
+{
+	width: 700px;
+	margin-left: -350px;
+	background: url(navi.jpg) top no-repeat;
+	margin-top: 10px;
+}
+
+.buttonTextStart
+{
+	text-align: center;
+	padding-top: 14px;
+	font-size: 11px;
+	font-weight: bold;
+	width: 115px;
+	float: left;
+	height: 30px;
+}
+
+.buttonText 
+{
+	text-align: center;
+	padding-top: 14px;
+	font-size: 11px;
+	font-weight: bold;
+	width: 115px;
+	float: left;
+	background: url(navi_spacer.jpg) left top no-repeat;
+	height: 30px;
+}
+
+#navcontainer 
+{
+	clear: both;
+}
+#hidden {
+	clear: both;
+	height: 15px;
+}
+
+#main 
+{
+	padding: 5px;
+	width: 688px;
+	text-align: justify;
+	color: #333;
+	line-height: 1.6em;
+	background-color: #E2E2E2;
+	border: 1px solid #888;
+	float: left;
+}
+
+#fpic
+{
+	width: 686px;
+	border: 1px inset #888;	
+	height: 200px;
+	background-color: #999999;
+	clear: both;
+	background: url('op.jpg') no-repeat;
+}
+
+#sidebar 
+{
+	width: 197px;
+	border-left: 1px solid #BBB;
+	float: right;
+	margin-left: 9px;
+	margin-top: 5px;
+	padding-left: 8px;
+	text-align: left;
+	clear: both;
+}
+
+h1 
+{
+	font-size: 20px;
+	font-weight: bold;
+	padding-top: 5px;
+}
+
+.hideme 
+{
+	display: none;
+	color: white;
+}
+
+.headertext1 
+{
+	font-size: 18px;
+	font-weight: bold;
+}
+
+.headertext2 
+{
+	font-size: 10px;
+	font-weight: bold;
+}
+
+#footer 
+{
+	background-color: #484848;
+	color: #fff;
+	text-align: center;
+	vertical-align: middle;
+	height: 20px;
+	padding-top: 5px;
+	clear: both;
+	width: auto;
+}
+
+#b2 
+{
+	width: 213px;
+	padding: 0 0 0 0;
+	margin-bottom: 1em;
+	font-size: 11px;
+	font-weight: normal;
+	font-family: Verdana;
+	color: #333;
+}
+
+#b2 ul 
+{
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	border: none;
+}
+
+#b2 li 
+{
+	border-bottom: 1px solid #999;
+	margin: 0;
+	width: auto;
+}
+
+#b2 li a 
+{
+	display: block;
+	padding: 3px 0px 2px 0.5em;
+	border-left: 5px solid #555;
+	border-right: 5px solid #555;
+	color: #fff;
+	text-decoration: none;
+	width: auto;
+	background-color:#777;
+}
+
+#b2 li a:hover 
+{
+	border-left: 5px solid #222;
+	border-right: 5px solid #222;
+	color: #fff;
+	background-color: #999;
+	font-weight:bold;
+}
+
+.bhz 
+{
+	width: auto;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	text-align: left;
+	font-weight: bold;
+	color: #ffffff;
+	padding-top: 3px;
+	padding-bottom: 4px;
+	padding-left: 4px;
+	border-left: 5px solid #444;
+	border-right: 5px solid #444;
+	display: block;
+	background-color: #444;
+}
+
+.ht1 
+{
+	font-size: 10px;
+	font-weight: bold;
+	color: #888;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	text-decoration: none;
+}
+
+.desc
+{
+    margin:2px 4px 2px 4px;
+    font-size: 10px;
+    font-weight: bold;
+    color: #dddddd;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    text-decoration: none;
+}
+
+.hw2 
+{
+	font-size: 11px;
+	font-weight: bold;
+	color: #999;
+	font-family: verdana, arial, helvetica, sans-serif;
+	text-decoration: none;
+}
+
+#smenu
+{
+    position: relative;
+    width: 213px;
+    height: 200px;
+    background: #666;
+    float: right;
+    clear:both;
+}
+
+.noteblock1
+{
+    background: #d0d0d0;
+    width: 465px;
+    padding: 5px;
+    border: 1px solid #000;
+    color: #000;
+    margin: 7px 0px 7px 0px;
+}
+
+.mod
+{
+    margin: 5px 0px 10px 0px;
+    padding: 0;
+}
+
+.push
+{
+    margin: 7px 0px 7px 0px;
+}
+
+.noteheader
+{
+    width:auto;
+    border-bottom: 1px solid #888;
+    color: #000;
+    height: 24px;
+    font-family: verdana;
+    font-size: 11px;
+    font-weight: bold;
+    margin-bottom: 3px;
+	text-align:left;
+}
+
+p
+{
+	margin:0;
+	padding: 0;
+}

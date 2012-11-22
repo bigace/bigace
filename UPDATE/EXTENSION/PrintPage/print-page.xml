@@ -1,0 +1,48 @@
+<content version="1.0">
+
+    <table name="template">
+        <row>
+            <name key="true">PRINT-PAGE</name>
+            <cid key="true">{CID}</cid>
+            <description>Renders a page in a format to be easily printable.</description>
+            <inwork>0</inwork>
+            <include>0</include>
+            <timestamp function="true">unix_timestamp()</timestamp>
+            <userid>1</userid>
+            <filename>Print-Page.tpl</filename>
+            <content><![CDATA[<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="{$MENU->getLanguageID()}" lang="{$MENU->getLanguageID()}">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="{stylesheet name="Print-Page"}" type="text/css" media="screen, projection" >
+	<title>{$MENU->getName()}</title>
+	<meta name="robots" content="noindex,nofollow" />
+</head>
+<body onload="self.print();">
+	<div id="container">
+		{modul menu=$MENU}
+	</div>
+
+	<div id="footer">
+	    <span>Print version of <a href="{link item=$MENU}">{link item=$MENU}</a>.</span>
+	    <p>&copy; Copyright {$smarty.now|date_format:"%Y"} {configuration package="community" key="copyright.holder" default="BIGACE CMS"}. All rights reserved. Powered by {bigace_version link=true full=true}.</p>
+	</div>
+
+</div>
+</body>
+</html>
+]]></content>
+        </row>
+    </table>
+
+    <table name="stylesheet">
+        <row>
+            <name key="true">Print-Page</name>
+            <cid key="true">{CID}</cid>
+            <description>Stylesheet for the 'PRINT-PAGE' Template.</description>
+            <filename>print-page.css</filename>
+            <editorcss>Print-Page</editorcss>
+        </row>
+    </table>
+
+</content>

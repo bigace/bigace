@@ -1,0 +1,93 @@
+<!doctype html public "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- $Id: AdminNavigate.tpl.html,v 1.2 2010/04/04 11:25:35 kpapst Exp $ -->
+<html>
+	<head>
+		<!-- BEGIN autoheader -->
+		<meta name="generator" content="BIGACE">
+		<meta name="robots" content="noindex,nofollow">
+		<title>BIGACE {TRANSLATION_admin}</title>
+		<meta name="description" content="{TRANSLATION_admin}">
+		<link rel="stylesheet" href="{AUTO_STYLE_DIR}style/menu.css" type="text/css">
+		<!-- END autoheader -->
+		<!-- BEGIN header -->
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<script type="text/javascript">
+		<!--
+		var img_open 	= '{AUTO_STYLE_DIR}style/tree_open.gif';
+		var img_close 	= '{AUTO_STYLE_DIR}style/tree_close.gif';
+		var img_plus 	= '{AUTO_STYLE_DIR}style/plus.gif';
+		var img_minus 	= '{AUTO_STYLE_DIR}style/minus.gif';
+		
+
+		function dynmenuGetElementById(id) {
+			if (document.getElementById(id)) {
+				return document.getElementById(id);
+			} else if (document.all[id]) {
+				return document.all[id];
+			} else if (document.layers && document.layers[id]) {
+				return (document.layers[id]);
+			} else {
+				return false;
+			}
+		}
+		
+		function toggle_dynmenu(id)  {
+			if (dynmenuGetElementById(id + '_sub')) {
+				var dom = dynmenuGetElementById(id + '_sub').style.display;
+				if (dom == 'none') {
+					dynmenuGetElementById(id + '_sub').style.display = 'inline';
+					dynmenuGetElementById(id + '_sign').src   = img_minus;
+					dynmenuGetElementById(id + '_folder').src = img_open;
+				} else if (dom == 'inline') {
+					dynmenuGetElementById(id + '_sub').style.display = 'none';
+					dynmenuGetElementById(id + '_sign').src   = img_plus;
+					dynmenuGetElementById(id + '_folder').src = img_close;
+				}
+			}
+		}		
+
+		function toggle_homemenu(id)  {
+			if (dynmenuGetElementById(id + '_sub')) {
+				var dom = dynmenuGetElementById(id + '_sub').style.display;
+				if (dom == 'none') {
+					dynmenuGetElementById(id + '_sub').style.display = 'inline';
+				} else if (dom == 'inline') {
+					dynmenuGetElementById(id + '_sub').style.display = 'none';
+				}
+			}
+		}
+
+		// -->
+	</script>
+	</head>
+	<body>
+	  <table class="outerNav" border="0" cellpadding="0" cellspacing="0">
+	  	<tr> 
+			<td class="sidboxtitle"><a href="{WEBSITE_LINK}" target="_top">{HOST}</a></td>
+	    </tr>
+		<tr> 
+		  <td class="sideboxcontent">
+			  <a href="javascript:toggle_homemenu('adminHome');"><img src="{AUTO_STYLE_DIR}style/d_tree_home.gif" alt=""></a> <b>{TRANSLATION_menu_header}</b><span id="adminHome_sub" name="adminHome_sub" style="display: inline;">
+			  <br><img src="{AUTO_STYLE_DIR}style/d_tree_content.gif" alt=""> <a href="{INDEX_LINK}" target="content">{TRANSLATION_menu_index}</a>
+			  <br><img src="{AUTO_STYLE_DIR}style/d_tree_content.gif" alt=""> <a href="{WEBSITE_LINK}" target="_top">{TRANSLATION_menu_website_index}</a>
+			  <br><img src="{AUTO_STYLE_DIR}style/d_tree_content.gif" alt=""> <a href="{WEBSITE_LINK}" target="content">{TRANSLATION_menu_website_preview}</a>
+			</span>
+		<!-- END header -->
+		<!-- BEGIN pluginloop -->
+			<br><a href="javascript:toggle_dynmenu('{MENU_ID}');"><img id="{MENU_ID}_sign" name="{MENU_ID}_sign" src="{AUTO_STYLE_DIR}style/minus.gif" align="middle" border="0" height="9" width="9"></a> <img id="{MENU_ID}_folder" name="{MENU_ID}_folder" src="{AUTO_STYLE_DIR}style/tree_open.gif" alt=""> {MENU_TITLE}<span id="{MENU_ID}_sub" name="{MENU_ID}_sub" style="display: inline;">
+			<!-- BEGIN plugin -->
+            	<br><img src="{AUTO_STYLE_DIR}style/d_tree_content.gif" alt=""> <a href="{PLUGIN_LINK}" target="content">{PLUGIN_NAME}</a>
+			<!-- END plugin -->
+			</span>
+			<script type="text/javascript">
+			toggle_dynmenu('{MENU_ID}');
+			</script>
+		<!-- END pluginloop -->
+          </td>
+        </tr>
+	  </table>
+	<!-- BEGIN footer -->
+    {COPYRIGHT}
+	<!-- END footer -->
+	</body>
+</html>

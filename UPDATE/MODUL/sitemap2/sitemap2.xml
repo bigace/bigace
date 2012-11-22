@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<content version="1.0">
+
+    <table name="frights">
+        <row>
+            <cid key="true">{CID}</cid>
+            <name key="true">sitemap2_admin</name>
+            <defaultvalue>N</defaultvalue>
+            <description>Allow User to administrate the Sitemap 2 settings.</description>
+        </row>
+    </table>  
+    
+    <table name="stylesheet">
+        <row>
+            <name key="true">Sitemap 2</name>
+            <cid key="true">{CID}</cid>
+            <description>Sitemap 2 - stylesheet with default values for usage with the BLIX design.</description>
+            <filename>css/sitemap2.css</filename>
+            <editorcss>dummy_stylesheet</editorcss>
+        </row>
+    </table>  
+
+</content>        

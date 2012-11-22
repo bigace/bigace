@@ -1,0 +1,55 @@
+
+          &raquo; CrystalX Smarty Theme &laquo;
+
+
+ You are about to install my port of the CrystalX theme!
+
+ This template requires the SEO Extension to be installed (at least v0.5) from:
+ <a target="_blank" href="http://wiki.bigace.de/bigace:extensions:seo">http://wiki.bigace.de/bigace:extensions:seo</a>
+ It will not work properly without the SEO extension!
+ CrystalX has support for the News and Comment Plugin that have to be installed and configured before use
+ Currently the template generates an error if you do not have the comments plugin installed
+
+ This Theme has an help-page, that needs to be de-activated before use!
+
+ See the Help-page for more information.
+
+ And please give feedback in the forum at:
+ <a target="_blank" href="http://forum.bigace.de/downloads/crystalx-design/">http://forum.bigace.de/downloads/crystalx-design/</a>
+ 
+ <hr>
+ <u>Version 1.4:</u>
+  * Requires 2.7.4 (2010-12-28 or later, smarty tag language)
+  - Fixed "Back to Top" when using XL
+  + Added "W3C XHTML v1.0 validated" logo/check button on help-page
+  + Use a file uploaded from within BIGACE as favicon.ico
+  - Fixed Printer Friendly for Google Chrome, IE8 (without compability)
+    and Mozilla FireFox
+  - Changed XL default to false
+  - Fixed non working seo metatags (Yahoo Site Explorer & Google Webmaster Central)
+  - Fix - dont show description header, if empty
+
+ 
+ <u>Version 1.3:</u>
+  + Added support for XL mode (Width 1024)
+  - Removed text about google AD ID not configured
+  + Added configuration fields for SEO metatags (Google and Yahoo)
+  + error logg about comments even if comments not enabled
+
+ <u>Version 1.2:</u>
+  + Added support for Google ADS (Right menu and bottom)
+  - no more CrystalXportlet error logs
+
+ <u>Version 1.1:</u>
+  + Added Templates and css code for news application
+  - removed CrystalX_original.zip
+  - moved CrystalX.xml to root folder
+  - renamed crystal.html to README
+  + Added German translation on Help-page
+  + Built-in support for comments extension
+  - Some XHTML cleanup
+  - Fixed PortletAdministration bug (requires <a href="http://forum.bigace.de/test-results/portlet-administration/?action=dlattach;attach=257">funkction.link_portletadmin.php</A>)
+  + Updated for new syntax of link_item_languages (2.7)
+  - Fixed a Portlet Bug reported by Kevin
+  + Added css code for Twitter Portlet by Andy & Kevin
+ 

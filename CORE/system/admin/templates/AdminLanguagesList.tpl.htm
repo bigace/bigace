@@ -1,0 +1,31 @@
+<table class="tablesorter" cellspacing="0">
+<!-- BEGIN autoheader -->
+<thead>
+	<tr>
+		<th>{TRANSLATION_lang_image}</th>
+		<th>{TRANSLATION_name}</th>
+		<th>{TRANSLATION_lang_locale}</th>
+		<th>{TRANSLATION_lang_longlocale}</th>
+		<th>{TRANSLATION_lang_charset}</th>
+	</tr>
+</thead>
+<!-- END autoheader -->
+<tbody>
+    <!-- BEGIN row -->
+    <tr>
+        <td><img alt="{LANG_NAME}" src="{AUTO_STYLE_DIR}languages/{LANG_LOCALE}.gif" border="0"></td>
+        <td>{LANG_NAME}</td>
+        <td>{LANG_LOCALE}</td>
+        <td>{LANG_LONGLOCALE}</td>
+        <td>{LANG_CHARSET}</td>
+    </tr>
+    <!-- END row -->
+	</tbody>
+</table>
+
+<script type="text/javascript">
+$(document).ready( function() { 
+        $(".tablesorter").tablesorter({ widgets: ['zebra'] }); 
+    } 
+);
+</script>

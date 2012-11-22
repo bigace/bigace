@@ -1,0 +1,34 @@
+Version 1.7:
+--------------
+- added russian translation
+- UTF8 encoding of date strings
+
+Version 1.6:
+--------------
+- extensions for 2.7.5 for language dependent image/link chooser
+
+Version 1.5:
+--------------
+- using parsed content for content filters 2.7.5 
+- translations for templates
+- html improvements in templates
+    
+Version 1.4:
+--------------
+- translation improvements for 2.7
+- improved admin interface
+- fixed rss link and homepage url
+- abbility to delete assigned news image 
+
+Version 1.3:
+------------
+Please <b>update all links to your RSS feed</b> by using Smarty TAG {link_news_rss} 
+and then <b>delete /addon/rss/news.php</b>.
+
+- moved News Admin Plugin
+- moved RSS feed to /plugins/news/rss.php
+- moved jscalendar to /plugins/news/jscalendar/
+- auto-include comments include if comment plugin is loaded
+- show comment counter only if comment plugin is loaded
+- using new admin styles
+- display RSS feed automatically using the metatags_more action

@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+    <head>
+        <!-- $Id: WelcomeScreen.tpl.htm,v 1.8 2009/10/20 15:17:28 kpapst Exp $ -->
+        <title>BIGACE {TRANSLATION_admin}</title>
+        <meta name="description" content="{TRANSLATION_admin}" />
+        <meta name="generator" content="BIGACE {bigace_version}" />
+        <meta http-equiv="expires" content="0" />
+        <meta http-equiv="cache-control" content="no-cache" />
+        <meta http-equiv="pragma" content="no-cache" />
+        <meta name="robots" content="noindex,nofollow" />
+		<link rel="shortcut icon" type="image/x-icon" href="{AUTO_PUBLIC_DIR}system/images/favicon.ico" />
+	    <link rel="stylesheet" type="text/css" href="{AUTO_STYLE_DIR}welcome.css" />
+        <script language="JavaScript" src="{AUTO_PUBLIC_DIR}system/javascript/administration.js"></script>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <!-- meta http-equiv="refresh" content="3; URL={FRAMESET_LINK}" -->
+        <script language="javascript" src="{AUTO_STYLE_DIR}style/xp_progress.js"></script>
+        <script language="JavaScript">
+            <!--
+            function changeLanguage(languagelink) {
+                top.location.href = languagelink;
+            }
+            function adminNextPage() {
+                location.href='{FRAMESET_LINK}';
+            }
+            window.setTimeout('adminNextPage()', 1500);
+            // -->
+        </script>
+    </head>
+    <body>
+      <table align="center" cellspacing="0" cellpadding="0" class="splashscreen">
+        <tr>
+            <td valign="top" colspan="2" align="left">
+    		 <div class="header"><img src="{AUTO_PUBLIC_DIR}system/images/bigace_logo.jpg" align="left" border="0"></div>
+            </td>
+        </tr>
+        <tr>
+            <td style="padding:3px;" colspan="2" valign="top">
+            <noscript>
+                <div style="background:#fdd; margin:3px; padding:7px;border: 1px solid #fbb">
+                <img src="{AUTO_STYLE_DIR}failure.png" align="left" border="0" style="margin-right:10px;">
+                {TRANSLATION_javascript}
+                </div>
+            </noscript>
+            </td>
+        </tr>
+        <tr>
+            <td style="padding:5px;padding-top:20px" valign="top" align="left">
+                <img src="{AUTO_STYLE_DIR}style/administration.png" align="left" border="0" style="margin-right:10px;">
+            </td>
+            <td style="padding-top:20px;" valign="top" align="left">
+                {TRANSLATION_info}
+            </td>
+        </tr>
+        <!-- BEGIN tip -->
+        <tr>
+            <td style="padding:20px 5px 20px 5px; height:100%" valign="top" align="left">
+                <img src="{AUTO_STYLE_DIR}style/tip.png" align="left" border="0" style="margin-right:10px;">
+            </td>
+            <td style="padding-top:20px;" valign="top" align="left">
+                <b>{TRANSLATION_tiptitle}</b>
+                <br />
+                {TIP}
+            </td>
+        </tr>
+        <!-- END tip -->
+        <tr>
+            <td style="padding-top:10px;" valign="top" colspan="2" align="left">
+                <script language="javascript">
+                document.write('<div style="padding:20px 5px 20px 5px;">');
+                document.write('{TRANSLATION_loading}');
+                var bar2=createBar(385,10,'#7bb000',1,'black','white',45,15,0,'');
+                document.write('</div>');
+                </script>
+            </td>
+        </tr>
+        <tr>
+            <td valign="bottom" colspan="2" align="left">
+            	<div class="version">
+        	    	<span title="Version: {AUTO_BIGACE_VERSION}">{TRANSLATION_footer} BIGACE CMS {AUTO_BIGACE_VERSION}</span>
+            	</div>
+            </td>
+        </tr>
+      </table>
+    </body>
+</html>

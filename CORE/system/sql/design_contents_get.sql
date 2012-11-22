@@ -1,0 +1,1 @@
+SELECT * FROM {DB_PREFIX}design_contents WHERE cid = {CID} AND design = {DESIGN}

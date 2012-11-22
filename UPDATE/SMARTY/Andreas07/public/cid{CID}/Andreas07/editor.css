@@ -1,0 +1,26 @@
+/* 
+   CSS File for the Andreas07 Theme to be used in WYSIWYG editors.
+   Created using the Smarty Template creator at http://dev.bigace-cms.com 
+
+   Author:  Kevin Papst
+*/
+
+/*
+Original design: andreas07 (v2.0 - Jul 07, 2008) - A free xhtml/css website template by Andreas Viklund.
+For more information, see http://andreasviklund.com/templates/andreas07/
+*/
+
+/* Main tags */
+body {width:520px; margin:5px 20px 0 20px; color:#404040; background-color:#fafafa; font:76% Verdana,Tahoma,sans-serif;}
+ul {margin:5px 0 16px 5px; padding:0;}
+li {margin:0 0 8px 15px; padding:0; }
+img {margin:10px auto 16px auto; padding:1px; background:#ffffff; border:1px solid #d0d0d0;}
+a {color:#d85d5d; font-weight:bold; text-decoration:none;}
+a:hover {color:#505050; text-decoration:underline;}
+a img {border-color:#d85d5d;}
+a img:hover {background:#d85d5d; border-color:#d85d5d;}
+p {margin:0 0 16px 0; line-height:1.5em;}
+h1 {margin:0; color:#d85d5d; font-size:3.6em; letter-spacing:-4px; text-align:center;}
+h2 {margin:0; color:#808080; font-weight:normal; font-size:2em; letter-spacing:-2px; text-align:center;}
+h3 {margin:20px 0 10px 0; color:#d85d5d; font-weight:normal; font-size: 2em; letter-spacing:-2px;}
+

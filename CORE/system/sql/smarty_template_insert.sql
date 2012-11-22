@@ -1,0 +1,1 @@
+INSERT INTO {DB_PREFIX}template (name,cid,description,inwork,include,timestamp,userid,filename,content) VALUES ({NAME},{CID},{DESCRIPTION},{INWORK},{INCLUDE},{TIMESTAMP},{USERID},{FILENAME},{CONTENT}) 

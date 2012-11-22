@@ -1,0 +1,214 @@
+<content version="1.0">
+
+    <table name="template">
+        <row>
+            <name key="true">Andreas07</name>
+            <cid key="true">{CID}</cid>
+            <description>The Andreas07 main template.</description>
+            <inwork>0</inwork>
+            <include>0</include>
+            <timestamp function="true">unix_timestamp()</timestamp>
+            <userid>1</userid>
+            <filename>Andreas07.tpl</filename>
+            <content><![CDATA[{include file="Andreas07-Header.tpl"}
+<div id="content">
+	{modul}
+	{include file="Andreas07-Footer-Info.tpl"}
+</div>
+{include file="Andreas07-Footer.tpl"}
+            ]]></content>
+        </row>
+        <row>
+            <name key="true">Andreas07-Header</name>
+            <cid key="true">{CID}</cid>
+            <description>Header of the Andreas07 Design.</description>
+            <inwork>0</inwork>
+            <include>1</include>
+            <timestamp function="true">unix_timestamp()</timestamp>
+            <userid>1</userid>
+            <filename>Andreas07-Header.tpl</filename>
+            <content><![CDATA[<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="{$MENU->getLanguageID()}" xml:lang="{$MENU->getLanguageID()}">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	{metatags item=$MENU}
+	<link rel="stylesheet" type="text/css" href="{stylesheet name="Andreas07_Stylesheet"}" />
+</head>
+
+<body>
+<div id="wrap">
+
+<div id="leftside">
+{include file="Andreas07-Logo.tpl"}
+
+	<div id="menu">
+		{if !isset($topLevel)}{load_item id="-1" assign="topLevel"}{/if}
+		<a {if $MENU->getID() == -1}class="active" {/if}href="{link item=$topLevel}">{$topLevel->getName()}</a>
+		{navigation id=$topLevel->getID() selected="active"}
+	</div>
+
+{if $MENU->getDescription() != ""}
+	<p>{$MENU->getDescription()}</p>
+{/if}
+</div>
+{include file="Andreas07-Extras.tpl"}
+]]></content>
+        </row>
+        <row update="false">
+            <name key="true">Andreas07-Logo</name>
+            <cid key="true">{CID}</cid>
+            <description>Place for your logo or title and website slogan for the Andreas07 Design.</description>
+            <inwork>0</inwork>
+            <include>1</include>
+            <timestamp function="true">unix_timestamp()</timestamp>
+            <userid>1</userid>
+            <filename>Andreas07-Logo.tpl</filename>
+            <content><![CDATA[
+	<h1>your website title</h1>
+	<h2>place for your slogan</h2>
+            ]]></content>
+        </row>
+        <row update="false">
+            <name key="true">Andreas07-Extras</name>
+            <cid key="true">{CID}</cid>
+            <description>Extras on the right side of the Andreas07 Design.</description>
+            <inwork>0</inwork>
+            <include>1</include>
+            <timestamp function="true">unix_timestamp()</timestamp>
+            <userid>1</userid>
+            <filename>Andreas07-Extras.tpl</filename>
+            <content><![CDATA[
+<div id="extras">
+
+	{content item=$MENU name="Sidebar"}
+
+	<h2>Find this useful?</h2>
+	<p>If you find this template useful and you want to support the development of more free website templates and related resources, there are several ways you to do so. Read more about <a href="http://andreasviklund.com/support/">supporting</a> the development...</p>
+	
+	<h2>Sample links</h2>
+	<ul>
+		<li><a href="http://andreasviklund.com/templates/">More free templates</a></li>
+		<li><a href="http://www.bigace.de/" title="Free Content Management System">BIGACE Web CMS</a></li>
+		<li><a href="http://www.keleo.de/" title="Webdesign Bonn">Keleo</a></li>
+	</ul>
+
+	{if !$USER->isAnonymous()}
+	<h2>Administration</h2>
+	<ul>
+		<li><a target="_blank" href="{link_admin}">Administration</a></li>
+		{permission_editcontent assign="allowEditor"}
+		{if $allowEditor}
+		<li><a href="{link_editor id=$MENU->getID() language=$MENU->getLanguageID()}" target="_blank">Editor</a></li>
+		{/if}
+		<li><a target="_self" href="{link_logout id=$MENU->getID()}">Logout</a></li>
+	</ul>
+	{/if}
+
+</div>
+            ]]></content>
+        </row>
+        <row>
+            <name key="true">Andreas07-Footer-Info</name>
+            <cid key="true">{CID}</cid>
+            <description>Footer links, Copyright ... for the Andreas07 Design.</description>
+            <inwork>0</inwork>
+            <include>1</include>
+            <timestamp function="true">unix_timestamp()</timestamp>
+            <userid>1</userid>
+            <filename>Andreas07-Footer-Info.tpl</filename>
+            <content><![CDATA[
+	<p>
+	{configuration package="Andreas07" key="copyright.footer" assign="copyright"}
+	{configuration package="Andreas07" key="footer.menu.id" assign="footerID"}
+	{if !isset($topLevel)}{load_item id="-1" assign="topLevel"}{/if}
+	&copy; {$smarty.now|date_format:"%Y"} <a href="{link item=$topLevel}">{$copyright}</a>
+	{navigation id=$footerID prefix=" | "}
+	</p>
+            ]]></content>
+        </row>
+        <row>
+            <name key="true">Andreas07-Footer</name>
+            <cid key="true">{CID}</cid>
+            <description>Footer for the Andreas07 Design.</description>
+            <inwork>0</inwork>
+            <include>1</include>
+            <timestamp function="true">unix_timestamp()</timestamp>
+            <userid>1</userid>
+            <filename>Andreas07-Footer.tpl</filename>
+            <content><![CDATA[
+</div>
+</body>
+</html>
+            ]]></content>
+        </row>
+	</table>    
+
+    <table name="stylesheet">
+        <row>
+            <name key="true">Andreas07_Stylesheet</name>
+            <cid key="true">{CID}</cid>
+            <description>CSS definitions for the Andreas07 Layout.</description>
+            <filename>Andreas07/style.css</filename>
+            <editorcss>Andreas07_Editor</editorcss>
+        </row>
+
+        <row>
+            <name key="true">Andreas07_Editor</name>
+            <cid key="true">{CID}</cid>
+            <description>CSS definitions for the Andreas07 theme, used in any WYSIWYG Editor.</description>
+            <filename>Andreas07/editor.css</filename>
+            <editorcss>Andreas07_Editor</editorcss>
+        </row>
+    </table>    
+
+    <table name="design">
+        <row>
+            <name key="true">Andreas07</name>
+            <cid key="true">{CID}</cid>
+            <description>The Andreas07 design.</description>
+            <stylesheet>Andreas07_Stylesheet</stylesheet>
+            <template>Andreas07</template>
+            <portlets>0</portlets>
+        </row>
+    </table>
+
+    <table name="design_contents">
+        <row update="false">
+            <cid key="true">{CID}</cid>
+            <design key="true">Andreas07</design>
+            <name key="true">Sidebar</name>
+        </row>
+    </table>  
+
+    <table name="configuration">
+        <row>
+            <cid key="true">{CID}</cid>
+            <package key="true">templates</package>
+            <name key="true">application.footer</name>
+            <value>Andreas07-Footer</value>
+            <type>tpl_inc</type>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <package key="true">templates</package>
+            <name key="true">application.header</name>
+            <value>Andreas07-Header</value>
+            <type>tpl_inc</type>
+        </row>
+        <row update="false">
+            <cid key="true">{CID}</cid>
+            <package key="true">Andreas07</package>
+            <name key="true">footer.menu.id</name>
+            <value>-1</value>
+            <type>menu_id</type>
+        </row>
+        <row update="false">
+            <cid key="true">{CID}</cid>
+            <package key="true">Andreas07</package>
+            <name key="true">copyright.footer</name>
+            <value>Kevin Papst</value>
+            <type>string</type>
+        </row>
+    </table>    
+
+</content>

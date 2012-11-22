@@ -1,0 +1,1 @@
+SELECT {WHAT} FROM {DB_PREFIX}tipoftheday WHERE cid='{CID}'

@@ -1,0 +1,16 @@
+<refentry id="{@id libs}">
+ <refnamediv>
+  <refname>BIGACE Smarty TAGs</refname>
+ </refnamediv>
+ <refsynopsisdiv>
+  <author>
+   Kevin Papst
+  </author>
+ </refsynopsisdiv>
+ <refsect1 id="{@id libsintro}">
+  <title>{@link http://www.bigace.de BIGACE Web CMS} - Smarty TAG Documentation</title>
+  <para>These are all available Smarty TAGs to be used in your Website Templates.</para>
+  <para>Detailed documentation how to use this API can be found in our wiki:</para>
+  {@link http://wiki.bigace.de/ BIGACE Developer Documentation}
+ </refsect1>
+</refentry>

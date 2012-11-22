@@ -1,0 +1,20 @@
+body{
+background:#F8EBD2;
+width:458px;
+text-align:justify;
+font: 9pt/14pt 'Lucida Grande', Verdana, Helvetica, sans-serif;
+}
+
+A { color:#275A78; text-decoration:none; }
+A:link{ color:#275A78; text-decoration:none; }
+A:hover{ color:#333333; text-decoration:underline; }
+A:active{ color:#275A78; text-decoration:none; }
+A:active:hover{ color:#333333; text-decoration:underline; }
+A:visited{ color:#275A78; text-decoration:none; }
+A:visited:hover{ color:#333333; text-decoration:underline; }
+
+h3{
+font-size:21px;
+font-weight:bold;
+color:#8C7364;
+}

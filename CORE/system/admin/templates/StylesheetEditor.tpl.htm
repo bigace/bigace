@@ -1,0 +1,45 @@
+<link rel="stylesheet" type="text/css" href="{MARKITUP_DIR}skins/bigace/style.css" />
+<link rel="stylesheet" type="text/css" href="{MARKITUP_DIR}sets/css/style.css" />
+
+<script src="{MARKITUP_DIR}jquery.markitup.js" type="text/javascript"></script>
+<script src="{MARKITUP_DIR}sets/css/set.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+$(document).ready(function()	{
+	$('#styleEdit').markItUp(mySettings);
+});
+</script>
+
+<form action="{SAVE_URL}" method="post">
+<input type="hidden" name="stylesheetid" value="{STYLESHEET_NAME}">
+<input type="hidden" name="stylesheet" value="{STYLESHEET_NAME}">
+{CSRF_TOKEN}
+
+<table border="0" width="{AUTO_SMALL_FORM}" cellspacing="5">
+<tr>
+    <td>
+        {TRANSLATION_edit}: <b>{STYLESHEET_NAME}</b>
+    </td>
+    <td align="right">
+        {TRANSLATION_editorcss}: {EDITOR_CHOOSER}
+    </td>
+</tr>
+<tr>
+    <td colspan="2">
+        {TRANSLATION_description}: <input type="text" name="description" value="{STYLESHEET_DESCRIPTION}" style="width:100%"/>
+    </td>
+</tr>
+<tr>
+    <td colspan="2">
+<textarea name="content" id="styleEdit" style="width:{AUTO_SMALL_FORM};height:300px">{STYLESHEET_CONTENT}</textarea>
+    </td>
+</tr>
+<tr>
+    <td colspan="2" align="right">
+        <input type="submit" value="{TRANSLATION_save}">
+        <input type="button" onclick="javascript:location.href='{CANCEL_URL}'" value="{TRANSLATION_cancel}">
+    </td>
+</tr>
+</table>
+
+</form>

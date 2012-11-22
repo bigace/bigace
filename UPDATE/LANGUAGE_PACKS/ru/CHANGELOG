@@ -1,0 +1,32 @@
+Version 1.3.1: 18.05.2011
+--------------
+ - Moved translation for Comments, News and Fotogallery to the corresponding extensions
+
+Version 1.3: 20.04.2011
+--------------
+ + Added translation for Comments module
+ + Added translation for News module
+
+Version 1.2.2: 13.04.2011
+--------------
+* Fixed more spelling and lexicography errors
+* Fixed start page text
+
+Version 1.2.1: 02.04.2011
+--------------
+* Few fixes in system installation translation file
+
+Version 1.2:
+--------------
+* Fixed several spelling errors and Lexicography
++ Added two new keys
++ Added translation for fotogallery module
+
+Version 0.1.1:
+--------------
+* using UTF-8 for BIGACE Core translation file
+- removed empty search file
+
+Version 2.7 (initial release):
+--------------
+By Oleg Selin

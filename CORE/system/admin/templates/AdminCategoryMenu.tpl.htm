@@ -1,0 +1,38 @@
+<!-- $Id: AdminCategoryMenu.tpl.htm,v 1.5 2009/05/01 13:25:34 kpapst Exp $ -->
+
+<table class="tablesorter" cellspacing="0">
+<col width="40" />
+<col />
+<col width="60" />
+<col width="120" />
+<col width="90" />
+<thead>
+<!-- BEGIN autoheader -->
+	<tr>
+		<th>&nbsp;</th>
+		<th>{TRANSLATION_name}</th>
+		<th align="center">{TRANSLATION_id}</th>
+		<th align="center">{TRANSLATION_action_linked}</th>
+		<th align="center">{TRANSLATION_action_delete}</th>
+	</tr>
+<!-- END autoheader -->
+</thead>
+<tbody>
+    <!-- BEGIN row -->
+    <tr>
+        <td>{ITEM_TREE}</td>
+        <td>{ITEM_NAME}</td>
+		<td align="center">{ITEM_ID}</td>
+        <td align="center">{ACTION_LINKED}</td>
+        <td align="center">{ACTION_DELETE}</td>
+    </tr>
+    <!-- END row -->
+	</tbody>
+</table>
+
+<script type="text/javascript">
+$(document).ready( function() { 
+        $(".tablesorter").tablesorter({ widgets: ['zebra'], headers: { 0: {sorter: false}, 3: {sorter: false}, 4: {sorter: false} }  }); 
+    } 
+);
+</script>

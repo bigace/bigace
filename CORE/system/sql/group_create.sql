@@ -1,0 +1,1 @@
+INSERT INTO {DB_PREFIX}groups (group_id, cid, group_name) VALUES ('{GROUP_ID}', '{CID}', '{GROUP_NAME}')

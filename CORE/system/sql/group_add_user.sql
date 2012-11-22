@@ -1,0 +1,1 @@
+INSERT INTO {DB_PREFIX}user_group_mapping SET group_id='{GROUP_ID}', userid='{USER_ID}', cid='{CID}'

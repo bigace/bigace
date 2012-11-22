@@ -1,0 +1,17 @@
+<refentry id="{@id classes}">
+ <refnamediv>
+  <refname>BIGACE Interfaces</refname>
+ </refnamediv>
+ <refsynopsisdiv>
+  <author>
+   Kevin Papst
+  </author>
+ </refsynopsisdiv>
+ <refsect1 id="{@id classesintro}">
+  <title>{@link http://www.bigace.de BIGACE Web CMS} - Interface Documentation</title>
+  <para>This packages describes the available Interfaces and base classes, that can be used to develop
+  own Service implementations.</para>
+  <para>Detailed documentation how to use this API can be found in our wiki:</para>
+  {@link http://wiki.bigace.de/ BIGACE Developer Documentation}
+ </refsect1>
+</refentry>

@@ -1,0 +1,1557 @@
+<?xml version="1.0"?>
+<!--
+ *
+ * BIGACE - a PHP and MySQL based Web CMS.
+ *
+ * BIGACE is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation; either version 2
+ * of the License, or (at your option) any later version.
+ *
+ * BIGACE is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software Foundation,
+ * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ *
+ * For further information visit {@link http://www.bigace.de http://www.bigace.de}.
+ *
+ * @author Kevin Papst
+ * @copyright Copyright (C) Kevin Papst
+ * @version $Id: structure.xml,v 1.31 2009/10/19 21:20:10 kpapst Exp $
+ *
+-->
+
+<schema version="0.3">
+
+  <table name="group_right">
+    <descr>This table holds all item right entrys for Usergroups.</descr>
+    <opt platform="mysql">ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_general_ci</opt>
+
+    <field name="itemtype" type="I" size="11">
+      <NOTNULL/>
+      <KEY/>
+    </field>
+
+    <field name="cid" type="I" size="11">
+      <NOTNULL/>
+      <KEY/>
+    </field>
+
+    <field name="itemid" type="I" size="11">
+      <NOTNULL/>
+      <KEY/>
+    </field>
+
+    <field name="group_id" type="I" size="11">
+      <NOTNULL/>
+      <KEY/>
+    </field>
+
+    <field name="value" type="I" size="11">
+      <DEFAULT value="0"/>
+      <NOTNULL/>
+    </field>
+  </table>
+
+  <table name="item_category">
+    <descr>This table holds the Item-Category Mappings.</descr>
+    <opt platform="mysql">ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_general_ci</opt>
+
+    <field name="itemtype" type="I" size="11">
+      <NOTNULL/>
+      <KEY/>
+    </field>
+
+    <field name="cid" type="I" size="11">
+      <NOTNULL/>
+      <KEY/>
+    </field>
+
+    <field name="itemid" type="I" size="11">
+      <NOTNULL/>
+      <KEY/>
+    </field>
+
+    <field name="categoryid" type="I" size="11">
+      <NOTNULL/>
+      <KEY/>
+    </field>
+  </table>
+
+  <table name="content">
+    <descr>This table holds all menu contents.</descr>
+    <opt platform="mysql">ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_general_ci</opt>
+
+    <field name="cid" type="I" size="11">
+      <NOTNULL/>
+      <KEY/>
+    </field>
+
+    <field name="id" type="I" size="11">
+      <NOTNULL/>
+      <KEY/>
+    </field>
+
+    <field name="language" type="C" size="20">
+      <NOTNULL/>
+      <KEY/>
+    </field>
+
+    <field name="name" type="C" size="50">
+      <NOTNULL/>
+      <KEY/>
+    </field>
+
+    <field name="cnt_type" type="C" size="20">
+      <DEFAULT value="html" />
+    </field>
+
+    <field name="state" type="C" size="1">
+      <DEFAULT value="R" />
+    </field>
+
+    <field name="position" type="I" size="11">
+      <DEFAULT value="0" />
+    </field>
+
+    <field name="valid_from" type="I" size="11">
+      <DEFAULT value="0" />
+    </field>
+
+    <field name="valid_to" type="I" size="11">
+      <DEFAULT value="0" />
+    </field>
+
+    <field name="content" type="X" />
+
+    <index name="search">
+      <col>content</col>
+      <FULLTEXT/>
+    </index>
+  </table>
+
+  <table name="item_project_text">
+    <descr>This table holds the item project text values.</descr>
+    <opt platform="mysql">ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_general_ci</opt>
+
+    <field name="itemtype" type="I" size="11">
+      <NOTNULL/>
+      <KEY/>
+    </field>
+
+    <field name="id" type="I" size="11">
+      <NOTNULL/>
+      <KEY/>
+    </field>
+
+    <field name="cid" type="I" size="11">
+      <NOTNULL/>
+      <KEY/>
+    </field>
+
+    <field name="language" type="C" size="20">
+      <NOTNULL/>
+      <KEY/>
+    </field>
+
+    <field name="project_key" type="C" size="50">
+      <NOTNULL/>
+      <KEY/>
+    </field>
+
+    <field name="project_value" type="X" />
+  </table>
+
+  <table name="item_project_num">
+    <descr>This table holds the Item Project values in Numeric Format.</descr>
+    <opt platform="mysql">ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_general_ci</opt>
+
+    <field name="itemtype" type="I" size="11">
+      <NOTNULL/>
+      <KEY/>
+    </field>
+
+    <field name="id" type="I" size="11">
+      <NOTNULL/>
+      <KEY/>
+    </field>
+
+    <field name="cid" type="I" size="11">
+      <NOTNULL/>
+      <KEY/>
+    </field>
+
+    <field name="language" type="C" size="20">
+      <NOTNULL/>
+      <KEY/>
+    </field>
+
+    <field name="project_key" type="C" size="50">
+      <NOTNULL/>
+      <KEY/>
+    </field>
+
+    <field name="project_value" type="I" size="11">
+      <DEFAULT value="0" />
+    </field>
+  </table>
+
+  <table name="category">
+    <descr>This table holds all category definitions.</descr>
+    <opt platform="mysql">ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_general_ci</opt>
+
+    <field name="id" type="I" size="11">
+      <NOTNULL/>
+      <KEY/>
+    </field>
+
+    <field name="cid" type="I" size="11">
+      <NOTNULL/>
+      <KEY/>
+    </field>
+
+    <field name="parentid" type="I" size="11">
+      <NOTNULL/>
+    </field>
+
+    <field name="position" type="I" size="11">
+      <NOTNULL/>
+    </field>
+
+    <field name="name" type="C" size="255">
+      <DEFAULT value="" />
+      <NOTNULL/>
+    </field>
+
+    <field name="description" type="X">
+      <NOTNULL/>
+    </field>
+
+    <index name="tree_req">
+      <col>cid</col>
+      <col>parentid</col>
+    </index>
+  </table>
+
+  <table name="frights">
+    <descr>This table holds the Functional Right defintions.</descr>
+    <opt platform="mysql">ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_general_ci</opt>
+
+    <field name="cid" type="I" size="11">
+      <NOTNULL/>
+      <KEY/>
+    </field>
+
+    <field name="name" type="C" size="50">
+      <NOTNULL/>
+      <KEY/>
+    </field>
+
+    <field name="defaultvalue" type="C" size="1">
+      <NOTNULL/>
+      <DEFAULT value="N"/>
+    </field>
+
+    <field name="description" type="X">
+      <NOTNULL/>
+    </field>
+  </table>
+
+  <table name="group_frights">
+    <descr>This table holds the the Mappings between Functional Rights and Usergroups.</descr>
+    <opt platform="mysql">ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_general_ci</opt>
+
+    <field name="cid" type="I" size="11">
+      <NOTNULL/>
+      <KEY/>
+    </field>
+
+    <field name="group_id" type="I" size="11">
+      <NOTNULL/>
+      <KEY/>
+    </field>
+
+    <field name="fright" type="C" size="50">
+      <NOTNULL/>
+      <KEY/>
+    </field>
+
+    <field name="value" type="C" size="1">
+      <NOTNULL/>
+      <DEFAULT value="Y"/>
+    </field>
+  </table>
+
+  <table name="user">
+    <descr>This table is used by the default Authentication and User Management.</descr>
+    <opt platform="mysql">ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_general_ci</opt>
+
+    <field name="id" type="I" size="11">
+      <NOTNULL/>
+      <KEY/>
+      <AUTOINCREMENT/>
+    </field>
+
+    <field name="cid" type="I" size="11">
+      <NOTNULL/>
+      <KEY/>
+    </field>
+
+    <field name="username" type="C" size="25">
+      <NOTNULL/>
+    </field>
+
+    <field name="password" type="C" size="50">
+      <NOTNULL/>
+    </field>
+
+    <field name="language" type="C" size="20">
+      <NOTNULL/>
+    </field>
+
+    <field name="active" type="L">
+      <NOTNULL/>
+      <DEFAULT value="1"/>
+    </field>
+
+    <field name="email" type="C" size="100">
+      <NOTNULL/>
+      <DEFAULT value="" />
+    </field>
+
+    <index name="id">
+      <col>cid</col>
+      <col>username</col>
+      <UNIQUE/>
+    </index>
+  </table>
+
+  <table name="user_group_mapping">
+    <descr>Information of User mapped to Groups.</descr>
+    <opt platform="mysql">ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_general_ci</opt>
+
+    <field name="cid" type="I" size="11">
+      <NOTNULL/>
+      <KEY/>
+    </field>
+
+    <field name="userid" type="I" size="11">
+      <NOTNULL/>
+      <KEY/>
+    </field>
+
+    <field name="group_id" type="I" size="11">
+      <NOTNULL/>
+      <KEY/>
+      <DEFAULT value="0" />
+    </field>
+  </table>
+
+  <table name="user_attributes">
+    <descr>This table holds all extended User Attributes.</descr>
+    <opt platform="mysql">ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_general_ci</opt>
+
+    <field name="cid" type="I" size="11">
+      <NOTNULL/>
+      <KEY/>
+    </field>
+
+    <field name="userid" type="I" size="11">
+      <NOTNULL/>
+      <KEY/>
+    </field>
+
+    <field name="attribute_name" type="C" size="50">
+      <NOTNULL/>
+      <KEY/>
+    </field>
+
+    <field name="attribute_value" type="C" size="255">
+      <NOTNULL/>
+      <DEFAULT value="" />
+    </field>
+  </table>
+
+  <table name="session">
+    <descr>This table holds all active and all not yet removed expired sessions.</descr>
+    <opt platform="mysql">ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_general_ci</opt>
+
+    <field name="id" type="C" size="32">
+      <NOTNULL/>
+      <KEY/>
+    </field>
+
+    <field name="cid" type="I" size="11">
+      <NOTNULL/>
+    </field>
+
+    <field name="userid" type="I" size="11">
+      <NOTNULL/>
+    </field>
+
+    <field name="ip" type="C" size="20">
+      <NOTNULL/>
+    </field>
+
+    <field name="data" type="X">
+      <NOTNULL/>
+    </field>
+
+    <field name="timestamp" type="I" size="11">
+      <NOTNULL/>
+      <DEFAULT value="0"/>
+    </field>
+
+    <index name="timestamp">
+      <col>timestamp</col>
+    </index>
+  </table>
+
+  <table name="groups">
+    <descr>This table holds all Group Defintions.</descr>
+    <opt platform="mysql">ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_general_ci</opt>
+
+    <field name="group_id" type="I" size="11">
+      <NOTNULL/>
+      <KEY/>
+    </field>
+
+    <field name="cid" type="I" size="11">
+      <NOTNULL/>
+      <KEY/>
+    </field>
+
+    <field name="group_name" type="C" size="255">
+      <NOTNULL/>
+      <DEFAULT value=""/>
+    </field>
+  </table>
+
+  <table name="statistics">
+    <descr>This table holds the statistical data.</descr>
+    <opt platform="mysql">ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_general_ci</opt>
+
+    <field name="id" type="I">
+      <NOTNULL/>
+      <KEY/>
+      <AUTOINCREMENT/>
+    </field>
+
+    <field name="cid" type="I" size="11">
+      <NOTNULL/>
+    </field>
+
+    <field name="ip" type="C" size="20">
+      <NOTNULL/>
+      <DEFAULT value="0" />
+    </field>
+
+    <field name="browser" type="C" size="255">
+      <NOTNULL/>
+      <DEFAULT value="" />
+    </field>
+
+    <field name="date" type="D">
+      <NOTNULL/>
+    </field>
+
+    <field name="timestamp" type="I" size="11">
+      <NOTNULL/>
+      <DEFAULT value="0" />
+    </field>
+
+    <field name="referer" type="C" size="255">
+      <DEFAULT value="" />
+    </field>
+
+    <field name="command" type="C" size="25">
+      <NOTNULL/>
+      <DEFAULT value="" />
+    </field>
+
+    <field name="itemid" type="I" size="11">
+      <NOTNULL/>
+    </field>
+
+    <field name="userid" type="I" size="11">
+      <NOTNULL/>
+    </field>
+
+    <field name="session_id" type="C" size="32">
+      <DEFAULT value="0" />
+    </field>
+  </table>
+
+  <table name="id_gen">
+    <descr>A simple ID Generator Table.</descr>
+    <opt platform="mysql">ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_general_ci</opt>
+
+    <field name="cid" type="I" size="11">
+      <NOTNULL/>
+      <KEY/>
+    </field>
+
+    <field name="name" type="C" size="255">
+      <NOTNULL/>
+      <KEY/>
+    </field>
+
+    <field name="value" type="I" size="11">
+      <NOTNULL/>
+    </field>
+  </table>
+
+  <table name="configuration">
+    <descr>This table holds the Configuration settings.</descr>
+    <opt platform="mysql">ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_general_ci</opt>
+
+    <field name="cid" type="I" size="11">
+      <NOTNULL/>
+      <KEY/>
+    </field>
+
+    <field name="package" type="C" size="50">
+      <NOTNULL/>
+      <KEY/>
+    </field>
+
+    <field name="name" type="C" size="50">
+      <NOTNULL/>
+      <KEY/>
+    </field>
+
+    <field name="value" type="C" size="255">
+      <NOTNULL/>
+      <DEFAULT value="" />
+    </field>
+
+    <field name="type" type="C" size="10">
+      <NOTNULL/>
+      <DEFAULT value="string" />
+    </field>
+
+    <field name="extended" type="C" size="255" />
+
+    <index name="cid_package">
+      <col>cid</col>
+      <col>package</col>
+    </index>
+  </table>
+
+  <table name="future_user_right">
+    <descr>This table holds all item right entrys for Usergroups.</descr>
+    <opt platform="mysql">ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_general_ci</opt>
+
+    <field name="itemtype" type="I" size="11">
+      <NOTNULL/>
+      <KEY/>
+    </field>
+
+    <field name="cid" type="I" size="11">
+      <NOTNULL/>
+      <KEY/>
+    </field>
+
+    <field name="itemid" type="I" size="11">
+      <NOTNULL/>
+      <KEY/>
+    </field>
+
+    <field name="user_id" type="I" size="11">
+      <NOTNULL/>
+      <KEY/>
+    </field>
+
+    <field name="value" type="I" size="11">
+      <DEFAULT value="0"/>
+      <NOTNULL/>
+    </field>
+  </table>
+
+  <table name="item_1">
+    <descr>This table holds the Menu definitions.</descr>
+    <opt platform="mysql">ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_general_ci</opt>
+
+    <field name="id" type="I" size="11">
+      <NOTNULL/>
+      <KEY/>
+    </field>
+
+    <field name="cid" type="I" size="11">
+      <NOTNULL/>
+      <KEY/>
+    </field>
+
+    <field name="language" type="C" size="20">
+      <NOTNULL/>
+      <KEY/>
+    </field>
+
+    <field name="mimetype" type="C" size="100">
+      <NOTNULL/>
+      <DEFAULT value="" />
+    </field>
+
+    <field name="name" type="C" size="255">
+      <NOTNULL/>
+    </field>
+
+    <field name="parentid" type="I" size="11">
+      <NOTNULL/>
+      <DEFAULT value="-1" />
+    </field>
+
+    <field name="description" type="X" />
+
+    <field name="catchwords" type="C" size="255" />
+
+    <field name="createdate" type="I" size="11">
+      <NOTNULL/>
+    </field>
+
+    <field name="createby" type="I" size="11">
+      <NOTNULL/>
+    </field>
+
+    <field name="modifieddate" type="I" size="11">
+      <NOTNULL/>
+    </field>
+
+    <field name="modifiedby" type="I" size="11">
+      <NOTNULL/>
+    </field>
+
+    <field name="workflow" type="C" size="100">
+      <NOTNULL/>
+      <DEFAULT value="" />
+    </field>
+
+    <field name="unique_name" type="C" size="255">
+        <DEFAULT value=""/>
+    </field>
+
+    <field name="text_1" type="X" />
+    <field name="text_2" type="X" />
+    <field name="text_3" type="X" />
+    <field name="text_4" type="X" />
+    <field name="text_5" type="X" />
+
+    <field name="num_1" type="I" size="11"></field>
+    <field name="num_2" type="I" size="11"></field>
+    <field name="num_3" type="I" size="11"><DEFAULT value="0"/></field>
+    <field name="num_4" type="I" size="11"><DEFAULT value="0"/></field>
+    <field name="num_5" type="I" size="11"><DEFAULT value="0"/></field>
+
+    <field name="date_1" type="I" size="11"><DEFAULT value="0"/></field>
+    <field name="date_2" type="I" size="11"><DEFAULT value="0"/></field>
+    <field name="date_3" type="I" size="11"><DEFAULT value="0"/></field>
+    <field name="date_4" type="I" size="11"><DEFAULT value="0"/></field>
+    <field name="date_5" type="I" size="11"><DEFAULT value="0"/></field>
+
+    <field name="viewed" type="I" size="11">
+      <NOTNULL/>
+      <DEFAULT value="0"/>
+    </field>
+
+    <index name="cid">
+      <col>cid</col>
+    </index>
+
+    <index name="language">
+      <col>language</col>
+    </index>
+
+    <index name="parentid">
+      <col>parentid</col>
+    </index>
+
+    <index name="search">
+      <col>name</col>
+      <col>description</col>
+      <col>catchwords</col>
+      <col>text_5</col>
+      <FULLTEXT/>
+    </index>
+  </table>
+
+  <table name="item_4">
+    <descr>This table holds the Image definitions.</descr>
+    <opt platform="mysql">ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_general_ci</opt>
+
+    <field name="id" type="I" size="11">
+      <NOTNULL/>
+      <KEY/>
+    </field>
+
+    <field name="cid" type="I" size="11">
+      <NOTNULL/>
+      <KEY/>
+    </field>
+
+    <field name="language" type="C" size="20">
+      <NOTNULL/>
+      <KEY/>
+    </field>
+
+    <field name="mimetype" type="C" size="100">
+      <NOTNULL/>
+      <DEFAULT value="" />
+    </field>
+
+    <field name="name" type="C" size="255">
+      <NOTNULL/>
+    </field>
+
+    <field name="parentid" type="I" size="11">
+      <NOTNULL/>
+      <DEFAULT value="-1" />
+    </field>
+
+    <field name="description" type="X" />
+
+    <field name="catchwords" type="C" size="255" />
+
+    <field name="createdate" type="I" size="11">
+      <NOTNULL/>
+    </field>
+
+    <field name="createby" type="I" size="11">
+      <NOTNULL/>
+    </field>
+
+    <field name="modifieddate" type="I" size="11">
+      <NOTNULL/>
+    </field>
+
+    <field name="modifiedby" type="I" size="11">
+      <NOTNULL/>
+    </field>
+
+    <field name="workflow" type="C" size="100">
+      <NOTNULL/>
+      <DEFAULT value="" />
+    </field>
+
+    <field name="unique_name" type="C" size="255">
+        <DEFAULT value=""/>
+    </field>
+
+    <field name="text_1" type="X" />
+    <field name="text_2" type="X" />
+    <field name="text_3" type="X" />
+    <field name="text_4" type="X" />
+    <field name="text_5" type="X" />
+
+    <field name="num_1" type="I" size="11"></field>
+    <field name="num_2" type="I" size="11"></field>
+    <field name="num_3" type="I" size="11"><DEFAULT value="0"/></field>
+    <field name="num_4" type="I" size="11"><DEFAULT value="0"/></field>
+    <field name="num_5" type="I" size="11"><DEFAULT value="0"/></field>
+
+    <field name="date_1" type="I" size="11"><DEFAULT value="0"/></field>
+    <field name="date_2" type="I" size="11"><DEFAULT value="0"/></field>
+    <field name="date_3" type="I" size="11"><DEFAULT value="0"/></field>
+    <field name="date_4" type="I" size="11"><DEFAULT value="0"/></field>
+    <field name="date_5" type="I" size="11"><DEFAULT value="0"/></field>
+
+    <field name="viewed" type="I" size="11">
+      <NOTNULL/>
+      <DEFAULT value="0"/>
+    </field>
+
+    <index name="cid">
+      <col>cid</col>
+    </index>
+
+    <index name="language">
+      <col>language</col>
+    </index>
+
+    <index name="parentid">
+      <col>parentid</col>
+    </index>
+
+    <index name="search">
+      <col>name</col>
+      <col>description</col>
+      <col>catchwords</col>
+      <col>text_5</col>
+      <FULLTEXT/>
+    </index>
+  </table>
+
+  <table name="item_5">
+    <descr>This table holds the Menu definitions.</descr>
+    <opt platform="mysql">ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_general_ci</opt>
+
+    <field name="id" type="I" size="11">
+      <NOTNULL/>
+      <KEY/>
+    </field>
+
+    <field name="cid" type="I" size="11">
+      <NOTNULL/>
+      <KEY/>
+    </field>
+
+    <field name="language" type="C" size="20">
+      <NOTNULL/>
+      <KEY/>
+    </field>
+
+    <field name="mimetype" type="C" size="100">
+      <NOTNULL/>
+      <DEFAULT value="" />
+    </field>
+
+    <field name="name" type="C" size="255">
+      <NOTNULL/>
+    </field>
+
+    <field name="parentid" type="I" size="11">
+      <NOTNULL/>
+      <DEFAULT value="-1" />
+    </field>
+
+    <field name="description" type="X" />
+
+    <field name="catchwords" type="C" size="255" />
+
+    <field name="createdate" type="I" size="11">
+      <NOTNULL/>
+    </field>
+
+    <field name="createby" type="I" size="11">
+      <NOTNULL/>
+    </field>
+
+    <field name="modifieddate" type="I" size="11">
+      <NOTNULL/>
+    </field>
+
+    <field name="modifiedby" type="I" size="11">
+      <NOTNULL/>
+    </field>
+
+    <field name="workflow" type="C" size="100">
+      <NOTNULL/>
+      <DEFAULT value="" />
+    </field>
+
+    <field name="unique_name" type="C" size="255">
+        <DEFAULT value=""/>
+    </field>
+
+    <field name="text_1" type="X" />
+    <field name="text_2" type="X" />
+    <field name="text_3" type="X" />
+    <field name="text_4" type="X" />
+    <field name="text_5" type="X" />
+
+    <field name="num_1" type="I" size="11"></field>
+    <field name="num_2" type="I" size="11"></field>
+    <field name="num_3" type="I" size="11"><DEFAULT value="0"/></field>
+    <field name="num_4" type="I" size="11"><DEFAULT value="0"/></field>
+    <field name="num_5" type="I" size="11"><DEFAULT value="0"/></field>
+
+    <field name="date_1" type="I" size="11"><DEFAULT value="0"/></field>
+    <field name="date_2" type="I" size="11"><DEFAULT value="0"/></field>
+    <field name="date_3" type="I" size="11"><DEFAULT value="0"/></field>
+    <field name="date_4" type="I" size="11"><DEFAULT value="0"/></field>
+    <field name="date_5" type="I" size="11"><DEFAULT value="0"/></field>
+
+    <field name="viewed" type="I" size="11">
+      <NOTNULL/>
+      <DEFAULT value="0"/>
+    </field>
+
+    <index name="cid">
+      <col>cid</col>
+    </index>
+
+    <index name="language">
+      <col>language</col>
+    </index>
+
+    <index name="parentid">
+      <col>parentid</col>
+    </index>
+
+    <index name="search">
+      <col>name</col>
+      <col>description</col>
+      <col>catchwords</col>
+      <col>text_5</col>
+      <FULLTEXT/>
+    </index>
+  </table>
+
+  <table name="item_history">
+    <descr>This table holds the historical Item definitions.</descr>
+    <opt platform="mysql">ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_general_ci</opt>
+
+    <field name="itemtype" type="I" size="11">
+      <NOTNULL/>
+      <KEY/>
+    </field>
+
+    <field name="id" type="I" size="11">
+      <NOTNULL/>
+      <KEY/>
+    </field>
+
+    <field name="cid" type="I" size="11">
+      <NOTNULL/>
+      <KEY/>
+    </field>
+
+    <field name="language" type="C" size="20">
+      <NOTNULL/>
+      <KEY/>
+    </field>
+
+    <field name="mimetype" type="C" size="100">
+      <NOTNULL/>
+      <DEFAULT value="" />
+    </field>
+
+    <field name="name" type="C" size="255">
+      <NOTNULL/>
+    </field>
+
+    <field name="parentid" type="I" size="11">
+      <NOTNULL/>
+      <DEFAULT value="-1" />
+    </field>
+
+    <field name="description" type="X" />
+
+    <field name="catchwords" type="C" size="255" />
+
+    <field name="createdate" type="I" size="11">
+      <NOTNULL/>
+    </field>
+
+    <field name="createby" type="I" size="11">
+      <NOTNULL/>
+    </field>
+
+    <field name="modifieddate" type="I" size="11">
+      <NOTNULL/>
+      <KEY/>
+    </field>
+
+    <field name="modifiedby" type="I" size="11">
+      <NOTNULL/>
+    </field>
+
+    <field name="workflow" type="C" size="100">
+      <NOTNULL/>
+      <DEFAULT value="" />
+    </field>
+
+    <field name="unique_name" type="C" size="255">
+        <DEFAULT value=""/>
+    </field>
+
+    <field name="text_1" type="X" />
+    <field name="text_2" type="X" />
+    <field name="text_3" type="X" />
+    <field name="text_4" type="X" />
+    <field name="text_5" type="X" />
+
+    <field name="num_1" type="I" size="11"><DEFAULT value="0"/></field>
+    <field name="num_2" type="I" size="11"><DEFAULT value="0"/></field>
+    <field name="num_3" type="I" size="11"><DEFAULT value="0"/></field>
+    <field name="num_4" type="I" size="11"><DEFAULT value="0"/></field>
+    <field name="num_5" type="I" size="11"><DEFAULT value="0"/></field>
+
+    <field name="date_1" type="I" size="11"><DEFAULT value="0"/></field>
+    <field name="date_2" type="I" size="11"><DEFAULT value="0"/></field>
+    <field name="date_3" type="I" size="11"><DEFAULT value="0"/></field>
+    <field name="date_4" type="I" size="11"><DEFAULT value="0"/></field>
+    <field name="date_5" type="I" size="11"><DEFAULT value="0"/></field>
+
+    <field name="viewed" type="I" size="11">
+      <NOTNULL/>
+      <DEFAULT value="0"/>
+    </field>
+  </table>
+
+  <table name="item_future">
+    <descr>This table holds the future Item definitions.</descr>
+    <opt platform="mysql">ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_general_ci</opt>
+
+    <field name="itemtype" type="I" size="11">
+      <NOTNULL/>
+      <KEY/>
+    </field>
+
+    <field name="workflowname" type="C" size="100">
+      <NOTNULL/>
+    </field>
+
+    <field name="activity" type="C" size="50">
+      <NOTNULL/>
+    </field>
+
+    <field name="initiator" type="I" size="11">
+      <NOTNULL/>
+    </field>
+
+    <field name="id" type="I" size="11">
+      <NOTNULL/>
+      <KEY/>
+    </field>
+
+    <field name="cid" type="I" size="11">
+      <NOTNULL/>
+      <KEY/>
+    </field>
+
+    <field name="language" type="C" size="20">
+      <NOTNULL/>
+      <KEY/>
+    </field>
+
+    <field name="mimetype" type="C" size="100">
+      <NOTNULL/>
+      <DEFAULT value="" />
+    </field>
+
+    <field name="name" type="C" size="255">
+      <NOTNULL/>
+    </field>
+
+    <field name="parentid" type="I" size="11">
+      <NOTNULL/>
+      <DEFAULT value="-1" />
+    </field>
+
+    <field name="description" type="X" />
+
+    <field name="catchwords" type="C" size="255" />
+
+    <field name="createdate" type="I" size="11">
+      <NOTNULL/>
+    </field>
+
+    <field name="createby" type="I" size="11">
+      <NOTNULL/>
+    </field>
+
+    <field name="modifieddate" type="I" size="11">
+      <NOTNULL/>
+    </field>
+
+    <field name="modifiedby" type="I" size="11">
+      <NOTNULL/>
+    </field>
+
+    <field name="workflow" type="C" size="100">
+      <NOTNULL/>
+      <DEFAULT value="" />
+    </field>
+
+    <field name="unique_name" type="C" size="255">
+        <DEFAULT value=""/>
+    </field>
+
+    <field name="text_1" type="X" />
+    <field name="text_2" type="X" />
+    <field name="text_3" type="X" />
+    <field name="text_4" type="X" />
+    <field name="text_5" type="X" />
+
+    <field name="num_1" type="I" size="11"><DEFAULT value="0"/></field>
+    <field name="num_2" type="I" size="11"><DEFAULT value="0"/></field>
+    <field name="num_3" type="I" size="11"><DEFAULT value="0"/></field>
+    <field name="num_4" type="I" size="11"><DEFAULT value="0"/></field>
+    <field name="num_5" type="I" size="11"><DEFAULT value="0"/></field>
+
+    <field name="date_1" type="I" size="11"><DEFAULT value="0"/></field>
+    <field name="date_2" type="I" size="11"><DEFAULT value="0"/></field>
+    <field name="date_3" type="I" size="11"><DEFAULT value="0"/></field>
+    <field name="date_4" type="I" size="11"><DEFAULT value="0"/></field>
+    <field name="date_5" type="I" size="11"><DEFAULT value="0"/></field>
+
+    <field name="viewed" type="I" size="11">
+      <NOTNULL/>
+      <DEFAULT value="0"/>
+    </field>
+  </table>
+
+
+  <table name="logging">
+    <descr>This table holds logging information.</descr>
+    <opt platform="mysql">ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_general_ci</opt>
+
+    <field name="id" type="I" size="11">
+      <NOTNULL/>
+      <KEY/>
+      <AUTOINCREMENT/>
+    </field>
+
+    <field name="cid" type="I" size="11">
+      <NOTNULL/>
+    </field>
+
+    <field name="userid" type="I" size="11">
+      <NOTNULL/>
+    </field>
+
+    <field name="timestamp" type="I" size="11">
+      <NOTNULL/>
+    </field>
+
+    <field name="namespace" type="C" size="10">
+      <DEFAULT value=""/>
+    </field>
+
+    <field name="level" type="I" size="11">
+      <NOTNULL/>
+    </field>
+
+    <field name="message" type="X" />
+
+    <field name="file" type="C" size="255">
+      <DEFAULT value=""/>
+    </field>
+
+    <field name="line" type="I" size="11" />
+
+    <field name="stacktrace" type="X" />
+
+    <!-- buggy in use with adodb
+        index name="id">
+      <col>cid</col>
+      <col>userid</col>
+      <col>timestamp</col>
+      <UNIQUE/>
+    </index-->
+  </table>
+
+  <table name="stylesheet">
+    <descr>This table holds all Stylesheets for the Smarty Templates.</descr>
+    <opt platform="mysql">ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_general_ci</opt>
+
+    <field name="name" type="C" size="255">
+      <KEY/>
+      <NOTNULL/>
+    </field>
+
+    <field name="cid" type="I" size="11">
+      <NOTNULL/>
+      <KEY/>
+    </field>
+
+    <field name="description" type="X" >
+      <DEFAULT value=""/>
+    </field>
+
+    <field name="filename" type="C" size="255">
+      <NOTNULL/>
+      <UNIQUE/>
+    </field>
+
+    <field name="editorcss" type="C" size="255">
+      <NOTNULL/>
+    </field>
+
+    <index name="filename">
+      <col>filename</col>
+      <col>cid</col>
+      <UNIQUE/>
+    </index>
+  </table>
+
+  <table name="template">
+    <descr>This table holds all Smarty Templates.</descr>
+    <opt platform="mysql">ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_general_ci</opt>
+
+    <field name="name" type="C" size="255">
+      <KEY/>
+      <NOTNULL/>
+    </field>
+
+    <field name="cid" type="I" size="11">
+      <NOTNULL/>
+      <KEY/>
+    </field>
+
+    <field name="description" type="X" >
+      <DEFAULT value=""/>
+    </field>
+
+    <field name="inwork" type="L">
+      <NOTNULL/>
+      <DEFAULT value="1"/>
+    </field>
+
+    <field name="include" type="L">
+      <NOTNULL/>
+      <DEFAULT value="1"/>
+    </field>
+
+    <field name="timestamp" type="I" size="11">
+      <NOTNULL/>
+    </field>
+
+    <field name="userid" type="I" size="11">
+      <NOTNULL/>
+    </field>
+
+    <field name="filename" type="C" size="255">
+      <UNIQUE/>
+      <NOTNULL/>
+    </field>
+
+    <field name="content" type="X">
+      <NOTNULL/>
+      <DEFAULT value=""/>
+    </field>
+
+    <field name="system" type="L">
+      <NOTNULL/>
+      <DEFAULT value="0"/>
+    </field>
+
+    <index name="filename">
+      <col>filename</col>
+      <col>cid</col>
+      <UNIQUE/>
+    </index>
+  </table>
+
+  <table name="design">
+    <descr>This table holds all choosable Designs.</descr>
+    <opt platform="mysql">ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_general_ci</opt>
+
+    <field name="name" type="C" size="255">
+      <KEY/>
+      <NOTNULL/>
+    </field>
+
+    <field name="cid" type="I" size="11">
+      <NOTNULL/>
+      <KEY/>
+    </field>
+
+    <field name="description" type="X" >
+      <DEFAULT value=""/>
+    </field>
+
+    <field name="stylesheet" type="C" size="255">
+      <DEFAULT value=""/>
+    </field>
+
+    <field name="template" type="C" size="255">
+      <NOTNULL/>
+    </field>
+
+    <field name="portlets" type="L">
+      <NOTNULL/>
+      <DEFAULT value="0"/>
+    </field>
+  </table>
+
+  <!-- This table holds old smarty information.
+       Since BIGACE 2.x -->
+  <table name="smarty_history">
+    <descr>This table holds history versions of Smarty Elements.</descr>
+    <opt platform="mysql">ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_general_ci</opt>
+
+    <field name="type" type="C" size="20">
+      <NOTNULL/>
+      <KEY/>
+    </field>
+
+    <field name="name" type="C" size="255">
+      <NOTNULL/>
+      <KEY/>
+    </field>
+
+    <field name="cid" type="I" size="11">
+      <NOTNULL/>
+      <KEY/>
+    </field>
+
+    <field name="timestamp" type="I" size="11">
+      <NOTNULL/>
+      <KEY/>
+    </field>
+
+    <field name="userid" type="I" size="11">
+      <NOTNULL/>
+    </field>
+
+    <field name="content" type="X">
+      <NOTNULL/>
+      <DEFAULT value=""/>
+    </field>
+  </table>
+
+  <!-- This table holds the autojob (like a cronjob) information. Added with BIGACE 2.4 -->
+  <table name="autojobs">
+    <descr>This table holds the AutoJobs information.</descr>
+    <opt platform="mysql">ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_general_ci</opt>
+
+    <field name="name" type="C" size="25">
+      <NOTNULL/>
+      <KEY/>
+    </field>
+
+    <field name="cid" type="I" size="11">
+      <NOTNULL/>
+      <KEY/>
+    </field>
+
+    <field name="classname" type="C" size="100">
+      <NOTNULL/>
+    </field>
+
+    <field name="state" type="I" size="3">
+      <DEFAULT value="0"/>
+    </field>
+
+    <field name="last" type="I" size="11">
+      <DEFAULT value="0"/>
+    </field>
+
+    <field name="next" type="I" size="11">
+      <DEFAULT value="0"/>
+    </field>
+
+    <field name="message" type="X" />
+
+    <index name="startup">
+      <col>cid</col>
+      <col>state</col>
+      <col>next</col>
+    </index>
+  </table>
+
+  <!-- This table holds information about beauty urls.
+       Table added for BIGACE 2.4
+       One item can have multiple urls patterns,
+       but the administration does not support it currently.
+       "name" is the url including the file extension! -->
+  <table name="unique_name">
+      <descr>This table holds all unique pattern for beauty urls.</descr>
+      <opt platform="mysql">ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_general_ci</opt>
+
+      <field name="cid" type="I" size="11">
+          <NOTNULL/>
+          <KEY/>
+      </field>
+
+      <field name="itemtype" type="I" size="11">
+          <NOTNULL/>
+          <KEY/>
+      </field>
+
+      <field name="itemid" type="I" size="11">
+          <NOTNULL/>
+          <KEY/>
+      </field>
+
+      <field name="language" type="C" size="20">
+          <NOTNULL/>
+          <KEY/>
+      </field>
+
+      <field name="name" type="C" size="255">
+          <NOTNULL/>
+          <KEY/>
+      </field>
+
+    <index name="filename">
+      <col>cid</col>
+      <col>name</col>
+      <UNIQUE/>
+    </index>
+
+  </table>
+
+  <!-- This table holds information about event listener.
+       Table added for BIGACE 2.5. -->
+  <table name="events">
+      <descr>This table holds all registered event classes.</descr>
+      <opt platform="mysql">ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_general_ci</opt>
+
+      <field name="cid" type="I" size="11">
+          <NOTNULL/>
+          <KEY/>
+      </field>
+
+      <field name="event" type="C" size="100">
+          <NOTNULL/>
+          <KEY/>
+      </field>
+
+      <field name="class" type="C" size="100">
+          <NOTNULL/>
+          <KEY/>
+      </field>
+  </table>
+
+  <!-- Information about available content areas for designs.
+       Table added for BIGACE 2.5. -->
+  <table name="design_contents">
+    <descr>This table holds information about design-content mappings.</descr>
+    <opt platform="mysql">ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_general_ci</opt>
+
+    <field name="cid" type="I" size="11">
+        <NOTNULL/>
+        <KEY/>
+    </field>
+
+    <field name="design" type="C" size="100">
+       <NOTNULL/>
+       <KEY/>
+    </field>
+
+    <field name="name" type="C" size="100">
+        <NOTNULL/>
+        <KEY/>
+    </field>
+
+    <index name="mapping">
+      <col>cid</col>
+      <col>design</col>
+    </index>
+  </table>
+
+  <!-- Information about available portlet columns for designs.
+       Table added for BIGACE 2.5. -->
+  <table name="design_portlets">
+    <descr>This table holds information about design-portlet mappings.</descr>
+    <opt platform="mysql">ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_general_ci</opt>
+
+    <field name="cid" type="I" size="11">
+        <KEY/>
+        <NOTNULL/>
+    </field>
+
+    <field name="design" type="C" size="100">
+        <KEY/>
+        <NOTNULL/>
+    </field>
+
+    <field name="name" type="C" size="100">
+        <KEY/>
+        <NOTNULL/>
+    </field>
+
+    <index name="mapping">
+      <col>cid</col>
+      <col>design</col>
+    </index>
+  </table>
+
+  <table name="generic_entries">
+    <descr>This table holds the generic entries.</descr>
+    <opt platform="mysql">ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_general_ci</opt>
+
+    <field name="id" type="I" size="11">
+      <NOTNULL/>
+      <KEY/>
+      <AUTOINCREMENT/>
+    </field>
+
+    <field name="cid" type="I" size="11">
+      <NOTNULL/>
+      <KEY/>
+    </field>
+
+    <field name="name" type="C" size="255">
+      <NOTNULL/>
+    </field>
+
+    <field name="value" type="X" />
+
+    <field name="timestamp" type="I" size="11">
+      <NOTNULL/>
+    </field>
+
+    <index name="latest_entry">
+      <col>cid</col>
+      <col>timestamp</col>
+    </index>
+  </table>
+
+  <table name="generic_mappings">
+    <descr>Mappings between generic entries and sections.</descr>
+    <opt platform="mysql">ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_general_ci</opt>
+
+    <field name="cid" type="I" size="11">
+      <NOTNULL/>
+      <KEY/>
+    </field>
+
+    <field name="section_id" type="I" size="11">
+      <NOTNULL/>
+      <KEY/>
+    </field>
+
+    <field name="entry_id" type="I" size="11">
+      <NOTNULL/>
+      <KEY/>
+    </field>
+  </table>
+
+  <table name="generic_sections">
+    <descr>This table holds all generic typed sections.</descr>
+    <opt platform="mysql">ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_general_ci</opt>
+
+    <field name="id" type="I" size="11">
+      <NOTNULL/>
+      <KEY/>
+      <AUTOINCREMENT/>
+    </field>
+
+    <field name="cid" type="I" size="11">
+      <NOTNULL/>
+      <KEY/>
+    </field>
+
+    <field name="type" type="C" size="50">
+      <NOTNULL/>
+    </field>
+
+    <field name="name" type="C" size="50">
+      <NOTNULL/>
+    </field>
+
+    <index name="section_cid">
+      <col>cid</col>
+      <col>type</col>
+      <col>name</col>
+      <UNIQUE/>
+    </index>
+  </table>
+
+  <table name="plugins">
+    <descr>Information about installed Plugins.</descr>
+    <opt platform="mysql">ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_general_ci</opt>
+
+    <field name="cid" type="I" size="11">
+      <NOTNULL/>
+      <KEY/>
+    </field>
+
+    <field name="name" type="C" size="50">
+      <NOTNULL/>
+      <KEY/>
+    </field>
+
+    <field name="version" type="C" size="50">
+      <NOTNULL/>
+    </field>
+  </table>
+
+</schema>

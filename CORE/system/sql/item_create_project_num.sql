@@ -1,0 +1,1 @@
+INSERT INTO {DB_PREFIX}item_project_num (itemtype,id,cid,language,project_key,project_value) VALUES ('{ITEMTYPE}','{ITEM_ID}','{CID}','{LANGUAGE_ID}','{KEY}','{VALUE}')

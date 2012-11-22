@@ -1,0 +1,59 @@
+@CHARSET "UTF-8";
+/*
+	This CSS file automatically styles your links, accordingly to the linked document.
+	Its not complete right now, please paste your improvements in the Bigace forum.
+*/
+a[href ^="http://"] {}
+a[href ^="https://"] {}
+a[href ^="mailto:"] {
+    background: url(../images/mail.gif) center right no-repeat;
+    padding-right: 20px;
+}
+a[href ^="news://"] {}
+a[href ^="ftp://"] {}
+a[href ^="irc://"] {}
+a[href ^="skype://"] {}
+
+a[href $=".pdf"], a[href $=".PDF"],
+a[href *=".pdf#"], a[href *=".PDF#"],
+a[href *=".pdf?"], a[href *=".PDF?"] {
+    background: url(../images/mimetype/pdf.gif") center left no-repeat;
+    padding-left: 20px;
+}
+a[href $=".ogg"], a[href $=".OGG"],
+a[href $=".mid"], a[href $=".MID"],
+a[href $=".midi"], a[href $=".MIDI"],
+a[href $=".mp3"], a[href $=".MP3"],
+a[href $=".wav"], a[href $=".WAV"],
+a[href $=".wma"], a[href $=".WMA"] { 
+    background: url(../images/mimetype/mp3.gif") center left no-repeat;
+    padding-left: 20px;
+}
+
+a[href $=".fla"], a[href $=".FLA"] { 
+    background: url(../images/mimetype/fla.gif") center left no-repeat;
+    padding-left: 20px;
+}
+
+a[href $=".flv"], a[href $=".FLV"],
+a[href $=".mkv"], a[href $=".MKV"],
+a[href $=".ogm"], a[href $=".OGM"],
+a[href $=".avi"], a[href $=".AVI"],
+a[href $=".mpeg"], a[href $=".MPEG"],
+a[href $=".mpg"], a[href $=".MPG"] { 
+    background: url(../images/mimetype/avi.gif") center left no-repeat;
+    padding-left: 20px;
+}
+
+a[href $=".zip"], a[href $=".ZIP"],
+a[href $=".rar"], a[href $=".RAR"],
+a[href $=".gz"], a[href $=".GZ"],
+a[href $=".tar"], a[href $=".TAR"],
+a[href *=".gzip"], a[href *=".GZIP"] {
+    background: url(../images/mimetype/zip.gif") center left no-repeat;
+    padding-left: 20px;
+}
+	
+a[href $=".exe"], a[href $=".EXE"],
+a[href $=".msi"], a[href $=".MSI"],
+a[href $=".dmg"], a[href $=".DMG"] { /* Download */ }

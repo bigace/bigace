@@ -1,0 +1,1 @@
+INSERT INTO {DB_PREFIX}{TABLE} (id, cid, language, mimetype, name, parentid, description, catchwords, createdate, createby, modifieddate, modifiedby, workflow, text_1, text_2, text_3, text_4, text_5, num_1, num_2, num_3, num_4, num_5, date_1, date_2, date_3, date_4, date_5) VALUES ( {ITEM_ID}, {CID}, {VALUES} )

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<content version="1.0">
+
+    <table name="template">
+        <row>
+            <name key="true">RSS-LatestPages</name>
+            <cid key="true">{CID}</cid>
+            <description>Renders an RSS Feed in Atom 2.0, displaying your latest created pages.</description>
+            <inwork>0</inwork>
+            <include>0</include>
+            <timestamp function="true">unix_timestamp()</timestamp>
+            <userid>1</userid>
+            <filename>RSS-LatestPages.tpl</filename>
+            <content><![CDATA[<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+	<title>{configuration package="rss-latest" key="title"}</title>
+
+    <link>{link url="/"}</link>
+    <description>{configuration package="rss-latest" key="description"}</description>
+    <generator>{bigace_version full=true}</generator>
+    <docs>http://blogs.law.harvard.edu/tech/rss</docs>
+{load_translation name="latest-pages"}	
+{configuration package="rss-latest" key="show.optional.infos" assign="showOptional"}
+{if $showOptional}
+	{configuration package="community" key="default.language" assign="feedLang"}
+	{configuration package="community" key="copyright.holder" assign="copyHolder"}
+	{configuration package="community" key="contact.email" assign="copyEmail"}
+    <language>{$feedLang}-{$feedLang}</language>
+    <copyright>{$copyHolder}</copyright>
+    <managingEditor>{$copyEmail} ({$copyHolder})</managingEditor>
+    <webMaster>{$copyEmail} ({$copyHolder})</webMaster>
+{/if}
+    
+    <pubDate>{$smarty.now|news_date}</pubDate>
+    <lastBuildDate>{$smarty.now|news_date}</lastBuildDate>
+
+    {* <image>
+      <url>URL where the image is stored</url>
+      <title>Image title</title>
+      <link>where the image should link to</link>
+      <width>Image width in pixel</width>
+      <height>Image height in pixel</height>
+      <description>Image description</description>
+    </image> *}
+	
+    <atom:link href="{directory name="public"}trennkost/feed.php" rel="self" type="application/rss+xml"/>
+{configuration package="rss-latest" key="number.of.entries" assign="amount"}
+{last_created_items assign="latest" amount=$amount}
+{foreach from=$latest item="lastCreated"}
+    <item>
+		  <title>{$lastCreated->getName()|htmlspecialchars}</title>
+		  <link>{link item=$lastCreated}</link>
+		  <description><![CDATA[
+			  <p>{$lastCreated->getDescription()|htmlspecialchars}</p>
+			  <p>{translate key="read_article" default="Read full article:"} <a href="{link item=$lastCreated}">{$lastCreated->getName()}</a></p>
+		  ]]]]><![CDATA[></description>
+		  <pubDate>{$lastCreated->getCreateDate()|date_form:'r'}</pubDate>
+		  <guid isPermaLink="true">{link item=$lastCreated}</guid>
+    </item>
+{/foreach}
+  </channel>  
+</rss>
+]]></content>
+        </row>
+	</table>
+
+    <table name="configuration">
+        <row update="false">
+            <cid key="true">{CID}</cid>
+            <package key="true">rss-latest</package>
+            <name key="true">title</name>
+            <value>Latest pages</value>
+            <type>string</type>
+        </row>
+        <row update="false">
+            <cid key="true">{CID}</cid>
+            <package key="true">rss-latest</package>
+            <name key="true">description</name>
+            <value>The 10 latest website entries.</value>
+            <type>string</type>
+        </row>
+        <row update="false">
+            <cid key="true">{CID}</cid>
+            <package key="true">rss-latest</package>
+            <name key="true">number.of.entries</name>
+            <value>10</value>
+            <type>integer</type>
+        </row>
+        <row update="false">
+            <cid key="true">{CID}</cid>
+            <package key="true">rss-latest</package>
+            <name key="true">show.optional.infos</name>
+            <value>0</value>
+            <type>boolean</type>
+        </row>
+    </table>    
+
+	
+</content>

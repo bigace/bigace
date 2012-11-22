@@ -1,0 +1,160 @@
+<content version="1.0">
+
+    <table name="template">
+        <row>
+            <name key="true">SilverSide</name>
+            <cid key="true">{CID}</cid>
+            <description>BIGACE free Template 'SilverSide' by Shaibal Mandal.</description>
+            <inwork>0</inwork>
+            <include>0</include>
+            <timestamp function="true">unix_timestamp()</timestamp>
+            <userid>1</userid>
+            <filename>SilverSide.tpl</filename>
+            <content><![CDATA[<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+{load_item itemtype="1" id="-1" assign="topLevel"}
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+	<title>SilverSide - {$MENU->getName()}</title>
+    <meta name="generator" content="{bigace_version full='true'}">
+	<link rel="stylesheet" href="{$stylesheet}" type="text/css" />
+	<!--[if gte IE 5]>
+	<style>
+	{literal}
+	#b2 {width: 217px;}
+	#b2 ul a {height: 1em;}
+	#b2 li {float: left; clear: both; width: 100%;}
+	.noteblock1{width: 452px; margin-right:0px;}
+	{/literal}
+	</style>
+	<![endif]-->
+</head>
+
+<body>
+{load_item_childs id=$topLevel->getID() assign="topMenus"}
+<div id="container">
+	<div id="navcontainer">
+		<span class="buttonTextStart"><a href="{link item=$topLevel}">{$topLevel->getName()}</a></span>
+        {foreach from=$topMenus item="menuEntry"}
+		<span class="buttonText"><a href="{link item=$menuEntry}">{$menuEntry->getName()}</a></span>
+        {/foreach}
+	</div>
+
+  <div id="main">
+	  <div id="fpic">
+            <div id="smenu">
+                <div>
+                    <div id="b2">
+                        <ul>
+	                        <li>
+	                            <div class="bhz"><span class="hw2">{$MENU->getName()}</span></div>
+	                        </li>
+                        {if $MENU->getID() == $topLevel->getID()}
+							</ul>
+							<div class="desc">{$MENU->getDescription()}</div>
+                        {else}
+                            {if $MENU->hasChildren()}
+                                {navigation id=$MENU->getID() prefix="<li>" suffix="</li>"}
+		                        </ul>
+                            {else}
+                                {if $MENU->getParentID() == $topLevel->getID()}
+                                    </ul>
+                                    <div class="desc">{$MENU->getDescription()}</div>
+                                {else}
+                                    {navigation id=$MENU->getParentID() prefix="<li>" suffix="</li>"}
+			                        </ul>
+                                {/if}
+                            {/if}
+                        {/if}
+                    </div>
+                </div>
+            </div>
+   	</div>
+
+        <hr class="push"/>
+
+        <div id="sidebar">
+            <div class="headertext1">Sidebar<br></div>
+            <br>
+            <span class="headertext2">[Template Info]</span>
+            <br>
+            Remove the Sidebar by removing the complete &lt;div id="sidebar"&gt;.
+            If you keep it, the Sidebars height depends on its content.
+            <br>
+            The upper menu can take up to 6 items, depending on the menu names length.
+            The Submenu can take up to 7 items.
+            <br>
+            Depending on the situation, the Menus description or available submenus are shown.
+            <br><br>
+
+            <span class="headertext2">[Links]</span>
+
+            <br>
+            <a href="http://www.bigace.de/">Bigace Web CMS</a> <br/>
+            <a href="http://www.bigace.de/">Forum</a> <br/>
+            <a href="http://www.bigace.de/">Documentation</a>
+            <br><br>            
+
+            <span class="headertext2">[Credits]</span>
+            <br>
+            This Template port was done by <a href="http://www.kevinpapst.de" target="_blank">Kevin Papst</a>. 
+            It was originally written by <a href="mailto:findshaibal@yahoo.com">Shaibal Mandal</a>.
+            More details on the <a href="http://www.oswd.org/design/preview/id/3357" target="_blank">OSWD Page</a>.
+            <br><br>            
+
+        </div>
+            
+       {modul menu=$MENU}
+
+	</div>
+
+    <div id="footer">
+    (c) Copyright 2007 Your company name
+        {if $USER->isAnonymous()}
+                    | <a href="{link_login}">Login</a>
+        {else}
+                    {permission_editcontent assign='allowEditor'}
+                    {if $allowEditor}
+                    | <a href="{link_editor id=$MENU->getID() language=$MENU->getLanguageID()}">Edit content</a>
+                    {/if}
+                    | <a href="{link_admin}">Admin</a>
+                    | <a href="{link_logout}">Logout</a>
+        {/if}
+    </div>
+
+</div>
+</body>
+</html>
+]]></content>
+        </row>
+    </table>    
+
+    <table name="stylesheet">
+        <row>
+            <name key="true">SilverSide</name>
+            <cid key="true">{CID}</cid>
+            <description>Stylesheet for the 'SilverSide' Template.</description>
+            <filename>silverSide/style.css</filename>
+            <editorcss>SilverSide-Editor</editorcss>
+        </row>
+        <row>
+            <name key="true">SilverSide-Editor</name>
+            <cid key="true">{CID}</cid>
+            <description>Editor Stylesheet for the 'SilverSide' Template.</description>
+            <filename>silverSide/editor.css</filename>
+            <editorcss>SilverSide-Editor</editorcss>
+        </row>
+    </table>    
+
+    <table name="design">
+        <row>
+            <name key="true">SilverSide</name>
+            <cid key="true">{CID}</cid>
+            <description>SilverSide free Template port.</description>
+            <stylesheet>SilverSide</stylesheet>
+            <template>SilverSide</template>
+            <portlets>0</portlets>
+        </row>
+    </table>    
+
+</content>

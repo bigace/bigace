@@ -1,0 +1,17 @@
+<refentry id="{@id command}">
+ <refnamediv>
+  <refname>BIGACE Commands</refname>
+ </refnamediv>
+ <refsynopsisdiv>
+  <author>
+   Kevin Papst
+  </author>
+ </refsynopsisdiv>
+ <refsect1 id="{@id commandintro}">
+  <title>{@link http://www.bigace.de BIGACE Web CMS} - Command Documentation</title>
+  <para>Commands are the View &amp; Controller-layer of the BIGACE MVC implementation.</para>
+  <para>The image command for example has some parameter to {@link http://wiki.bigace.de/bigace:manual:imageresize resize images}.</para>
+  <para>Detailed documentation how to use this API can be found in our wiki:</para>
+  {@link http://wiki.bigace.de/ BIGACE Developer Documentation}
+ </refsect1>
+</refentry>

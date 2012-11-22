@@ -1,0 +1,2 @@
+
+FCKLang['DlgSaveToBigaceTitle']		= 'Save Page' ;

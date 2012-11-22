@@ -1,0 +1,25 @@
+﻿/* ----------------------------------------------------------------------------------------------------------
+
+    This website template was downloaded from http://www.nuviotemplates.com - visit us for more templates
+
+    Structure:
+    display; position; float; z-index; overflow; width; height; margin; padding; border; background; align; font;
+
+---------------------------------------------------------------------------------------------------------- */
+
+body {border:0; margin:0; padding:0; font-size:12pt}
+
+a {color:#000; text-decoration:none;}
+
+h1, h2, h3 {page-break-after:avoid; page-break-inside:avoid;}
+
+table {border-collapse: collapse; border-width:1px; border-style:solid;}
+th, td {display:table-cell; border-width:1px; border-style:solid;}
+
+
+hr {display:block; height:2px; margin:0; padding:0; background:#000; border:0 solid #000; color:#000;}
+
+blockquote {page-break-inside:avoid}
+ul, ol, dl {page-break-before:avoid}
+
+.noprint {display:none;}

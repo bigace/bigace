@@ -1,0 +1,174 @@
+<content version="1.0">
+
+    <table name="template">
+        <row>
+            <name key="true">Bike-Riders-Home</name>
+            <cid key="true">{CID}</cid>
+            <description>The Bike-Riders Homepage</description>
+            <inwork>0</inwork>
+            <include>0</include>
+            <timestamp function="true">unix_timestamp()</timestamp>
+            <userid>1</userid>
+            <filename>Bike-Riders-Home.tpl</filename>
+            <content><![CDATA[{include file="Bike-Riders-Header.tpl"}
+
+		<div id="leftside">
+            {directory name="stylesheets" assign="imgDir"}
+            {random_image amount="2" dir="$imgDir/Bike-Riders/pictures/" assign="images"}
+            <img src="{directory}Bike-Riders/pictures/{$images[0]}" />
+            <img src="{directory}Bike-Riders/pictures/{$images[1]}" />
+		</div>
+		<div id="rightside" class="contentarea">
+            {if $MENU->getID() > -1}
+                <div id="breadcrumbs">{breadcrumb id=$MENU->getID() suffix=' &raquo;'}</div>
+            {/if}
+
+            {modul menu=$MENU}
+		</div>
+
+{include file="Bike-Riders-Footer.tpl"}
+            ]]></content>
+        </row>
+        <row>
+            <name key="true">Bike-Riders</name>
+            <cid key="true">{CID}</cid>
+            <description>A Bike-Riders content page.</description>
+            <inwork>0</inwork>
+            <include>0</include>
+            <timestamp function="true">unix_timestamp()</timestamp>
+            <userid>1</userid>
+            <filename>Bike-Riders.tpl</filename>
+            <content><![CDATA[{include file="Bike-Riders-Header.tpl"}
+
+		<div id="rightsidefull" class="contentarea">
+            {if $MENU->getID() > -1}
+                <div id="breadcrumbs">{breadcrumb id=$MENU->getID() suffix=' &raquo;'}</div>
+            {/if}
+
+            {modul menu=$MENU}
+		</div>
+
+{include file="Bike-Riders-Footer.tpl"}
+            ]]></content>
+        </row>
+        <row>
+            <name key="true">Bike-Riders-Header</name>
+            <cid key="true">{CID}</cid>
+            <description>Header of the Bike-Riders Design.</description>
+            <inwork>0</inwork>
+            <include>1</include>
+            <timestamp function="true">unix_timestamp()</timestamp>
+            <userid>1</userid>
+            <filename>Bike-Riders-Header.tpl</filename>
+            <content><![CDATA[<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    {metatags item=$MENU}
+    <link rel="stylesheet" href="{directory}Bike-Riders/style.css" type="text/css" media="screen, projection" />
+	<!--[if lte IE 7]>
+        <link rel="stylesheet" type="text/css" href="{directory}Bike-Riders/ie.css" media="screen" />
+    <![endif]-->
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js"></script>	
+	<script type="text/javascript" language="javascript" src="{directory}Bike-Riders/menu.js"></script>
+    {load_item id="-1" itemtype="1" assign="topLevel"}
+</head>
+<body>
+<div id="central">
+	<div id="header">
+        <div class="sitename"><a href="{link item=$topLevel}">{sitename}</a></div>
+	</div>
+    <div id="navlist">
+        <ul class="dropdown">
+            <li><a href="{link item=$topLevel}">{$topLevel->getName()}</a></li>
+            {navitree2 item=$topLevel prefix="<li>" suffix="</li>" subprefix="<ul>" subsuffix="</ul>"}
+        </ul>
+        <div style="clear:both;height:1px;">&nbsp;</div>
+    </div>
+	<div id="content">
+]]></content>
+        </row>
+        <row>
+            <name key="true">Bike-Riders-Footer</name>
+            <cid key="true">{CID}</cid>
+            <description>Footer for the Bike-Riders Design.</description>
+            <inwork>0</inwork>
+            <include>1</include>
+            <timestamp function="true">unix_timestamp()</timestamp>
+            <userid>1</userid>
+            <filename>Bike-Riders-Footer.tpl</filename>
+            <content><![CDATA[
+		<div id="footer">
+            <p>
+                Powered by {bigace_version link=true full=true} and
+                <a rel="nofollow" href="http://www.freewebsitetemplates.com">Free Website Templates</a>
+            </p>
+        </div>
+	</div>
+</div>
+</body>
+</html>]]></content>
+        </row>
+	</table>
+
+    <table name="stylesheet">
+        <row>
+            <name key="true">Bike-Riders_Stylesheet</name>
+            <cid key="true">{CID}</cid>
+            <description>CSS definitions for the Bike-Riders Layout.</description>
+            <filename>Bike-Riders/style.css</filename>
+            <editorcss>Bike-Riders_Editor</editorcss>
+        </row>
+        <row>
+            <name key="true">Bike-Riders-IE_Stylesheet</name>
+            <cid key="true">{CID}</cid>
+            <description>Additional IE CSS definitions for the Bike-Riders Layout.</description>
+            <filename>Bike-Riders/ie.css</filename>
+            <editorcss>Bike-Riders_Editor</editorcss>
+        </row>
+        <row>
+            <name key="true">Bike-Riders_Editor</name>
+            <cid key="true">{CID}</cid>
+            <description>CSS definitions for the Bike-Riders theme, used in any WYSIWYG Editor.</description>
+            <filename>Bike-Riders/editor.css</filename>
+            <editorcss>Bike-Riders_Editor</editorcss>
+        </row>
+    </table>
+
+    <table name="design">
+        <row>
+            <name key="true">Bike-Riders-Home</name>
+            <cid key="true">{CID}</cid>
+            <description>The Bike-Riders Home page.</description>
+            <stylesheet>Bike-Riders_Stylesheet</stylesheet>
+            <template>Bike-Riders-Home</template>
+            <portlets>0</portlets>
+        </row>
+        <row>
+            <name key="true">Bike-Riders</name>
+            <cid key="true">{CID}</cid>
+            <description>A Bike-Riders content page.</description>
+            <stylesheet>Bike-Riders_Stylesheet</stylesheet>
+            <template>Bike-Riders</template>
+            <portlets>0</portlets>
+        </row>
+    </table>
+
+    <table name="configuration">
+        <row>
+            <cid key="true">{CID}</cid>
+            <package key="true">templates</package>
+            <name key="true">application.footer</name>
+            <value>Bike-Riders-Footer</value>
+            <type>tpl_inc</type>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <package key="true">templates</package>
+            <name key="true">application.header</name>
+            <value>Bike-Riders-Header</value>
+            <type>tpl_inc</type>
+        </row>
+    </table>
+
+</content>

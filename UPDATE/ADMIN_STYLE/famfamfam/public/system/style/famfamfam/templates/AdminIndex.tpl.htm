@@ -1,0 +1,72 @@
+
+    <script type="text/javascript">
+    <!-- 
+        var tt=null;
+        var ti=null;
+        document.onmousemove = updateTooltip;
+        
+        function updateTooltip(e) {
+        	x = (document.all) ? window.event.x + document.body.scrollLeft : e.pageX;
+        	y = (document.all) ? window.event.y + document.body.scrollTop  : e.pageY;
+        	if (tt != null) {
+        		tt.style.left = (x + 20) + "px";
+        		tt.style.top  = (y + 20) + "px";
+        	}
+        }
+        
+        function showTooltip(strId,objSelf) {
+        	ti = document.getElementById(strId+"_img");
+        	ti.title = "";
+        	tt = document.getElementById(strId);
+        	tt.style.display = "block";
+        	objSelf.onmouseout = new Function('fx','tt.style.display = "none"');
+        }
+
+    	function changeLayout() {
+    		document.forms.layoutSelect.submit();
+    	}
+        
+    // -->
+    </script>
+
+    <!-- BEGIN hint -->
+    <h3 class="error">{MESSAGE}</h3>
+    <!-- END hint -->
+    
+    <table border="0" width="100%" cellspacing="10" cellpadding="10">
+    <!-- BEGIN menuRow -->
+        <tr>
+            <!-- BEGIN menuEntry -->
+            <td align="left" valign="top" style="border:1px dashed #cccccc;padding:10px;width:33%">
+                <a href="{MENU_LINK}" onmouseover="showTooltip('tooltip_{MENU_ID}',this)">
+                <img class="tooltipImage" src="{AUTO_STYLE_DIR}menu/{MENU_ID}.png" title="{MENU_NAME}" alt="{MENU_NAME}" id="tooltip_{MENU_ID}_img" align="left">
+                </a>
+                <h2>{MENU_NAME}</h2>
+                {MENU_DESCRIPTION}
+                <a href="{MENU_LINK}"><img border="0" src="{AUTO_STYLE_DIR}style/action_go.gif"></a>
+                <div id="tooltip_{MENU_ID}" class="tooltip">{MENU_DESCRIPTION}</div>
+            </td>
+            <!-- END menuEntry -->
+        </tr>
+    <!-- END menuRow -->        
+    </table>
+
+    
+    <br />
+    <!-- BEGIN infoBox -->
+    <form name="layoutSelect" action="{FORM_ACTION}" method="POST" target="_self">
+    <table width="100%" cellspacing="10">
+    <tr>
+        <td align="center" valign="top" style="border:1px dashed #cccccc;padding:10px;width:33%"><b>{TRANSLATION_user}</b><br>{FIRSTNAME} {LASTNAME} ({USERNAME})</td>
+        <td align="center" valign="top" style="border:1px dashed #cccccc;padding:10px;width:33%"><b>Domain</b><br>{HOST}</td>
+        <td align="center" valign="top" style="border:1px dashed #cccccc;padding:10px;width:33%"><b>Admin Style</b><br>
+	        	<input type="hidden" name="method" value="{PARAM_STYLE}">
+	        	{STYLE_SELECT}
+		        <noscript>
+		        <button type="submit">{TRANSLATION_change_style}</button>
+		        </noscript>
+        </td>
+    </tr>
+    </table>
+    </form>
+    <!-- END infoBox -->        

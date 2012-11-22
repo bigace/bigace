@@ -1,0 +1,1 @@
+DELETE FROM {DB_PREFIX}group_frights WHERE fright='{FRIGHT_ID}' AND cid='{CID}'

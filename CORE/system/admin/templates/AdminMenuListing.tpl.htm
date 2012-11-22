@@ -1,0 +1,98 @@
+<!-- $Id: AdminMenuListing.tpl.htm,v 1.1 2007/06/04 00:09:26 kpapst Exp $ -->
+<!-- BEGIN formValues -->
+
+<script type="text/javascript">
+var ischecked = false;
+
+function checkAll()
+{
+    var myForm = document.getElementById('itemEditForm');
+    for (i=0; i<myForm.elements.length; i++) 
+    {
+        if (myForm.elements[i].type == 'checkbox') {
+            if ( !myForm.elements[i].disabled ) 
+            {
+                myForm.elements[i].checked = !ischecked;
+            }
+        }
+    }
+    ischecked = !ischecked;
+}
+    
+</script>
+
+{JAVASCRIPT}
+    
+<div id="coloredMenu">
+<form id="itemEditForm" name="itemEditForm" action="{ALL_SELECTED_ITEM_URL}" method="POST">
+<input type="hidden" name="data[id]" value="{DATA_ID}">
+
+<!-- END formValues -->
+
+<table cellspacing="1" cellpadding="4" border="0" width="100%" class="rightTable">
+
+    <!-- BEGIN autoheader -->
+	<tr>
+    	<td class="ThLeft" align="center"><p>&nbsp;</p></td>
+    	<td class="ThMiddle" align="left"><p>{TRANSLATION_name}</p></td>
+    	<td class="ThMiddle" align="center"><p>{TRANSLATION_admin}</p></td>
+        <td class="ThMiddle" align="center"><p>{TRANSLATION_edit_content}</p></td>
+        <td class="ThMiddle" align="center"><p>{TRANSLATION_preview}</p></td>
+    	<td class="ThMiddle" align="center"><p>{TRANSLATION_rights}</p></td>
+    	<td class="ThMiddle" align="center"><p>{TRANSLATION_delete}</p></td>
+    	<td class="ThRight" align="center" colspan="2"><p>{TRANSLATION_position}</p></td>
+	</tr>
+    <!-- END autoheader -->
+
+    <!-- BEGIN wayhome -->
+	<tr>
+		<td class="{CSS_CLASS}" align="left"><p>&nbsp;{TOOL_HISTORY}</p></td>
+		<td class="{CSS_CLASS}" align="left"><p>{BACK_LINK}</p></td>
+		<td class="{CSS_CLASS}" align="center"><p>{TOOL_ADMIN}</p></td>
+	    <td class="{CSS_CLASS}" align="center"><p>{TOOL_EDITOR}</p></td>
+		<td class="{CSS_CLASS}" align="center"><p>{TOOL_PREVIEW}</p></td>
+		<td class="{CSS_CLASS}" align="center"><p>{TOOL_RIGHTS}</p></td>
+		<td class="{CSS_CLASS}" align="center"><p>{TOOL_DELETE}</p></td>
+		<td class="{CSS_CLASS}" colspan="2" align="center"><p>&nbsp;</p></td>
+	</tr>
+    <!-- END wayhome -->
+
+    <!-- BEGIN spacer -->
+	<tr>
+    	<td colspan="9" class="{CSS_CLASS}">
+    	    <p>&nbsp;</p>
+    	</td>
+	</tr>
+    <!-- END spacer -->
+
+    <!-- BEGIN children -->
+	<tr>
+		<td class="{CSS_CLASS}" align="left"><p>&nbsp;{TOOL_HISTORY}</p></td>
+		<td class="{CSS_CLASS}" align="left"><p>{ITEM_NAME}</p></td>
+		<td class="{CSS_CLASS}" align="center"><p>{TOOL_ADMIN}</p></td>
+	    <td class="{CSS_CLASS}" align="center"><p>{TOOL_EDITOR}</p></td>
+	    <td class="{CSS_CLASS}" align="center"><p>{TOOL_PREVIEW}</p></td>
+		<td class="{CSS_CLASS}" align="center"><p>{TOOL_RIGHTS}</p></td>
+		<td class="{CSS_CLASS}" align="center"><p>{TOOL_DELETE}</p></td>
+	    <td class="{CSS_CLASS}" align="center"><p>{TOOL_UP}</p></td>
+	    <td class="{CSS_CLASS}" align="center"><p>{TOOL_DOWN}</p></td>
+	</tr>
+    <!-- END children -->
+    
+    <!-- BEGIN footer -->
+	<tr>
+    	<td colspan="6" class="{CSS_CLASS}" align="left">
+    	    &nbsp;
+        	<a href="#" onclick="checkAll();return false;"><img src="{AUTO_STYLE_DIR}arrow_ltr.png" border="0"></a>&nbsp;{TRANSLATION_choosen_objects}: {SELECT_MODE}
+        	&nbsp;<button type="submit" class="textLink">{TRANSLATION_process}</button>
+    	</td>
+    	<td colspan="3" class="{CSS_CLASS}" align="center">
+    	    {CREATE_MENU_LINK}
+    	</td>
+	</tr>
+    <!-- END footer -->
+	
+</table>
+
+</form>
+</div>

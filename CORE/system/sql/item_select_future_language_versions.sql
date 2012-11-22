@@ -1,0 +1,1 @@
+SELECT language FROM {DB_PREFIX}item_future WHERE id='{ITEM_ID}' AND cid='{CID}'

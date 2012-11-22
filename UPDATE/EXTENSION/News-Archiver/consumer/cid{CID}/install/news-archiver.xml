@@ -1,0 +1,50 @@
+<content version="1.0">
+
+    <table name="autojobs">
+        <row>
+            <name key="true">news_archiver</name>
+            <cid key="true">{CID}</cid>
+            <classname>classes.job.NewsArchiver</classname>
+            <state>30</state>
+        </row>
+    </table>    
+
+    <table name="configuration">
+        <row update="false">
+            <cid key="true">{CID}</cid>
+            <package key="true">news</package>
+            <name key="true">archive.id</name>
+            <value></value>
+            <type>menu_id</type>
+        </row>
+        <row update="false">
+            <cid key="true">{CID}</cid>
+            <package key="true">news</package>
+            <name key="true">archive.min.age.days</name>
+            <value>0</value>
+            <type>integer</type>
+        </row>
+        <row update="false">
+            <cid key="true">{CID}</cid>
+            <package key="true">news</package>
+            <name key="true">archive.min.age.month</name>
+            <value>1</value>
+            <type>integer</type>
+        </row>
+        <row update="false">
+            <cid key="true">{CID}</cid>
+            <package key="true">news</package>
+            <name key="true">template.archive.year</name>
+            <value></value>
+            <type>design</type>
+        </row>
+        <row update="false">
+            <cid key="true">{CID}</cid>
+            <package key="true">news</package>
+            <name key="true">template.archive.month</name>
+            <value></value>
+            <type>design</type>
+        </row>
+    </table>  
+
+</content>

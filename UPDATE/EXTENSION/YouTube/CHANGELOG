@@ -1,0 +1,17 @@
+INTRODUCTION
+-----------------
+To add a YouTube video simply add [youtube]youtube-id[/youtube] to the pages content and replace
+"youtube-id" with the YouTube Video ID. 
+
+Please <a href="http://wiki.bigace.de/bigace:extensions:youtube" target="_blank">read the documentation</a> for more infos about using the Plugin.
+
+<hr/>
+
+Version 1.1:
+--------------
+- Removed defined News constant
+- fixed parameter count in parse content
+
+Version 1.0:
+--------------
+- initial release with configurable width and height

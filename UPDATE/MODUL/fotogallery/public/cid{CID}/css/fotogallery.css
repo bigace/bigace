@@ -1,0 +1,12 @@
+#fgallery a, #fgallery a:hover {
+	border:0px;	text-decoration:none; }
+#fgallery img { border:0px; }
+#fgallery .thumbnail{
+	padding: 7px; border: 1px solid #ddd;
+	float: left; margin-right: 10px; margin-bottom: 15px; }	
+#fgallery a.thumnailLink{
+	font-weight: bold; text-decoration: none;
+	border:0px;	display:block; color: #8ab459; }
+#fgallery a.thumnailLink:hover{
+	font-weight: bold; text-decoration: none;
+	display:block; color: orange; }

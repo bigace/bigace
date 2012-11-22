@@ -1,0 +1,1 @@
+SELECT * FROM {DB_PREFIX}session WHERE id='{SESSION_ID}'

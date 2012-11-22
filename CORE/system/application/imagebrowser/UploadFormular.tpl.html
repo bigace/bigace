@@ -1,0 +1,65 @@
+<script type="text/javascript">
+
+    function checkFormular() 
+    {
+        canSend = true;
+        uploadForm = document.getElementById("uploadForm");
+        if (uploadForm.userfile.value == '') {
+            alert('{TRANSLATION_upload_js_choose_file}');
+            return false;
+        }/*
+        if (uploadForm.name.value == '') {
+            alert('{TRANSLATION_upload_js_choose_name}');
+            uploadForm.name.focus();
+            return false;
+        }*/
+        return true;
+    }
+   
+</script>
+
+<!-- BEGIN uploadForm -->
+<form name="uploadForm" id="uploadForm" action="{ACTION_LINK}" method="post" ENCTYPE="multipart/form-data" onSubmit="return checkFormular();">
+<input type="hidden" name="MAX_FILE_SIZE" value="{MAX_FILE_SIZE}">
+<table cellspacing="1" cellpadding="4" width="100%" align="center" class="tablesorter">
+<thead>
+  <tr>
+    <th colspan="2" class="autoTh" align="center"><img src="{AUTO_STYLE_DIR}item_{ITEMTYPE}_new.png"> {TRANSLATION_image_link_upload}</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td align="left">{TRANSLATION_upload_choose_file}</td>
+    <td align="left"><input type="file" name="userfile" id="userfile"></td>
+  </tr>
+  <tr>
+    <td align="left">{TRANSLATION_upload_name}</td>
+    <td align="left"><input type="text" name="data[name]" id="name" maxlength="200" size="35" value="{DATA_NAME}"></td>
+  </tr>
+  <tr>
+    <td align="left">{TRANSLATION_upload_description}</td>
+    <td align="left"><textarea name="data[description]" id="description" rows="5" cols="40" wrap="">{DATA_DESCRIPTION}</textarea></td>
+  </tr>
+  <tr>
+    <td align="left">{TRANSLATION_upload_language}</td>
+    <td align="left">
+        <select name="data[langid]" id="langid">
+            <!-- BEGIN language -->
+            <option value="{LANGUAGE_ID}" {LANGUAGE_SELECTED}>{LANGUAGE_NAME}</option>
+            <!-- END language -->
+        </select>
+    </td>
+  </tr>
+  <tr>
+    <td align="left">{TRANSLATION_upload_category}</td>
+    <td align="left">{CATEGORY_SELECTOR}</td>
+  </tr>
+  <tr>
+    <td class="autoBottom" colspan="2" align="center">
+        <input class="autoSubmit" type="submit" value="{TRANSLATION_upload_process_upload}">
+    </td>
+  </tr>
+</tbody>
+</table>
+</form>
+<!-- END uploadForm -->

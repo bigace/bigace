@@ -1,0 +1,94 @@
+<?php
+ini_set('include_path', '.');
+
+define('START_DELIM', '{');
+define('END_DELIM', '}');
+
+require_once('env-parser.php');
+require_once('file-util.php');
+require_once('db-util.php');
+require_once('app-util.php');
+require_once('upgrade-app.php');
+
+function admin_password_crypt($value) {
+    return md5($value);
+}
+
+$config_files = array( '/' => array( array('config.system.php.in', 'system/config/config.system.php'),
+                                     array('consumer.ini.in', 'system/config/consumer.ini')), 
+                       '/cgi-bin' => array() );
+
+$xml_schema_files = array(  "blix_design.xml", "community.xml", "fckeditor.xml", "language_en.xml"  );
+$upgrade_schema_files = array( );
+$reconf_schema_files = array( );
+$remove_schema_files = array( 'structure.xml' => 'main' );
+
+// ??? what is that for ???
+$psa_params = array (  );
+// name of the database config from APP-META
+$db_ids = array ( 'main' );
+// ??? what is that for ???
+$web_ids = array ( '/' );
+// settings from APP-META - all except enum and password
+$settings_params = array ( 'admin_name', 'admin_email', 'title' );
+// settings from APP-META which have choices - enter all possible values
+$settings_enum_params = array ( 'locale' => array( 'en-US' => 'en_US', 'de-DE' => 'de_DE' ) );
+// settings from APP-META which need to be crypted, password values
+$crypt_settings_params = array ( 'admin_password' );
+
+$psa_modify_hash = get_psa_modify_hash($psa_params);
+$db_modify_hash = get_db_modify_hash($db_ids);
+$web_modify_hash = get_web_modify_hash($web_ids);
+$settings_modify_hash = get_settings_modify_hash($settings_params);
+$settings_enum_modify_hash = get_settings_enum_modify_hash($settings_enum_params);
+$crypt_settings_modify_hash = get_crypt_settings_modify_hash($crypt_settings_params);
+
+$additional_modify_hash = $web_modify_hash; //;array_merge(get_additional_modify_hash(), $web_modify_hash);
+
+/*
+write_file("/tmp/bigaceaps.log", print_r(array_merge($psa_modify_hash,
+      $db_modify_hash, $settings_modify_hash, $settings_enum_modify_hash, $crypt_settings_modify_hash, $additional_modify_hash),true));
+*/
+
+if(count($argv) < 2)
+{
+    print "Usage: configure (install | upgrade <version> | configure | remove)\n";
+    exit(1);
+}
+
+$command = $argv[1];
+
+if($command == "upgrade")
+{
+    if($argv[2] && $argv[3]){
+	upgrade_app($argv[2], $argv[3], $config_files, $upgrade_schema_files, $db_ids, $psa_modify_hash, $db_modify_hash, $settings_modify_hash, $crypt_settings_modify_hash, $settings_enum_modify_hash, $additional_modify_hash);
+	exit(0);
+    }
+    else{
+	print "Error: upgrade version or release not specified.\n";
+	exit(1);
+    }
+}
+
+if($command == "install")
+{
+    configure($config_files, $xml_schema_files, array(), $db_ids, $psa_modify_hash, $db_modify_hash, $settings_modify_hash, $crypt_settings_modify_hash, $settings_enum_modify_hash, $additional_modify_hash);
+    exit(0);
+}
+
+if($command == "remove")
+{
+    remove_app($remove_schema_files, $db_ids, $psa_modify_hash, $db_modify_hash, $settings_modify_hash, $crypt_settings_modify_hash, $settings_enum_modify_hash, $additional_modify_hash);
+    exit(0);
+}
+
+if($command == "configure")
+{
+    configure($config_files, array(), $reconf_schema_files, $db_ids, $psa_modify_hash, $db_modify_hash, $settings_modify_hash, $crypt_settings_modify_hash, $settings_enum_modify_hash, $additional_modify_hash);
+    exit(0);
+}
+
+print "Error: unknown command $command.\n";
+exit(1);
+
+?>

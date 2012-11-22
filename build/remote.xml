@@ -1,0 +1,199 @@
+<project name="BIGACE-Remote" default="help-remote" basedir="..">
+
+	<!--
+	    ##########################################################
+		# Loads the main XML file to have a proper build         #   
+		# environment. Adjust the settings in there, NOT HERE!   #
+	    ##########################################################
+	-->
+	<import file="./environment.xml"/>
+
+	<description>
+        Remote tasks for the BIGACE Web CMS.
+		
+		It helps, deploying parts or the complete application
+		to remote destinations.
+		
+		See http://www.bigace.de/ for more information about the project.
+	
+	    BIGACE - a PHP and MySQL based Web CMS.
+	 	Copyright (C) Kevin Papst.
+		Distributed under the terms of the GNU General Public License.
+		
+		$Id: remote.xml,v 1.1 2008/04/27 18:08:36 kpapst Exp $
+    </description>
+
+	<!--
+		#####################################################
+        ##   [START] FTP TASKS                             ##
+		#####################################################
+	-->
+
+	<!--
+		This prepares a BIGACE installation within an FTP Location.
+		Everything (except the System Config Files) is copied to the remote Directory.
+		ATTENTION: All existing resources will be overwritten!
+	-->
+	<target name="ftp.core" description="[FTP] Deploy the Core System.">
+		<antcall target="ftp.core.param">
+			<param name="directory-to-deploy" value=""/>
+		</antcall>
+    </target>
+
+	<target name="ftp.consumer" description="[FTP] Deploy the complete Consumer Directory.">
+		<antcall target="ftp.core.param">
+			<param name="directory-to-deploy" value="consumer/"/>
+		</antcall>
+    </target>
+
+	<target name="ftp.misc" description="[FTP] Deploy the misc Directory.">
+		<antcall target="ftp.core.param">
+			<param name="directory-to-deploy" value="misc/"/>
+		</antcall>
+    </target>
+
+	<target name="ftp.misc.installation" description="[FTP] Deploy the Installation Console.">
+		<antcall target="ftp.core.param">
+			<param name="directory-to-deploy" value="misc/install/"/>
+		</antcall>
+    </target>
+
+	<target name="ftp.core.specific" description="[FTP] Deploy files we currently work on.">
+		<antcall target="ftp.core.param">
+			<param name="directory-to-deploy" value="system/admin/plugins/system/updates/"/>
+		</antcall>
+    </target>
+
+	<target name="ftp.system" description="[FTP] Deploy the complete System Directory.">
+		<antcall target="ftp.core.param">
+			<param name="directory-to-deploy" value="system/"/>
+		</antcall>
+    </target>
+
+	<target name="ftp.system.classes" description="[FTP] Deploy the System Classes.">
+		<antcall target="ftp.core.param">
+			<param name="directory-to-deploy" value="system/classes/"/>
+		</antcall>
+    </target>
+
+	<target name="ftp.system.admin" description="[FTP] Deploy the System Classes.">
+		<antcall target="ftp.core.param">
+			<param name="directory-to-deploy" value="system/admin/"/>
+		</antcall>
+    </target>
+
+	<target name="ftp.system.command" description="[FTP] Deploy the System Commands.">
+		<antcall target="ftp.core.param">
+			<param name="directory-to-deploy" value="system/command/"/>
+		</antcall>
+    </target>
+
+	<target name="ftp.system.libs" description="[FTP] Deploy the System Libraries.">
+		<antcall target="ftp.core.param">
+			<param name="directory-to-deploy" value="system/libs/"/>
+		</antcall>
+    </target>
+
+	<target name="ftp.system.administration" description="[FTP] Deploy the Administration - Classes and Plugins.">
+		<antcall target="ftp.core.param">
+			<param name="directory-to-deploy" value="system/classes/administration/"/>
+		</antcall>
+		<antcall target="ftp.core.param">
+			<param name="directory-to-deploy" value="system/admin/"/>
+		</antcall>
+    </target>
+
+	<target name="ftp.specific.directory" description="[FTP] Deploy the specified Directory.">
+		<antcall target="ftp.core.param">
+			<param name="directory-to-deploy" value="system/admin/plugins/help/feedback/"/>
+		</antcall>
+    </target>
+	
+	<target name="ftp.editor" description="[FTP] Deploy the Editor - Public and System Directorys.">
+		<antcall target="ftp.core.param">
+			<param name="directory-to-deploy" value="system/editor/"/>
+		</antcall>
+		<antcall target="ftp.core.param">
+			<param name="directory-to-deploy" value="addon/FCKeditor/"/>
+		</antcall>
+    </target>
+	
+	<!--
+		# INTERNAL #
+		Copies the given Directory to an FTP Location.
+		Needs the Property "directory-to-deploy" pointing to a valid Project Directory.
+
+		Attention: All existing resources will be overwritten!
+	-->
+	<target name="ftp.core.param" if="directory-to-deploy">
+		<echo>Deploying to '${ftp.directory}/${directory-to-deploy}' on '${ftp.host}'</echo>
+		<ftp verbose="true" server="${ftp.host}" port="${ftp.port}" userid="${ftp.user}" 
+			 passive="true" password="${ftp.pass}" remotedir="${ftp.directory}/${directory-to-deploy}">
+	  	    <fileset dir="${core.src}/${directory-to-deploy}">
+	  	    	<patternset refid="always.exclude.files" />
+	  	    	<!-- 
+	  	    		Remove the following line if you want to install a fresh system.
+		  	    	If you use this as Update task, leave it to keep your Config Files untouched.
+		  	    -->	
+	  	    	<patternset refid="exclude.test.files" />
+	  	    </fileset>
+		</ftp>	
+    </target>
+	
+	<target name="ftp.public" description="[FTP] Deploy the Public Folders.">
+		<antcall target="ftp.core.param">
+			<param name="directory-to-deploy" value="public/"/>
+		</antcall>
+    </target>
+
+	<target name="ftp.public.fckeditor" description="[FTP] Deploys the FCKEditor to an FTP Location.">
+		<ftp verbose="true" server="${ftp.host}" port="${ftp.port}" userid="${ftp.user}" 
+			password="${ftp.pass}" remotedir="${ftp.directory}/addon/FCKeditor/">
+	  	    <fileset refid="sources.FCKeditor"/>
+		</ftp>
+	</target>
+	
+	<!--
+		#####################################################
+        ##   [START] SCP TASKS                             ##
+		#####################################################
+	-->
+	
+	<!--
+		This prepares a BIGACE installation within an SCP Location.
+		Everything (except the System Config Files) is copied to the remote Directory.
+		ATTENTION: All existing resources will be overwritten!
+	-->
+	<target name="scp.core" description="[SCP] Deploys the CORE System.">
+		<!-- Create remote directory -->
+		<sshexec host="${scp.host}" username="${scp.user}" 
+			password="${scp.pass}" trust="true" 
+			command="mkdir -p ${scp.directory}"/>
+
+		<scp todir="${scp.user}@${scp.host}:${scp.directory}" 
+			password="${scp.pass}" trust="true">
+	  	    <fileset dir="${core.src}">
+	  	    	<patternset refid="always.exclude.files" />
+	  	    	<!-- 
+	  	    		Remove the following line if you want to install a fresh system.
+		  	    	If you use this as Update task, leave it, to keep your Config Files untouched.
+		  	    -->	
+	  	    	<patternset refid="exclude.test.files" />
+	  	    </fileset>
+	  	</scp>
+	</target>
+
+	<!--
+		#####################################################
+        ##   [START] HELP                                  ##
+		#####################################################
+	-->
+	<target name="help-remote">
+		<echo taskname="INFO" level="info">
+BIGACE - a PHP and MySQL based Web CMS.
+Copyright (C) Kevin Papst.
+Distributed under the terms of the GNU General Public License.
+		</echo>
+	</target>
+	
+</project>

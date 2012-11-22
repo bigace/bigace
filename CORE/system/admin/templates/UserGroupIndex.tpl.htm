@@ -1,0 +1,38 @@
+<!-- $Id: UserGroupIndex.tpl.htm,v 1.5 2009/07/04 23:06:30 kpapst Exp $ -->
+
+<form action="{CREATE_GROUP_URL}" method="post" class="actionForm">
+<button type="submit" class="groupadd">{TRANSLATION_add_group}</button>
+</form>
+
+<table class="tablesorter" cellspacing="0">
+<col />
+<col width="50"/>
+<col width="150"/>
+<col width="100"/>
+<!-- BEGIN autoheader -->
+<thead>
+	<tr>
+		<th>{TRANSLATION_name}</th>
+		<th align="center">{TRANSLATION_id}</th>
+		<th align="center">{TRANSLATION_member_count}</th>
+		<th align="center">{TRANSLATION_action}</th>
+	</tr>
+</thead>
+<!-- END autoheader -->
+<tbody>
+    <!-- BEGIN row -->
+    <tr class="{CSS}">
+        <td><a class="groupedit" href="{ADMIN_LINK}">{NAME}</a></td>
+        <td align="center">{ID}</td>
+        <td align="center">{MEMBERS}</td>
+        <td align="center"><a class="delete" onclick="return confirm('{TRANSLATION_confirm_delete_group}')" href="{DELETE_LINK}">{TRANSLATION_delete}</a></td>    </tr>
+    <!-- END row -->
+	</tbody>
+</table>
+
+<script type="text/javascript">
+$(document).ready( function() { 
+        $(".tablesorter").tablesorter({ widgets: ['zebra'], headers: { 3: {sorter: false} } }); 
+    } 
+);
+</script>

@@ -1,0 +1,76 @@
+<!-- $Id: AdminDesigns.tpl.htm,v 1.6 2009/04/30 22:55:32 kpapst Exp $ -->
+<b>{TRANSLATION_title_existing_design}</b><br/>
+<table class="tablesorter" id="table-1" cellspacing="0" width="{AUTO_LARGE_FORM}">
+<col />
+<col />
+<col />
+<col />
+<col />
+<col width="130" />
+<!-- BEGIN autoheader -->
+<thead>
+	<tr>
+		<th>{TRANSLATION_name}</th>
+		<th>{TRANSLATION_description}</th>
+		<th>{TRANSLATION_template}</th>
+		<th>{TRANSLATION_stylesheet}</th>
+		<th onMouseOver="tooltip('{TRANSLATION_portlets_info}')" onMouseOut="nd();">{TRANSLATION_portlets}</th>
+		<th align="center">{TRANSLATION_action}</th>
+	</tr>
+</thead>
+<!-- END autoheader -->
+<tbody>
+    <!-- BEGIN row -->
+    <tr>
+        <td><a class="edit" href="{EDIT_URL}">{NAME}</a></td>
+        <td>{DESCRIPTION}</td>
+        <td align="center">{TEMPLATE}</td>
+        <td align="center">{STYLESHEET}</td>
+        <td align="center">{PORTLET}</td>
+        <td align="center">{DELETE}</td>
+    </tr>
+    <!-- END row -->
+	</tbody>
+</table>
+
+<script type="text/javascript">
+$(document).ready( function() { 
+        $("#table-1").tablesorter({ widgets: ['zebra'], headers: { 2: {sorter: false}, 3: {sorter: false}, 4: {sorter: false}, 5: {sorter: false} } }); 
+    } 
+);
+</script>
+
+
+<br/> 
+
+<b>{TRANSLATION_title_create_design}</b><br/>
+<form action="{CREATE_URL}" method="POST">
+<table class="tablesorter" cellspacing="0">
+<col />
+<col />
+<col />
+<col />
+<col />
+<col width="130" />
+<thead>
+	<tr>
+		<th>{TRANSLATION_name}</th>
+		<th>{TRANSLATION_description}</th>
+		<th>{TRANSLATION_template}</th>
+		<th>{TRANSLATION_stylesheet}</th>
+		<th align="center" onMouseOver="tooltip('{TRANSLATION_portlets_info}')" onMouseOut="nd();">{TRANSLATION_portlets}</th>
+		<th align="center">{TRANSLATION_action}</th>
+	</tr>
+</thead>
+<tbody>
+    <tr>
+        <td align="center"><input type="text" name="designName" value="{NEW_NAME}" class="longText" /></td>
+        <td align="center"><input type="text" name="description" value="{NEW_DESCRIPTION}" class="longText" /></td>
+        <td align="center">{TEMPLATE}</td>
+        <td align="center">{STYLESHEET}</td>
+        <td align="center"><input type="checkbox" value="1" name="portletSupport"></td>
+        <td align="center"><button type="submit" class="save">{TRANSLATION_create}</button></a></td>
+    </tr>
+</tbody>
+</table>
+</form>

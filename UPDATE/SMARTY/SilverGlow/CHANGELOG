@@ -1,0 +1,5 @@
+Version 1.1:
+------------
+
+- removed UTF-8 problematic lower modifier (see <a href="http://forum.bigace.de/general/french-accent-issue/" target="_blank">Forum</a>)
+- added CHANGELOG

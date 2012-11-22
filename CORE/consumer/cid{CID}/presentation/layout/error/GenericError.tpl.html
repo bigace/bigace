@@ -1,0 +1,130 @@
+ <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+            "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>{TITLE}</title>
+    <meta HTTP-EQUIV="Pragma" CONTENT="no-cache">
+    <meta HTTP-EQUIV="Cache-Control" CONTENT="no-cache">
+    <meta NAME="generator" CONTENT="BIGACE">
+    <meta NAME="robots" CONTENT="noindex, nofollow">
+    <link rel="stylesheet" href="{AUTO_ERROR_DIR}errorpage.css" type="text/css">
+    <style type="text/css">
+    body { background-color:#EFEFEF; color:#000000; }
+    .home { background:url({AUTO_IMAGE_DIR}home.gif) 0 0 no-repeat; padding-left:25px; }
+    .login { background:url({AUTO_IMAGE_DIR}login.gif) 0 0 no-repeat; padding-left:25px; }
+    .logout { background:url({AUTO_IMAGE_DIR}logout.gif) 0 0 no-repeat; padding-left:25px; }
+    a {color:#000080;}
+    a:hover {color:#0000FF;}
+    </style>
+    <script type="text/javascript">
+    <!--
+        function showLoginFormular()
+        {
+            if(!switchVisibility('dynamicLoginForm')) {
+                document.getElementById('loginText').innerHTML = 'Hide Formular';
+            } else {
+                document.getElementById('loginText').innerHTML = 'Login here';
+            }
+            return false;
+        }
+
+        function switchVisibility(elementID)
+        {
+            if(document.getElementById(elementID).style.visibility != 'visible')
+            {
+                document.getElementById(elementID).style.visibility = 'visible';
+                document.getElementById(elementID).style.display = 'block';
+                return false;
+            }
+            else
+            {
+                document.getElementById(elementID).style.visibility = 'hidden';
+                document.getElementById(elementID).style.display = 'none';
+                return true;
+            }
+        }
+    // -->
+    </script>
+</head>
+<body>
+    <TABLE align="center" valign="middle" STYLE="margin-top:20px" WIDTH="630" CELLPADDING="0" CELLSPACING="0" BORDER="0" BGCOLOR="#FFFFFF">
+    <tr>
+    <td WIDTH="22" VALIGN="TOP" ALIGN="LEFT"><IMG SRC="{AUTO_ERROR_DIR}topleft.gif" BORDER="0" WIDTH="22" HEIGHT="20"></td>
+    <td colspan="2" WIDTH="586">&nbsp;</td>
+    <td WIDTH="22" VALIGN="TOP" ALIGN="RIGHT"><IMG SRC="{AUTO_ERROR_DIR}topright.gif" BORDER="0" WIDTH="22" HEIGHT="20"></td>
+    </tr>
+
+    <tr>
+    <td WIDTH="22">&nbsp;</td>
+    <td COLSPAN="2" VALIGN="TOP" ALIGN="LEFT">
+        <div style="height:30px;border:0px;"></div>
+        <B>{ERROR_TITLE}</B><br /><br />
+        <i>{MESSAGE}</i>
+    </td>
+    <td WIDTH="22">&nbsp;</td>
+    </tr>
+
+    <tr>
+    <td WIDTH="22">&nbsp;</td>
+    <td colspan="2" VALIGN="TOP" ALIGN="LEFT">
+
+        <div style="height:40px;border:0px;"></div>
+        <!-- BEGIN EXTENDED_HTML -->
+        {EXTENDED_ERROR_HTML}
+        <div style="height:30px;border:0px;"></div>
+        <!-- END EXTENDED_HTML -->
+
+        <table border="0" width="100%">
+            <tr>
+                <td>
+                <a href="{HOME_URL}" class="home">HOME</a><br/>
+        <!-- BEGIN logout -->
+                    <a href="{LOGOUT_URL}" class="logout">Logout</a><br/><br/>
+        <!-- END logout -->
+        <!-- BEGIN login -->
+                    <a href="{LOGIN_URL}" class="login" onClick="return showLoginFormular();"><span id="loginText">Login here</span></a>
+        <!-- END login -->
+                </td>
+                <td>
+                </td>
+            </tr>
+        </table>
+        <!-- BEGIN login -->
+        <div id="dynamicLoginForm">
+            <br/>
+            <form action="{AUTHENTICATE_URL}" method="post">
+                <table border="0">
+                    <tr>
+                        <td>Username:</td>
+                        <td><input type="text" name="UID"></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Password:</td>
+                        <td><input type="password" name="PW"></td>
+                        <td><input type="submit" value="GO"></td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+        <!-- END login -->
+    </td>
+    <td WIDTH="22">&nbsp;</td>
+    </tr>
+
+    <tr>
+    <td WIDTH="22" VALIGN="TOP" ALIGN="LEFT"><IMG SRC="{AUTO_ERROR_DIR}bottomleft.gif" BORDER="0" WIDTH="22" HEIGHT="20"></td>
+    <td colspan="2">&nbsp;</td>
+    <td WIDTH="22" VALIGN="TOP" ALIGN="RIGHT"><IMG SRC="{AUTO_ERROR_DIR}bottomright.gif" BORDER="0" WIDTH="22" HEIGHT="20"></td>
+    </tr>
+
+    <tr>
+    <td WIDTH="22" BGCOLOR="#EFEFEF">&nbsp;</td>
+    <td WIDTH="608" COLSPAN="3" BGCOLOR="#EFEFEF" VALIGN="TOP" ALIGN="LEFT">
+    &nbsp;<br />
+    <br />
+    </td>
+    </tr>
+    </table>
+</body>
+</html>

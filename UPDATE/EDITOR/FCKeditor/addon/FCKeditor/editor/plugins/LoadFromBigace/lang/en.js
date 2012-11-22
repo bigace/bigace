@@ -1,0 +1,2 @@
+
+FCKLang['DlgLoadFromBigaceTitle']		= 'Load Page' ;

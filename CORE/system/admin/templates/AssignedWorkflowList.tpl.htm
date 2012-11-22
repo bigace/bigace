@@ -1,0 +1,27 @@
+<!-- $Id: AssignedWorkflowList.tpl.htm,v 1.1 2007/06/04 00:09:26 kpapst Exp $ -->
+<div id="coloredMenu">
+<table cellspacing="1" cellpadding="4" border="0" width="100%" class="categoryTable">
+	<!-- BEGIN autoheader -->
+	<tr>
+		<td class="ThLeft" align="left"><p>{TRANSLATION_workflow_name}</p></td>
+		<td class="ThMiddle" align="left"><p>{TRANSLATION_item_name}</p></td>
+		<td class="ThMiddle" align="center"><p>{TRANSLATION_language}</p></td>
+		<td class="ThMiddle" align="center"><p>{TRANSLATION_preview}</p></td>
+		<td class="ThMiddle" align="left"><p>{TRANSLATION_next_activity}</p></td>
+		<td class="ThRight" align="left"><p>{TRANSLATION_perform_step}</p></td>
+	</tr>
+	<!-- END autoheader -->
+	<!-- BEGIN row -->
+	<form action="{ACTION_URL}" method="POST">
+	<tr>
+		<td class="{CSS_CLASS}" align="left">{WORKFLOW_NAME}</td>
+		<td class="{CSS_CLASS}" align="left">{ITEM_NAME}</td>
+		<td class="{CSS_CLASS}" align="center"><img src="{AUTO_STYLE_DIR}languages/{LANG_LOCALE}.gif" border="0"></td>
+		<td class="{CSS_CLASS}" align="center"><a href="{PREVIEW_URL}" target="_blank"><img alt="{TRANSLATION_preview}" src="{AUTO_STYLE_DIR}preview.png" border="0"></a></td>
+		<td class="{CSS_CLASS}" align="left">{NEXT_ACTIVITY}</td>
+		<td class="{CSS_CLASS}" align="center"><button type="submit">{TRANSLATION_execute}</button></td>
+	</tr>
+	</form>
+	<!-- END row -->
+</table>
+</div>

@@ -1,0 +1,703 @@
+<project name="BIGACE-Environment" default="help" basedir="..">
+
+    <description>
+        Build File for the BIGACE Web CMS.
+        
+        It helps, deploying parts or the complete application
+        to local or remote destinations.
+        
+        See http://sourceforge.net/projects/bigace/ or 
+        http://www.bigace.de/.
+    
+        BIGACE - a PHP and MySQL based Web CMS.
+        Copyright (C) Kevin Papst.
+        Distributed under the terms of the GNU General Public License.
+        
+        $Id: environment.xml,v 1.27 2010/11/27 22:45:59 kpapst Exp $
+    </description>
+	
+	<!--
+	    ##########################################################
+		# Loads all required Properties from the Properties file.#
+		# Adjust the settings in there, NOT HERE!                #
+	    ##########################################################
+	-->
+    <dirname file="${ant.file.BIGACE-Environment}" property="buildDir" />
+	
+	<!-- 
+	     Load local properties first, and strip out PHP comments first.
+	     These can overwrite the settings from the build.properties file for development.  
+	-->
+    <loadproperties srcfile="${buildDir}/build-local.properties">
+      <filterchain>
+      	<filterreader classname="org.apache.tools.ant.filters.StripLineComments">
+      	  <param type="comment" value=";"/>
+      	  <param type="comment" value="#"/>
+      	</filterreader>
+      </filterchain>
+    </loadproperties>
+	<!-- 
+         Load default build properties, strip out PHP comments first.
+         These can overwrite the settings from the build.properties file for development.  
+	-->
+    <loadproperties srcfile="${buildDir}/build.properties">
+      <filterchain>
+        <filterreader classname="org.apache.tools.ant.filters.StripLineComments">
+          <param type="comment" value=";"/>
+          <param type="comment" value="#"/>
+        </filterreader>
+      </filterchain>
+    </loadproperties>
+	
+	<!-- Directory where the source files can be found  -->
+    <property name="sourceDir" location="${buildDir}/../"/>
+	<!-- Directory of the CORE Sources -->
+	<property name="core.src" location="${sourceDir}/CORE"/>
+	<!-- Directory of the UPDATE Core Sources -->
+	<property name="upgrade.src" location="${sourceDir}/CORE_UPGRADE"/>
+	<!-- Directory of the UPDATE Core Sources -->
+	<property name="update.core.src" location="${sourceDir}/UPDATE/CORE"/>
+	<!-- Directory of the UPDATE Addon Sources -->
+	<property name="update.addon.src" location="${sourceDir}/UPDATE/ADDON"/>
+	<!-- Directory of the UPDATE Authentication Sources -->
+	<property name="update.auth.src" location="${sourceDir}/UPDATE/AUTH"/>
+	<!-- Directory of the UPDATE Modul Sources -->
+	<property name="update.modul.src" location="${sourceDir}/UPDATE/MODUL"/>
+	<!-- Directory of the UPDATE Intern Sources -->
+	<property name="update.intern.src" location="${sourceDir}/UPDATE/INTERNAL"/>
+	<!-- Directory of the UPDATE Patch Sources -->
+	<property name="update.patch.src" location="${sourceDir}/UPDATE/PATCH"/>
+	<!-- Directory of the UPDATE Extension Sources -->
+	<property name="update.extension.src" location="${sourceDir}/UPDATE/EXTENSION"/>
+	<!-- Directory of the UPDATE Editor Sources -->
+	<property name="update.editor.src" location="${sourceDir}/UPDATE/EDITOR"/>
+	<!-- Directory of the UPDATE Admin Style Sources -->
+	<property name="update.adminstyle.src" location="${sourceDir}/UPDATE/ADMIN_STYLE"/>
+	<!-- Directory of the deprecated UPDATE Template Sources -->
+	<property name="update.template.src" location="${sourceDir}/UPDATE/TEMPLATE"/>
+	<!-- Directory of the UPDATE Smarty Template Sources -->
+	<property name="update.smarty.src" location="${sourceDir}/UPDATE/SMARTY"/>
+	<!-- Directory of the UPDATE Language Sources -->
+	<property name="update.language.src" location="${sourceDir}/UPDATE/LANGUAGE_PACKS"/>
+	<!-- Update Directory, relative from BIGACE Root -->
+	<property name="update.directory" value="misc/updates/"/>
+
+    <!-- Directory of the meta-sources -->
+    <property name="install.src" location="${sourceDir}/META-DATA/PRE-INSTALL"/>
+    <property name="aps.src" location="${sourceDir}/META-DATA/APS"/>
+
+    <!-- DEFAULT TEMPLATE FOR THE RELEASE -->
+    <property name="release.default.template" location="${update.smarty.src}/Design_Blix"/>
+
+    <!-- Name and location of the release files -->
+    <property name="upgrade.zip.filename" value="bigace_update_${upgrade.version}.zip"/>
+    <property name="install.zip.filename" value="bigace_install_${release.version}.zip"/>
+    <property name="install.aps.filename" value="bigace-${aps.version}.app.zip"/>
+    <property name="release.zip.filename" value="bigace_${release.version}.zip"/>
+    <property name="release.api.filename" value="bigace_phpdoc_${release.version}.zip"/>
+    	
+	<!-- DEFAULT TEMPLATE FOR THE RELEASE -->
+    <property name="release.default.template" location="${update.smarty.src}/Design_Blix"/>
+
+    <!-- Checks whether all required variables are set -->
+    <target name="release.check">
+        <condition property="release.initialized">
+            <and>
+                <isset property="editor" />
+                <isset property="release.path" />
+            </and>
+        </condition>
+    </target>
+
+    <!-- Checks whether all required variables are set -->
+    <target name="archive.check" depends="release.check" if="release.initialized">
+        <condition property="archive.initialized">
+            <and>
+                <isset property="release.folder" />
+            </and>
+        </condition>
+    </target>
+
+    <!-- Checks whether all required variables are set -->
+    <target name="upgrade.check" depends="release.check" if="release.initialized">
+        <condition property="upgrade.initialized">
+            <and>
+                <isset property="editor" />
+                <isset property="release.path" />
+            </and>
+        </condition>
+    </target>
+	
+    <!--
+        #####################################################
+        ##   [START] Tasks for reuse                       ##
+        #####################################################
+    -->
+
+    <target name="create.aps" depends="release.check" if="release.initialized">
+        <mkdir dir="${release.path}/APS/htdocs/"/>
+        <copy todir="${release.path}/APS/" overwrite="true">
+            <fileset dir="${aps.src}"/>
+        </copy>
+        <antcall target="release.files">
+            <param name="editor" value="${editor}"/>
+            <param name="release.path" value="${release.path}/APS/htdocs/"/>
+        </antcall>
+        <antcall target="release.empty-directories">
+            <param name="release.path" value="${release.path}/APS/htdocs/"/>
+        </antcall>
+        <mkdir dir="${release.path}/APS/scripts/adodb/"/>
+        <copy todir="${release.path}/APS/scripts/adodb/" overwrite="true">
+            <fileset refid="sources.adodb"/>
+        </copy>
+        <copy todir="${release.path}/APS/htdocs/consumer/cid1/" overwrite="true" includeemptydirs="true">
+            <fileset dir="${release.path}/APS/htdocs/consumer/cid{CID}/" />
+        </copy>
+        <copy todir="${release.path}/APS/htdocs/public/cid1/" overwrite="true" includeemptydirs="true">
+            <fileset dir="${release.path}/APS/htdocs/public/cid{CID}/" />
+        </copy>
+        <copy tofile="${release.path}/APS/scripts/XmlToSqlParser.php" 
+            file="${release.path}/APS/htdocs/system/classes/parser/XmlToSqlParser.php"/>
+        <copy tofile="${release.path}/APS/scripts/structure.xml" 
+            file="${release.path}/APS/htdocs/system/sql/structure.xml"/>
+        <mkdir dir="${release.path}/APS/scripts/xml/"/>
+        <copy todir="${release.path}/APS/scripts/" overwrite="true">
+            <fileset dir="${release.path}/APS/htdocs/consumer/cid1/install/">
+                <include name="*.xml"/>
+            </fileset>
+            <fileset file="${release.path}/APS/htdocs/system/sql/community.xml"/>
+        </copy>
+        <move tofile="${release.path}/APS/scripts/config.system.php.in" 
+            file="${release.path}/APS/htdocs/system/config/config.system.php"/>
+        <delete file="${release.path}/APS/htdocs/system/config/consumer.ini"/>
+        <delete dir="${release.path}/APS/htdocs/misc/install/"/>
+        <zip destfile="${release.path}/${install.aps.filename}">
+            <fileset dir="${release.path}/APS/" />
+        </zip>
+        <delete dir="${release.path}/APS/"/>
+    </target>
+
+    <target name="release.empty-directories" description="Creates required empty directories." if="release.path">
+        <mkdir dir="${release.path}/misc/logging/"/>
+        <mkdir dir="${release.path}/plugins/"/>
+        <mkdir dir="${release.path}/addon/smarty/"/>
+        <mkdir dir="${release.path}/addon/smarty/cache/"/>
+        <mkdir dir="${release.path}/addon/smarty/configs/"/>
+        <mkdir dir="${release.path}/addon/smarty/templates/"/>
+        <mkdir dir="${release.path}/addon/smarty/templates_c/"/>
+        <mkdir dir="${release.path}/system/admin/smarty/"/>
+        <mkdir dir="${release.path}/system/admin/smarty/cache/"/>
+        <mkdir dir="${release.path}/system/admin/smarty/configs/"/>
+        <mkdir dir="${release.path}/system/admin/smarty/templates/"/>
+        <mkdir dir="${release.path}/system/admin/smarty/templates_c/"/>
+        <mkdir dir="${release.path}/consumer/cid{CID}/smarty/"/>
+        <mkdir dir="${release.path}/consumer/cid{CID}/smarty/cache/"/>
+        <mkdir dir="${release.path}/consumer/cid{CID}/smarty/configs/"/>
+        <mkdir dir="${release.path}/consumer/cid{CID}/smarty/templates_c/"/>
+    </target>
+
+    <target name="create.upgrade" depends="release.check" if="release.initialized">
+    	<delete file="${release.path}/${upgrade.zip.filename}" />
+        <delete file="${release.path}/${release.zip.filename}" />
+        <antcall target="release.files">
+            <param name="editor" value="${editor}"/>
+            <param name="release.path" value="${release.path}/temp"/>
+        </antcall>
+        <antcall target="release.empty-directories">
+            <param name="release.path" value="${release.path}/temp"/>
+        </antcall>
+    	
+    	<!-- Upgrade specific stuff -->
+        <delete dir="${release.path}/temp/misc/install"/>
+        <delete file="${release.path}/temp/install.php"/>
+        <delete file="${release.path}/temp/system/config/config.system.php"/>
+    	<delete file="${release.path}/temp/robots.txt"/>
+        <delete file="${release.path}/temp/system/config/consumer.ini"/>
+        <!-- delete file="${release.path}/temp/system/editor/editor_properties.php"/ -->
+        <!-- copy todir="${release.path}/temp/" overwrite="true">
+            <fileset file="${upgrade.src}/temp/${upgrade.version}/*"/>
+        </copy -->
+    	
+        <antcall target="create.archives">
+            <param name="release.path" value="${release.path}/temp"/>
+            <param name="release.folder" value="${release.path}"/>
+    	</antcall>
+    	
+    	<!-- Rename upgrade specific -->
+        <move tofile="${release.path}/${upgrade.zip.filename}" file="${release.path}/${release.zip.filename}"/>
+    </target>
+
+    <!-- 
+        This task creates the BIGACE release like mentioned in the Task "release.files"
+        and creates a ZIP File from all these ressources.
+        After that, the install_bigace.php and README will be copied, all three
+        files will be zipped again (to have one release file) and the original
+        sources will be deleted.
+        
+        Make sure that the release directory is cleaned up before, otherwise you might
+        have data within your release ZIP, which is NOT part of BIGACE!
+    -->
+    <target name="create.archives" if="archive.initialized" depends="archive.check">
+        <zip destfile="${release.folder}/${install.zip.filename}">
+            <fileset dir="${release.path}">
+                <exclude name="${install.zip.filename}"/>
+            </fileset>
+        </zip>
+        <delete dir="${release.path}" />
+        <mkdir dir="${release.path}" />
+        <move tofile="${release.path}/${install.zip.filename}" file="${release.folder}/${install.zip.filename}"/>
+        <copy todir="${release.path}">
+            <fileset dir="${install.src}" />
+        </copy>
+        <zip destfile="${release.folder}/${release.zip.filename}">
+            <fileset dir="${release.path}" />
+        </zip>
+        <delete dir="${release.path}" />
+    </target>
+    
+	<!-- Creates a deployable release --> 
+    <target name="create.version" depends="release.check" if="release.initialized">
+        <antcall target="release.files">
+            <param name="editor" value="${editor}"/>
+            <param name="release.path" value="${release.path}/temp"/>
+        </antcall>
+        <antcall target="release.empty-directories">
+            <param name="release.path" value="${release.path}/temp"/>
+        </antcall>
+        <antcall target="create.archives">
+            <param name="release.path" value="${release.path}/temp"/>
+            <param name="release.folder" value="${release.path}"/>
+        </antcall>
+    </target>
+	
+    <!--
+        This task creates a BIGACE release on the local computer.
+        It creates the defined directory and copies the CORE System and 
+        CORE Updates to this location.
+        
+        ATTENTION: All existing resources will be overwritten!
+    -->
+    <target name="release.files" depends="release.check" if="release.initialized">
+        <!-- Create release directory -->
+        <delete dir="${release.path}" />
+        <mkdir dir="${release.path}"/>
+
+        <!-- Create update directory -->
+        <mkdir dir="${release.path}/${update.directory}"/>
+        <!-- Copy needed Updates. -->
+        <!-- copy todir="${release.path}/${update.directory}/UpdateConsumerFiles" overwrite="true">
+            <fileset dir="${update.core.src}/UpdateConsumerFiles">
+                <patternset refid="always.exclude.files" />
+            </fileset>
+        </copy -->
+        <!--
+            Which extensions should be added?
+        - ->
+        <copy todir="${release.path}/${update.directory}" overwrite="true">
+            <fileset dir="${update.modul.src}">
+                <patternset refid="always.exclude.files" />
+            </fileset>
+            <fileset dir="${update.adminstyle.src}">
+                <patternset refid="always.exclude.files" />
+            </fileset>
+            <fileset dir="${update.smarty.src}">
+                <patternset refid="always.exclude.files" />
+            </fileset>
+            <fileset dir="${update.core.src}">
+                <patternset refid="always.exclude.files" />
+            </fileset>
+            <fileset dir="${update.smarty.src}">
+                <patternset refid="always.exclude.files" />
+            </fileset>
+        </copy -->
+
+        <!-- Copy english translation -->
+        <mkdir dir="${release.path}"/>
+        <copy todir="${release.path}" overwrite="true">
+            <fileset dir="${update.language.src}/en">
+                <patternset refid="release.exclude.files" />
+                <exclude name="info.html"/>
+            </fileset>
+        </copy>
+
+        <!-- Copy installation translations -->
+        <copy todir="${release.path}/misc/install/languages" overwrite="true">
+            <fileset dir="${update.language.src}/se/misc/install/languages">
+                <patternset refid="release.exclude.files" />
+            </fileset>
+        </copy>
+        <copy todir="${release.path}/misc/install/languages" overwrite="true">
+            <fileset dir="${update.language.src}/ru/misc/install/languages">
+                <patternset refid="release.exclude.files" />
+            </fileset>
+        </copy>
+        <copy todir="${release.path}/misc/install/languages" overwrite="true">
+            <fileset dir="${update.language.src}/si/misc/install/languages">
+                <patternset refid="release.exclude.files" />
+            </fileset>
+        </copy>
+        <copy todir="${release.path}/misc/install/languages" overwrite="true">
+            <fileset dir="${update.language.src}/hr/misc/install/languages">
+                <patternset refid="release.exclude.files" />
+            </fileset>
+        </copy>
+        <copy todir="${release.path}/misc/install/languages" overwrite="true">
+            <fileset dir="${update.language.src}/it/misc/install/languages">
+                <patternset refid="release.exclude.files" />
+            </fileset>
+        </copy>
+        <copy todir="${release.path}/misc/install/languages" overwrite="true">
+            <fileset dir="${update.language.src}/fi/misc/install/languages">
+                <patternset refid="release.exclude.files" />
+            </fileset>
+        </copy>
+        <copy todir="${release.path}/misc/install/languages" overwrite="true">
+            <fileset dir="${update.language.src}/ro/misc/install/languages">
+                <patternset refid="release.exclude.files" />
+            </fileset>
+        </copy>
+        <copy todir="${release.path}/misc/install/languages" overwrite="true">
+            <fileset dir="${update.language.src}/tr/misc/install/languages">
+                <patternset refid="release.exclude.files" />
+            </fileset>
+        </copy>
+
+        <!-- Copy Standard Layout -->
+        <copy todir="${release.path}/" overwrite="true">
+            <fileset dir="${release.default.template}">
+                <patternset refid="release.exclude.files" />
+            </fileset> 
+        </copy>
+        
+        <!-- Copy the Editor -->
+        <mkdir dir="${release.path}"/>
+        <copy todir="${release.path}" overwrite="true">
+            <fileset dir="${update.editor.src}/${editor}">
+                <patternset refid="release.exclude.files" />
+            </fileset>
+        </copy>
+        <copy todir="${release.path}/addon/${editor}" overwrite="true">
+            <fileset refid="sources.${editor}"/>
+        </copy>
+        
+        <!-- The markItUp! Editor -->
+        <mkdir dir="${release.path}/addon/markitup/"/>
+        <copy todir="${release.path}" overwrite="true">
+            <fileset dir="${update.editor.src}/markitup">
+                <patternset refid="always.exclude.files" />
+                <patternset><exclude name="update.ini"/></patternset>
+            </fileset>
+        </copy>
+        <copy todir="${release.path}/addon/markitup/" overwrite="true">
+            <fileset refid="sources.markitup"/>
+        </copy>
+        
+        <!-- The AdoDB Layer -->
+        <mkdir dir="${release.path}/addon/adodb/"/>
+        <copy todir="${release.path}/addon/adodb/" overwrite="true">
+            <fileset refid="sources.adodb"/>
+        </copy>
+
+        <!-- The Smarty Template Engine -->
+        <mkdir dir="${release.path}/addon/smarty/"/>
+        <copy todir="${release.path}/addon/smarty/" overwrite="true">
+            <fileset refid="sources.smarty"/>
+        </copy>
+
+        <!-- The Captcha Sources -->
+        <mkdir dir="${release.path}/addon/b2evo/"/>
+        <copy todir="${release.path}/addon/b2evo/" overwrite="true">
+            <fileset refid="sources.b2evo"/>
+        </copy>
+
+        <!-- The nuSoap Sources -->
+        <mkdir dir="${release.path}/addon/nusoap/"/>
+        <copy todir="${release.path}/addon/nusoap/" overwrite="true">
+            <fileset refid="sources.nusoap"/>
+        </copy>
+
+        <!-- JQuery and Plugins -->
+        <copy todir="${release.path}/addon/jquery/" overwrite="true">
+            <fileset refid="sources.jquery.core" />
+        </copy>
+        <copy todir="${release.path}/addon/jquery/tablesorter/" overwrite="true">
+            <fileset refid="sources.jquery.tablesorter"/>
+        </copy>
+        <copy todir="${release.path}/addon/jquery/jgrowl/" overwrite="true">
+            <fileset refid="sources.jquery.jgrowl"/>
+        </copy>
+        <copy todir="${release.path}/addon/jquery/jstree/" overwrite="true">
+            <fileset refid="sources.jquery.jstree"/>
+        </copy>
+        <copy todir="${release.path}/addon/jquery/metadata/" overwrite="true">
+            <fileset refid="sources.jquery.metadata"/>
+        </copy>
+
+        <!-- The WebFX stuff -->
+        <mkdir dir="${release.path}/addon/webfx/"/>
+        <mkdir dir="${release.path}/addon/webfx/xloadtree/"/>
+        <copy todir="${release.path}/addon/webfx/xloadtree/" overwrite="true">
+            <fileset refid="sources.webfx.xloadtree"/>
+        </copy>
+
+        <!-- PHPMailer -->
+        <mkdir dir="${release.path}/addon/phpmailer/"/>
+        <copy todir="${release.path}/addon/phpmailer/" overwrite="true">
+            <fileset refid="sources.phpmailer.email"/>
+        </copy>
+
+        <!-- MagpieRSS -->
+        <mkdir dir="${release.path}/addon/magpierss/"/>
+        <copy todir="${release.path}/addon/magpierss/" overwrite="true">
+            <fileset refid="sources.magpierss"/>
+        </copy>
+        
+        <!-- Copy core files over there -->
+        <copy todir="${release.path}" includeemptydirs="true" overwrite="true">
+            <fileset dir="${core.src}">
+                <patternset refid="always.exclude.files" />
+            </fileset>
+        </copy>
+
+    	<!-- remove files that are only meant for developer -->
+        <delete file="${release.path}/CHANGELOG"/>
+    </target>
+	
+	<!--
+		#####################################################
+        ##   [START] PATTERNSETS                           ##
+		#####################################################
+	-->
+
+	<!-- 
+		These files will be excluded for test deploys,
+		because otherwise we would kill the settings of an existing installation.
+	-->
+	<patternset id="exclude.test.files" description="Files to be excluded from the Copy task for local deploys.">
+		<!-- Files to be excluded from the Copy task -->
+	  	<exclude name="**/consumer.ini"/>
+	  	<exclude name="**/config.system.php"/>
+	  	<!-- TODO Can be removed within the next versions -->
+		<exclude name="**/config.consumer.php"/>
+	</patternset>
+
+	<!-- 
+		These files will always be excluded from Copy task.
+		Add whatever you might need (Project Files for your IDE for example or CVS Files.
+	-->
+    <patternset id="always.exclude.files" description="Files always to be excluded from the Copy task.">
+	  	<exclude name=".settings"/>
+	  	<exclude name=".project"/>
+	  	<exclude name=".svn"/>
+	  	<exclude name="Entries"/>
+	  	<exclude name="Repository"/>
+	  	<exclude name="Root"/>
+	</patternset>
+	
+	<patternset id="release.exclude.files" description="Files always to be excluded from release tasks.">
+	  	<exclude name=".settings"/>
+	  	<exclude name=".project"/>
+	  	<exclude name=".svn"/>
+	  	<exclude name="Entries"/>
+	  	<exclude name="Repository"/>
+	  	<exclude name="Root"/>
+	  	<exclude name="update.ini"/>
+	</patternset>
+
+	<fileset id="sources.adodb" dir="${adodb.path}">
+		<exclude name="**/contrib/"/>
+		<exclude name="**/cute_icons_for_site/"/>
+		<exclude name="**/docs/"/>
+		<exclude name="**/pear/"/>
+		<exclude name="**/tests/"/>
+		<exclude name="**/xsl/"/>
+		<exclude name="**/*.bak"/>
+	</fileset>
+
+	<fileset id="sources.smarty" dir="${smarty.path}">
+		<exclude name="**/demo/"/>
+		<exclude name="**/unit_test/"/>
+		<exclude name="**/misc/"/>
+        <exclude name="**/bugs"/>
+        <exclude name="**/ChangeLog"/>
+        <exclude name="**/COPYING.lib"/>
+        <exclude name="**/debug.tpl"/>
+        <exclude name="**/faq"/>
+        <exclude name="**/news"/>
+        <exclude name="**/install"/>
+        <exclude name="**/readme"/>
+        <exclude name="**/todo"/>
+        <exclude name="**/QUICK_START"/>
+        <exclude name="**/RELEASE_NOTES"/>
+	</fileset>
+
+	<fileset id="sources.nusoap" dir="${nusoap.path}">
+		<include name="**/class.nusoap_base.php"/>
+		<include name="**/class.nu_soapclient.php"/>
+		<include name="**/class.nu_soapserver.php"/>
+		<include name="**/class.soap_fault.php"/>
+		<include name="**/class.soap_parser.php"/>
+		<include name="**/class.soap_transport_http.php"/>
+		<include name="**/class.soap_val.php"/>
+		<include name="**/class.wsdl.php"/>
+		<include name="**/class.wsdlcache.php"/>
+		<include name="**/class.xmlschema.php"/>
+	</fileset>
+
+	<fileset id="sources.b2evo" dir="${b2evo.path}">
+		<exclude name="**/b2evo_captcha_fonts/FreeSerif.ttf"/>
+		<exclude name="**/b2evo_captcha_fonts/FreeSans.ttf"/>
+		<exclude name="**/b2evo_captcha.example.php"/>
+	</fileset>
+
+	<fileset id="sources.securimage" dir="${securimage.path}" />
+	<fileset id="sources.markitup" dir="${markitup.path}/markitup" />
+	<fileset id="sources.fotogallery" dir="${lightbox.path}" />
+	
+	<fileset id="sources.tinymce" dir="${tinymce.path}">
+		<!-- Directorys -->
+		<exclude name="**/docs/"/>
+		<exclude name="**/examples/"/>
+		<!-- Files -->
+		<exclude name="**/readme"/>
+		<!-- include the changelog to know the version -->
+	</fileset>
+	
+	<fileset id="sources.magpierss" dir="${magpierss.path}">
+		<exclude name="**/htdocs/"/>
+		<exclude name="**/scripts/"/>
+		<exclude name="**/AUTHORS"/>
+		<exclude name="**/ChangeLog"/>
+		<exclude name="**/CHANGES"/>
+		<exclude name="**/cookbook"/>
+		<exclude name="**/INSTALL"/>
+		<exclude name="**/NEWS"/>
+		<exclude name="**/TROUBLESHOOTING"/>
+	</fileset>
+
+	<fileset id="sources.phplist" dir="${phplist.path}">
+		<exclude name="**/*.htaccess"/>
+		<include name="COPYING"/>
+		<include name="README"/>
+		<include name="VERSION"/>
+		<include name="UPGRADE"/>
+	</fileset>
+
+	<fileset id="sources.FCKeditor" dir="${fckeditor.path}">
+		<!-- Directorys -->
+		<exclude name="**/_samples/"/>
+		<exclude name="**/_testcases/"/>
+		<exclude name="**/editor/_source/"/>
+		<exclude name="**/asp/"/>
+		<exclude name="**/aspx/"/>
+		<exclude name="**/cfm/"/>
+		<exclude name="**/lasso/"/>
+		<exclude name="**/perl/"/>
+		<exclude name="**/py/"/>
+		<!-- Files -->
+		<exclude name="**/_documentation.html"/>
+		<exclude name="**/_whatsnew.html"/>
+		<exclude name="**/*.asp"/>
+		<exclude name="**/*.afp"/>
+		<exclude name="**/*.lasso"/>
+		<exclude name="**/*.cfm"/>
+		<exclude name="**/*.cfc"/>
+		<exclude name="**/*.pl"/>
+		<exclude name="**/*.py"/>
+        <exclude name="**/filemanager/connectors**"/>
+        <exclude name="**/filemanager/browser/default**"/>
+	</fileset>
+	
+	<fileset id="sources.webfx.xloadtree" dir="${webfx.xloadtree.path}">
+		<exclude name="**/article-images/"/>
+		<exclude name="**/local/"/>
+		<exclude name="**/testdtd/"/>
+		<exclude name="**/*.xml"/>
+		<exclude name="**/*.pl"/>
+		<exclude name="**/*.html"/>
+	</fileset>	
+
+	<fileset id="sources.jquery.core" dir="${jquery.core.path}" />
+	
+	<fileset id="sources.jquery.jstree" dir="${jquery.jstree.path}">
+		<exclude name="**/reference/"/>
+		<exclude name="**/documentation/"/>
+		<exclude name="**/_lib/"/>
+		<include name="**/source/themes/"/>
+		<include name="**/source/_lib.js"/>
+		<include name="**/source/css.js"/>
+		<include name="**/source/tree_component.css"/>
+		<include name="**/source/tree_component.js"/>
+		<include name="**/source/themes/"/>
+		<include name="changelog.txt"/>
+	</fileset>
+
+	<fileset id="sources.jquery.metadata" dir="${jquery.metadata.path}">
+		<exclude name="**/test/"/>
+	</fileset>
+
+	<fileset id="sources.jquery.tablesorter" dir="${jquery.tablesorter.path}">
+		<exclude name="**/build/"/>
+		<exclude name="**/docs/"/>
+		<exclude name="**/tests/"/>
+		<exclude name="**/themes/"/>
+		<exclude name="**/jquery-latest.js"/>
+		<exclude name="**/build.xml"/>
+	</fileset>
+	
+	<fileset id="sources.superfish" dir="${jquery.superfish.path}">
+		<exclude name="**/example.html"/>
+		<exclude name="**/js/jquery-1.2.6.min.js"/>
+	</fileset>	
+
+	<fileset id="sources.charts" dir="${protochart.path}" />
+
+	<fileset id="sources.firephp" dir="${firephp.path}" />
+
+	<fileset id="sources.jquery.jgrowl" dir="${jquery.jgrowl.path}">
+		<include name="**/jquery.jgrowl.js"/>
+		<include name="**/jquery.jgrowl_compressed.js"/>
+		<include name="**/jquery.jgrowl_minimized.js"/>
+		<include name="**/jquery.jgrowl.css"/>
+		<exclude name="**/examples/"/>
+		<exclude name="**/flora.all.css"/>
+		<exclude name="**/jgrowl.html"/>
+		<exclude name="**/jquery.ui.all.js"/>
+		<exclude name="**/jquery-1.2.6.js"/>
+	</fileset>	
+
+   <fileset id="sources.AudioPlayer" dir="${xspf.path}">
+        <exclude name="**/*.as"/>
+        <exclude name="**/*.fla"/>
+    </fileset>  
+
+	<fileset id="sources.phpmailer.email" dir="${phpmailer.email.path}">
+		<include name="**/language/"/>
+		<include name="**/class.*.php"/>
+		<include name="**/readme"/>
+		<exclude name="**/docs/"/>
+		<exclude name="**/examples/"/>
+		<exclude name="**/phpdoc/"/>
+		<exclude name="**/test/"/>
+	</fileset>	
+	
+	<fileset id="sources.smileys" dir="${smileys.path}">
+		<include name="**/*.gif"/>
+	</fileset>	
+	
+	<!--
+		#####################################################
+        ##   [START] HELP                                  ##
+		#####################################################
+	-->
+	<target name="help">
+		<echo taskname="INFO" level="info">
+BIGACE - a PHP and MySQL based Web CMS.
+Copyright (C) Kevin Papst.
+Distributed under the terms of the GNU General Public License.
+
+This files has no executable tasks, it is meant as helper file!
+		</echo>
+	</target>
+	
+</project>

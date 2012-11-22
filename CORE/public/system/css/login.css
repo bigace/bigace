@@ -1,0 +1,143 @@
+* { margin: 0; padding: 0; }
+
+/* register form */ 
+body { font: 12px "Lucida Grande", "Lucida Sans Unicode", Tahoma, Verdana, sans-serif; }
+.CopyrightFooter { display:none;margin-top:10px; }
+.copyright { font-size:11px; color:#444444; }
+.inputlabel { font-weight: bold; text-align: left; margin-top:10px; }
+.inputbox { width: 150px; margin: 0px; border: 1px solid #cccccc; font-size: 14px; padding: 3px; }
+.checkbox { margin: 0 0 0 0;  }
+.clr { clear:both; }
+.ctr { text-align: center; }
+#ctr p { margin-bottom: 10px; }
+.login p { padding: 0 1em 0 1em; }
+.login-form { text-align: left; float: right; width: 255px; }
+.register-form { text-align: left; float: right; width: 350px; }
+.login-text { text-align: left; width: 170px; float: left; }
+.register-text { text-align: left; width: 170px; float: left; }
+.register { 
+	margin-top: 3em; 
+	margin-left: auto; 
+	margin-right: auto; 
+	padding: 15px; 
+	border: 1px solid #cccccc; 
+	width: 529px; 
+	background: #F1F3F5; 
+}
+.form-block { 
+	border: 1px solid #cccccc; 
+	background: #E9ECEF; 
+	padding-top: 15px; 
+	padding-left: 10px; 
+	padding-bottom: 10px; 
+	padding-right: 10px; 
+}
+#captcha { margin-top:3px; }
+#registerError { 
+    margin-top: 3em; 
+    margin-bottom: 0px; 
+    width: 529px; 
+    padding:4px 15px; 
+    color: #b00; 
+    background-color: #fdd; 
+    border: 1px solid #fbb; 
+    font-weight:bold; 
+}
+
+/* bigace 2.7 login form */ 
+#login form {
+	padding: 16px 16px 40px 16px;
+	font-weight: bold;
+	-moz-border-radius: 5px;
+	-khtml-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+    background: #F1F3F5; 
+}
+
+#login form .langp { font-weight: normal; float: left; margin-bottom: 0; }
+
+#login form .input { 
+    font-size:20px;
+    width:97%;
+    padding:3px;
+    margin-right:6px;
+}
+
+form .submit { float: right; }
+
+form p { margin-bottom: 24px; }
+
+#login h1.loginTitle { 
+    margin:0 0 5px 0;
+    padding:5px 0 15px 55px;
+    color:#333333;
+    font-size:30px;
+    background:transparent url(../images/security.png) 0 0 no-repeat; 
+}
+
+#login { 
+	width: 292px; 
+	margin: 5em auto 15px auto; 
+}
+
+#login .error {
+	margin: 0 0 16px 0;
+	border: 1px solid #CC0000;
+	padding: 12px;
+    background-color:#FFEBE8;
+}
+
+
+#backtosite {
+    margin:0px;
+    padding: 0px;
+    background-color:#464646;
+    border-bottom:1px solid #ccc;
+    height:30px;
+    font-size:12px;
+}
+#backtosite a {
+	position: absolute;
+	top: 8px;
+	left: 15px;
+	text-decoration: none;
+	color: #ccc;
+    font-size:12px;
+}
+#backtosite a:hover {
+	color: #fff;
+}
+
+#login form .submit:hover { 
+    background: #666666; 
+    color: #E9ECEF;
+}
+
+#login form .submit {
+    font-weight: bold; 
+	font-family: "Lucida Grande", "Lucida Sans Unicode", Tahoma, Verdana, sans-serif;
+    padding: 5px 4px; 
+    border: solid 1px #cccccc; 
+    background: #E9ECEF; 
+    color: #666666;
+	font-size: 13px;
+	-moz-border-radius: 3px;
+	-khtml-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	text-decoration: none;	
+	margin-top: -6px;
+	cursor: pointer;
+}
+
+#specials { 
+	margin: 0 0 0 8px; 
+	padding: 16px; 
+}
+
+#specials a {
+    font-family:"Lucida Grande","Lucida Sans Unicode",Tahoma,Verdana,sans-serif;
+    font-size: 12px;
+    color: #444;
+}

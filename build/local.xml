@@ -1,0 +1,247 @@
+<project name="BIGACE-Local" default="help-local" basedir="..">
+
+	<!--
+	    ##########################################################
+		# Loads the main XML file to have a proper build         #   
+		# environment. Adjust the settings in there, NOT HERE!   #
+	    ##########################################################
+	-->
+	<import file="./environment.xml"/>
+
+	<description>
+        Build File for the BIGACE Web CMS.
+		
+		It helps, deploying parts or the complete application
+		to local destinations.
+		
+		See http://www.bigace.de/ for further informations.
+	
+	    BIGACE - a PHP and MySQL based Web CMS.
+	 	Copyright (C) Kevin Papst.
+		Distributed under the terms of the GNU General Public License.
+		
+		$Id: local.xml,v 1.4 2008/09/23 21:32:17 kpapst Exp $
+    </description>
+
+	<!-- 
+		# INTERNAL #
+		Local Deploy of the defined Files.
+	-->
+	<target name="param" if="files-to-deploy">
+		<echo>Deploying to '${local.test.deploy}/${files-to-deploy}'</echo>
+		<mkdir dir="${local.test.deploy}"/>
+	    <!-- Copy all files over there -->
+	  	<copy todir="${local.test.deploy}/${files-to-deploy}" overwrite="true">
+	  	    <fileset dir="${core.src}/${files-to-deploy}" >
+	  	    	<patternset refid="exclude.test.files" />
+	  	    	<patternset refid="always.exclude.files" />
+	  		</fileset>
+		</copy>
+  	</target>
+
+	<target name="param.file" if="file-to-deploy">
+		<echo>Deploying to '${local.test.deploy}/${file-to-deploy}'</echo>
+		<mkdir dir="${local.test.deploy}"/>
+	    <!-- Copy the files over there -->
+	  	<copy tofile="${local.test.deploy}/${file-to-deploy}" overwrite="true">
+	  	    <fileset file="${core.src}/${file-to-deploy}" >
+	  	    	<patternset refid="exclude.test.files" />
+	  	    	<patternset refid="always.exclude.files" />
+	  		</fileset>
+		</copy>
+  	</target>
+
+	<!--
+		#####################################################
+        ## [START] LOCAL TASKS                             ##
+        ## All these tasks are made for local development. ##
+        ## Use them to copy parts of BIGACE to your test   ##
+        ## environment.                                    ##
+		#####################################################
+	-->
+
+	<!-- 
+		This task copies the CORE System to the local Test Directory.
+		Only the System Configuration Files are excluded, because we might
+		already have an running Installation which then would be corrupted.
+	-->
+	<target name="core" description="[LOCAL] Deploys all Stuff.">
+		<mkdir dir="${local.test.deploy}"/>
+	    <!-- Copy all files over there -->
+		<antcall target="param">
+			<param name="files-to-deploy" value=""/>
+		</antcall>
+  	</target>
+
+	<target name="consumer" description="[LOCAL] Deploys all Consumer specific Data.">
+		<antcall target="param">
+			<param name="files-to-deploy" value="consumer/"/>
+		</antcall>
+	</target>
+
+	<target name="public" description="[LOCAL] Deploys the public Data.">
+		<antcall target="param">
+			<param name="files-to-deploy" value="public/"/>
+		</antcall>
+	</target>
+
+	<target name="misc.installation" description="[LOCAL] Deploys all Installation specific Data.">
+		<antcall target="param">
+			<param name="files-to-deploy" value="misc/install/"/>
+		</antcall>
+	</target>
+
+	<target name="system" description="[LOCAL] Deploys all System specific Data.">
+		<antcall target="param">
+			<param name="files-to-deploy" value="system/"/>
+		</antcall>
+	</target>
+
+	<target name="specific" description="[LOCAL] Deploys the the specfied Directory.">
+		<antcall target="param">
+			<param name="files-to-deploy" value="system/classes/modul/"/>
+		</antcall>
+		<antcall target="param.file">
+			<param name="file-to-deploy" value="public/system/style/standard/editor/editor.css"/>
+		</antcall>
+	</target>
+
+	<target name="system.admin" description="[LOCAL] Deploys the Administration Framework with all Plugins.">
+		<antcall target="param">
+			<param name="files-to-deploy" value="system/admin/"/>
+		</antcall>
+	</target>
+
+	<target name="system.admin.smarty" description="[LOCAL] Deploys the Admin Smarty Templates.">
+		<antcall target="param">
+			<param name="files-to-deploy" value="system/admin/smarty/"/>
+		</antcall>
+	</target>
+
+	<target name="system.classes" description="[LOCAL] Deploys all Classes.">
+		<antcall target="param">
+			<param name="files-to-deploy" value="system/classes/"/>
+		</antcall>
+	</target>
+
+	<target name="system.api" description="[LOCAL] Deploys the Interfaces.">
+		<antcall target="param">
+			<param name="files-to-deploy" value="system/api/"/>
+		</antcall>
+	</target>
+
+	<target name="system.editor" description="[LOCAL] Deploys the Editor Framework.">
+		<antcall target="param">
+			<param name="files-to-deploy" value="system/editor/"/>
+		</antcall>
+	</target>
+
+    <target name="system.application" description="[LOCAL] Deploys the Applications.">
+        <antcall target="param">
+            <param name="files-to-deploy" value="system/application/"/>
+        </antcall>
+    </target>
+
+	<target name="system.command" description="[LOCAL] Deploys all Commands.">
+		<antcall target="param">
+			<param name="files-to-deploy" value="system/command/"/>
+		</antcall>
+	</target>
+
+	<target name="system.libs" description="[LOCAL] Deploys all Librarys">
+		<antcall target="param">
+			<param name="files-to-deploy" value="system/libs/"/>
+		</antcall>
+	</target>
+
+	<target name="system.sql" description="[LOCAL] Deploys all SQLs">
+		<antcall target="param">
+			<param name="files-to-deploy" value="system/sql/"/>
+		</antcall>
+	</target>
+			
+	<target name="system.languages" description="[LOCAL] Deploys all Translations and Language definitions.">
+		<antcall target="param">
+			<param name="files-to-deploy" value="system/language/"/>
+		</antcall>
+	</target>
+
+	<target name="addon.fckeditor" description="[LOCAL] Deploys the FCKEditor Extensions.">
+		<mkdir dir="${local.test.deploy}/addon/FCKeditor/"/>
+		<antcall target="param">
+			<param name="files-to-deploy" value="addon/FCKeditor/"/>
+		</antcall>
+	</target>
+
+	<target name="addon.b2evo" description="[LOCAL] Deploys the b2evo Captcha Extensions.">
+		<mkdir dir="${local.test.deploy}/addon/b2evo/"/>
+		<antcall target="param">
+			<param name="files-to-deploy" value="addon/b2evo/"/>
+		</antcall>
+	</target>
+	
+	<target name="addon.smarty" description="[LOCAL] Deploys the Smarty Extensions.">
+		<mkdir dir="${local.test.deploy}/addon/smarty/"/>
+		<antcall target="param">
+			<param name="files-to-deploy" value="addon/smarty/"/>
+		</antcall>
+	</target>
+
+	<!--
+		3rd PARTY TASKS
+	-->
+	<target name="3rdparty.fckeditor" description="[LOCAL] Deploys the FCKEditor.">
+		<mkdir dir="${local.test.deploy}/addon/FCKeditor/"/>
+	  	<copy todir="${local.test.deploy}/addon/FCKeditor/" overwrite="true">
+	  	    <fileset refid="sources.FCKeditor"/>
+		</copy>
+	</target>
+	
+	<target name="3rdparty.b2evo" description="[LOCAL] Deploys the b2evo captcha Libraries.">
+		<mkdir dir="${local.test.deploy}/addon/b2evo/"/>
+	  	<copy todir="${local.test.deploy}/addon/b2evo/" overwrite="true">
+	  	    <fileset refid="sources.b2evo"/>
+		</copy>
+	</target>
+
+	<target name="3rdparty.smarty" description="[LOCAL] Deploys the AdoDB Libraries.">
+		<mkdir dir="${local.test.deploy}/addon/smarty/"/>
+	  	<copy todir="${local.test.deploy}/addon/smarty/" overwrite="true">
+	  	    <fileset refid="sources.smarty"/>
+		</copy>
+	</target>
+
+	<target name="3rdparty.adodb" description="[LOCAL] Deploys the AdoDB Libraries.">
+		<mkdir dir="${local.test.deploy}/addon/adodb/"/>
+	  	<copy todir="${local.test.deploy}/addon/adodb/" overwrite="true">
+	  	    <fileset refid="sources.adodb"/>
+		</copy>
+	</target>
+
+	<target name="3rdparty.markitup" description="[LOCAL] Deploys the FCKEditor.">
+		<mkdir dir="${local.test.deploy}/addon/markitup/"/>
+	  	<copy todir="${local.test.deploy}/addon/markitup/" overwrite="true">
+	  	    <fileset refid="sources.markitup"/>
+		</copy>
+	</target>
+	
+	<!--
+		#####################################################
+        ##   [START] HELP                                  ##
+		#####################################################
+	-->
+	<target name="help-local">
+		<echo taskname="INFO" level="info">
+BIGACE - a PHP and MySQL based Web CMS.
+Copyright (C) Kevin Papst.
+Distributed under the terms of the GNU General Public License.
+
+Adjust the settings in build.properties, before executing any Ant task!
+
+Common tasks:
+=============
+local.core - deploys the complete source file repository
+		</echo>
+	</target>
+	
+</project>

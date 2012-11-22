@@ -1,0 +1,1 @@
+SELECT * FROM {DB_PREFIX}autojobs WHERE cid={CID}

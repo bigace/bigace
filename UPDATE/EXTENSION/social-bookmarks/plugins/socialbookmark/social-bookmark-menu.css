@@ -1,0 +1,60 @@
+ul.socials {margin:0px;padding:0px;}
+ul.socials li {
+    display:inline-block;
+    float:left;
+    list-style-type:none;
+    margin:0 2px 0 0;
+    height:29px;
+    width:50px;
+    cursor:pointer;
+}
+ul.socials a {
+    display:block;
+    width:50px;
+    height:29px;
+    font-size:0;
+    color:transparent;
+
+}
+.furl, .furl:hover, .digg, .digg:hover, .reddit, .reddit:hover, .stumble, .stumble:hover, .delicious, .delicious:hover, .yahoo, .yahoo:hover, .blinklist, .blinklist:hover, .technorati, .technorati:hover, .facebook, .facebook:hover, .flickr, .flickr:hover, .myspace, .myspace:hover, .mixx, .mixx:hover, .script-style, .script-style:hover, .designfloat, .designfloat:hover, .vkontakte, .vkontakte:hover, .odnoklassniki, .odnoklassniki:hover, .mailru, .mailru:hover, .yaru, .yaru:hover, .rss, .rss:hover  {
+    background:url('sprite-trans.png') no-repeat;
+}
+.furl {background-position:-300px top;}
+.furl:hover {background-position:-300px bottom;}
+.digg {background-position:-500px top;}
+.digg:hover {background-position:-500px bottom;}
+.reddit {background-position:-100px top; }
+.reddit:hover {background-position:-100px bottom;}
+.stumble {background-position:-50px top; }
+.stumble:hover {background-position:-50px bottom;}
+.delicious {background-position:left top; }
+.delicious:hover {background-position:left bottom;}
+.yahoo {background-position:-650px top; }
+.yahoo:hover {background-position:-650px bottom;}
+.blinklist {background-position:-600px top; }
+.blinklist:hover {background-position:-600px bottom;}
+.technorati {background-position:-700px top; }
+.technorati:hover {background-position:-700px bottom;}
+.myspace {background-position:-200px top; }
+.myspace:hover {background-position:-200px bottom;}
+.flickr {background-position:-350px top;}
+.flickr:hover {background-position:-350px bottom;}
+.facebook {background-position:-450px top;}
+.facebook:hover {background-position:-450px bottom;}
+.mixx {background-position:-250px top;}
+.mixx:hover {background-position:-250px bottom;}
+.rss {background-position:-150px top;}
+.rss:hover {background-position:-150px bottom;}
+.script-style {background-position:-400px top;}
+.script-style:hover {background-position:-400px bottom;}
+.designfloat {background-position:-550px top;}
+.designfloat:hover {background-position:-550px bottom;}
+.vkontakte {background-position:-750px top;}
+.vkontakte:hover {background-position:-750px bottom;}
+.odnoklassniki {background-position:-800px top;}
+.odnoklassniki:hover {background-position:-800px bottom;}
+.mailru {background-position:-850px top;}
+.mailru:hover {background-position:-850px bottom;}
+.yaru {background-position:-900px top;}
+.yaru:hover {background-position:-900px bottom;}
+div.socialclear{clear:left;height:1px;}

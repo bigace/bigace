@@ -1,0 +1,2 @@
+RewriteEngine on 
+RewriteRule ^bigace/(.*)/(.*)/(.*) index.php?cmd=$1&id=$2&name=$3&%{QUERY_STRING} [PT]

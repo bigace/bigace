@@ -1,0 +1,1 @@
+SELECT command, itemid, count(itemid) as cnt FROM {DB_PREFIX}statistics WHERE cid='{CID}' AND itemid <> '' {EXTENSION} GROUP BY command, itemid ORDER BY cnt DESC LIMIT {LIMIT}

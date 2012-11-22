@@ -1,0 +1,1 @@
+DELETE FROM {DB_PREFIX}groups WHERE cid='{CID}'

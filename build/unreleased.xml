@@ -1,0 +1,79 @@
+<project name="BIGACE-Unreleased" default="help" basedir="..">
+
+	<!--
+	    ##########################################################
+		# Loads the main XML file to have a proper build         #
+		# environment. Adjust the settings in there, NOT HERE!   #
+	    ##########################################################
+	-->
+	<import file="./extensions.xml"/>
+
+	<description>
+        Build File for unreleased BIGACE extensions.
+		
+		This package holds one task with all extensions that were yet not published.
+		They must be removed, after they were uploaded to Sourceforge.
+		
+		See http://www.bigace.de/ for further informations.
+	
+	    BIGACE - a PHP and MySQL based Web CMS.
+	 	Copyright (C) Kevin Papst.
+		Distributed under the terms of the GNU General Public License.
+		
+		$Id: unreleased.xml,v 1.11 2011/01/24 10:44:03 kpapst Exp $
+    </description>
+
+    <!--
+        UPDATED - these extensions are ready for production, but not yet released 
+    -->
+    <target name="updated" description="Changed but NOT yet deployed extensions">
+    	<!-- NEW: HTML Block -->
+        <!-- NEW: smarty template - add footer links before release -->
+        <antcall target="extension.smarty.blogging" />
+    	<!-- NEW: RSS-LatestPages 1.1 -->
+
+    	<!-- Fotogallery 1.8 -->
+
+    	<!-- fixed path to new constant with 2.7 -->
+        <antcall target="extension.rssreader" />
+    	
+        <!-- using path constant instead of global variable to protect against XSS -->
+        <antcall target="extension.iframe" />
+        <antcall target="extension.photoalbum" />
+        <antcall target="packages.phptemplate" />
+    	
+    	<!-- moved xml, using path constant -->
+        <antcall target="extension.securimage" />
+    </target>
+
+    <!--
+        Extensions in development state - either unreleased or brand new 
+    -->
+    <target name="development" description="Extensions in development state">
+        <!-- see CHANGELOG, does not support multiple contents yet -->
+        <antcall target="extension.tinymce" />
+        <!-- brand new -->
+        <antcall target="extension.phplist" />
+        <!-- News-Map - has that even a ant target? -->
+    </target>
+
+	<!--
+		#####################################################
+        ##   [START] HELP                                  ##
+		#####################################################
+	-->
+	<target name="help">
+		<echo taskname="INFO" level="info">
+BIGACE - a PHP and MySQL based Web CMS.
+Copyright (C) Kevin Papst.
+Distributed under the terms of the GNU General Public License.
+
+Adjust the settings in build.properties, before executing any Ant task!
+
+Common tasks:
+=============
+unreleased 			- creates all unreleased extensions
+		</echo>
+	</target>
+	
+</project>

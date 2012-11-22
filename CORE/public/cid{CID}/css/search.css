@@ -1,0 +1,24 @@
+#searchApplication { width:100%; }
+#searchApplication, #searchApplication th, #searchApplication td { font-size:12px; }
+#searchApplication .resultTable { width:100%; border:1px solid #000000; margin-top:10px; }
+#searchApplication .resultHeader { border-bottom:1px solid #000000; }
+#searchApplication .closeButtonDiv { margin-top:10px; margin-bottom:5px; }
+#searchApplication .closeButton { border:1px solid #666666; color:#363636; background-color:#eeeeee; padding:4px; width:150px; }
+#searchApplication .row2 { background-color:#F0F0F0; }
+#searchApplication td { padding:2px; }
+#searchApplication .closeButton:hover { border:1px solid #cccccc; color:#eeeeee; background-color:#666666; padding:4px; width:150px; }
+#searchApplication th { background-color:#F6F6F6; border:0px; text-align:left; padding:2px; }
+#searchApplication select, #searchApplication input[type=text], #searchApplication input[type=submit] { font-size:11px; border:1px solid #666666; }
+#searchApplication h1 { margin:0 0 18px 0; font-size:1.6em; font-weight:bold; }
+
+#searchResults h1 { margin:0px 0 18px 0; }
+#searchResults h2 { margin:0px;font-size:14px; }
+#searchResults p { margin:0px; padding:0px; }
+#searchResults a { border:0px; }
+#searchResults a:hover { border:0px; }
+#searchResults a.hlink { color:blue; text-decoration:underline; }
+#searchResults a.hlink:hover { color:blue; text-decoration:underline; }
+#searchResults .url { color:green; }
+#searchResults .info { color:#000000; }
+#searchResults .searchResult { margin-bottom:10px; }
+#searchResults img { border:0px; margin-right:3px; }

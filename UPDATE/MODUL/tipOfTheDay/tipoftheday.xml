@@ -1,0 +1,12 @@
+<content version="1.0">
+
+    <table name="frights">
+        <row>
+            <cid key="true">{CID}</cid>
+            <name key="true">tipoftheday</name>
+            <defaultvalue>N</defaultvalue>
+            <description>Allows to administrate the TIP-OF-THE-DAY entries.</description>
+        </row>
+    </table>    
+
+</content>

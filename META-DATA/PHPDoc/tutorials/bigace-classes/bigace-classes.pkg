@@ -1,0 +1,16 @@
+<refentry id="{@id classes}">
+ <refnamediv>
+  <refname>BIGACE Classes</refname>
+ </refnamediv>
+ <refsynopsisdiv>
+  <author>
+   Kevin Papst
+  </author>
+ </refsynopsisdiv>
+ <refsect1 id="{@id classesintro}">
+  <title>{@link http://www.bigace.de BIGACE Web CMS} - Class Documentation</title>
+  <para>Class  documentation of the BIGACE Core system.</para>
+  <para>Detailed documentation how to use this API can be found in our wiki:</para>
+  {@link http://wiki.bigace.de/ BIGACE Developer Documentation}
+ </refsect1>
+</refentry>

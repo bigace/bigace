@@ -1,0 +1,11 @@
+INTRODUCTION
+-----------------
+To include Vimeo [vimeo]video-id[/vimeo] to the pages content, where "video-id" is the Vimeo Video ID 
+
+Please <a href="http://wiki.bigace.de/bigace:extensions:vimeo" target="_blank">read the documentation</a> for more infos about using the Plugin.
+
+<hr/>
+
+Version 1.0:
+--------------
+- initial release

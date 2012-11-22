@@ -1,0 +1,8 @@
+/*
+ This CSS file is made for configuring the News output of the built-in includes.
+ Take this file as starting point, if using your own design.
+*/
+
+.news-entry {border:0px solid #000000;margin-bottom:10px;padding:2px;}
+.news-image {border:2px solid #cccccc;margin-right:5px;}
+

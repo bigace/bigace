@@ -1,0 +1,25 @@
+<!-- $Id: ViewUserGroups.tpl.htm,v 1.2 2008/07/14 23:11:11 kpapst Exp $ -->
+<table class="tablesorter" id="table-1" cellspacing="0">
+<col />
+<!-- BEGIN autoheader -->
+<thead>
+	<tr>
+		<th>{TRANSLATION_group_name}</th>
+	</tr>
+</thead>
+<!-- END autoheader -->
+<tbody>
+    <!-- BEGIN row -->
+    <tr>
+        <td>{GROUP_NAME}</td>
+    </tr>
+    <!-- END row -->
+	</tbody>
+</table>
+
+<script type="text/javascript">
+$(document).ready( function() { 
+        $("#table-1").tablesorter({ widgets: ['zebra'] }); 
+    } 
+);
+</script>

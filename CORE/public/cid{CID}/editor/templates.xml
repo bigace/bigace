@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Templates imagesBasePath="../../../">
+	<Template title="Example Template">
+		<Description>An example description for an example template.</Description>
+		<Html>
+			<![CDATA[
+<h1>This is an example, not a real world template.</h1>
+<p>Define more of these templates and HTML snippets in the file: <b>/public/cid{CID}/editor/templates.xml</b></p>
+<p>Read more about templates in the wiki at <a href="http://wiki.bigace.de/bigace:manual:fckeditor" target="_blank">http://wiki.bigace.de/bigace:manual:fckeditor</a></p>
+			]]>
+		</Html>
+	</Template>
+</Templates>

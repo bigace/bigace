@@ -1,0 +1,12 @@
+<content version="1.0">
+
+    <table name="frights">
+        <row>
+            <cid key="true">{CID}</cid>
+            <name key="true">submenu_preview_admin</name>
+            <defaultvalue>N</defaultvalue>
+            <description>Allows to configure the Submenu Preview settings.</description>
+        </row>
+    </table> 
+
+</content>

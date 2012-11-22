@@ -1,0 +1,1 @@
+SELECT * FROM {DB_PREFIX}item_project_text a WHERE a.itemtype='{ITEMTYPE}' AND a.id='{ITEM_ID}' AND a.language='{LANGUAGE_ID}' AND a.cid='{CID}'

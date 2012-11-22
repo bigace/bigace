@@ -1,0 +1,118 @@
+<!-- $Id: AdminGroupPermission.tpl.htm,v 1.4 2009/10/19 15:15:15 kpapst Exp $ -->
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $("#groupPermissions").tabs();
+  });
+</script>
+
+<div id="groupPermissions">
+
+	<ul>
+		<li><a href="#tabPagePerms"><span>{TRANSLATION_tab_title_group_permissions}</span></a></li>
+		<li><a href="#tabPageNewPerm"><span>{TRANSLATION_tab_title_new_permission}</span></a></li>
+		<li><a href="#tabPageImpExp"><span>{TRANSLATION_tab_title_import_export}</span></a></li>
+	</ul>
+
+   <div id="tabPagePerms">
+        <div id="lightSelector">
+            <form action="{ACTION_CHOOSE_GROUP}" method="POST">
+                <img src="{AUTO_STYLE_DIR}user_group.png" border="0" alt="{TRANSLATION_group}"> {TRANSLATION_admin_group_frights} <b>{GROUP_SELECT}</b>
+                <noscript><input type="submit" value="{TRANSLATION_edit}"></noscript>
+            </form>
+        </div>
+
+        <table class="tablesorter" cellspacing="0">
+        <col />
+        <col />
+        <col />
+        <col />
+        <!-- BEGIN autoheader -->
+        <thead>
+        	<tr>
+                <th>&nbsp;</th>
+        		<th>{TRANSLATION_name}</th>
+        		<th>{TRANSLATION_description}</th>
+                <th align="center">{TRANSLATION_fright_change_state}</th>
+        	</tr>
+        </thead>
+        <!-- END autoheader -->
+        <tbody>
+            <!-- BEGIN outerrow -->
+            <!-- BEGIN activerow -->
+            <form action="{ACTION_CHANGE_FRIGHT}" method="POST">
+            <tr>
+                <td align="left"><a href="{ACTION_CHANGE_FRIGHT}"><img src="{AUTO_STYLE_DIR}active.png" border="0" alt="{TRANSLATION_active}" title="{TRANSLATION_active}"></a></td>
+                <td>{FRIGHT_NAME}</td>
+                <td>{FRIGHT_DESCRIPTION}</td>
+                <td align="center"><button type="submit">{TRANSLATION_deactivate}</button></td>
+            </tr>
+            </form>
+            <!-- END activerow -->
+            <!-- BEGIN deactiverow -->
+            <form action="{ACTION_CHANGE_FRIGHT}" method="POST">
+            <tr>
+                <td align="left"><a href="{ACTION_CHANGE_FRIGHT}"><img src="{AUTO_STYLE_DIR}inactive.png" border="0" alt="{TRANSLATION_inactive}" title="{TRANSLATION_inactive}"></a></td>
+                <td>{FRIGHT_NAME}</td>
+                <td>{FRIGHT_DESCRIPTION}</td>
+                <td align="center"><button type="submit">{TRANSLATION_activate}</button></td>
+            </tr>
+            </form>
+            <!-- END deactiverow -->
+            <!-- END outerrow -->
+        	</tbody>
+        </table>
+
+		<script type="text/javascript">
+		$(document).ready( function() { 
+				$(".tablesorter").tablesorter({ widgets: ['zebra'], headers: { 0: {sorter: false}, 3: {sorter: false} } }); 
+			} 
+		);
+		</script>
+
+   </div>
+
+   <div id="tabPageNewPerm">
+        <form action="" method="post" onreset="">
+        <input type="hidden" name="mode" value="6">
+        <table cellspacing="1" cellpadding="4" width="600">
+        <tr>
+            <td align="left">{TRANSLATION_name}</td>
+            <td align="left"><input type="text" name="data[name]" id="data[name]" maxlength="255" size="35" value=""></td>
+        </tr>
+        <tr>
+            <td valign="top" align="left">{TRANSLATION_description}</td>
+            <td align="left"><textarea name="data[description]" id="description" rows="10" cols="50" wrap=""></textarea></td>
+        </tr>
+        </table>
+        <br/>
+        <input type="submit" value="{TRANSLATION_create_button}">&nbsp;<input type="reset" value="{TRANSLATION_create_reset}">
+        </form>
+   </div>
+
+   <div id="tabPageImpExp">
+        <fieldset>
+            <legend>{TRANSLATION_fieldset_export}</legend>
+            <form action="" method="post">
+                <input type="radio" name="mode" checked="checked" id="exportTextArea" value="exportXml" /> <label for="exportTextArea">{TRANSLATION_export_mode_textarea}</label>
+                <br/>
+                <input type="radio" name="mode" id="exportFile" value="exportFile"> <label for="exportFile">{TRANSLATION_export_mode_file}</label>
+                <br/>
+                <input type="submit" value="{TRANSLATION_export_button}"/>
+            </form>
+            {EXPORT_XML}
+        </fieldset>
+
+        <fieldset>
+            <legend>{TRANSLATION_fieldset_import}</legend>
+            <form action="" method="post" enctype="multipart/form-data">
+                <input type="hidden" name="mode" value="importFile">
+                <b>{TRANSLATION_import_file_title}</b><br/>
+                <input type="file" name="XMLFILE">
+                <br/>
+                <input type="submit" value="{TRANSLATION_import_button}"/>
+            </form>
+        </fieldset>
+   </div>
+
+</div>

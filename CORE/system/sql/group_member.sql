@@ -1,0 +1,1 @@
+SELECT userid FROM {DB_PREFIX}user_group_mapping WHERE cid='{CID}' AND group_id='{GROUP_ID}'

@@ -1,0 +1,10 @@
+Version 1.3:
+=================
+- link image to the original file
+
+Version 1.2:
+=================
+- using Rewrite URLs
+- improved HTML
+- added CSS classes to style photos easier
+- removed "mode" parameter as it wasn't necessary

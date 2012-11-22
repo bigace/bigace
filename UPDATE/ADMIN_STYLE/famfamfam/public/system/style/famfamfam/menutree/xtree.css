@@ -1,0 +1,139 @@
+/**
+ * @version $Id: xtree.css,v 1.1 2007/05/17 19:48:33 kpapst Exp $
+ * @author Kevin Papst 
+ * @package bigace.administration
+ * @subpackage item.menu
+ */
+    .contentContainer {
+    	height:	100%;
+        overflow:auto;
+        border:0px solid #000000;
+    }
+    .dynamic-tab-pane-control .tab-page {
+    	/* height:	490; */
+    }
+    .tab-pane {
+    	/* height:	520px; */
+    }
+    .dynamic-tab-pane-control .tab-page .dynamic-tab-pane-control .tab-page {
+    	/* height:		100%; */
+    }
+    .dynamic-tab-pane-control h2 {
+    	text-align:	center;
+    	width:		auto;
+    }
+    .dynamic-tab-pane-control h2 a {
+    	display:	inline;
+    	width:		auto;
+    }
+    .dynamic-tab-pane-control a:hover {
+    	background: transparent;
+    }
+    .contentIframe {
+        border-width:0px;
+    }
+    #tabPane1 .treeActionTable {
+	    background-color: #efefde;
+        width:100%;
+        margin-bottom:5px;
+        border-left:1px outset #efefde;
+    	border-top: 1px outset #efefde;
+        border-right:1px outset #efefde;
+    	border-bottom: 1px outset #efefde;
+    }
+    #itemActions {
+        font-size:12px;
+        padding:5px;
+        width:200px;
+        border-left:1px solid #999999;
+        height:100%;
+        visibility:hidden;
+    }
+    #itemActions img {
+        border:0px;
+    }
+    #itemActions hr {
+        height:1px;
+        color:#999999;
+        width:100%;
+    }
+    #itemActions a {
+        font-size:12px;
+        color:#000000;
+        text-decoration:none;
+    }
+    #itemActions a:hover {
+        color:#000000;
+        text-decoration:none;
+    }
+    .menuActionsLinks {
+        width:100%;
+        border-width:0px;
+        text-align:left;
+    }
+    .topBorder {
+        border-top:1px solid #000000;
+        background-color:transparent;
+        height:18px;
+    }
+    .topBorderOver {
+        border-top:1px solid #000000;
+        background-color:#eeeeee;
+        height:18px;
+    }
+    .actionTd {
+        background-color:transparent;
+        height:18px;
+    }
+    .actionTdOver {
+        background-color:#eeeeee;
+        height:18px;
+    }
+    .clipboard-empty {
+        border:0px solid #cccccc;
+        width:100%;
+        display:inline;
+        margin-left:20px;
+    }
+    .clipboard-full {
+        color:#999999;
+        font-weight:bold;
+        padding:3px;
+        width:100%;
+        display:inline;
+        margin-left:20px;
+    }
+    .actionDiv {
+        display:inline;
+    }
+    .TREE_Button_On, .TREE_Button_Off, .TREE_Button_Disabled
+    {
+    	border: #efefde 1px solid;
+    	padding: 1px;
+    }
+    .TREE_Button_On
+    {
+    	border-color: #316ac5;
+    	background-color: #c1d2ee;
+    	border-width:1px;
+    }
+    .TREE_Button_Off_Disabled,.TREE_Button_On_Disabled
+    {
+    	filter: alpha(opacity=30);
+    	-moz-opacity: 0.30;
+    	border-width:0px;
+    	padding: 1px;
+    }
+    .TREE_Button_Off
+    {
+    	filter: alpha(opacity=70);
+    	-moz-opacity: 0.70;
+    	background-color: #efefde;
+    }
+    .TREE_Button_On_Over, .TREE_Button_Off_Over
+    {
+    	background-color: #dff1ff;
+    	border-width:1px;
+    	padding: 1px;
+    	border-color: #316ac5;
+    }

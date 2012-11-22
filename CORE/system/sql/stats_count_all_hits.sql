@@ -1,0 +1,1 @@
+SELECT COUNT(id) AS cnt FROM {DB_PREFIX}statistics WHERE cid='{CID}'

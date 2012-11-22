@@ -1,0 +1,1 @@
+UPDATE {DB_PREFIX}item_future SET modifiedby='{USER_ID}' {VALUES}, modifieddate='{TIMESTAMP}' WHERE itemtype='{ITEMTYPE}' AND id='{ITEM_ID}' AND cid='{CID}' AND language='{LANGUAGE_ID}'

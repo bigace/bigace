@@ -1,0 +1,1 @@
+Put FCKEditor dependend Files for your Consumer here.

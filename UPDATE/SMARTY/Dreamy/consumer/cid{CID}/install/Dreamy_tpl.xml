@@ -1,0 +1,108 @@
+<content version="1.0">
+
+    <table name="template">
+        <row>
+            <name key="true">Dreamy</name>
+            <cid key="true">{CID}</cid>
+            <description>BIGACE free Template port 'Dreamy'.</description>
+            <inwork>0</inwork>
+            <include>0</include>
+            <timestamp function="true">unix_timestamp()</timestamp>
+            <userid>1</userid>
+            <filename>Dreamy.tpl</filename>
+            <content><![CDATA[<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+	<title>Dreamy - {$MENU->getName()}</title>
+	<link rel="stylesheet" href="{stylesheet name="Dreamy"}" type="text/css" media="screen" />
+    <meta name="generator" content="{bigace_version full='true'}">
+</head>
+<body>
+{load_item itemtype="1" id="-1" assign="topLevel"}
+<div id="wrapper">
+
+	<div id="header">
+		<h1><a href="{link item=$topLevel}">Your Website Name</a></h1>
+	</div>
+
+	<div id="menu">
+		<ul>
+            {navigation id="-1" prefix="<li>" suffix="</li>"}
+		</ul>
+	</div>
+
+	<div id="sidebar">
+	    <div id="feed"><p><b>{$MENU->getName()}</b></p></div>
+		<ul>
+            {navigation id=$MENU->getID() prefix="<li>" suffix="</li>"}
+		</ul>
+		<div id="sidebar-bottom">
+			&nbsp;
+		</div>
+	</div>
+
+	<div id="content">
+		<div id="ad-top">
+			<!-- Insert 468x60 banner advertisement -->
+		</div>
+		<div class="entry">
+			<div class="entry-title"><a href="#">{$MENU->getName()}</a></div>
+			<div class="date">Posted on {$MENU->getCreateDate()|date_format:"%d %B %Y"}</div>
+			{modul menu=$MENU}
+		</div>
+	</div>
+
+	<div id="footer">
+		<div id="footer-valid">
+			<a href="http://validator.w3.org/check/referer">xhtml</a> / <a href="http://www.oswd.org/design/information/id/3459" target="_blank">dreamy</a> ported by <a href="http://www.kevinpapst.de/" target="_blank">kevin papst</a> for <a href="http://www.bigace.de/" target="_blank">bigace</a>
+			&raquo;
+			{if !$USER->isAnonymous()}
+			    {permission_editcontent assign='allowEditor'}
+			    {if $allowEditor}
+			    <a href="{link_editor id=$MENU->getID() language=$MENU->getLanguageID()}"><img src="{directory}dreamy/editor.png" border="0"></a> 
+			    {/if}
+			    <a href="{link_admin}"><img src="{directory}dreamy/admin.png" border="0"></a>
+			    <a href="{link_logout}"><img src="{directory}dreamy/logout.png" border="0"></a>
+			{else}
+			    <a href="{link_login}"><img align="absmiddle" src="{directory}dreamy/login.png" border="0"></a>
+			{/if}
+		</div>
+	</div>
+
+</div>
+
+</body>
+</html>]]></content>
+        </row>
+    </table>    
+
+    <table name="stylesheet">
+        <row>
+            <name key="true">Dreamy</name>
+            <cid key="true">{CID}</cid>
+            <description>Stylesheet for the 'Dreamy' Template.</description>
+            <filename>dreamy/style.css</filename>
+            <editorcss>Dreamy-Editor</editorcss>
+        </row>
+        <row>
+            <name key="true">Dreamy-Editor</name>
+            <cid key="true">{CID}</cid>
+            <description>Editor Stylesheet for the 'Dreamy' Template.</description>
+            <filename>dreamy/editor.css</filename>
+            <editorcss>Dreamy-Editor</editorcss>
+        </row>
+    </table>    
+
+    <table name="design">
+        <row>
+            <name key="true">Dreamy</name>
+            <cid key="true">{CID}</cid>
+            <description>Dreamy free Template port.</description>
+            <stylesheet>Dreamy</stylesheet>
+            <template>Dreamy</template>
+            <portlets>0</portlets>
+        </row>
+    </table>    
+
+</content>

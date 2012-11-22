@@ -1,0 +1,15 @@
+Version 1.9:
+------------
+- improved admin interface:
+	- see links directly
+	- delete with one click
+
+Version 1.8:
+------------
+- translation improvements for 2.7
+
+Version 1.7:
+------------
+- using new admin styles
+- changed file structure to be compatible with BIGACE 2.6
+- fixed captcha: was not using the configured class

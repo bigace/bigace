@@ -1,0 +1,1 @@
+INSERT INTO {DB_PREFIX}future_user_right (itemtype,cid,itemid,user_id,value) VALUES ('{ITEMTYPE}','{CID}','{ITEM_ID}','{USER_ID}','{RIGHT_VALUE}')

@@ -1,0 +1,172 @@
+<content version="1.0">
+
+    <table name="template">
+        <row>
+            <name key="true">FreeStyle</name>
+            <cid key="true">{CID}</cid>
+            <description>FreeStyle - a free Template by Tony Pires, ported for BIGACE by Kevin Papst.</description>
+            <inwork>0</inwork>
+            <include>0</include>
+            <timestamp function="true">unix_timestamp()</timestamp>
+            <userid>1</userid>
+            <filename>FreeStyle.tpl</filename>
+            <content><![CDATA[<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+{assign var="menu_id" value="-1"}
+{assign var="news_id" value="-1"}
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>{$MENU->getName()} | {sitename}</title>
+<meta name="generator" content="{bigace_version full=true}">
+<meta name="description" content="{$MENU->getDescription()}" />
+<meta name="keywords" content="your,keywords,goes,here" />
+
+<link href="{$stylesheet}" rel="stylesheet" type="text/css" />
+
+<!--[if lte IE 6]>
+<style>
+{literal}
+#content{margin-left:-40px;}
+#rightside{margin-right:0px;margin-left:-43px;}
+#sidebar{margin-left:-30px;padding:0 40px 0 40px;}
+#sidebar ul.nav{margin:10px -20px;padding:0}
+#sidebar h1,#sidebar h3{margin-right:-30px;}
+#content ul{padding-left:20px;list-style-position:outside;}
+#footer ul{margin-left:20px;}
+#footer li{margin:-1 0;}
+#footer .footer_links{margin-bottom:0;padding-bottom:1px;}
+#footer li.top_link{padding-bottom:20px;}
+#footer .ie_foot{position:relative;top:20px;}
+{/literal}
+</style>
+<![endif]--> 
+
+<!--[if IE 7]>
+<style>
+{literal}
+#sidebar{margin-left:-20px;padding:0 60px 0 20px;}
+#sidebar ul.nav{margin:0 -20px;padding:0}
+#sidebar h1,#sidebar h3{margin-right:-30px;}
+#content ul{padding-left:20px;list-style-position:outside;}
+#footer ul{margin-left:40px;}
+#footer li a{margin:-1px 0 0 0;}
+#footer .footer_links{margin-bottom:0;}
+#footer .ie_foot{position:relative;top:30px;}
+{/literal}
+</style>
+<![endif]--> 
+</head>
+{load_item id="-1" itemtype="1" assign="topLevel"}
+<body>
+<div id="container">
+	<div id="rightside">
+		<div id="title">
+		<p>site name</p>
+		</div>
+		<div id="sidebar">
+		<ul class="nav">
+                      <li><a href="{link item=$topLevel}">{$topLevel->getName()}</a></li>
+                      {navigation id="$menu_id" prefix="<li>" suffix="</li>"}
+                </ul>
+		<img src="img/star2.jpg" alt="star" style="display:none"/>
+		<h1>recent updates</h1>
+		<h3>last updated: {$MENU->getCreateDate()|date_format:"%d/%m/%Y"}</h3>
+		
+		<ul id="gallery">
+                    {load_item_childs id=$news_id assign="myNews"}
+                    {foreach from=$myNews item="newsPage"}
+			<li><a href="{link item=$newsPage}"><b>{$newsPage->getName()}</b><br /><span class="spacer">&nbsp;</span><br />
+				<span>{$newsPage->getDescription()} <i>Read More...</i></span></a></li>
+	            {/foreach}
+		</ul>
+   {modul_check name="tipOfTheDay" minversion="1.2" assign="testTips"}
+   {if $testTips}
+        {tip_of_the_day assign="tipOfTheDay"}
+		<h1>random quote...</h1>
+		<h3>{$tipOfTheDay->getName()}</h3>
+		<p>{$tipOfTheDay->getTip()}</p>
+   {/if}
+		</div>
+	</div>
+	<div id="content">
+		<h1>{$MENU->getName()}</h1>
+		<h3>posted on {$MENU->getCreateDate()|date_format:"%B %d, %Y"}</h3>
+        {modul menu=$MENU}
+	</div>
+	<div id="footer">
+		<div class="footer_links">
+		<ul>
+			<li class="top_link">my links</li>
+			<li>{bigace_version link=true full=true}</li>
+			<li><a href="http://www.kevinpapst.de/" title="CMS Consulting">Kevin Papst</a></li>
+			<li><a href="http://sourceforge.net/projects/bigace" title="BIGACE Free PHP Web CMS">Sourceforge</a></li>
+			{if !$USER->isAnonymous()}
+	 	 	 <li><a target="_blank" href="{link_admin}">Administration</a></li>
+			 {permission_editcontent assign='allowEditor'}
+			 {if $allowEditor}
+			  <li><a href="{link_editor id=$MENU->getID() language=$MENU->getLanguageID()}">Editor</a></li>
+			 {/if}
+ 			 <li><a href="{link_logout id=$MENU->getID()}">Logout</a></li>
+			{else}
+			 <li><a href="http://www.ohloh.net/projects/BIGACE">ohloh</a></li>
+			 <li><a href="http://www.cmsmatrix.org/matrix/cms-matrix?func=viewDetail;listingId=jNJigl8JV73_0nTb4kMrig">CMS Matrix</a></li>
+			 <li><a href="http://www.opensourcecms.com/index.php?option=com_content&task=view&id=2266">OpenSourceCMS</a></li>
+			{/if}
+		</ul>
+		<ul>
+			<li class="top_link">web design</li>
+
+			<li><a href="#">CSS Play</a></li>
+			<li><a href="#">Squidfingers</a></li>
+			<li><a href="#">Kaliber 10K</a></li>
+			<li><a href="#">Photoshop Star</a></li>
+			<li><a href="#">A List Apart</a></li>
+			<li><a href="#">Fractured Sanity</a></li>
+
+		</ul>
+		</div>
+		<div class="ie_foot">
+			<p>
+				<span class="rf_item">&copy; {$smarty.now|date_format:"%Y"} <a href="{link url="/"}">Your Domain</a></span> | 
+				<span class="rf_item"><a href="http://validator.w3.org/check?uri=referer">XHTML</a> 1.1</span> | 
+				<span class="rf_item">Valid <a href="http://jigsaw.w3.org/css-validator/check/referer">CSS</a></span>
+			</p>
+		</div>
+	</div>
+</div>
+
+</body>
+</html>
+]]></content>
+        </row>
+    </table>    
+
+    <table name="stylesheet">
+        <row>
+            <name key="true">FreeStyle</name>
+            <cid key="true">{CID}</cid>
+            <description>Stylesheet for the 'FreeStyle' Template.</description>
+            <filename>freestyle/default.css</filename>
+            <editorcss>FreeStyle-Editor</editorcss>
+        </row>
+        <row>
+            <name key="true">FreeStyle-Editor</name>
+            <cid key="true">{CID}</cid>
+            <description>Editor Stylesheet for the 'FreeStyle' Template.</description>
+            <filename>freestyle/editor.css</filename>
+            <editorcss>FreeStyle-Editor</editorcss>
+        </row>
+    </table>    
+
+    <table name="design">
+        <row>
+            <name key="true">FreeStyle</name>
+            <cid key="true">{CID}</cid>
+            <description>FreeStyle - a free Template port.</description>
+            <stylesheet>FreeStyle</stylesheet>
+            <template>FreeStyle</template>
+            <portlets>0</portlets>
+        </row>
+    </table>    
+
+</content>

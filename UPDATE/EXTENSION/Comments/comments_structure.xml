@@ -1,0 +1,128 @@
+<?xml version="1.0"?>
+<!--
+ *
+ * BIGACE - a PHP and MySQL based Web CMS.
+ * 
+ * BIGACE is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation; either version 2
+ * of the License, or (at your option) any later version.
+ * 
+ * BIGACE is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * 
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software Foundation, 
+ * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ * 
+ * For further information visit {@link http://www.bigace.de http://www.bigace.de}.
+ *
+ * @author Kevin Papst 
+ * @copyright Copyright (C) Kevin Papst
+ * @version $Id: comments_structure.xml,v 1.7 2009/02/28 00:51:32 kpapst Exp $
+ *
+-->
+
+<schema version="0.3">
+
+  <table name="comment_spam_counter">
+    <descr>This table holds all Comments.</descr>
+    <opt platform="mysql">ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_general_ci</opt>
+
+    <field name="cid" type="I" size="11">
+      <NOTNULL/>
+      <KEY/>
+    </field>
+
+    <field name="counter" type="I" size="11">
+      <NOTNULL/>
+    </field>
+  </table>
+
+
+  <table name="comments">
+    <descr>This table holds all Comments.</descr>
+    <opt platform="mysql">ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_general_ci</opt>
+
+    <field name="id" type="I" size="11">
+      <NOTNULL/>
+      <AUTOINCREMENT/>
+      <KEY/>
+    </field>
+
+    <field name="cid" type="I" size="11">
+      <NOTNULL/>
+      <KEY/>
+    </field>
+
+    <field name="itemtype" type="I" size="11">
+      <NOTNULL/>
+    </field>
+
+    <field name="itemid" type="I" size="11">
+      <NOTNULL/>
+    </field>
+
+    <field name="language" type="C" size="20">
+      <NOTNULL/>
+    </field>
+
+    <field name="name" type="C" size="255">
+      <NOTNULL/>
+    </field>
+
+    <field name="email" type="C" size="255">
+      <NOTNULL/>
+    </field>
+
+    <field name="homepage" type="C" size="255">
+      <NULL/>
+    </field>
+
+    <field name="ip" type="C" size="255">
+      <NULL/>
+    </field>
+
+    <field name="comment" type="X" />
+
+    <field name="timestamp" type="I" size="11">
+      <NOTNULL/>
+    </field>
+
+    <field name="activated" type="L">
+      <NOTNULL/>
+      <DEFAULT value="0"/>
+    </field>
+
+    <field name="anonymous" type="L">
+      <NOTNULL/>
+      <DEFAULT value="0"/>
+    </field>
+
+    <field name="type" type="C" size="10">
+      <NOTNULL/>
+      <DEFAULT value="comment"/>
+    </field>
+
+    <index name="listComments">
+      <col>cid</col>
+      <col>itemtype</col>
+      <col>itemid</col>
+      <col>language</col>
+      <col>email</col>
+      <col>timestamp</col>
+    </index>
+              
+    <index name="countComments">
+      <col>cid</col>
+      <col>itemtype</col>
+      <col>itemid</col>
+      <col>language</col>
+      <col>activated</col>
+    </index>
+
+  </table>
+
+</schema>

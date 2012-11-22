@@ -1,0 +1,2035 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<content version="1.0">
+
+    <table name="groups">
+        <row update="true">
+            <group_id key="true">0</group_id>
+            <cid key="true">{CID}</cid>
+            <group_name>Anonymous</group_name>
+        </row>
+        <row update="true">
+            <group_id key="true">20</group_id>
+            <cid key="true">{CID}</cid>
+            <group_name>Editor</group_name>
+        </row>
+        <row update="true">
+            <group_id key="true">35</group_id>
+            <cid key="true">{CID}</cid>
+            <group_name>Designer</group_name>
+        </row>
+        <row update="true">
+            <group_id key="true">40</group_id>
+            <cid key="true">{CID}</cid>
+            <group_name>Administrator</group_name>
+        </row>
+    </table>
+
+
+    <table name="frights">
+        <row>
+            <cid key="true">{CID}</cid>
+            <name key="true">use_editor</name>
+            <defaultvalue>N</defaultvalue>
+            <description>Allows to edit Content with an Editor.</description>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <name key="true">admin_menus</name>
+            <defaultvalue>N</defaultvalue>
+            <description>Allows to administrate Menus (create and delete Menus).</description>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <name key="true">admin_categorys</name>
+            <defaultvalue>N</defaultvalue>
+            <description>Allows to administrate Categories (edit, create, move and delete Categories).</description>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <name key="true">admin_users</name>
+            <defaultvalue>N</defaultvalue>
+            <description>Allows to administrate User (edit, create and delete user, change Group mapping).</description>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <name key="true">admin_items</name>
+            <defaultvalue>N</defaultvalue>
+            <description>Allows to administrate Items (edit, upload ad delete Images and Files).</description>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <name key="true">view_statistics</name>
+            <defaultvalue>N</defaultvalue>
+            <description>Allows to view statistics.</description>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <name key="true">edit_frights</name>
+            <defaultvalue>N</defaultvalue>
+            <description>Allows to administrate the User Group Permission.</description>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <name key="true">group_frights</name>
+            <defaultvalue>N</defaultvalue>
+            <description>Allows to edit the Group-to-Permission mapping. SECURITY WARNING!</description>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <name key="true">languages_all_rights</name>
+            <defaultvalue>N</defaultvalue>
+            <description>Allows to administrate the languages.</description>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <name key="true">module_all_rights</name>
+            <defaultvalue>N</defaultvalue>
+            <description>Allows to view, create and edit modules.</description>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <name key="true">system_admin</name>
+            <defaultvalue>N</defaultvalue>
+            <description>Allows access to some hidden admin plugins.</description>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <name key="true">export_database</name>
+            <defaultvalue>N</defaultvalue>
+            <description>Allows to export the community database.</description>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <name key="true">edit_own_profile</name>
+            <defaultvalue>N</defaultvalue>
+            <description>Allows to edit the Users own Profile.</description>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <name key="true">updates_manager</name>
+            <defaultvalue>N</defaultvalue>
+            <description>Allows to manage and install Updates.</description>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <name key="true">admin_configurations</name>
+            <defaultvalue>N</defaultvalue>
+            <description>Allows to change Configurations.</description>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <name key="true">edit_menus</name>
+            <defaultvalue>N</defaultvalue>
+            <description>Allows to edit Menus (use Editor, Workflow).</description>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <name key="true">edit_items</name>
+            <defaultvalue>N</defaultvalue>
+            <description>Allows to edit Items (update existing ones).</description>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <name key="true">editor.html.sourcecode</name>
+            <defaultvalue>N</defaultvalue>
+            <description>Allows to access the HTML Sourcecode.</description>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <name key="true">edit.portlet.settings</name>
+            <defaultvalue>N</defaultvalue>
+            <description>Allows to open, edit and save the Portlet settings for each Page, the User has write rights on.</description>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <name key="true">community.admin</name>
+            <defaultvalue>N</defaultvalue>
+            <description>Allows to edit the Community-Domain Mapping for all Communities.</description>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <name key="true">community.installation</name>
+            <defaultvalue>N</defaultvalue>
+            <description>Allows to add new Communities to this installation.</description>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <name key="true">community.maintenance</name>
+            <defaultvalue>N</defaultvalue>
+            <description>Allows to edit the Website Maintenance State and Message.</description>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <name key="true">community.deinstallation</name>
+            <defaultvalue>N</defaultvalue>
+            <description>Allows to deinstall Communities. SECURITY WARNING!</description>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <name key="true">edit.usergroup</name>
+            <defaultvalue>N</defaultvalue>
+            <description>Allows to edit the Usergroups and their Member links.</description>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <name key="true">logging.messages</name>
+            <defaultvalue>N</defaultvalue>
+            <description>Allows to read and clean up all Log messages.</description>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <name key="true">smarty.designs.edit</name>
+            <defaultvalue>N</defaultvalue>
+            <description>Edit existing and create new Page Designs.</description>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <name key="true">smarty.stylesheets.edit</name>
+            <defaultvalue>N</defaultvalue>
+            <description>Edit existing and create new Stylesheets.</description>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <name key="true">smarty.templates.edit</name>
+            <defaultvalue>N</defaultvalue>
+            <description>Edit existing and create new Smarty Templates.</description>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <name key="true">autojobs.admin</name>
+            <defaultvalue>N</defaultvalue>
+            <description>Configure and activate/deactivate autojobs.</description>
+        </row>
+    </table>    
+
+    <table name="group_frights" update="false">
+        <row>
+            <cid key="true">{CID}</cid>
+            <group_id key="true">40</group_id>
+            <fright key="true">use_editor</fright>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <group_id key="true">40</group_id>
+            <fright key="true">admin_menus</fright>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <group_id key="true">40</group_id>
+            <fright key="true">admin_categorys</fright>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <group_id key="true">40</group_id>
+            <fright key="true">admin_users</fright>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <group_id key="true">40</group_id>
+            <fright key="true">admin_items</fright>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <group_id key="true">40</group_id>
+            <fright key="true">view_statistics</fright>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <group_id key="true">40</group_id>
+            <fright key="true">edit_frights</fright>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <group_id key="true">40</group_id>
+            <fright key="true">group_frights</fright>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <group_id key="true">40</group_id>
+            <fright key="true">languages_all_rights</fright>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <group_id key="true">40</group_id>
+            <fright key="true">module_all_rights</fright>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <group_id key="true">40</group_id>
+            <fright key="true">export_database</fright>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <group_id key="true">40</group_id>
+            <fright key="true">edit_own_profile</fright>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <group_id key="true">40</group_id>
+            <fright key="true">updates_manager</fright>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <group_id key="true">40</group_id>
+            <fright key="true">admin_configurations</fright>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <group_id key="true">40</group_id>
+            <fright key="true">edit_menus</fright>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <group_id key="true">40</group_id>
+            <fright key="true">edit_items</fright>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <group_id key="true">40</group_id>
+            <fright key="true">editor.html.sourcecode</fright>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <group_id key="true">40</group_id>
+            <fright key="true">edit.portlet.settings</fright>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <group_id key="true">40</group_id>
+            <fright key="true">community.admin</fright>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <group_id key="true">40</group_id>
+            <fright key="true">community.installation</fright>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <group_id key="true">40</group_id>
+            <fright key="true">community.maintenance</fright>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <group_id key="true">40</group_id>
+            <fright key="true">community.deinstallation</fright>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <group_id key="true">40</group_id>
+            <fright key="true">edit.usergroup</fright>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <group_id key="true">40</group_id>
+            <fright key="true">logging.messages</fright>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <group_id key="true">40</group_id>
+            <fright key="true">smarty.designs.edit</fright>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <group_id key="true">40</group_id>
+            <fright key="true">smarty.stylesheets.edit</fright>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <group_id key="true">40</group_id>
+            <fright key="true">smarty.templates.edit</fright>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <group_id key="true">40</group_id>
+            <fright key="true">autojobs.admin</fright>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <group_id key="true">35</group_id>
+            <fright key="true">logging.messages</fright>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <group_id key="true">35</group_id>
+            <fright key="true">smarty.designs.edit</fright>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <group_id key="true">35</group_id>
+            <fright key="true">smarty.stylesheets.edit</fright>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <group_id key="true">35</group_id>
+            <fright key="true">smarty.templates.edit</fright>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <group_id key="true">35</group_id>
+            <fright key="true">edit_own_profile</fright>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <group_id key="true">35</group_id>
+            <fright key="true">use_editor</fright>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <group_id key="true">35</group_id>
+            <fright key="true">view_statistics</fright>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <group_id key="true">35</group_id>
+            <fright key="true">edit_menus</fright>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <group_id key="true">20</group_id>
+            <fright key="true">admin_categorys</fright>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <group_id key="true">20</group_id>
+            <fright key="true">view_statistics</fright>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <group_id key="true">20</group_id>
+            <fright key="true">edit_menus</fright>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <group_id key="true">20</group_id>
+            <fright key="true">edit_items</fright>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <group_id key="true">20</group_id>
+            <fright key="true">editor.html.sourcecode</fright>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <group_id key="true">20</group_id>
+            <fright key="true">edit.portlet.settings</fright>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <group_id key="true">20</group_id>
+            <fright key="true">use_editor</fright>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <group_id key="true">20</group_id>
+            <fright key="true">admin_menus</fright>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <group_id key="true">20</group_id>
+            <fright key="true">admin_items</fright>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <group_id key="true">20</group_id>
+            <fright key="true">edit_own_profile</fright>
+        </row>
+    </table>
+    
+    <table name="user" mode="install">
+        <row>
+            <id key="true">1</id>
+            <cid key="true">{CID}</cid>
+            <username>{CID_ADMIN}</username>
+            <password>{CID_PW}</password>
+            <language>{DEFAULT_LANGUAGE}</language>
+            <active>1</active>
+            <email>{CID_WEBMASTER_EMAIL}</email>
+        </row>
+        <row>
+            <id key="true">2</id>
+            <cid key="true">{CID}</cid>
+            <username>all+</username>
+            <password>6bb61e3b7bce0931da574d19d1d82c88</password>
+            <language>{DEFAULT_LANGUAGE}</language>
+            <active>1</active>
+            <email>@</email>
+        </row>
+    </table>    
+
+    <table name="user_group_mapping">
+        <row>
+            <cid key="true">{CID}</cid>
+            <userid key="true">1</userid>
+            <group_id key="true">40</group_id>
+            <group_id>40</group_id>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <userid key="true">2</userid>
+            <group_id key="true">0</group_id>
+            <group_id>0</group_id>
+        </row>
+    </table>    
+
+    <table name="user_attributes" update="false">
+        <row>
+            <cid key="true">{CID}</cid>
+            <userid key="true">1</userid>
+            <attribute_name key="true">firstname</attribute_name>
+            <attribute_value>Administrator</attribute_value>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <userid key="true">1</userid>
+            <attribute_name key="true">email</attribute_name>
+            <attribute_value>@</attribute_value>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <userid key="true">2</userid>
+            <attribute_name key="true">firstname</attribute_name>
+            <attribute_value>Anonymous</attribute_value>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <userid key="true">2</userid>
+            <attribute_name key="true">email</attribute_name>
+            <attribute_value>@</attribute_value>
+        </row>
+    </table>    
+
+    <table name="category">
+        <row update="false">
+            <id key="true">-1</id>
+            <cid key="true">{CID}</cid>
+            <parentid>-9999</parentid>
+            <position>1</position>
+            <name>Categories</name>
+            <description>Category TOP-LEVEL</description>
+        </row>
+    </table>
+
+    <table name="item_1" update="false">
+        <row>
+            <id key="true">-1</id>
+            <cid key="true">{CID}</cid>
+            <language key="true">de</language>
+            <mimetype>text/html</mimetype>
+            <name>Startseite</name>
+            <parentid>-9999</parentid>
+            <description>Menu TOP-LEVEL</description>
+            <catchwords>BIGACE WEB CMS</catchwords>
+            <createdate function="true">unix_timestamp()</createdate>
+            <createby>1</createby>
+            <modifieddate function="true">unix_timestamp()</modifieddate>
+            <modifiedby>1</modifiedby>
+            <workflow></workflow>
+            <unique_name>index_de.html</unique_name>
+            <text_1>-1_de.html</text_1>
+            <text_2>-1_de.html</text_2>
+            <text_3>displayContent</text_3>
+            <text_4>BLIX</text_4>
+            <text_5><![CDATA[ 
+                HERZLICHEN GL&Uuml;CKWUNSCH Installation Ihres BIGACE Content Management System erfolgreich verlaufen haben Ihre erste Webseite Consumer angelegt sollten damit beginnen System kennenzulernen Ihre Seitenstruktur Inhalte einzupflegen erste Schritt k&ouml;nnen sich Benutzername Passwort Kombination anmelden Installation angegeben haben sehen Funktionsleiste zwei weitere Icons &ouml;ffnet Administration Ihnen uneingeschr&auml;nkten Zugriff alle Systemkonfigurationen Inhalte gibt &ouml;ffnet Editor Inhalt aktuellen Seite bearbeiten k&ouml;nnen Hilfreiche Links weitere Informationen BIGACE dazugeh&ouml;rigen Komponenten erhalten k&ouml;nnen BIGACE Webseite oder Sourceforge Projektseite besuchen Dort finden neben neuesten BIGACE Version vielen n&uuml;tzlichen Informationen auch verschiedenste Downloads Administration Themes Module Layouts Eine Bitte Schluß w&uuml;rde mich &uuml;ber eine Email freuen wenn Ihren Webauftritt BIGACE realisieren sollten Schicken Logo oder paar weitere Informationen nehme gerne Installations-Referenzliste Viel Spaß BIGACE Ihrer neuen Webseite
+			]]>
+            </text_5>
+            <num_1 null="true" />
+            <num_2 null="true" />
+            <num_3>1</num_3>
+            <num_4>0</num_4>
+            <num_5>0</num_5>
+            <date_1>0</date_1>
+            <date_2>0</date_2>
+            <date_3>0</date_3>
+            <date_4>0</date_4>
+            <date_5>0</date_5>
+        </row>
+    </table>
+
+    <table name="item_4" update="false">
+        <row>
+            <id key="true">-1</id>
+            <cid key="true">{CID}</cid>
+            <language key="true">de</language>
+            <mimetype>image/gif</mimetype>
+            <name>Images</name>
+            <parentid>-9999</parentid>
+            <description>Image TOP-LEVEL</description>
+            <catchwords></catchwords>
+            <createdate function="true">unix_timestamp()</createdate>
+            <createby>1</createby>
+            <modifieddate function="true">unix_timestamp()</modifieddate>
+            <modifiedby>1</modifiedby>
+            <workflow></workflow>
+            <unique_name></unique_name>
+            <text_1>empty.gif</text_1>
+            <text_2></text_2>
+            <text_3></text_3>
+            <text_4></text_4>
+            <text_5></text_5>
+            <num_1 null="true" />
+            <num_2 null="true" />
+            <num_3>0</num_3>
+            <num_4>0</num_4>
+            <num_5>0</num_5>
+            <date_1>0</date_1>
+            <date_2>0</date_2>
+            <date_3>0</date_3>
+            <date_4>0</date_4>
+            <date_5>0</date_5>
+        </row>
+    </table>    
+
+    <table name="item_5" update="false">
+        <row>
+            <id key="true">-1</id>
+            <cid key="true">{CID}</cid>
+            <language key="true">de</language>
+            <mimetype>image/gif</mimetype>
+            <name>Files</name>
+            <parentid>-9999</parentid>
+            <description>File TOP-LEVEL</description>
+            <catchwords></catchwords>
+            <createdate function="true">unix_timestamp()</createdate>
+            <createby>1</createby>
+            <modifieddate function="true">unix_timestamp()</modifieddate>
+            <modifiedby>1</modifiedby>
+            <workflow></workflow>
+            <unique_name></unique_name>
+            <text_1>empty.gif</text_1>
+            <text_2></text_2>
+            <text_3></text_3>
+            <text_4></text_4>
+            <text_5></text_5>
+            <num_1>0</num_1>
+            <num_2>0</num_2>
+            <num_3>0</num_3>
+            <num_4>0</num_4>
+            <num_5>0</num_5>
+            <date_1>0</date_1>
+            <date_2>0</date_2>
+            <date_3>0</date_3>
+            <date_4>0</date_4>
+            <date_5>0</date_5>
+        </row>
+    </table>    
+
+    <table name="group_right" update="false">
+        <row>
+            <itemtype key="true">1</itemtype>
+            <cid key="true">{CID}</cid>
+            <itemid key="true">-1</itemid>
+            <group_id key="true">0</group_id>
+            <value>1</value>
+        </row>
+        <row>
+            <itemtype key="true">1</itemtype>
+            <cid key="true">{CID}</cid>
+            <itemid key="true">-1</itemid>
+            <group_id key="true">20</group_id>
+            <value>3</value>
+        </row>
+        <row>
+            <itemtype key="true">1</itemtype>
+            <cid key="true">{CID}</cid>
+            <itemid key="true">-1</itemid>
+            <group_id key="true">35</group_id>
+            <value>7</value>
+        </row>
+        <row>
+            <itemtype key="true">1</itemtype>
+            <cid key="true">{CID}</cid>
+            <itemid key="true">-1</itemid>
+            <group_id key="true">40</group_id>
+            <value>7</value>
+        </row>
+        <row>
+            <itemtype key="true">4</itemtype>
+            <cid key="true">{CID}</cid>
+            <itemid key="true">-1</itemid>
+            <group_id key="true">0</group_id>
+            <value>1</value>
+        </row>
+        <row>
+            <itemtype key="true">4</itemtype>
+            <cid key="true">{CID}</cid>
+            <itemid key="true">-1</itemid>
+            <group_id key="true">20</group_id>
+            <value>3</value>
+        </row>
+        <row>
+            <itemtype key="true">4</itemtype>
+            <cid key="true">{CID}</cid>
+            <itemid key="true">-1</itemid>
+            <group_id key="true">35</group_id>
+            <value>3</value>
+        </row>
+        <row>
+            <itemtype key="true">4</itemtype>
+            <cid key="true">{CID}</cid>
+            <itemid key="true">-1</itemid>
+            <group_id key="true">40</group_id>
+            <value>7</value>
+        </row>
+        <row>
+            <itemtype key="true">5</itemtype>
+            <cid key="true">{CID}</cid>
+            <itemid key="true">-1</itemid>
+            <group_id key="true">0</group_id>
+            <value>1</value>
+        </row>
+        <row>
+            <itemtype key="true">5</itemtype>
+            <cid key="true">{CID}</cid>
+            <itemid key="true">-1</itemid>
+            <group_id key="true">20</group_id>
+            <value>3</value>
+        </row>
+        <row>
+            <itemtype key="true">5</itemtype>
+            <cid key="true">{CID}</cid>
+            <itemid key="true">-1</itemid>
+            <group_id key="true">35</group_id>
+            <value>3</value>
+        </row>
+        <row>
+            <itemtype key="true">5</itemtype>
+            <cid key="true">{CID}</cid>
+            <itemid key="true">-1</itemid>
+            <group_id key="true">40</group_id>
+            <value>7</value>
+        </row>
+    </table>
+
+    <table name="configuration" update="false">
+        <row>
+            <cid key="true">{CID}</cid>
+            <package key="true">system</package>
+            <name key="true">captcha</name>
+            <value>classes.util.captcha.B2EvoCaptcha</value>
+            <type>class</type>
+            <extended></extended>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <package key="true">community</package>
+            <name key="true">contact.email</name>
+            <value>{CID_WEBMASTER_EMAIL}</value>
+            <type>string</type>
+            <extended></extended>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <package key="true">community</package>
+            <name key="true">accept.browser.language</name>
+            <value>0</value>
+            <type>boolean</type>
+            <extended></extended>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <package key="true">community</package>
+            <name key="true">default.language</name>
+            <value>{DEFAULT_LANGUAGE}</value>
+            <type>language</type>
+            <extended></extended>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <package key="true">community</package>
+            <name key="true">sitename</name>
+            <value><![CDATA[{SITE_NAME}]]></value>
+            <type>string</type>
+            <extended></extended>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <package key="true">community</package>
+            <name key="true">copyright.holder</name>
+            <value>BIGACE CMS</value>
+            <type>string</type>
+            <extended></extended>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <package key="true">system</package>
+            <name key="true">write.statistic</name>
+            <value>{WRITE_STATISTICS}</value>
+            <type>boolean</type>
+            <extended></extended>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <package key="true">system</package>
+            <name key="true">hide.footer</name>
+            <value>0</value>
+            <type>boolean</type>
+            <extended></extended>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <package key="true">system</package>
+            <name key="true">footer.type.extended</name>
+            <value>0</value>
+            <type>boolean</type>
+            <extended></extended>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <package key="true">system</package>
+            <name key="true">send.pragma.no.cache</name>
+            <value>TRUE</value>
+            <type>boolean</type>
+            <extended></extended>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <package key="true">login</package>
+            <name key="true">failures.before.deactivate</name>
+            <value>5</value>
+            <type>integer</type>
+            <extended></extended>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <package key="true">login</package>
+            <name key="true">deactivate.on.failures</name>
+            <value>0</value>
+            <type>boolean</type>
+            <extended></extended>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <package key="true">login</package>
+            <name key="true">login.with.user.language</name>
+            <value>0</value>
+            <type>boolean</type>
+            <extended></extended>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <package key="true">workflow</package>
+            <name key="true">singlereview.group.id</name>
+            <value>20</value>
+            <type>group</type>
+            <extended></extended>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <package key="true">admin</package>
+            <name key="true">check.csrf</name>
+            <value>0</value>
+            <type>boolean</type>
+            <extended></extended>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <package key="true">admin</package>
+            <name key="true">feedback.email</name>
+            <value>feedback@bigace.de</value>
+            <type>string</type>
+            <extended></extended>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <package key="true">admin</package>
+            <name key="true">default.style</name>
+            <value>{DEFAULT_STYLE}</value>
+            <type>adminstyle</type>
+            <extended></extended>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <package key="true">admin</package>
+            <name key="true">display.latest.news</name>
+            <value>TRUE</value>
+            <type>boolean</type>
+            <extended></extended>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <package key="true">admin</package>
+            <name key="true">max.upload.size</name>
+            <value>10000000</value>
+            <type>long</type>
+            <extended></extended>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <package key="true">editor</package>
+            <name key="true">default.editor</name>
+            <value>{DEFAULT_EDITOR}</value>
+            <type>editor</type>
+            <extended></extended>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <package key="true">content</package>
+            <name key="true">show.default.content</name>
+            <value>TRUE</value>
+            <type>boolean</type>
+            <extended></extended>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <package key="true">system</package>
+            <name key="true">logger.loglevel</name>
+            <value>2047</value>
+            <type>loglevel</type>
+            <extended></extended>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <package key="true">system</package>
+            <name key="true">use.smarty</name>
+            <value>TRUE</value>
+            <type>boolean</type>
+            <extended></extended>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <package key="true">system</package>
+            <name key="true">show.smarty.hint</name>
+            <value>0</value>
+            <type>boolean</type>
+            <extended></extended>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <package key="true">admin.menu</package>
+            <name key="true">focus.on.select</name>
+            <value>TRUE</value>
+            <type>boolean</type>
+            <extended></extended>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <package key="true">admin.menu</package>
+            <name key="true">open.on.select</name>
+            <value>TRUE</value>
+            <type>boolean</type>
+            <extended></extended>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <package key="true">templates</package>
+            <name key="true">maintenance</name>
+            <value>MAINTENANCE</value>
+            <type>template</type>
+            <extended></extended>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <package key="true">templates</package>
+            <name key="true">auth.login</name>
+            <value>AUTH-LOGIN</value>
+            <type>template</type>
+            <extended></extended>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <package key="true">templates</package>
+            <name key="true">auth.activate</name>
+            <value>AUTH-ACTIVATE</value>
+            <type>template</type>
+            <extended></extended>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <package key="true">templates</package>
+            <name key="true">auth.register</name>
+            <value>AUTH-REGISTER</value>
+            <type>template</type>
+            <extended></extended>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <package key="true">templates</package>
+            <name key="true">auth.password</name>
+            <value>AUTH-PASSWORD</value>
+            <type>template</type>
+            <extended></extended>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <package key="true">authentication</package>
+            <name key="true">allow.self.registration</name>
+            <value>0</value>
+            <type>boolean</type>
+            <extended></extended>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <package key="true">authentication</package>
+            <name key="true">admin.password.reset</name>
+            <value>0</value>
+            <type>boolean</type>
+            <extended></extended>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <package key="true">authentication</package>
+            <name key="true">default.group.registration</name>
+            <value>10</value>
+            <type>group</type>
+            <extended></extended>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <package key="true">authentication</package>
+            <name key="true">anonymous.group.registration</name>
+            <value>TRUE</value>
+            <type>boolean</type>
+            <extended></extended>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <package key="true">authentication</package>
+            <name key="true">username.minimum.length</name>
+            <value>5</value>
+            <type>integer</type>
+            <extended></extended>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <package key="true">authentication</package>
+            <name key="true">password.minimum.length</name>
+            <value>5</value>
+            <type>integer</type>
+            <extended></extended>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <package key="true">authentication</package>
+            <name key="true">captcha.minimum.length</name>
+            <value>4</value>
+            <type>integer</type>
+            <extended></extended>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <package key="true">authentication</package>
+            <name key="true">captcha.maximum.length</name>
+            <value>6</value>
+            <type>integer</type>
+            <extended></extended>
+        </row>
+        <row mode="install">
+            <cid key="true">{CID}</cid>
+            <package key="true">authentication</package>
+            <name key="true">welcome.email.sitename</name>
+            <value><![CDATA[{SITE_NAME}]]></value>
+            <type>string</type>
+            <extended></extended>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <package key="true">authentication</package>
+            <name key="true">welcome.email.from</name>
+            <value>{CID_WEBMASTER_EMAIL}</value>
+            <type>string</type>
+            <extended></extended>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <package key="true">authentication</package>
+            <name key="true">registration.additional.fields</name>
+            <value></value>
+            <type>string</type>
+            <extended></extended>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <package key="true">authentication</package>
+            <name key="true">send.notification.to</name>
+            <value></value>
+            <type>string</type>
+            <extended></extended>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <package key="true">seo</package>
+            <name key="true">word.delimiter</name>
+            <value>-</value>
+            <type>string</type>
+            <extended></extended>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <package key="true">seo</package>
+            <name key="true">url.lowercase</name>
+            <value>0</value>
+            <type>boolean</type>
+            <extended></extended>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <package key="true">seo</package>
+            <name key="true">menu.default.extension</name>
+            <value>.html</value>
+            <type>string</type>
+            <extended></extended>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <package key="true">seo</package>
+            <name key="true">image.use.extension</name>
+            <value>TRUE</value>
+            <type>boolean</type>
+            <extended></extended>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <package key="true">seo</package>
+            <name key="true">file.use.extension</name>
+            <value>TRUE</value>
+            <type>boolean</type>
+            <extended></extended>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <package key="true">email</package>
+            <name key="true">content.type</name>
+            <value>text/html</value>
+            <type>string</type>
+            <extended></extended>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <package key="true">email</package>
+            <name key="true">character.set</name>
+            <value>UTF-8</value>
+            <type>string</type>
+            <extended></extended>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <package key="true">email</package>
+            <name key="true">encoding</name>
+            <value>8bit</value>
+            <type>string</type>
+            <extended></extended>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <package key="true">email</package>
+            <name key="true">smtp.server</name>
+            <value>127.0.0.1</value>
+            <type>string</type>
+            <extended>mail,smtp,sendmail,qmail</extended>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <package key="true">email</package>
+            <name key="true">from.name</name>
+            <value>{CID_WEBMASTER_EMAIL}</value>
+            <type>string</type>
+            <extended></extended>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <package key="true">email</package>
+            <name key="true">from.address</name>
+            <value>{CID_WEBMASTER_EMAIL}</value>
+            <type>string</type>
+            <extended></extended>
+        </row>
+    </table>    
+
+    <table name="autojobs">
+        <row>
+            <name key="true">session_cleanup</name>
+            <cid key="true">{CID}</cid>
+            <classname>classes.job.SessionCleanup</classname>
+            <state>30</state>
+        </row>
+    </table>    
+
+    <table name="unique_name" update="false">
+        <row>
+            <cid key="true">{CID}</cid>
+            <itemtype key="true">1</itemtype>
+            <itemid key="true">-1</itemid>
+            <language key="true">de</language>
+            <name>index_de.html</name>
+        </row>
+    </table>
+    
+	<table name="id_gen" update="false">
+        <row>
+            <cid key="true">{CID}</cid>
+            <name key="true">item_1</name>
+            <value>0</value>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <name key="true">item_4</name>
+            <value>0</value>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <name key="true">item_5</name>
+            <value>0</value>
+        </row>
+    </table>
+
+<!-- 
+######################################################################
+##########################  AUTHENTICATION  ##########################
+######################################################################
+ -->
+
+    <table name="template">
+        <row>
+            <name key="true">AUTH-LOGIN</name>
+            <cid key="true">{CID}</cid>
+            <description>The default Login Formular.</description>
+            <inwork>0</inwork>
+            <include>0</include>
+            <timestamp function="true">unix_timestamp()</timestamp>
+            <userid>1</userid>
+            <filename>AUTH-LOGIN.tpl</filename>
+            <system>1</system>
+            <content><![CDATA[{include file="AUTH-HEADER.tpl" title="login_browser_title"}
+
+    {load_item id=$CANCEL assign="cancelItem"}
+    <script language="javascript">
+    <!--
+    {literal}
+    function setFocus() {
+       try {
+	    document.getElementById('UID').select();
+	    document.getElementById('UID').focus();
+       }catch(e){}
+    }
+    {/literal}
+    //-->
+    </script>
+
+    <p id="backtosite"><a href="{link item=$cancelItem}">&laquo; {translate key="login_back"} {sitename}</a></p>
+
+    {configuration key="login.with.user.language" package="login" assign="logUserLang"}
+    {configuration package="authentication" key="allow.self.registration" assign="allowRegistration"}
+        <div id="login">
+                <h1 class="loginTitle">{translate key="login_title"}</h1>  
+                {if isset($ERROR)}
+                <div class="error">{$ERROR}</div>
+                {/if}
+                
+                <form action="{$ACTION}" method="post" name="login">
+                {foreach from=$HIDDEN item='hiddenParam'}
+                    {$hiddenParam}
+                {/foreach}
+                    <p><label>{translate key="login_username"}<br/>
+                    <input id="UID" name="UID" class="input" maxlength="30" size="20" type="text" /></label></p>
+                    <p><label>{translate key="login_password"}<br/>
+                    <input id="PW" name="PW" class="input" maxlength="30" size="20" type="password" /></label></p>
+                {if !$logUserLang}
+				<p class="langp">
+						<select id="LANG" name="language">
+						{languages assign="allLang" object=false}
+						{foreach from=$allLang key="loc" item="lang"}
+						   <option value="{$loc}"{if $LANGUAGE->getID() == $loc} selected{/if}>{$lang}</option>
+						{/foreach}
+						</select></label></p>
+                {/if}
+                    <p class="subp">
+                        <input class="submit" value="{translate key="login_button_login"}" type="submit" />
+                    </p>
+                </form>
+                <p id="specials">
+                   {if $allowRegistration}
+                   <a href="{link_register}">{translate key="login_register"}</a> |
+                   {/if} 
+                   <a href="{link_password}">{translate key="login_forgot_pwd"}</a>
+                </p>
+            </div>
+    
+{include file="AUTH-FOOTER.tpl"}
+    ]]></content>
+        </row>
+        <row>
+            <name key="true">AUTH-REGISTER</name>
+            <cid key="true">{CID}</cid>
+            <description>The default registration formular.</description>
+            <inwork>0</inwork>
+            <include>0</include>
+            <timestamp function="true">unix_timestamp()</timestamp>
+            <userid>1</userid>
+            <filename>AUTH-REGISTER.tpl</filename>
+            <system>1</system>
+            <content><![CDATA[{include file="AUTH-HEADER.tpl" title="register_browser_title"}
+
+	{load_item id=$CANCEL assign="cancelItem"}
+    <p id="backtosite"><a href="{link item=$cancelItem}">&laquo; {translate key="login_back"} {sitename}</a></p>
+
+    <div id="login">
+        <h1 class="loginTitle">{translate key="register_title"}</h1>  
+
+{if $SUCCESS}
+
+        <form action="{$HOME}" method="post" name="login">
+            <p>{translate key="register_success_name"} <i>{$USERNAME}</i> </p>
+            <p>{translate key="register_success_email"} <i>{$EMAIL}</i></p>
+            <p class="subp">
+                <input class="submit" value="{translate key="register_link_home"}" type="submit" />
+            </p>
+        </form>
+
+{else}
+
+        {load_item id=$CANCEL assign="cancelItem"}
+        <script language="javascript">
+        <!--
+        {literal}
+        function setFocus() {
+            document.getElementById('username').select();
+            document.getElementById('username').focus();
+        }
+        {/literal}
+
+        var text_username = '{translate key="login_username_check"}';
+        var text_password = '{translate key="login_password_check"}';
+        var text_pwdmatch = '{translate key="register_password_match"}';
+        var text_email = '{translate key="register_enter_email"}';
+        var text_captcha = '{translate key="register_enter_catcha"}';
+        var cancel_url = '{link item=$cancelItem}';
+        var pwdlentgh = {$PASSWORD_LENGTH};
+        var uidlength = {$USERNAME_LENGTH};
+
+        {*
+        function checkValues() 
+        {
+		    // removed unused client side checks
+            if (document.getElementById('username').value.length < uidlength) {
+                alert(text_username);
+                document.getElementById('username').focus();
+                return false;
+            }
+            
+            if (document.getElementById('password').value.length < pwdlength) {
+                alert(text_password);
+                document.getElementById('password').focus();
+                return false;
+            }
+
+            if (document.getElementById('email').value.length < 1) {
+                alert(text_email);
+                document.getElementById('email').focus();
+                return false;
+            }
+
+	        {/literal}{if $USE_CAPTCHA}{literal}
+            if (document.getElementById('captcha').value.length < 1) {
+                alert(text_captcha);
+                document.getElementById('captcha').focus();
+                return false;
+            }
+	        {/literal}{/if}{literal}
+	        
+            if (document.getElementById('password').value != document.getElementById('pwdrecheck').value) {
+                alert(text_pwdmatch);
+                document.getElementById('password').focus();
+                return false;
+            }
+            
+            return true;
+        }
+        // <form action="{$ACTION}" method="post" name="register" id="register" onSubmit="javascript:return checkValues();">
+        *}
+        //-->
+        </script>
+
+        {if isset($ERROR) && $ERROR != ''}
+            {if $ERROR == 'register_password_short'}
+                <div class="error">{translate key=$ERROR sprintf=$PASSWORD_LENGTH}</div>
+            {elseif $ERROR == 'register_username_short'}
+                <div class="error">{translate key=$ERROR sprintf=$USERNAME_LENGTH}</div>
+            {else}
+                <div class="error">{translate key=$ERROR}</div>
+            {/if}
+        {/if}
+        
+        <form action="{$ACTION}" method="post" name="login">
+        <input type="hidden" name="register" value="do">
+        {foreach from=$HIDDEN item='hiddenParam'}
+            {$hiddenParam}
+        {/foreach}
+            <p><label>{translate key="login_username"}<br/>
+            <input id="username" name="username" value="{$USERNAME}" class="input" maxlength="30" size="20" type="text" /></label></p>
+                    
+            <p><label>{translate key="login_email"}<br/>
+            <input id="email" name="email" value="{$EMAIL}" class="input" maxlength="100" size="20" type="text" /></label></p>
+
+            <p><label>{translate key="login_password"}<br/>
+            <input id="password" name="password" class="input" maxlength="30" size="15" type="password"></label></p>
+            
+            <p><label>{translate key="register_pwd_check"}<br/>
+            <input id="pwdrecheck" name="pwdrecheck" class="input" maxlength="30" size="15" type="password"></label></p>
+
+			{foreach from=$ADDITIONAL_FIELDS item="addField"}
+            <p><label>{$addField.title}<br/>
+            	<input name="{$addField.name}" class="{if $addField.type == "checkbox"}checkbox{else}input{/if}" 
+            		type="{$addField.type}" {if $addField.value != ""}
+                	{if $addField.type == "checkbox"}
+                		{$addField.value}="{$addField.value}"
+                	{else}
+                		value="{$addField.value}"
+                	{/if}{/if}>
+                {if $addField.desc != ""}
+                {$addField.desc}
+                {/if}
+            </label></p>
+			{/foreach}
+
+			{if $USE_CAPTCHA}
+            <input type="hidden" name="validate" value="{captcha minchars=$CAPTCHA_MIN maxchars=$CAPTCHA_MAX assign="captcha"}" />
+            <p><label>{translate key="register_captcha"}<br/>
+            <img border="0" src="{$captcha}"></br>
+            <input id="captcha" name="captcha" class="input" maxlength="{$CAPTCHA_MAX}" size="15" type="text"></label></p>
+			{/if}
+            
+    		<p class="langp">
+				<select id="LANG" name="language">
+				{languages assign="allLang" object=false}
+				{foreach from=$allLang key="loc" item="lang"}
+				   <option value="{$loc}"{if $LANGUAGE->getID() == $loc} selected{/if}>{$lang}</option>
+				{/foreach}
+				</select>
+			</p>
+            <p class="subp">
+                <input class="submit" value="{translate key="register_button"}" type="submit" />
+            </p>
+        </form>
+
+{/if}
+
+        <p id="specials">
+           <a href="{link_login}">{translate key="login"}</a>
+           | <a href="{link_password}">{translate key="login_forgot_pwd"}</a>
+        </p>
+    </div>
+
+{include file="AUTH-FOOTER.tpl"}
+    ]]></content>
+        </row>
+        <row>
+            <name key="true">AUTH-PASSWORD</name>
+            <cid key="true">{CID}</cid>
+            <description>The lost password form.</description>
+            <inwork>0</inwork>
+            <include>0</include>
+            <timestamp function="true">unix_timestamp()</timestamp>
+            <userid>1</userid>
+            <filename>AUTH-PASSWORD.tpl</filename>
+            <system>1</system>
+            <content><![CDATA[{include file="AUTH-HEADER.tpl" title="password_title"}
+
+	{load_item id=$CANCEL assign="cancelItem"}
+    <p id="backtosite"><a href="{link item=$cancelItem}">&laquo; {translate key="login_back"} {sitename}</a></p>
+    <div id="login">
+        <h1 class="loginTitle">{translate key="password_title"}</h1>  
+
+{if $SUCCESS}
+
+        <form action="{$HOME}" method="post" name="login">
+            <p>{translate key="password_emailed" sprintf=$EMAIL}</p>
+            <p class="subp">
+                <input class="submit" value="{translate key="register_link_home"}" type="submit" />
+            </p>
+        </form>
+
+{else}
+
+        {load_item id=$CANCEL assign="cancelItem"}
+        <script language="javascript">
+        <!--
+        {literal}
+        function setFocus() {
+            document.getElementById('username').select();
+            document.getElementById('username').focus();
+        }
+        {/literal}
+        //-->
+        </script>
+
+        {if isset($ERROR) && $ERROR != ''}
+            {if $ERROR == 'password_noemail'}
+                <div class="error">{translate key=$ERROR}</div>
+            {else}
+                <div class="error">{translate key=$ERROR}</div>
+            {/if}
+        {/if}
+        
+        <form action="{$ACTION}" method="post" name="login">
+        <input type="hidden" name="password" value="do">
+            <p><label>{translate key="login_username"}<br/>
+            <input id="username" name="username" value="{$USERNAME}" class="input" maxlength="30" size="20" type="text" /></label></p>
+                    
+            {* <p><label>{translate key="login_email"}<br/>
+            <input id="email" name="email" value="{$EMAIL}" class="input" maxlength="30" size="20" type="text" /></label></p> *}
+           
+            <p class="subp">
+                <input class="submit" value="{translate key="password_button"}" type="submit" />
+            </p>
+        </form>
+
+{/if}
+
+        <p id="specials">
+           <a href="{link_login}">{translate key="login"}</a>
+        {configuration package="authentication" key="allow.self.registration" assign="allowRegistration"}
+        {if $allowRegistration}
+           | <a href="{link_register}">{translate key="login_register"}</a>
+        {/if}
+        </p>
+    </div>
+
+{include file="AUTH-FOOTER.tpl"}
+]]></content>
+        </row>
+        <row>
+            <name key="true">AUTH-ACTIVATE</name>
+            <cid key="true">{CID}</cid>
+            <description>The account activation formular.</description>
+            <inwork>0</inwork>
+            <include>0</include>
+            <timestamp function="true">unix_timestamp()</timestamp>
+            <userid>1</userid>
+            <filename>AUTH-ACTIVATE.tpl</filename>
+            <system>1</system>
+            <content><![CDATA[{include file="AUTH-HEADER.tpl" title="activate_browser_title"}
+
+	{load_item id=$CANCEL assign="cancelItem"}
+    <p id="backtosite"><a href="{link item=$cancelItem}">&laquo; {translate key="login_back"} {sitename}</a></p>
+    <div id="login">
+
+{if $SUCCESS}
+
+        <h1 class="loginTitle">{translate key="activate_title_done"}</h1>  
+
+        {if $ERROR != ''}
+            <div class="error">{translate key=$ERROR}</div>
+        {/if}
+
+        <form action="{$HOME}" method="post" name="activate" id="activate">
+            <p>{translate key="activate_intro" sprintf=$USERNAME}</p>
+            <p>{translate key="activate_welcome"}</p>
+
+            <p class="subp">
+                <input class="submit" value="{translate key="register_link_home"}" type="submit" />
+            </p>
+        </form>
+
+{else}
+
+        <h1 class="loginTitle">{translate key="activate_title"}</h1>  
+
+        <script language="javascript">
+        <!--
+        {literal}
+        function setFocus() {
+            document.getElementById('activation').select();
+            document.getElementById('activation').focus();
+        }
+        {/literal}
+        //-->
+        </script>
+
+        {if $ERROR != ''}
+            <div class="error">{translate key=$ERROR}</div>
+        {/if}
+
+        <form action="{$ACTION}" method="post" name="activate" id="activate">
+            <p><label>{translate key="activate_enter_code"}<br/>
+            <input id="activation" name="activation" value="" class="input" maxlength="50" size="20" type="text" /></label></p>
+
+            <p class="subp">
+                <input class="submit" value="{translate key="activate_button"}" type="submit" />
+            </p>
+        </form>
+
+{/if}    
+{load_translation name="bigace"}
+        <p id="specials">
+           <a href="{link_login}">{translate key="login"}</a>
+        {configuration package="authentication" key="allow.self.registration" assign="allowRegistration"}
+        {if $allowRegistration}
+           | <a href="{link_register}">{translate key="login_register"}</a>
+        {/if}
+        </p>
+    </div>    
+    
+{include file="AUTH-FOOTER.tpl"}
+    ]]></content>
+        </row>                
+        <row>
+            <name key="true">AUTH-HEADER</name>
+            <cid key="true">{CID}</cid>
+            <description>The header include for login, registration and activation formular.</description>
+            <inwork>0</inwork>
+            <include>1</include>
+            <timestamp function="true">unix_timestamp()</timestamp>
+            <userid>1</userid>
+            <filename>AUTH-HEADER.tpl</filename>
+            <system>1</system>
+            <content><![CDATA[<!doctype html public "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+{load_translation name="login"}
+<html>
+<head>
+    <meta name="generator" content="BIGACE {bigace_version}">
+    <meta name="robots" content="noindex,nofollow,noarchive">
+    <link rel="stylesheet" href="{$AUTH_DIR}css/login.css" type="text/css">
+    <meta http-equiv="Content-Type" content="text/html; charset={$CHARSET}">
+	<link rel="shortcut icon" type="image/x-icon" href="{directory name="public"}system/images/favicon.ico" />
+	<title>{translate key=$title}</title>
+    <script language="javascript">
+    <!--
+    {literal}
+    function switchClass(elementID, newClassName) {
+        document.getElementById(elementID).className = newClassName;
+    }
+    {/literal}
+    //-->
+    </script>
+</head>
+<body>
+
+]]></content>
+        </row>                
+        <row>
+            <name key="true">AUTH-FOOTER</name>
+            <cid key="true">{CID}</cid>
+            <description>The footer include for login, registration and activation formular.</description>
+            <inwork>0</inwork>
+            <include>1</include>
+            <timestamp function="true">unix_timestamp()</timestamp>
+            <userid>1</userid>
+            <filename>AUTH-FOOTER.tpl</filename>
+            <system>1</system>
+            <content><![CDATA[    
+    {bigace_copyright}
+
+    <script language="javascript">
+    <!--
+    	setFocus();
+    //-->
+    </script>
+    
+</body>
+</html>]]></content>
+        </row>                
+    </table>
+
+
+<!-- 
+######################################################################
+###########################  APPLICATIONS  ###########################
+######################################################################
+-->
+
+
+    <table name="template">
+		<row>
+            <name key="true">APPLICATION-SEARCH</name>
+            <cid key="true">{CID}</cid>
+            <description>This template is the Search formular and result screen at one.</description>
+            <inwork>0</inwork>
+            <include>0</include>
+            <timestamp function="true">unix_timestamp()</timestamp>
+            <userid>1</userid>
+            <filename>APPLICATION-SEARCH.tpl</filename>
+            <system>1</system>
+            <content><![CDATA[{include file=$TPL_HEADER}
+            
+	<link href="{stylesheet name="APPLICATION-SEARCH"}" rel="stylesheet" type="text/css" />
+
+	<script type="text/javascript">
+	<!--
+	var shortMsg = "{translate key="msg_too_short_js"}";
+	{literal}
+       function readyLoaded() {
+           window.focus();
+           document.getElementById('searchterm').focus();
+       }
+       
+       function checkSearchForm() {
+           if(document.getElementById('searchterm').value.length < 4) {
+               alert(shortMsg);
+               return false;
+           }
+           return true;
+       }
+	{/literal}
+	// -->
+   	</script>
+
+    <div id="searchApplication">
+
+   	{if !isset($SHOW_FORM) || $SHOW_FORM}
+    	<div id="searchForm">
+    		<form method="post" action="{$ACTION_URL}" onSubmit="return checkSearchForm();">
+    		<input type="hidden" name="language" value="{$language}">
+   			<table cellpadding="3" cellspacing="0" width="100%" class="searchTable">
+    			<tr>
+    				<th colspan="2">
+    					<img border="0" src="{directory name="public"}system/images/search.gif">
+    					{translate key="search_title"}
+    				</th>
+    			</tr>
+    			<tr>
+    				<td>{translate key="search_for"}</td>
+    				<td>
+                    	<input type="text" name="search" id="searchterm" maxlength="30" size="35" value="{$searchTerm|text_input}" />
+                    </td>
+                </tr>
+    			<tr>
+    				<td>{translate key="limit_results"}</td>
+    				<td>
+    					<select name="limit">
+    						<option value="0"{if $limit==0} selected{/if}></option>
+    						<option value="5"{if $limit==5} selected{/if}>5</option>
+    						<option value="10"{if $limit==20} selected{/if}>10</option>
+    						<option value="15"{if $limit==15} selected{/if}>15</option>
+    						<option value="20"{if $limit==20} selected{/if}>20</option>
+    						<option value="25"{if $limit==25} selected{/if}>25</option>
+    					</select>
+                    </td>
+                </tr>
+    			<tr>
+    				<td>{translate key="search_itemtype"}</td>
+    				<td>
+    					<select name="itemtype">
+    						<option value=""></option>
+    						<option value="1"{if $itemtype==1} selected{/if}>{translate key="itemtype_1"}</option>
+    						<option value="4"{if $itemtype==4} selected{/if}>{translate key="itemtype_4"}</option>
+    						<option value="5"{if $itemtype==5} selected{/if}>{translate key="itemtype_5"}</option>
+    					</select>
+                    </td>
+                </tr>
+    			<tr>
+    				<td align="center" colspan="2">
+    					<input type="submit" value="{translate key="button_search"}">
+    				</td>
+                </tr>
+    		</table>
+    		</form>
+    	</div>
+    	{/if}
+    	
+    	{if isset($results)}
+    	<div id="searchResults">
+    		{if count($results) == 0}
+	            <p>
+	            {if strlen($searchTerm) == 0}
+                	<b>{translate key="msg_empty_term"}</b>
+            	{elseif strlen(trim($searchTerm)) < 4}
+                	<b>{translate key="msg_too_short"}</b>
+                {else}
+                	<b>{translate key="msg_no_result"}</b>
+                {/if}
+                </p>
+    		{else}
+    			<h1>{translate key="search_results"}</h1>
+    			{foreach from=$results item="searchResult"}
+				<div class="searchResult">
+					<h2>{if $searchResult.mimetype != 'html'}<a title="{$searchResult.name}" href="{$searchResult.url}"><img src="{directory name="public"}system/images/mimetype/{$searchResult.mimetype}.gif"></a>{/if}
+						<a title="{$searchResult.name}" href="{$searchResult.url}" class="hlink">{$searchResult.name}</a>
+					</h2>
+					<p class="info">{$searchResult.description}</p>
+					<p class="url">{$searchResult.url}</p>
+				</div>
+	        	{/foreach}
+    		{/if}
+    	</div>
+    	{/if}
+    	
+    </div>
+    
+    {include file=$TPL_FOOTER}
+			]]></content>
+        </row>
+        <row>
+            <name key="true">APPLICATIONS-HEADER</name>
+            <cid key="true">{CID}</cid>
+            <description>This template is used as header include by search, login, registration.</description>
+            <inwork>0</inwork>
+            <include>1</include>
+            <timestamp function="true">unix_timestamp()</timestamp>
+            <userid>1</userid>
+            <filename>APPLICATIONS-HEADER.tpl</filename>
+            <system>1</system>
+            <content><![CDATA[<!doctype html public "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+    <html>
+    <head>
+        <title>{$TITLE}</title>
+        <meta name="generator" content="{bigace_version full="true"}">
+        <meta name="robots" content="noindex,nofollow">
+        <meta http-equiv="Content-Type" content="text/html; charset={$CHARSET}">
+        <link rel="stylesheet" href="{$CSS}" type="text/css">
+    </head>
+    <body>
+]]></content>
+        </row>
+		<row>
+            <name key="true">APPLICATIONS-FOOTER</name>
+            <cid key="true">{CID}</cid>
+            <description>This template is used as footer include by search, login, registration.</description>
+            <inwork>0</inwork>
+            <include>1</include>
+            <timestamp function="true">unix_timestamp()</timestamp>
+            <userid>1</userid>
+            <filename>APPLICATIONS-FOOTER.tpl</filename>
+            <system>1</system>
+            <content><![CDATA[
+	{if isset($showCloseButton) && $showCloseButton === true} 
+    <script language="javascript">
+    	document.write('<div class="closeButtonDiv" align="right"><a href="#" onclick="javascript:doclose()" class="closeButton">{translate key="button_close" default="Close"}</a></div>&nbsp;');
+        readyLoaded();
+    </script>
+    {/if}
+    
+    </body>
+    </html>
+]]></content>
+        </row>
+    </table>
+
+    <table name="stylesheet">
+        <row>
+            <name key="true">APPLICATION-SEARCH</name>
+            <cid key="true">{CID}</cid>
+            <description>The search stylesheet.</description>
+            <filename>css/search.css</filename>
+            <editorcss>Ecobusiness</editorcss>
+        </row>
+    </table>    
+
+    <table name="configuration">
+        <row mode="install">
+            <cid key="true">{CID}</cid>
+            <package key="true">search</package>
+            <name key="true">template</name>
+            <value>APPLICATION-SEARCH</value>
+            <type>template</type>
+            <extended></extended>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <package key="true">search</package>
+            <name key="true">find.hidden</name>
+            <value>1</value>
+            <type>boolean</type>
+            <extended></extended>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <package key="true">search</package>
+            <name key="true">minimum.word.length</name>
+            <value>4</value>
+            <type>integer</type>
+            <extended></extended>
+        </row>
+        <row mode="install">
+            <cid key="true">{CID}</cid>
+            <package key="true">templates</package>
+            <name key="true">application.header</name>
+            <value>BLIX (Header Applications)</value>
+            <type>tpl_inc</type>
+            <extended></extended>
+        </row>
+        <row mode="install">
+            <cid key="true">{CID}</cid>
+            <package key="true">templates</package>
+            <name key="true">application.footer</name>
+            <value>BLIX (Footer Applications)</value>
+            <type>tpl_inc</type>
+            <extended></extended>
+        </row>
+    </table>
+
+<!-- 
+######################################################################
+#############################  REDIRECT  #############################
+######################################################################
+-->    
+
+
+    <table name="template">
+        <row>
+            <name key="true">REDIRECT</name>
+            <cid key="true">{CID}</cid>
+            <description>Redirects to the URL in the Menus Catchwords.</description>
+            <inwork>0</inwork>
+            <include>0</include>
+            <timestamp function="true">unix_timestamp()</timestamp>
+            <userid>1</userid>
+            <filename>REDIRECT.tpl</filename>
+            <system>0</system>
+            <content><![CDATA[{if $MENU->getCatchwords() != null && $MENU->getCatchwords() != ''}{redirect url=$MENU->getCatchwords()}{else}No URL configured to redirect to. Please enter your URL into the "catchwords" field of this page in menu administration.{/if}]]></content>
+        </row>
+    </table>    
+
+    <table name="stylesheet">
+        <row>
+            <name key="true">dummy_stylesheet</name>
+            <cid key="true">{CID}</cid>
+            <description>The dummy stylesheet for every Design that need no styles.</description>
+            <filename>css/dummy.css</filename>
+            <editorcss>dummy_stylesheet</editorcss>
+        </row>
+    </table>    
+
+    <table name="design">
+        <row>
+            <name key="true">BIGACE-REDIRECT</name>
+            <cid key="true">{CID}</cid>
+            <description>Redirects to the URL in the Menus Catchwords.</description>
+            <stylesheet>dummy_stylesheet</stylesheet>
+            <template>REDIRECT</template>
+            <portlets>0</portlets>
+        </row>
+    </table>    
+
+
+<!-- 
+######################################################################
+###########################  MAINTENANCE  ############################
+######################################################################
+-->    
+    <table name="template">
+        <row>
+            <name key="true">MAINTENANCE</name>
+            <cid key="true">{CID}</cid>
+            <description>The maintenance template.</description>
+            <inwork>0</inwork>
+            <include>0</include>
+            <timestamp function="true">unix_timestamp()</timestamp>
+            <userid>1</userid>
+            <filename>MAINTENANCE.tpl</filename>
+            <system>1</system>
+            <content><![CDATA[<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+{load_translation name="bigace"}
+{load_translation name="maintenance"}
+    <title>{translate key='error_title'}</title>
+    <meta HTTP-EQUIV="Pragma" CONTENT="no-cache">
+    <meta HTTP-EQUIV="Cache-Control" CONTENT="no-cache">
+    <meta NAME="generator" CONTENT="BIGACE">
+    <meta NAME="robots" CONTENT="noindex, nofollow, noarchive">
+    <link rel="stylesheet" href="{directory name="public"}system/error/errorpage.css" type="text/css">
+    <style type="text/css">
+    {literal}
+    body { background-color:#EFEFEF; color:#000000; }
+    a {color:#000080;}
+    a:hover {color:#0000FF;}
+    {/literal}
+    </style>
+    <script type="text/javascript">
+    <!-- {literal}
+        function showLoginFormular()
+        {
+            switchVisibility('dynamicLoginForm');
+            return false;
+        }
+
+        function switchVisibility(elementID)
+        {
+            if(document.getElementById(elementID).style.visibility != 'visible')
+            {
+                document.getElementById(elementID).style.visibility = 'visible';
+                document.getElementById(elementID).style.display = 'block';
+                return false;
+            }
+            else
+            {
+                document.getElementById(elementID).style.visibility = 'hidden';
+                document.getElementById(elementID).style.display = 'none';
+                return true;
+            }
+        }
+    {/literal} // -->
+    </script>
+</head>
+<body>
+    <TABLE align="center" valign="middle" STYLE="margin-top:20px" width="630" CELLPADDING="0" CELLSPACING="0" border="0" bgcolor="#FFFFFF">
+    <tr>
+    <td width="22" valign="top" align="left"><img src="{directory name="public"}system/error/topleft.gif" border="0" width="22" height="20"></td>
+    <td colspan="2" width="586">&nbsp;</td>
+    <td width="22" valign="top" align="right"><img src="{directory name="public"}system/error/topright.gif" border="0" width="22" height="20"></td>
+    </tr>
+
+    <tr>
+    <td width="22">&nbsp;</td>
+    <td colspan="2" valign="top" align="left">
+        <div>
+            <div style="height:30px;border:0px;"></div>
+            <strong>{translate key='error_title'}</strong><br /><br />
+            <i>{$MESSAGE}</i>
+            <div style="height:30px;border:0px;"></div>
+        </div>
+    </td>
+    <td width="22">&nbsp;</td>
+    </tr>
+
+    <tr>
+    <td width="22">&nbsp;</td>
+    <td colspan="2" valign="top" align="left">
+
+        <table border="0" width="100%">
+            <tr>
+                <td>
+                    {if !$USER->isAnonymous()}
+                    <a href="{link_logout}" class="logout">{translate key="logout"}</a><br/><br/>
+                    {else}
+                    <a href="{link_login}" class="login" onClick="return showLoginFormular();"><span id="loginText">{translate key="login"}</span></a>
+                    {/if}
+                </td>
+                <td>
+                </td>
+            </tr>
+        </table>
+        <div id="dynamicLoginForm">
+            <br/>
+            <form action="{link_auth}" method="post">
+                <table border="0">
+                    <tr>
+                        <td>{translate key="user"}:</td>
+                        <td><input type="text" name="UID"></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>{translate key="password"}:</td>
+                        <td><input type="password" name="PW"></td>
+                        <td><button type="submit">{translate key="login"}</button></td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </td>
+    <td width="22">&nbsp;</td>
+    </tr>
+
+    <tr>
+    <td width="22" valign="top" align="left"><img src="{directory name="public"}system/error/bottomleft.gif" border="0" width="22" height="20"></td>
+    <td colspan="2">&nbsp;</td>
+    <td width="22" valign="top" align="right"><img src="{directory name="public"}system/error/bottomright.gif" border="0" width="22" height="20"></td>
+    </tr>
+
+    <tr>
+    <td width="22" bgcolor="#EFEFEF">&nbsp;</td>
+    <td width="608" colspan="3" bgcolor="#EFEFEF" valign="top" align="left">
+    &nbsp;<br />
+    <br />
+    </td>
+    </tr>
+    </table>
+</body>
+</html>
+    ]]></content>
+        </row>         
+    </table>    
+
+</content>

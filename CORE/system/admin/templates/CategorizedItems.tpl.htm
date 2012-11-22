@@ -1,0 +1,37 @@
+<!-- $Id: CategorizedItems.tpl.htm,v 1.4 2008/07/14 23:08:10 kpapst Exp $ -->
+
+<div style="margin-bottom:10px">{TRANSLATION_category_show_links}: <b>&quot;{CATEGORY_NAME}&quot;</b></div>
+
+<table class="tablesorter" cellspacing="0">
+<col width="20px" />
+<col />
+<col width="20%" />
+<col width="20%" />
+<!-- BEGIN autoheader -->
+<thead>
+	<tr>
+		<th>&nbsp;</th>
+		<th>{TRANSLATION_name}</th>
+		<th align="center">{TRANSLATION_id}</th>
+		<th align="center">{TRANSLATION_delete}</th>
+	</tr>
+</thead>
+<!-- END autoheader -->
+<tbody>
+    <!-- BEGIN row -->
+    <tr>
+		<td><img src="{AUTO_STYLE_DIR}item_{ITEM_TYPE_ID}.png" alt="{ITEM_TYPE_NAME}" title="{ITEM_TYPE_NAME}"></td>
+        <td>{ITEM_NAME}</td>
+        <td align="center">{ITEM_ID}</td>
+        <td align="center"><a href="{DELETE_LINK}" title="{TRANSLATE_category_delete_link}"><img src="{AUTO_STYLE_DIR}category_unlink.png" border="0" alt="{TRANSLATE_category_delete_link}"></a></td>
+    </tr>
+    <!-- END row -->
+	</tbody>
+</table>
+
+<script type="text/javascript">
+$(document).ready( function() { 
+		$(".tablesorter").tablesorter({ widgets: ['zebra'], headers: { 0: {sorter: false}, 3: {sorter: false} } }); 
+	} 
+);
+</script>

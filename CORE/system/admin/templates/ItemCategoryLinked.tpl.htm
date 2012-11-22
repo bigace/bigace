@@ -1,0 +1,34 @@
+<!-- $Id: ItemCategoryLinked.tpl.htm,v 1.2 2008/07/14 23:05:51 kpapst Exp $ -->
+<table class="tablesorter" cellspacing="0">
+<col />
+<col width="60"/>
+<col width="20%"/>
+<!-- BEGIN autoheader -->
+<thead>
+	<tr>
+		<th>{TRANSLATION_name}</th>
+		<th>{TRANSLATION_id}</th>
+		<th align="center">{TRANSLATION_remove_category}</th>
+	</tr>
+</thead>
+<!-- END autoheader -->
+<tbody>
+    <!-- BEGIN row -->
+    <tr>
+        <td>{CATEGORY_NAME}</td>
+        <td>{CATEGORY_ID}</td>
+        <td align="center"><a href="{CATEGORY_DELETE_LINK}" title="{TRANSLATION_delete}"><img src="{AUTO_STYLE_DIR}category_unlink.png" border="0" alt="{TRANSLATION_delete}" title="{TRANSLATION_delete}"></a></td>
+    </tr>
+    <!-- END row -->
+	</tbody>
+</table>
+
+</form>
+
+<script type="text/javascript">
+$(document).ready( function() { 
+		$(".tablesorter").tablesorter({ widgets: ['zebra'], headers: { 2: {sorter: false} } }); 
+	} 
+);
+</script>
+		

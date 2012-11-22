@@ -1,0 +1,1 @@
+UPDATE {DB_PREFIX}unique_name SET name = {UNIQUE_NAME} WHERE cid = {CID} AND itemtype = {ITEMTYPE} AND itemid = {ITEM_ID} AND language = {LANGUAGE}

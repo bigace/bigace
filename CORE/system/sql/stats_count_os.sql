@@ -1,0 +1,1 @@
+SELECT count(browser) AS cnt FROM {DB_PREFIX}statistics WHERE browser LIKE {OS} and cid='{CID}'

@@ -1,0 +1,78 @@
+/* 
+* CSS Style for the Navigation Frame of the WINXP Theme.
+*
+* Copyright (C) 2003-2004 Kevin Papst. 
+*
+* For further information go to http://www.bigace.de/ 
+*
+* @version $Id: menu.css,v 1.2 2006/11/26 22:07:04 kpapst Exp $
+* @author Kevin Papst 
+*/
+
+body,td,input,font,th,p,button { font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size:13px; margin:0px;  }
+
+body { background-color:#F9F2DE;padding:5px 5px 0px 5px; }
+
+.outerNav {
+	width:100%;
+}
+.sidboxtitle{
+	background-color : #6483a2;
+	border : solid 1pt #000000;
+	color : #ffffff;
+	font-weight : bold;
+	padding : 2pt;
+	text-align : left;
+	text-decoration : none;
+	vertical-align : middle;
+	width : auto;
+}
+
+.sideboxcontent{
+	background-color : #EEEEEE;
+	border-bottom : 1px solid #000000;
+	border-left : 1px solid #000000;
+	border-right : 1px solid #000000;
+	color : #000000;
+	padding : 2pt 3pt 8pt;
+	text-align : left;
+	text-decoration : none;
+}
+a:link, a:visited {
+	color : #000000;
+	text-decoration : none;
+}
+a:hover{
+	color : #a00000;
+	text-decoration : underline;
+}
+a:active{
+	color : #a00000;
+	text-decoration : none;
+}
+img {
+	border : 0px;
+}
+.CopyrightFooter {
+    clear:both;
+    width:100%;
+    padding:0px;
+    margin:0px;
+    padding-top:10px;
+    padding-bottom:5px;
+	background-color: #F9F2DE;
+}
+.copyright {
+	font-size: 10px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	color: #444444;
+	letter-spacing: -1px;
+}
+a.copyright {
+	color: #444444;
+	text-decoration: none;
+}
+a.copyright:hover {
+	color: #000000;
+	text-decoration: underline;
+}

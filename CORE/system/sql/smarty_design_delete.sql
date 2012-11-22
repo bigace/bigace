@@ -1,0 +1,1 @@
+DELETE FROM {DB_PREFIX}design WHERE name={NAME} AND cid={CID}

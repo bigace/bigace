@@ -1,0 +1,33 @@
+body { margin:3px; padding:0px; }
+div { margin:0px; padding:0px; }
+img { border-width:0px; }
+.outerBody {}
+
+/* Toolbar */
+.button-panel { border-bottom:1px solid #666666; margin-bottom:5px; padding:2px 2px 5px 2px; }
+.solid-buttons { border-width:0px; float:left; }
+.action-td {padding:0px 2px 0px 7px; float:right;}
+
+/* Content Pieces */
+.pieces{border-right:1px solid #666666;float:left;height:25px;}
+.pieces span {display:inline;float:left;padding:4px 0px 0px 10px;}
+.pieces a:link {font-weight:bold;float:left;padding:4px 5px 0px 10px;margin:0px;border:0px;}
+.pieces a:hover{color:white;background-color:#cccccc;}
+
+.helpTextInput {width:100%; color:#000000; font-size:10px; padding:3px;}
+h1.contentTitle {font-size:14px;font-weight:bold;margin:5px 0px 5px 0px;padding:0px;text-decoration:none;}
+
+/* Editor Area */
+.outerEditor {padding:0px;}
+.translatorIframe {margin:0px;padding:0px;border:1px solid #666666; height:400px; width:100%;}
+.translator {float:left;width:34%;height:100%;margin-top:0px;}
+.ctnEditorTranslate {float:right;width:64%;height:400px;}
+.ctnEditor {height:400px;padding:0px;}
+.readonly {float:right;}
+
+/* JGrowl */
+#jgrowlDiv, #jgrowlDiv div.jGrowl, div.jGrowl {position:absolute;top:0px;right:0px;z-index:100;}
+#msg-err { font-weight: bold; color: red; }
+#msg-err a, #msg-err a:link { font-weight: bold; color: #ffffff; }
+div.jGrowl {}
+div.jGrowl div.jGrowl-notification {font-size:14px;}

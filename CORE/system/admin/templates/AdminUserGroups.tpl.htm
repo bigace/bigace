@@ -1,0 +1,35 @@
+<!-- $Id: AdminUserGroups.tpl.htm,v 1.3 2009/10/19 15:16:14 kpapst Exp $ -->
+
+<!-- BEGIN addToGroupForm -->
+<form action="{ADD_TO_GROUP_LINK}" method="POST" style="margin-bottom:10px;">
+    <input type="hidden" name="{PARAM_NAME_USER}" value="{USER_ID}">
+    <img src="{AUTO_STYLE_DIR}user_group_add.png" border="0"> {TRANSLATION_group_add_user}: {GROUP_SELECT}
+    <input type="submit" value="{TRANSLATION_add_to_group_button}">
+</form>
+<!-- END addToGroupForm -->
+
+<!-- BEGIN noGroupMember -->
+{TRANSLATION_group_not_linked}
+<!-- END noGroupMember -->
+
+<!-- BEGIN groupAdmin -->
+<table class="tablesorter" cellspacing="0">
+<col>
+<col width="200"/>
+<thead>
+	<tr>
+		<th><img src="{AUTO_STYLE_DIR}user_group.png" alt="" /> {TRANSLATION_group_name}</th>
+		<th align="center">{TRANSLATION_group_remove}</th>
+	</tr>
+</thead>
+<tbody>
+    <!-- BEGIN row -->
+    <tr>
+        <td>{GROUP_NAME}</td>
+        <td align="center">{REMOVE_LINK}</td>
+    </tr>
+    <!-- END row -->
+	</tbody>
+</table>
+
+<!-- END groupAdmin -->

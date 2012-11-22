@@ -1,0 +1,65 @@
+<script type="text/javascript">
+<!--
+    function checkNewConsumerDomain(cid)
+    {
+        if(document.getElementById('newUrl'+cid).value == '') {
+            alert('{TRANSLATION_error_add_url}');
+            document.getElementById('newUrl'+cid).focus();
+            return false;
+        }
+
+        return true;
+    }
+// -->
+</script>
+
+<table class="tablesorter" cellspacing="0">
+<col />
+<col />
+<col />
+<col />
+<col />
+<!-- BEGIN autoheader -->
+<thead>
+	<tr>
+		<th align="center">{TRANSLATION_id}</th>
+		<th>{TRANSLATION_community_url}</th>
+		<th>{TRANSLATION_community_default} <img onmouseover="tooltip('{TRANSLATION_community_default_info}')" onMouseOut="nd();" src="{AUTO_STYLE_DIR}info.png" border="0"></th>
+		<th align="center">{TRANSLATION_community_status}</th>
+		<th>{TRANSLATION_community_alias}</th>
+		<th>{TRANSLATION_community_add_title}</th>
+	</tr>
+</thead>
+<!-- END autoheader -->
+<tbody>
+	<!-- BEGIN community -->
+    <tr>
+        <td valign="top" align="center">{COMMUNITY_ID}</td>
+        <td valign="top"><a href="http://{COMMUNITY_URL}" target="_blank">{COMMUNITY_URL}</a></td>
+        <td valign="top">
+                <form action="" method="POST">
+                    <input type="hidden" name="{PARAM_COMMUNITY_MODE}" value="{DEFAULT_MODE}">
+                    <input type="hidden" name="{PARAM_DEFAULT_URL}" value="{COMMUNITY_URL}">
+                    <img src="{AUTO_STYLE_DIR}{COMMUNITY_DEFAULT}.png" align="top" border="0">
+                    <button type="submit">{TRANSLATION_community_new_default}</button>
+                </form>
+		</td>
+        <td valign="top" align="center"><img src="{AUTO_STYLE_DIR}{COMMUNITY_STATUS}.png" border="0"></td>
+        <td valign="top">
+                <!-- BEGIN alias -->
+                <a href="http://{ALIAS_URL}" target="_blank">{ALIAS_URL}</a>
+                <a href="{DELETE_URL}"><img alt="{TRANSLATION_delete}" src="{AUTO_STYLE_DIR}delete.png" border="0"></a>
+                    <br>
+                <!-- END alias -->
+		</td>
+        <td valign="top">
+                <form onSubmit="return checkNewConsumerDomain('{COMMUNITY_ID}')" action="" method="POST">
+                    <input type="hidden" name="{PARAM_COMMUNITY_MODE}" value="{ADD_MODE}">
+                    <input type="hidden" name="{PARAM_DUPLICATE_URL}" value="{COMMUNITY_URL}">
+                    http://<input style="border:1px solid #000000;" id="newUrl{COMMUNITY_ID}" type="text" name="{PARAM_NEW_URL}" value="">&nbsp;<button type="submit">{TRANSLATION_add}</button>
+                </form>
+		</td>
+    </tr>
+    <!-- END community -->
+	</tbody>
+</table>

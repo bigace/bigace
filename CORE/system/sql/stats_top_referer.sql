@@ -1,0 +1,1 @@
+SELECT COUNT(referer) AS CNT,referer FROM {DB_PREFIX}statistics WHERE {EXTENSION} cid='{CID}' GROUP BY referer ORDER BY CNT DESC LIMIT {LIMIT}

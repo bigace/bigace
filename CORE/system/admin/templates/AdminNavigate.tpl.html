@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- $Id: AdminNavigate.tpl.html,v 1.6 2009/10/20 21:28:59 kpapst Exp $ -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="{ADMIN_LANGUAGE}" lang="{ADMIN_LANGUAGE}">
+	<head>
+		<meta name="generator" content="BIGACE {BIGACE_VERSION}" />
+		<meta name="robots" content="noindex,nofollow" />
+		<title>BIGACE {TRANSLATION_admin}</title>
+		<meta name="description" content="{TRANSLATION_admin}" />
+		<link rel="stylesheet" href="{AUTO_STYLE_DIR}style/navigation.css" type="text/css" />
+        <script type="text/javascript" src="{AUTO_ADDON_DIR}jquery/jquery.js"></script>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	</head>
+	<body>
+        <div id="leftNavigation">
+
+        	<ul id="menu" class="modEntries">
+
+    		<!-- BEGIN pluginloop -->
+        	<li class="pluginMenu">
+        		<a href="JavaScript:void(0);" class="menuLink">
+        			{MENU_TITLE}
+        		</a>
+        
+        		<ul class="subMenu">
+    			<!-- BEGIN plugin -->
+        			<li class="subMenuChild">
+        		        <a class="pluginLink" href="{PLUGIN_LINK}" target="content">
+        		            {PLUGIN_NAME}
+        				</a>
+        			</li>
+    			<!-- END plugin -->
+        		</ul>
+        	</li>
+    		<!-- END pluginloop -->
+		    
+		    </ul>
+		</div>
+
+		<script type="text/javascript">
+		$(document).ready(function() {
+			$("#menu li ul").hide(); 
+
+			$("#menu li a.menuLink").click(function () {
+					$(this).siblings("ul").toggle();
+					$(this).parent().toggleClass("pluginMenuActive");
+					$(this).parent().toggleClass("pluginMenu");
+					return false;
+			});
+
+		});
+		</script>
+	</body>
+</html>

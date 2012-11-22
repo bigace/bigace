@@ -1,0 +1,13 @@
+<content version="1.0">
+        
+    <table name="configuration">
+        <row>
+            <cid key="true">{CID}</cid>
+            <package key="true">system</package>
+            <name key="true">captcha</name>
+            <value>classes.util.captcha.SecurimageCaptcha</value>
+            <type>class</type>
+        </row>
+    </table>    
+
+</content>

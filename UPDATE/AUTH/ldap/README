@@ -1,0 +1,20 @@
+"ldap" is a LDAP authentication plugin for BIGACE 2.4+.
+
+Instructions to Install:
+=========================
+1. Sign in as Administrator and install the Extensions
+
+2. Edit the file /system/config/ldap.php and configure you LDAP settings
+   using the documentation from the config file. 
+
+3. Edit the file /system/config/services.ini and set the key:
+   authenticator = classes.authentication.LDAPAuthenticator 
+
+4. Check website for more infos:
+   http://wiki.bigace.de/bigace:extensions:auth:ldap
+
+Post any issue at the Community Forum:
+http://forum.bigace.de/
+ 
+Cheers,
+Kevin Papst

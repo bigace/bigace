@@ -1,0 +1,1 @@
+UPDATE {DB_PREFIX}item_project_text SET project_value='{VALUE}' WHERE itemtype='{ITEMTYPE}' AND id='{ITEM_ID}' AND cid='{CID}' AND language='{LANGUAGE_ID}' AND project_key='{KEY}'

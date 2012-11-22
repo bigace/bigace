@@ -1,0 +1,28 @@
+<!-- $Id: UserGroupMember.tpl.htm,v 1.2 2008/07/14 23:06:51 kpapst Exp $ -->
+<table class="tablesorter" cellspacing="0">
+<col>
+<col width="200"/>
+<!-- BEGIN autoheader -->
+<thead>
+	<tr>
+		<th>{TRANSLATION_name}</th>
+		<th align="center">{TRANSLATION_remove_from_group}</th>
+	</tr>
+</thead>
+<!-- END autoheader -->
+<tbody>
+    <!-- BEGIN row -->
+    <tr>
+        <td>{NAME}</td>
+        <td align="center">{ADMIN_LINK}</td>
+    </tr>
+    <!-- END row -->
+</tbody>
+</table>
+
+<script type="text/javascript">
+$(document).ready( function() { 
+        $(".tablesorter").tablesorter({ widgets: ['zebra'], headers: { 1: {sorter: false} }}); 
+    } 
+);
+</script>

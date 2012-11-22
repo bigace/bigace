@@ -1,0 +1,1 @@
+SELECT * FROM {DB_PREFIX}item_category WHERE categoryid='{CATEGORY_ID}' and cid='{CID}'

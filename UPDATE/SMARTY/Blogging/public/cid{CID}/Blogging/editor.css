@@ -1,0 +1,194 @@
+/* 
+   CSS File for the Blogging Theme to be used in WYSIWYG editors.
+   Created using the Smarty Template creator at http://dev.bigace-cms.com 
+   Author:  Kevin Papst
+*/
+/*
+Design by Free CSS Templates
+http://www.freecsstemplates.org
+Released for free under a Creative Commons Attribution 2.5 License
+*/
+body {
+	margin: 0;
+	padding: 0;
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-size: 13px;
+	color: #837669;
+}
+h1, h2, h3 {
+	margin: 0;
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-weight: normal;
+	color: #649632;
+}
+h1 {
+	height: 30px;
+	margin: -25px -20px 25px -20px;
+	padding: 8px 0px 2px 40px;
+	background: url(img05.jpg) no-repeat left top;
+	color: #FFFFFF;
+	width: 600px;
+	font-size: 20px;
+}
+h2 { font-size: 20px; }
+h3 { }
+p, ul, ol {
+	margin-top: 0;
+	line-height: 240%;
+	text-align: justify;
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-size: 11px;
+}
+ul, ol { }
+blockquote { }
+a { color: #000000; }
+a:hover { text-decoration: none; }
+a img {
+	border: none;
+}
+
+img.left {
+	float: left;
+	margin: 7px 30px 0 0;
+}
+
+img.right {
+	float: right;
+	margin: 7px 0 0 30px;
+}
+
+hr { display: none; }
+
+.list1 {
+}
+
+.list1 li {
+	float: left;
+	line-height: normal;
+}
+
+.list1 li img {
+	margin: 0 30px 30px 0;
+}
+
+.list1 li.alt img {
+	margin-right: 0;
+}
+
+#wrapper {
+}
+
+
+/* Page */
+
+#page {
+	width: 900px;
+	margin: 0 auto;
+	padding: 30px 0px 0px 0px;
+}
+
+/* Content */
+
+#content {
+	float: right;
+	width: 600px;
+}
+
+/* Post */
+
+.post {
+	margin-bottom: 25px;
+}
+
+.post .title {
+	height: 30px;
+	margin-bottom: 3px;
+	padding: 8px 0px 2px 40px;
+	background: url(images/img05.jpg) no-repeat left top;
+	color: #FFFFFF;
+}
+
+.post .date {
+	float: right;
+	margin-top: -45px;
+	padding-right: 20px;
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-weight: normal;
+	font-size: 18px;
+	color: #F1B566;
+}
+
+.post .meta {
+	margin: -30px  0 3px 25px;
+	padding: 2px 30px 2px 0px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: normal;
+	font-size: 10px;
+	color: #B6ACA2;
+}
+
+.post .meta a { color: #B6ACA2; }
+
+.post .entry {
+	padding: 25px 20px 0px 20px;
+}
+
+.post .links {
+	margin: 0 250px 0 0;
+	padding: 0 0 0 0px;
+}
+
+.post .links .comments {
+}
+
+.post .links .permalink {
+	padding-left: 17px;
+}
+
+/* Sidebar */
+
+#sidebar {
+	float: left;
+	width: 280px;
+}
+
+#sidebar ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	line-height: normal;
+}
+
+#sidebar li {
+	margin-bottom: 30px;
+	padding: 0 0 20px 0px;
+}
+
+#sidebar li ul {
+	line-height: 200%;
+}
+
+#sidebar li li {
+	margin: 0;
+	padding: 0 20px;
+}
+
+#sidebar p {
+	margin: 0;
+	padding: 0 20px;
+}
+
+#sidebar h2 {
+	height: 33px;
+	margin: 0 0 20px 0px;
+	padding: 8px 0 2px 40px;
+	background: url(images/img04.jpg) no-repeat left top;
+	font-size: 20px;
+	color: #FFFFFF;
+}
+
+
+#sidebar p {
+	line-height: 200%;
+}
+

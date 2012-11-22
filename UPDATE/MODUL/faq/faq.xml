@@ -1,0 +1,127 @@
+<content version="1.0">
+<!--
+ *
+ * BIGACE - a PHP and MySQL based Web CMS.
+ * 
+ * BIGACE is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation; either version 2
+ * of the License, or (at your option) any later version.
+ * 
+ * BIGACE is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * 
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software Foundation, 
+ * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ * 
+ * For further information visit {@link http://www.bigace.de http://www.bigace.de}.
+ *
+ * @author Kevin Papst 
+ * @copyright Copyright (C) Kevin Papst
+ * @version $Id: faq.xml,v 1.1 2009/05/19 12:27:09 kpapst Exp $
+ *
+-->
+
+    <table name="frights">
+        <row>
+            <cid key="true">{CID}</cid>
+            <name key="true">faq.add.entry</name>
+            <defaultvalue>N</defaultvalue>
+            <description>Allows to add FAQ entries.</description>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <name key="true">faq.edit.entry</name>
+            <defaultvalue>N</defaultvalue>
+            <description>Allows to edit and delete FAQ entries.</description>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <name key="true">faq.configure</name>
+            <defaultvalue>N</defaultvalue>
+            <description>Allows to configure the FAQ modul settings.</description>
+        </row>
+    </table>    
+
+    <table name="group_frights">
+        <row update="false">
+            <cid key="true">{CID}</cid>
+            <group_id key="true">40</group_id>
+            <fright key="true">faq.configure</fright>
+        </row>
+        <row update="false">
+            <cid key="true">{CID}</cid>
+            <group_id key="true">40</group_id>
+            <fright key="true">faq.add.entry</fright>
+        </row>
+        <row update="false">
+            <cid key="true">{CID}</cid>
+            <group_id key="true">40</group_id>
+            <fright key="true">faq.edit.entry</fright>
+        </row>
+    </table>    
+
+    <table name="template">
+        <row>
+            <name key="true">FAQ-Default</name>
+            <cid key="true">{CID}</cid>
+            <description>Default FAQ template renders one section per page.</description>
+            <inwork>0</inwork>
+            <include>1</include>
+            <timestamp function="true">unix_timestamp()</timestamp>
+            <userid>1</userid>
+            <filename>FAQ-Default.tpl</filename>
+            <content><![CDATA[
+{if !is_null($ADMIN_URL)}
+    <script type="text/javascript">
+    <!--
+    function openAdmin()
+    {literal}{{/literal}
+        fenster = open("{$ADMIN_URL}","ModulAdmin","menubar=no,toolbar=no,statusbar=no,directories=no,location=no,scrollbars=yes,resizable=no,height=350,width=400,screenX=0,screenY=0");
+        bBreite=screen.width;
+        bHoehe=screen.height;
+        fenster.moveTo((bBreite-400)/2,(bHoehe-350)/2);
+    {literal}}{/literal}
+    // -->
+    </script>
+    <div class="modulAdminLink" align="left"><a onClick="openAdmin(); return false;" href="{$ADMIN_URL}"><img src="{directory name="public"}system/images/preferences.gif" border="0" align="top"> Administration</a></div>
+{/if}
+
+{if $CONFIG.faq_jquery}
+	<script type="text/javascript" src="{directory name="addon_web"}jquery/jquery.js"></script>
+{/if}
+
+<div class="faqModule">
+	{faq_entries assign="faqs" section=$SECTION}
+	<ul>
+	{foreach item="entry" from=$faqs}
+		<li id="faq{$entry.id}" class="faqEntry">
+			<a href="{link item=$MENU}#faq{$entry.id}" class="faqQuestion">{$entry.name}</a>
+			<p class="faqAnswer">{$entry.value}</p>
+		</li>
+	{/foreach}
+	</ul>
+</div>
+{literal}
+
+<script type="text/javascript">
+$(document).ready( function() {
+{/literal}{if $HIDE_ANSWERS}
+	$(".faqAnswer").hide(); 
+	{/if}{literal}
+	$(".faqQuestion").click(function () {
+			$(this).siblings(".faqAnswer").slideToggle("slow");
+			return false;
+	});
+
+});
+</script>
+{/literal}
+            ]]></content>
+        </row>
+    </table>
+        
+</content>

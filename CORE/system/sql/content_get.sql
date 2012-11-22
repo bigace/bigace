@@ -1,0 +1,1 @@
+SELECT * FROM {DB_PREFIX}content WHERE cid = {CID} AND id = {ID} AND language = {LANGUAGE} AND name = {NAME}

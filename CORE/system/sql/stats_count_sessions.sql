@@ -1,0 +1,1 @@
+SELECT count(session_id) as cnt, session_id FROM {DB_PREFIX}statistics WHERE cid='{CID}' group by session_id

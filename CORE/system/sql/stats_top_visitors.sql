@@ -1,0 +1,1 @@
+SELECT COUNT(ip) AS CNT,ip FROM {DB_PREFIX}statistics where cid='{CID}' GROUP BY ip ORDER BY CNT DESC LIMIT {LIMIT}

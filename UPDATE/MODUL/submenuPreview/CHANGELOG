@@ -1,0 +1,10 @@
+This module displays all sub-menus of the page where it is used and has 
+some configuration settings that change its behaviour.
+
+Check out its Wiki page at: 
+<a href="http://wiki.bigace.de/bigace:extensions:modul:submenupreview" target="_blank">http://wiki.bigace.de/bigace:extensions:modul:submenupreview</a>
+
+Version 1.3:
+------------
+- added flag to display pages in "reverse order"
+- using path constant instead of global variable to protect against XSS

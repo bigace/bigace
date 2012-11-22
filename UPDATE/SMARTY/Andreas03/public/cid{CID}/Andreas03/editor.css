@@ -1,0 +1,36 @@
+/* 
+   CSS File for the Andreas03 Theme to be used in WYSIWYG editors.
+   Created using the Smarty Template creator at http://dev.bigace-cms.com 
+
+   Author:  Kevin Papst
+*/
+
+/*
+Original design: andreas03 (v2.0 - Apr 24, 2008) - A free xhtml/css website template by Andreas Viklund.
+For more information, see http://andreasviklund.com/templates/andreas03/
+*/
+
+/* General layout */
+body {width:530px; margin-right:20px; padding:0; line-height:1.3em; font:76% Verdana,sans-serif; color:#333;}
+#container {width:720px; margin:0 auto; padding:20px 20px 0 20px; background:#fff url(img/contbg.png) no-repeat; color:#333;}
+
+/* Tags */
+h1,h2,h3,h4 {margin:0 0 10px 0; font-weight:normal;}
+h1 {font-size:2.6em;clear:left; display:block; margin:20px 0 10px 0; padding:5px 0 5px 8px; background:#eee url(img/gradient2.png) repeat-x; color:#444; border-top:1px solid #ddd; border-right:1px solid #bbb; border-bottom:1px solid #bbb; border-left:1px solid #ddd; text-decoration:none;}
+h2 {margin:0 0 4px 0; font-size:1.5em;}
+h3 {margin:20px 0 8px 0; font-size:1.3em;}
+h4 {margin:10px 0 5px 0; font-size:1.2em;}
+a {text-decoration:none; color:#26c;}
+a:hover {text-decoration:underline;}
+a img {border:0;}
+p {margin:0 0 15px 10px; line-height:1.5em;}
+
+/* Additional classes */
+.headerstyle {clear:left; display:block; margin:20px 0 10px 0; padding:5px 0 5px 8px; background:#eee url(img/gradient2.png) repeat-x; color:#444; border-top:1px solid #ddd; border-right:1px solid #bbb; border-bottom:1px solid #bbb; border-left:1px solid #ddd; text-decoration:none;}
+.clear {clear:both; margin:0; padding:0;}
+.right {text-align:right;}
+.internallink {font-size:0.9em; text-align:center;}
+#sidebar p.block {font-size:0.9em; line-height:1.4em; margin:5px auto 15px auto; padding:5px; color:#555; border-top:1px solid #ddd; border-right:1px solid #bbb; border-bottom:1px solid #bbb; border-left:1px solid #ddd;}
+.credit {color:#777;}
+.hide {display:none;}
+

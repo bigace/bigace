@@ -1,0 +1,1 @@
+DELETE FROM {DB_PREFIX}frights WHERE name='{FRIGHT_ID}' AND cid='{CID}'

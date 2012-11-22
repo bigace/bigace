@@ -1,0 +1,1 @@
+DELETE FROM {DB_PREFIX}session WHERE timestamp < {SESSION_LIFETIME}

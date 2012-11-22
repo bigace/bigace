@@ -1,0 +1,76 @@
+/*
+Extensions for BIGACE in the BLIX Theme, to make it more updateable.
+If you update the Stylesheets, remember to fix the image path!
+Author: Kevin Papst
+*/
+
+.CopyrightFooter { margin-top:10px; }
+.copyright { font-size: 12px; color: #444444; }
+
+.modulAdminLink{margin-bottom:10px;}
+
+#preview {}
+#preview h2 a { text-decoration:none; margin-left:5px; border:0px solid transparent; }
+#preview h2 { display:block; background-color:#eeeeee; padding:2px; margin:0px; }
+#preview p { margin:0px; padding:5px 5px 5px 5px; }
+.nextLevelPreview { border:1px solid #cccccc; margin:0 0 10px 0; }
+/* subcontent list
+--------------------------------------------------*/
+#subcontent ul.lastEditedItemsPortlet li a {
+  display:inline;
+  padding:1px 0;
+  height:1%; /* IE WIN */
+}
+
+#subcontent ul.links li {list-style-image:url(links_yellow.gif);}
+#subcontent ul.feeds li {list-style-image:url(feeds_yellow.gif);}
+#subcontent ul.toolPortlet li {list-style-image:url(sub_categories_yellow.gif);}
+#subcontent ul.toolPortlet img {margin-right:10px;}
+#subcontent ul.navigationPortlet li, 
+#subcontent ul.lastEditedItemsPortlet li {list-style-image:url(post_yellow.gif);}
+#subcontent ul.navigationPortlet li li {list-style-image:url(sub_categories_yellow.gif);}
+#subcontent .loginSubmit {
+    width:70px;
+    border-color:#DCDCDC #F0F0F0 #F0F0F0 #DCDCDC;
+    color:#414141;
+    font-size:10px;
+}
+#subcontent .loginPortlet input {
+    width:120px;
+}
+
+#subcontent ul.categories li ul,
+#subcontent ul.navigationPortlet li ul,
+#subcontent ul.lastEditedItemsPortlet li ul {margin:0;}
+
+#subcontent ul.categories li li,
+#subcontent ul.navigationPortlet li li,
+#subcontent ul.lastEditedItemsPortlet li li {
+  margin:0;
+  padding:0 0 3px 0;
+  border-bottom:none;
+}
+
+#subcontent ul.categories li ul ul,
+#subcontent ul.navigationPortlet li ul ul,
+#subcontent ul.lastEditedItemsPortlet li li  {margin:0 0 0 16px;}
+
+#header .languages {
+  position:relative;
+  text-align:right;
+  margin-top:-60px;
+  margin-right:10px;
+  font-weight:bold;
+}
+
+#navigation #searchbutton {
+  height:2em;
+  width:50px;
+  padding:0 1px;
+  border:1px solid;
+  font-size:9px;
+  letter-spacing:0px;
+  text-align:center;
+  vertical-align:middle;
+}
+#navigation #s {border-color:#FFF9EA;width:100px;}

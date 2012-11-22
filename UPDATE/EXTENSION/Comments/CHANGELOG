@@ -1,0 +1,23 @@
+Version 1.8:
+--------------
+- added russian translation
+- auto assign permissions to Administrator group
+
+Version 1.7:
+--------------
+- fixed comments rss smarty TAG {link_comments_rss}
+- translation fixes for 2.7
+- fixed update_comment_item
+- fixed unticked "allow trackbacks" when creating new pages 
+- new pages do not allow comments/trackbacks by default
+
+Version 1.6:
+------------
+Please <b>update all links to your RSS feed</b> to /plugins/comments/rss.php or use Smarty TAG {link_comments_rss}.
+Reactivate the comments plugin (location changed).
+
+- added trackback support
+- check for and do not allow duplicate comments
+- moved Comments Admin Plugin
+- moved RSS feed to /plugins/comments/rss.php
+- using admin styles

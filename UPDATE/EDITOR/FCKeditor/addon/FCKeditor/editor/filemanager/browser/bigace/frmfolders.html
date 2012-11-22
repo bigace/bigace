@@ -1,0 +1,194 @@
+<!--
+ * FCKeditor - The text editor for internet
+ * Copyright (C) 2003-2005 Frederico Caldeira Knabben
+ * 
+ * Licensed under the terms of the GNU Lesser General Public License:
+ * 		http://www.opensource.org/licenses/lgpl-license.php
+ * 
+ * For further information visit:
+ * 		http://www.fckeditor.net/
+ * 
+ * "Support Open Source software. What about a donation today?"
+ * 
+ * File Name: frmfolders.html
+ * 	This page shows the list of folders available in the parent folder 
+ * 	of the current folder.
+ * 
+ * File Authors:
+ * 		Frederico Caldeira Knabben (fredck@fckeditor.net)
+-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+	<head>
+		<link href="browser.css" type="text/css" rel="stylesheet">
+		<script type="text/javascript" src="js/common.js"></script>
+		<script language="javascript">
+
+var sActiveFolder ;
+
+var bIsLoaded = false ;
+var iIntervalId ;
+
+var oListManager = new Object() ;
+
+oListManager.Init = function()
+{
+	this.Table = document.getElementById('tableFiles') ;
+	this.UpRow = document.getElementById('trUp') ;
+
+	this.TableRows = new Object() ;	
+}
+
+oListManager.Clear = function()
+{
+	// Remove all other rows available.
+	while ( this.Table.rows.length > 1 )
+		this.Table.deleteRow(1) ;
+
+	// Reset the TableRows collection.
+	this.TableRows = new Object() ;
+}
+
+oListManager.AddItem = function( folderName, size, id, url )
+{
+	// Create the new row.
+	var oRow = this.Table.insertRow(-1) ;
+	oRow.className = 'FolderListFolder' ;
+
+	// Build the link to view the folder.
+	var sLink = '<a href="#" onclick="OpenFolder(\'' + id + '\');return false;">' ;
+
+	// Add the folder icon cell.
+	var oCell = oRow.insertCell(-1) ;
+	oCell.width = 16 ;
+	oCell.innerHTML = sLink + '<img alt="" src="images/spacer.gif" width="16" height="16" border="0"></a>' ;
+
+	// Add the folder name cell.
+	oCell = oRow.insertCell(-1) ;
+	oCell.noWrap = true ;
+	oCell.innerHTML = '&nbsp;' + sLink + folderName + '</a>' ;
+	
+	this.TableRows[ folderName ] = oRow ;
+}
+
+oListManager.ShowUpFolder = function(id)
+{
+	this.UpRow.style.display = ( '' ) ;
+	
+	document.getElementById('linkUpIcon').onclick = document.getElementById('linkUp').onclick = function()
+	{
+		LoadFolders( id ) ;
+		return false ;
+	}
+}
+
+function CheckLoaded()
+{
+	if ( window.top.IsLoadedActualFolder 
+		&& window.top.IsLoadedCreateFolder 
+		&& window.top.IsLoadedUpload
+		&& window.top.IsLoadedResourcesList )
+	{
+		window.clearInterval( iIntervalId ) ;
+		bIsLoaded = true ;
+		OpenFolder( '' ) ;
+	}
+}
+
+// Opens the ID in the List Frame
+function OpenFolder( id )
+{
+	if ( ! bIsLoaded )
+	{
+		if ( ! iIntervalId )
+			iIntervalId = window.setInterval( CheckLoaded, 100 ) ;
+		return ;
+	}
+
+	// Change the style for the select row (to show the opened folder).
+	for ( var sFolderPath in oListManager.TableRows )
+	{
+		oListManager.TableRows[ sFolderPath ].className = 
+			( sFolderPath == id ? 'FolderListCurrentFolder' : 'FolderListFolder' ) ;
+	}
+
+	// Set the current folder in all frames.
+	window.parent.frames['frmCreateFolder'].SetCurrentFolder( oConnector.ResourceType, id ) ;
+	window.parent.frames['frmUpload'].SetCurrentFolder( oConnector.ResourceType, id ) ;
+	
+	// Load the resources list for this folder.
+	window.parent.frames['frmResourcesList'].LoadResources( oConnector.ResourceType, id ) ;
+}
+
+function LoadFolders( id )
+{
+	if ( id != '' )
+	{
+		oConnector.CurrentFolderID = id;
+		if(id != -1) {
+	        oConnector.SendCommand( 'GetFolders', null, GetFoldersCallBack ) ;
+        } else {
+            OpenFolder(id);
+            window.parent.setActualFolderTitle( '/' ) ;
+            oListManager.UpRow.style.display = ( 'none' ) ;
+        }
+		oListManager.Clear();
+	}
+	else
+	{
+		OpenFolder( '' ) ;
+	}
+}
+
+function GetFoldersCallBack( fckXml )
+{
+	if ( oConnector.CheckError( fckXml ) != 0 )
+		return ;
+		
+    	    
+	// Get the current folder path.
+	var oNode = fckXml.SelectSingleNode( 'Connector/CurrentFolder' ) ;
+	var sCurrentFolderPath = oNode.attributes.getNamedItem('path').value ;
+	var parentID = oNode.attributes.getNamedItem('parent').value ;
+	window.parent.setActualFolderTitle( sCurrentFolderPath ) ;
+
+	// Show/Hide the Up Folder.
+	oListManager.ShowUpFolder(parentID) ;
+	
+	var oNodes = fckXml.SelectNodes( 'Connector/Folders/Folder' ) ;
+	
+	for ( var i = 0 ; i < oNodes.length ; i++ )
+	{
+		var sFolderName = oNodes[i].attributes.getNamedItem('name').value ;
+		var sFolderSize = oNodes[i].attributes.getNamedItem('size').value ;
+		var sFolderID   = oNodes[i].attributes.getNamedItem('id').value ;
+		var sFolderURL  = oNodes[i].attributes.getNamedItem('url').value ;
+
+		oListManager.AddItem( sFolderName, sFolderSize, sFolderID, sFolderURL ) ;
+	}
+	
+	OpenFolder( sActiveFolder ) ;
+}
+
+function SetResourceType( type )
+{
+	oConnector.ResourceType = type ;
+	LoadFolders( '' ) ;
+}
+
+window.onload = function()
+{
+	oListManager.Init() ;
+	LoadFolders( '' ) ;
+}
+		</script>
+	</head>
+	<body class="FileArea" bottomMargin="10" leftMargin="10" topMargin="10" rightMargin="10">
+		<table id="tableFiles" cellSpacing="0" cellPadding="0" width="100%" border="0">
+			<tr id="trUp" style="DISPLAY: none">
+				<td width="16"><a id="linkUpIcon" href="#"><img alt="" src="images/FolderUp.gif" width="16" height="16" border="0"></a></td>
+				<td nowrap width="100%">&nbsp;<a id="linkUp" href="#">..</a></td>
+			</tr>
+		</table>
+	</body>
+</html>

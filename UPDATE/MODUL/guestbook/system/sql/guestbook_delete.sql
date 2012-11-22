@@ -1,0 +1,1 @@
+DELETE FROM {DB_PREFIX}gaestebuch WHERE id={ENTRY_ID} AND cid={CID}

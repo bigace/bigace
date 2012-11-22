@@ -1,0 +1,34 @@
+<content version="1.0">
+
+    <table name="configuration">
+        <row update="false">
+            <cid key="true">{CID}</cid>
+            <package key="true">vimeo</package>
+            <name key="true">title</name>
+            <value>Video Player</value>
+            <type>string</type>
+        </row>
+        <row update="false">
+            <cid key="true">{CID}</cid>
+            <package key="true">vimeo</package>
+            <name key="true">class</name>
+            <value>vimeo-player</value>
+            <type>string</type>
+        </row>
+        <row update="false">
+            <cid key="true">{CID}</cid>
+            <package key="true">vimeo</package>
+            <name key="true">width</name>
+            <value>400</value>
+            <type>integer</type>
+        </row>
+        <row update="false">
+            <cid key="true">{CID}</cid>
+            <package key="true">vimeo</package>
+            <name key="true">height</name>
+            <value>225</value>
+            <type>integer</type>
+        </row>
+    </table>
+
+</content>

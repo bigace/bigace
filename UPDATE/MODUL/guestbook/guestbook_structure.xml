@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<!--
+ *
+ * BIGACE - a PHP and MySQL based Web CMS.
+ * 
+ * BIGACE is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation; either version 2
+ * of the License, or (at your option) any later version.
+ * 
+ * BIGACE is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * 
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software Foundation, 
+ * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ * 
+ * For further information visit {@link http://www.bigace.de http://www.bigace.de}.
+ *
+ * @author Kevin Papst 
+ * @copyright Copyright (C) Kevin Papst
+ * @version $Id: guestbook_structure.xml,v 1.3 2008/08/29 17:30:19 kpapst Exp $
+ *
+-->
+
+<schema version="0.3">
+
+  <table name="gaestebuch">
+    <descr>This table holds all guestbook entrys.</descr>
+    <opt platform="mysql">ENGINE=MyISAM CHARACTER SET utf8 COLLATE utf8_general_ci</opt>
+
+    <field name="id" type="I" size="11">
+      <NOTNULL/>
+      <KEY/>
+      <AUTOINCREMENT/>
+    </field>
+
+    <field name="cid" type="I" size="11">
+      <NOTNULL/>
+      <KEY/>
+    </field>
+
+    <field name="name" type="C" size="255">
+      <NOTNULL/>
+    </field>
+
+    <field name="email" type="C" size="255">
+      <NOTNULL/>
+      <DEFAULT value=""/>
+    </field>
+
+    <field name="homepage" type="C" size="255">
+      <NOTNULL/>
+      <DEFAULT value=""/>
+    </field>
+
+    <field name="eintrag" type="X" />
+
+    <field name="timestamp" type="I" size="11">
+      <NOTNULL/>
+    </field>
+  </table>
+
+</schema>

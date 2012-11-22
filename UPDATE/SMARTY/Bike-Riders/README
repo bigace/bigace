@@ -1,0 +1,8 @@
+
+More infos can be found in the wiki:
+<a href="http://wiki.bigace.de/bigace:extensions:smarty:bikeriders">http://wiki.bigace.de/bigace:extensions:smarty:bikeriders</a>
+
+CHANGELOG
+===============
+Version 1.1:
+    - replaced {stylesheet} to be upgrade compatible with 3.0 

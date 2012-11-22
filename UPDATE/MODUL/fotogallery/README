@@ -1,0 +1,7 @@
+
+Please read more about the Fotogallery at its documentation website:
+<a href="http://wiki.bigace.de/bigace:extensions:modul:fotogallery" target="_blank">http://wiki.bigace.de/bigace:extensions:modul:fotogallery</a>
+
+Version 1.8:
+--------------
+- assign permission "fotogallery_admin" to Administrator at installation

@@ -1,0 +1,39 @@
+<table class="tablesorter" cellspacing="0" cellpadding="0" border="0" style="margin-top:0px;width:100%;">
+<col width="30"/>
+<col />
+<col width="40%"/>
+<!-- BEGIN autoheader -->
+<thead>
+	<tr>
+		<th align="left">&nbsp;</th>
+		<th align="left">{TRANSLATION_image_name}</th>
+		<th align="left">{TRANSLATION_image_filename}</th>
+	</tr>
+</thead>
+<!-- END autoheader -->
+<tbody>
+    <!-- BEGIN row -->
+    <script type="text/javascript">
+        var simpleImage{IMAGE_ID} = {
+            itemID          : '{IMAGE_ID}',
+            languageID      : null,
+            name            : '{IMAGE_NAME}',
+            filename        : '{IMAGE_FILENAME}',
+			url				: '{IMAGE_URL}'
+        }
+    </script>
+    <tr>
+        <td align="left"><a href="{IMAGE_URL}" onclick="setSelectedImage(simpleImage{IMAGE_ID});return false;"><img src="{AUTO_PUBLIC_DIR}system/images/mimetype/{IMAGE_MIMETYPE}.gif" border="0"></a></td>
+        <td align="left"><a href="{IMAGE_URL}" onclick="setSelectedImage(simpleImage{IMAGE_ID});return false;">{IMAGE_NAME}</a></td>
+        <td align="left">{IMAGE_FILENAME}</td>
+    </tr>
+    <!-- END row -->
+	</tbody>
+</table>
+
+<script type="text/javascript">
+$(document).ready( function() { 
+        $(".tablesorter").tablesorter({ widgets: ['zebra'], headers: { 0: {sorter: false} }}); 
+    } 
+);
+</script>

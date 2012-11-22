@@ -1,0 +1,123 @@
+<content version="1.0">
+    <table name="configuration">
+        <row update="false">
+            <cid key="true">{CID}</cid>
+            <package key="true">social.bookmarks</package>
+            <name key="true">digg</name>
+            <value>1</value>
+            <type>boolean</type>
+        </row>
+        <row update="false">
+            <cid key="true">{CID}</cid>
+            <package key="true">social.bookmarks</package>
+            <name key="true">reddit</name>
+            <value>1</value>
+            <type>boolean</type>
+        </row>
+        <row update="false">
+            <cid key="true">{CID}</cid>
+            <package key="true">social.bookmarks</package>
+            <name key="true">stumble</name>
+            <value>1</value>
+            <type>boolean</type>
+        </row>
+        <row update="false">
+            <cid key="true">{CID}</cid>
+            <package key="true">social.bookmarks</package>
+            <name key="true">delicious</name>
+            <value>1</value>
+            <type>boolean</type>
+        </row>
+        <row update="false">
+            <cid key="true">{CID}</cid>
+            <package key="true">social.bookmarks</package>
+            <name key="true">technorati</name>
+            <value>1</value>
+            <type>boolean</type>
+        </row>
+        <row update="false">
+            <cid key="true">{CID}</cid>
+            <package key="true">social.bookmarks</package>
+            <name key="true">furl</name>
+            <value>1</value>
+            <type>boolean</type>
+        </row>
+        <row update="false">
+            <cid key="true">{CID}</cid>
+            <package key="true">social.bookmarks</package>
+            <name key="true">facebook</name>
+            <value>1</value>
+            <type>boolean</type>
+        </row>
+        <row update="false">
+            <cid key="true">{CID}</cid>
+            <package key="true">social.bookmarks</package>
+            <name key="true">myspace</name>
+            <value>1</value>
+            <type>boolean</type>
+        </row>
+        <row update="false">
+            <cid key="true">{CID}</cid>
+            <package key="true">social.bookmarks</package>
+            <name key="true">yahoo</name>
+            <value>1</value>
+            <type>boolean</type>
+        </row>
+        <row update="false">
+            <cid key="true">{CID}</cid>
+            <package key="true">social.bookmarks</package>
+            <name key="true">script-style</name>
+            <value>1</value>
+            <type>boolean</type>
+        </row>
+        <row update="false">
+            <cid key="true">{CID}</cid>
+            <package key="true">social.bookmarks</package>
+            <name key="true">blinklist</name>
+            <value>1</value>
+            <type>boolean</type>
+        </row>
+        <row update="false">
+            <cid key="true">{CID}</cid>
+            <package key="true">social.bookmarks</package>
+            <name key="true">mixx</name>
+            <value>1</value>
+            <type>boolean</type>
+        </row>
+        <row update="false">
+            <cid key="true">{CID}</cid>
+            <package key="true">social.bookmarks</package>
+            <name key="true">designfloat</name>
+            <value>1</value>
+            <type>boolean</type>
+        </row>
+        <row update="false">
+            <cid key="true">{CID}</cid>
+            <package key="true">social.bookmarks</package>
+            <name key="true">vkontakte</name>
+            <value>1</value>
+            <type>boolean</type>
+        </row>
+        <row update="false">
+            <cid key="true">{CID}</cid>
+            <package key="true">social.bookmarks</package>
+            <name key="true">odnoklassniki</name>
+            <value>1</value>
+            <type>boolean</type>
+        </row>
+        <row update="false">
+            <cid key="true">{CID}</cid>
+            <package key="true">social.bookmarks</package>
+            <name key="true">mailru</name>
+            <value>1</value>
+            <type>boolean</type>
+        </row>
+        <row update="false">
+            <cid key="true">{CID}</cid>
+            <package key="true">social.bookmarks</package>
+            <name key="true">yaru</name>
+            <value>1</value>
+            <type>boolean</type>
+        </row>
+    </table>
+</content>

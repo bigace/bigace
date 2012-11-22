@@ -1,0 +1,175 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<!-- $Id: BrowserHtmlHeader.tpl.html,v 1.7 2009/10/25 13:29:44 kpapst Exp $ -->
+<head>
+    <!-- BEGIN header -->
+    <title>{TRANSLATION_browser_title}</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="generator" content="BIGACE {BIGACE_VERSION}">
+    <meta name="robots" content="noindex,nofollow">
+    <script type="text/javascript" src="{AUTO_ADDON_DIR}jquery/jquery-1.3.2.min.js"></script>
+    <link type="text/css" rel="stylesheet" href="{AUTO_ADDON_DIR}jquery/themes/smoothness/jquery-ui-1.7.2.custom.css" />
+    <link type="text/css" rel="StyleSheet" href="{AUTO_PUBLIC_DIR}system/css/function.css" />
+    <link type="text/css" rel="StyleSheet" href="{AUTO_PUBLIC_DIR}system/style/standard/style.css" />
+    <script type="text/javascript" src="{AUTO_ADDON_DIR}jquery/tablesorter/jquery.tablesorter.js"></script>
+    <style type="text/css">
+    body { margin:0px; }
+    #topLinkBox { border-bottom:2px solid #000000; margin:3px 0 0px 0; padding:0px 10px 8px 10px; }
+    #topLinkBox a { border:1px solid #cccccc; background-color:#eeeeee; color:#000000; padding:3px; text-decoration:none; }
+    #topLinkBox a:hover { border:1px solid #cccccc; background-color:#666666; color:#ffffff; padding:3px; text-decoration:none; margin-top:3px; }
+    #scalePreview { visibility:hidden; }
+    .imgPreviewDiv { width:100%; height:{PREVIEW_HEIGHT}px; border:1px solid #000000; margin:0px 0px 5px 0px; overflow:auto; text-align:left; }
+    #itemListingDIV { width:100%; overflow:auto; height:302px; }
+    #choosenImage { border:1px solid #cccccc; background-color:#eeeeee; font-size:10px; width:100%; padding:0px 0px 0px 5px; margin:0px 0px 10px 0px; height:39px; }
+    #choosenImage td { padding:0px; height:30px; }
+    </style>
+    <script language="javascript">
+
+    var sEmptyImage  = "{AUTO_PUBLIC_DIR}system/images/spacer.gif" ;
+    var loadingImage = null;
+
+    var sActiveImage = {
+        itemID          : null,
+        languageID      : null,
+        name            : '',
+        filename        : '',
+        url             : '',
+        setName         : function (name) { this.name = name; },
+        getName         : function()    { return this.name; },
+        setFilename     : function (name) { this.filename = name; },
+        getFilename     : function()    { return this.filename; },
+        setItemID       : function (id) { this.itemID = id; },
+        getItemID       : function()    { return this.itemID; },
+        setLanguageID   : function (id) { this.languageID = id; },
+        getLanguageID   : function()    { return this.languageID; },
+        setURL          : function (url) { this.url = url; },
+        getURL          : function()    { return this.url; }
+    }
+    
+    function checkPreview() 
+    {
+        temp = document.getElementById("preview");
+        if (typeof temp == 'object'){
+            if (!temp.checked) {
+                document.getElementById("imgPreview").src = sEmptyImage;
+            }
+        }
+    }
+    
+    // returns whether the Preview should be shown or not
+    function isPreviewImage() {
+        temp = document.getElementById("preview");
+        if (typeof temp == 'object'){
+            return temp.checked;
+        }
+        return false;
+    }
+    
+    // starts to load the image
+    function previewImage() 
+    {
+        if(sActiveImage.getURL() != null && sActiveImage.getURL() != '') {
+    	    loadingImage = new Image();
+    	    loadingImage.src = sActiveImage.getURL();
+    	    changeImage();
+        }
+        else {
+            document.getElementById("imgPreview").src = sEmptyImage;
+        }
+    }
+    
+    // if the preview image is completely loaded it will be shown
+    // and the scale button state will be calculated
+    function changeImage() 
+    {
+        if(loadingImage != null && loadingImage.complete) {
+            document.getElementById("imgPreview").width = loadingImage.width;
+            document.getElementById("imgPreview").height = loadingImage.height;
+    	    document.getElementById("imgPreview").src = loadingImage.src;
+    	    if(document.getElementById("imgPreview").height > {PREVIEW_HEIGHT}) {
+				scaleToPreview();
+    	        //displayScaleButton(true);
+    	    } else {
+    	        displayScaleButton(false);
+    	    }
+        } else {
+            window.setTimeout("changeImage()",500);
+        }
+    }
+    
+    function scaleToPreview() 
+    {
+        imageWidth = document.getElementById("imgPreview").width;
+        imageHeight = document.getElementById("imgPreview").height;
+        if(imageHeight > {PREVIEW_HEIGHT}) {
+            sizeMinus = 17;
+            if(document.all)
+                sizeMinus = 19;
+            newHeight = {PREVIEW_HEIGHT}-sizeMinus;
+            newWidth = Math.round( imageWidth * ( newHeight  / (imageHeight-sizeMinus) ) );
+            document.getElementById("imgPreview").height = newHeight;
+            document.getElementById("imgPreview").width = newWidth;
+	        displayScaleButton(false);
+        }
+    }
+    
+    function displayScaleButton(state) {
+        if(!state)
+	        document.getElementById("scalePreview").style.visibility = 'hidden';
+	    else 
+    	    document.getElementById("scalePreview").style.visibility = 'visible';
+    }
+    
+    function ok()
+    {	
+        if(sActiveImage.getURL() == null || sActiveImage.getURL() == '') {
+            alert('{TRANSLATION_no_image_selected}!');
+            return false;
+        }
+            
+        if (typeof(window.top.opener.{JAVASCRIPT_FUNCTION}) == "undefined")
+        {
+            alert('{TRANSLATION_undefined_js_function}: "{JAVASCRIPT_FUNCTION}"');
+        }
+        else
+        {
+            window.top.opener.{JAVASCRIPT_FUNCTION}(encodeURI(sActiveImage.getURL()));
+	        if (typeof(window.top.opener.{JAVASCRIPT_FUNCTION_INFOS}) != "undefined")
+	            window.top.opener.{JAVASCRIPT_FUNCTION_INFOS}(sActiveImage.getItemID(), sActiveImage.getFilename());
+        	window.top.close();
+        	window.top.opener.focus();
+        }
+    }
+    
+    function setInfoText(msg) {
+        document.getElementById("curImgName").innerHTML = msg;
+    }
+    
+    function setSelectedImage(simpleImage) 
+    {
+        if (simpleImage != null) {
+            
+            id = simpleImage.itemID;
+            name = simpleImage.filename;
+            if(name == null) {
+                name = 'image.jpg';
+            }
+            $(".imgChooserBtn").show();
+            sActiveImage.setItemID(simpleImage.itemID);
+            sActiveImage.setName(simpleImage.name);
+            sActiveImage.setFilename(simpleImage.filename);
+            sActiveImage.setURL(simpleImage.url);
+    	    setInfoText(sActiveImage.getName());
+    	    if(isPreviewImage()) {
+                previewImage();
+            }
+        }
+    }
+    
+    $(document).ready(function(){
+            $(".imgChooserBtn").toggle();
+    });
+    </script>
+    <!-- END header -->
+</head>
+<body>

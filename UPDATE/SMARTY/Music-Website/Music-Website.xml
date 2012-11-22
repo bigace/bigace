@@ -1,0 +1,177 @@
+<content version="1.0">
+
+    <table name="template">
+        <row>
+            <name key="true">Music-Website</name>
+            <cid key="true">{CID}</cid>
+            <description>The Music-Website main template.</description>
+            <inwork>0</inwork>
+            <include>0</include>
+            <timestamp function="true">unix_timestamp()</timestamp>
+            <userid>1</userid>
+            <filename>Music-Website.tpl</filename>
+            <content><![CDATA[{include file="Music-Website-Header.tpl"}
+
+	        {if $MENU->getID() > -1}
+		        <div id="breadcrumbs">{breadcrumb id=$MENU->getID() suffix=' &raquo;'}</div>
+	        {/if}
+
+	        {modul menu=$MENU}
+
+{include file="Music-Website-Footer.tpl"}]]></content>
+        </row>
+        <row>
+            <name key="true">Music-Website-Header</name>
+            <cid key="true">{CID}</cid>
+            <description>Header of the Music-Website Design.</description>
+            <inwork>0</inwork>
+            <include>1</include>
+            <timestamp function="true">unix_timestamp()</timestamp>
+            <userid>1</userid>
+            <filename>Music-Website-Header.tpl</filename>
+            <content><![CDATA[<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    {metatags item=$MENU}
+    <link rel="stylesheet" href="{stylesheet name="Music-Website_Stylesheet"}" type="text/css" media="screen, projection" />
+</head>
+<body>
+<div id="container">
+
+	{* Page Title *}
+	<div id="page_title">
+		<h1><span>{if isset($TITLE)}{$TITLE}{else}{sitename}{/if}</span></h1>
+	</div>
+
+	<div id="header_image"><span>&nbsp;</span></div>
+
+	{* Start of Page Header *}
+	<div id="header_container_left">
+	    <div id="header_container_right">
+	    <div id="header_container">
+	    <div id="page_header">
+	        <div id="header_hidden">&nbsp;</div>
+
+		    {* Header Punchline *}
+		    <div id="header_punchline">
+			    <h3><span>{$MENU->getName()}</span></h3>
+		    </div>
+
+		    {* Header Navigation Menu *}
+		    <div id="header_menu">
+			    <ul>
+                    {load_item id="-1" itemtype="1" assign="topLevel"}
+			        <li><a href="{link item=$topLevel}">{$topLevel->getName()}</a></li>
+			        {navigation id="-1" prefix="<li>" suffix="</li>"}
+			    </ul>
+		    </div>
+
+		    {* Header Links *}
+		    <div id="header_links">
+    		    {$MENU->getDescription()}
+			    {*<ul>
+			        <li><a href="http://www.freewebsitetemplates.com/">make your own music</a></li>
+			        <li><a href="http://www.freewebsitetemplates.com/">grab the hottest tracks</a></li>
+			        <li><a href="http://www.freewebsitetemplates.com/">read previews</a></li>
+			    </ul>*}
+		    </div>
+		    <div class="clearthis">&nbsp;</div>
+	    </div>
+	    </div>
+	    </div>
+	</div>
+	{* End of Page Header *}
+
+	{* Start of Main Content *}
+	<div id="maincontent_container">
+	    <div id="maincontent">
+]]></content>
+        </row>
+        <row>
+            <name key="true">Music-Website-Footer</name>
+            <cid key="true">{CID}</cid>
+            <description>Footer for the Music-Website Design.</description>
+            <inwork>0</inwork>
+            <include>1</include>
+            <timestamp function="true">unix_timestamp()</timestamp>
+            <userid>1</userid>
+            <filename>Music-Website-Footer.tpl</filename>
+            <content><![CDATA[
+    	</div>
+	</div>
+	{* End of Main Content *}
+
+	{* Page Footer *}
+	<div id="page_footer">
+        &copy; Copyright {$smarty.now|date_format:"%Y"} {configuration package="community" key="copyright.holder" default="BIGACE CMS"}. All rights reserved.
+
+        {if $USER->isAnonymous()}
+	        | <a href="{link_login id=$MENU->getID()}">Login</a>
+        {else}
+            <br/>
+		    {permission_editcontent assign="allowEditor"}
+		    {if $allowEditor}
+		     <a href="{link_editor id=$MENU->getID() language=$MENU->getLanguageID()}" target="_blank">Editor</a> |
+		    {/if}
+            <a target="_blank" href="{link_admin id=$MENU->getID()}">Administration</a> |
+            <a target="_self" href="{link_logout id=$MENU->getID()}">Logout</a>
+        {/if}
+
+        <br/>
+        Powered by {bigace_version link=true full=true}.
+		Design by <a href="http://www.freewebsitetemplates.com/">Free Website Templates</a>
+	</div>
+</div>
+</body>
+</html>]]></content>
+        </row>
+	</table>
+
+    <table name="stylesheet">
+        <row>
+            <name key="true">Music-Website_Stylesheet</name>
+            <cid key="true">{CID}</cid>
+            <description>CSS definitions for the Music-Website Layout.</description>
+            <filename>Music-Website/style.css</filename>
+            <editorcss>Music-Website_Editor</editorcss>
+        </row>
+
+        <row>
+            <name key="true">Music-Website_Editor</name>
+            <cid key="true">{CID}</cid>
+            <description>CSS definitions for the Music-Website theme, used in any WYSIWYG Editor.</description>
+            <filename>Music-Website/editor.css</filename>
+            <editorcss>Music-Website_Editor</editorcss>
+        </row>
+    </table>
+
+    <table name="design">
+        <row>
+            <name key="true">Music-Website</name>
+            <cid key="true">{CID}</cid>
+            <description>The Music-Website design.</description>
+            <stylesheet>Music-Website_Stylesheet</stylesheet>
+            <template>Music-Website</template>
+            <portlets>0</portlets>
+        </row>
+    </table>
+
+    <table name="configuration">
+        <row>
+            <cid key="true">{CID}</cid>
+            <package key="true">templates</package>
+            <name key="true">application.footer</name>
+            <value>Music-Website-Footer</value>
+            <type>tpl_inc</type>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <package key="true">templates</package>
+            <name key="true">application.header</name>
+            <value>Music-Website-Header</value>
+            <type>tpl_inc</type>
+        </row>
+    </table>
+
+</content>

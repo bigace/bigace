@@ -1,0 +1,115 @@
+﻿<content version="1.0">
+
+    <table name="item_1" update="false">
+        <row>
+            <id key="true">-1</id>
+            <cid key="true">{CID}</cid>
+            <language key="true">si</language>
+            <mimetype>text/html</mimetype>
+            <name>Home</name>
+            <parentid>-9999</parentid>
+            <description>Menu TOP-LEVEL</description>
+            <catchwords>BIGACE WEB CMS</catchwords>
+            <createdate function="true">unix_timestamp()</createdate>
+            <createby>1</createby>
+            <modifieddate function="true">unix_timestamp()</modifieddate>
+            <modifiedby>1</modifiedby>
+            <workflow></workflow>
+            <unique_name>index_si.html</unique_name>
+            <text_1>-1_si.html</text_1>
+            <text_2>-1_si.html</text_2>
+            <text_3>Prikazi vsebino</text_3>
+            <text_4>BLIX</text_4>
+            <text_5><![CDATA[ÈESTITAMO instalacija Vasega BIGACE CMS-ja je uspesno koncana. Po Kreiranju Vase prve internetne strani zacnite z konstruiranjem Vase internetne strani ter njene vsebine. Prvi korak je, da se prijavite z Vasim Uporabniskim imenom in Geslom katere ste si izbrali med instalacijo. Po uspesni prijavi se Vam bo prikazal Administratorski panel preko katerega imate polni dostop za spreminjanje in kontrolo BIGACE-a. V Administratorskem panelu imate moznost spreminjanja zdajsnje internetne strani, v Pomoci najdete veliko informacij o BIGACE-u kot tudi o njegovi vsebini, komponentah, dokumentaciji...]]></text_5>
+            <num_1 null="true" />
+            <num_2 null="true" />
+            <num_3>1</num_3>
+            <num_4>0</num_4>
+            <num_5>0</num_5>
+            <date_1>0</date_1>
+            <date_2>0</date_2>
+            <date_3>0</date_3>
+            <date_4>0</date_4>
+            <date_5>0</date_5>
+        </row>
+    </table>
+
+    <table name="item_4" update="false">
+        <row>
+            <id key="true">-1</id>
+            <cid key="true">{CID}</cid>
+            <language key="true">si</language>
+            <mimetype>image/gif</mimetype>
+            <name>Images</name>
+            <parentid>-9999</parentid>
+            <description>Image TOP-LEVEL</description>
+            <catchwords></catchwords>
+            <createdate function="true">unix_timestamp()</createdate>
+            <createby>1</createby>
+            <modifieddate function="true">unix_timestamp()</modifieddate>
+            <modifiedby>1</modifiedby>
+            <workflow></workflow>
+            <unique_name></unique_name>
+            <text_1>empty.gif</text_1>
+            <text_2></text_2>
+            <text_3></text_3>
+            <text_4></text_4>
+            <text_5></text_5>
+            <num_1 null="true" />
+            <num_2 null="true" />
+            <num_3>0</num_3>
+            <num_4>0</num_4>
+            <num_5>0</num_5>
+            <date_1>0</date_1>
+            <date_2>0</date_2>
+            <date_3>0</date_3>
+            <date_4>0</date_4>
+            <date_5>0</date_5>
+        </row>
+    </table>    
+
+    <table name="item_5" update="false">
+        <row>
+            <id key="true">-1</id>
+            <cid key="true">{CID}</cid>
+            <language key="true">si</language>
+            <mimetype>image/gif</mimetype>
+            <name>Files</name>
+            <parentid>-9999</parentid>
+            <description>File TOP-LEVEL</description>
+            <catchwords></catchwords>
+            <createdate function="true">unix_timestamp()</createdate>
+            <createby>1</createby>
+            <modifieddate function="true">unix_timestamp()</modifieddate>
+            <modifiedby>1</modifiedby>
+            <workflow></workflow>
+            <unique_name></unique_name>
+            <text_1>empty.gif</text_1>
+            <text_2></text_2>
+            <text_3></text_3>
+            <text_4></text_4>
+            <text_5></text_5>
+            <num_1>0</num_1>
+            <num_2>0</num_2>
+            <num_3>0</num_3>
+            <num_4>0</num_4>
+            <num_5>0</num_5>
+            <date_1>0</date_1>
+            <date_2>0</date_2>
+            <date_3>0</date_3>
+            <date_4>0</date_4>
+            <date_5>0</date_5>
+        </row>
+    </table>    
+
+    <table name="unique_name" update="false">
+        <row>
+            <cid key="true">{CID}</cid>
+            <itemtype key="true">1</itemtype>
+            <itemid key="true">-1</itemid>
+            <language key="true">si</language>
+            <name>index_si.html</name>
+        </row>
+    </table>
+
+</content>

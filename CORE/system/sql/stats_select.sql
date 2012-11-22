@@ -1,0 +1,1 @@
+SELECT {COLUMNS} FROM {DB_PREFIX}statistics WHERE cid='{CID}' {WHERE}

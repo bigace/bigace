@@ -1,0 +1,363 @@
+<content version="1.0">
+
+    <table name="events">
+        <row update="false">
+            <cid key="true">{CID}</cid>
+            <event key="true">delete-item</event>
+            <class key="true">classes.comments.CommentEventListener</class>
+        </row>
+    </table>  
+
+    <table name="comment_spam_counter">
+        <row update="false">
+            <cid key="true">{CID}</cid>
+            <counter>0</counter>
+        </row>
+    </table>  
+
+    <table name="frights">
+        <row>
+            <cid key="true">{CID}</cid>
+            <name key="true">comments.activate</name>
+            <defaultvalue>N</defaultvalue>
+            <description>Allows to activate pending Comments.</description>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <name key="true">comments.edit</name>
+            <defaultvalue>N</defaultvalue>
+            <description>Allows to edit Comments.</description>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <name key="true">comments.delete</name>
+            <defaultvalue>N</defaultvalue>
+            <description>Allows to delete Comments.</description>
+        </row>
+    </table>  
+
+    <table name="group_frights" update="false">
+        <row>
+            <cid key="true">{CID}</cid>
+            <group_id key="true">40</group_id>
+            <fright key="true">comments.activate</fright>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <group_id key="true">40</group_id>
+            <fright key="true">comments.edit</fright>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <group_id key="true">40</group_id>
+            <fright key="true">comments.delete</fright>
+        </row>
+    </table>  
+            
+    <table name="configuration">
+        <row update="false">
+            <cid key="true">{CID}</cid>
+            <package key="true">comments</package>
+            <name key="true">auto.activate.unregistered</name>
+            <value>0</value>
+            <type>boolean</type>
+        </row>
+        <row update="false">
+            <cid key="true">{CID}</cid>
+            <package key="true">comments</package>
+            <name key="true">auto.activate.registered</name>
+            <value>1</value>
+            <type>boolean</type>
+        </row>
+        <row update="false">
+            <cid key="true">{CID}</cid>
+            <package key="true">comments</package>
+            <name key="true">allow.html</name>
+            <value>0</value>
+            <type>boolean</type>
+        </row>
+        <row update="false">
+            <cid key="true">{CID}</cid>
+            <package key="true">comments</package>
+            <name key="true">css.use.internal</name>
+            <value>1</value>
+            <type>boolean</type>
+        </row>
+        <row update="false">
+            <cid key="true">{CID}</cid>
+            <package key="true">comments</package>
+            <name key="true">email.required</name>
+            <value>1</value>
+            <type>boolean</type>
+        </row>
+        <row update="false">
+            <cid key="true">{CID}</cid>
+            <package key="true">comments</package>
+            <name key="true">email.send.moderator</name>
+            <value>0</value>
+            <type>boolean</type>
+        </row>
+        <row update="false">
+            <cid key="true">{CID}</cid>
+            <package key="true">comments</package>
+            <name key="true">email.recipient.moderator</name>
+            <value></value>
+            <type>string</type>
+        </row>
+        <row update="false">
+            <cid key="true">{CID}</cid>
+            <package key="true">comments</package>
+            <name key="true">email.send.posting</name>
+            <value>0</value>
+            <type>boolean</type>
+        </row>
+        <row update="false">
+            <cid key="true">{CID}</cid>
+            <package key="true">comments</package>
+            <name key="true">email.recipient.posting</name>
+            <value></value>
+            <type>string</type>
+        </row>
+        <row update="false">
+            <cid key="true">{CID}</cid>
+            <package key="true">comments</package>
+            <name key="true">email.from</name>
+            <value></value>
+            <type>string</type>
+        </row>
+        <row update="false">
+            <cid key="true">{CID}</cid>
+            <package key="true">comments</package>
+            <name key="true">gravatar.enable</name>
+            <value>1</value>
+            <type>boolean</type>
+        </row>
+        <row update="false">
+            <cid key="true">{CID}</cid>
+            <package key="true">comments</package>
+            <name key="true">gravatar.size</name>
+            <value>48</value>
+            <type>integer</type>
+        </row>
+        <row update="false">
+            <cid key="true">{CID}</cid>
+            <package key="true">comments</package>
+            <name key="true">rss.latest.template</name>
+            <value>Comments-RSS-Latest</value>
+            <type>template</type>
+        </row>
+        <row update="false">
+            <cid key="true">{CID}</cid>
+            <package key="true">comments</package>
+            <name key="true">akismet.wordpress.api.key</name>
+            <value></value>
+            <type>string</type>
+        </row>
+        <row update="false">
+            <cid key="true">{CID}</cid>
+            <package key="true">comments</package>
+            <name key="true">akismet.auto.activate.positive</name>
+            <value>1</value>
+            <type>boolean</type>
+        </row>
+        <row update="false">
+            <cid key="true">{CID}</cid>
+            <package key="true">comments</package>
+            <name key="true">akismet.auto.delete.negative</name>
+            <value>1</value>
+            <type>boolean</type>
+        </row>
+        <row update="false">
+            <cid key="true">{CID}</cid>
+            <package key="true">comments</package>
+            <name key="true">use.captcha</name>
+            <value>0</value>
+            <type>boolean</type>
+        </row>
+        <row update="false">
+            <cid key="true">{CID}</cid>
+            <package key="true">comments</package>
+            <name key="true">rel.nofollow</name>
+            <value>0</value>
+            <type>boolean</type>
+        </row>
+        <row update="false">
+            <cid key="true">{CID}</cid>
+            <package key="true">comments</package>
+            <name key="true">ask.for.homepage</name>
+            <value>1</value>
+            <type>boolean</type>
+        </row>
+        <row update="false">
+            <cid key="true">{CID}</cid>
+            <package key="true">comments</package>
+            <name key="true">allow.trackbacks</name>
+            <value>1</value>
+            <type>boolean</type>
+        </row>
+    </table>
+
+    <table name="template">
+        <row>
+            <name key="true">Comments-Listing-Form</name>
+            <cid key="true">{CID}</cid>
+            <description>Example include, displaying comments for the current page including a formular.</description>
+            <inwork>0</inwork>
+            <include>1</include>
+            <timestamp function="true">unix_timestamp()</timestamp>
+            <userid>1</userid>
+            <filename>Comments-Listing-Form.tpl</filename>
+            <content><![CDATA[
+{project_field item=$MENU type="num" name="allow_comments" assign="allow_comments" default=true}
+{if $allow_comments}
+{load_translation name="comments-form"}
+{configuration cache="comments"}
+{configuration package="comments" key="css.use.internal" assign="useCSS" default=true}
+{configuration package="comments" key="email.required" assign="emailRequired" default=false}
+{configuration package="comments" key="gravatar.enable" assign="useGravatar" default=true}
+{configuration package="comments" key="gravatar.size" assign="gravatarSize" default="48"}
+{configuration package="comments" key="ask.for.homepage" assign="useHomepage" default=true}
+{configuration package="comments" key="rel.nofollow" assign="relnofollow" default=false}
+{directory assign="gravatarDir"}
+{if $useCSS}
+    <link rel="stylesheet" href="{stylesheet name="Comments"}" type="text/css">
+{/if}
+
+<h2 id="comments">{translate key="comment.formular.title"}</h2>
+{comments preview="preview" assign="comments" item=$MENU admin="commentAdmin" post=true}      
+<div id="comments">
+{foreach from=$comments item="comment"}
+	<div class="comment"> <a name="comment{$comment.id}"></a>
+		{if $comment.activated == 0}
+			<div class="commentHint">{translate key="comment.pending"}</div>  
+		{/if}
+		<div class="commentMeta">{if $useHomepage && $comment.homepage != ''}<a href="{$comment.homepage}" target="_blank"{if $relnofollow} rel="nofollow"{/if}><span class="commentName">{$comment.name}</span></a>{else}<span class="commentName">{$comment.name}</span>{/if} {translate key="comment.written_at"} {$comment.timestamp|date_format:"%m.%d.%y, %H:%M"}:</div>
+		<p>{if $useGravatar}<img class="commentGravatar" src="{gravatar email=$comment.email size=$gravatarSize default="`$gravatarDir`comments/default_gravatar.gif"}" height="{$gravatarSize}" width="{$gravatarSize}">{/if}{comment_format text=$comment.comment nl2br=true}<hr /></p>
+	</div>
+{/foreach}
+{if isset($commentAdmin.mode) && $commentAdmin.mode == 'preview'}
+	<div class="comment">
+		<div class="commentHint">{translate key="comment.preview"}</div>
+		<div class="commentMeta">{if $useHomepage && $preview.homepage != ''}<a href="{$preview.homepage}" target="_blank"{if $relnofollow} rel="nofollow"{/if}><span class="commentName">{$preview.name}</span></a>{else}<span class="commentName">{$preview.name}</span>{/if} {translate key="comment.written_at"} {$preview.timestamp|date_format:"%m.%d.%y, %H:%M"}:</div>
+		<p>{if $useGravatar}<img class="commentGravatar" src="{gravatar email=$preview.email size=$gravatarSize default="`$gravatarDir`comments/default_gravatar.gif"}" height="{$gravatarSize}" width="{$gravatarSize}">{/if}{comment_format text=$preview.comment nl2br=true}<hr /></p>
+	</div>
+{/if}
+
+{if isset($commentAdmin.spam) && $commentAdmin.spam}
+<div class="spam">{translate key="comment.eaten.spam"}</div>
+{/if}
+
+</div>
+
+<a name="commentForm"></a>
+<div id="commentForm">
+<form method="post" action="{link item=$MENU}">
+<input type="hidden" name="mode" value="create" id="commentMode">
+	{if isset($commentAdmin.missing) && count($commentAdmin.missing) > 0}
+	<div class="commentFailure commentMissing">{translate key="comment.missing.values"}</div>
+	{/if}
+	<div class="commentInput">
+	<label for="commentName"{if isset($commentAdmin.missing) && in_array('name', $commentAdmin.missing)} class="commentMissing"{/if}>{translate key="comment.formular.name"}</label><br/>
+	<input type="text" name="name" id="commentName" value="{$preview.name}">
+	</div>
+
+	<div class="commentInput">
+	<label for="commentEmail"{if isset($commentAdmin.missing) && in_array('email', $commentAdmin.missing)} class="commentMissing"{/if}>{if !$emailRequired}{translate key="comment.formular.email"}{else}{translate key="comment.formular.email.required"}{/if}</label><br/>
+	<input type="text" name="email" id="commentEmail" value="{$preview.email}">
+	</div>
+	{if $useHomepage}
+	<div class="commentInput">
+	<label for="commentHomepage">{translate key="comment.formular.homepage"}</label><br/>
+	<input type="text" name="homepage" id="commentHomepage" value="{$preview.homepage}">
+	</div>
+	{/if}
+	<div class="commentInput">
+	<label for="commentText"{if isset($commentAdmin.missing) && in_array('comment', $commentAdmin.missing)} class="commentMissing"{/if}>{translate key="comment.formular.comment"}</label><br/>
+	<textarea name="comment" id="commentText">{$preview.comment}</textarea>
+	</div>
+
+	{if isset($captcha) && !is_null($captcha)}
+	<div class="commentInput">
+	<label for="commentText"{if isset($commentAdmin.missing) && in_array('captcha', $commentAdmin.missing)} class="commentMissing"{/if}>{translate key="comment.formular.captcha"}</label><br/>
+	<img src="{$captcha}" border="0" alt="{translate key="comment.formular.captcha"}"><br/>
+	<input type="hidden" name="source" value="{$captcha}">
+	<input type="text" name="captcha" id="commentCaptcha" value="">
+	</div>
+	{/if}
+	<script type="text/javascript">
+	 function preview() {literal}{
+	 	 document.getElementById('commentMode').value = 'preview';
+	 	 return true;
+	 }{/literal}
+	 document.write('<button type="submit" onClick="return preview();" class="previewButton">{translate key="comment.formular.preview"}</button>');
+	</script>
+	<button type="submit" class="createButton">{translate key="comment.formular.create"}</button>
+</form>
+</div>
+{/if}
+]]></content>
+        </row>
+        <row>
+            <name key="true">Comments-RSS-Latest</name>
+            <cid key="true">{CID}</cid>
+            <description>RSS Feead in Atom 2.0 for displaying latest comments.</description>
+            <inwork>0</inwork>
+            <include>0</include>
+            <timestamp function="true">unix_timestamp()</timestamp>
+            <userid>1</userid>
+            <filename>Comments-RSS-Latest.tpl</filename>
+            <content><![CDATA[<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+	<title>{sitename|htmlspecialchars} - Latest Comments</title>
+
+    <link>{directory name="addon_web"}comments.php</link>
+    <description>The latest Comments at your Site</description>
+    <generator>{bigace_version full=true}</generator>
+    <docs>http://blogs.law.harvard.edu/tech/rss</docs>
+
+    <language>en-en</language>
+    <copyright>Copyright holder</copyright>
+    <managingEditor>Your Name (email@yourdomain.com)</managingEditor>
+    <webMaster>Someones Name (email@yourdomain.com)</webMaster>
+    <pubDate>{$smarty.now|date_format:"%a, %d %b %Y %H:%M:%S"} GMT</pubDate>
+    <lastBuildDate>{$smarty.now|date_format:"%a, %d %b %Y %H:%M:%S"} GMT</lastBuildDate>
+
+    <!-- image>
+      <url>URL where the image ist stored</url>
+      <title>Image title</title>
+      <link>where the image should link to</link>
+      <width>Image width in pixel</width>
+      <height>Image height in pixel</height>
+      <description>Image description</description>
+    </image -->
+	
+    <atom:link href="{directory name="addon_web"}comments.php" rel="self" type="application/rss+xml"/>
+
+	{comments_latest assign="latestComments"}
+	{foreach from=$latestComments item="comment"}
+	{load_item itemtype=$comment.itemtype id=$comment.itemid language=$comment.language assign="commentItem"}
+		<item>
+		  <title>{$comment.name|htmlspecialchars} wrote at {$comment.timestamp|date_format:"%m.%d.%y %H:%M"}</title>
+		  <link>{link item=$commentItem}#comment{$comment.id}</link>
+		  <description><![CDATA[{$comment.comment|htmlspecialchars}]]]]><![CDATA[></description>
+		  <pubDate>{$comment.timestamp|date_format:"%a, %d %b %Y %H:%M:%S"} GMT</pubDate>
+		  <guid isPermaLink="true">{link item=$commentItem}#comment{$comment.id}</guid>
+		</item>
+	{/foreach}
+  </channel>  
+</rss>
+]]></content>
+        </row>
+    </table>    
+
+    <table name="stylesheet">
+        <row>
+            <name key="true">Comments</name>
+            <cid key="true">{CID}</cid>
+            <description>Stylesheet for the 'Comments-Listing-Form' Template.</description>
+            <filename>comments/example.css</filename>
+            <editorcss>Comment-Example</editorcss>
+        </row>
+    </table>    
+
+</content>

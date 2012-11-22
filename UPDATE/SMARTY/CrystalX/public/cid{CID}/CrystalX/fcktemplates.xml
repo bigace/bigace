@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Templates imagesBasePath="fck_template/images/">
+	<Template title="CrystalX Article header">
+		<Description>create a new crystalx header</Description>
+		<Html>
+		<![CDATA[
+			<h2><span>enter name</span></h2>
+		]]>
+		</Html>
+	</Template>
+</Templates>

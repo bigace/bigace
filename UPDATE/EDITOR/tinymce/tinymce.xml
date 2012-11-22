@@ -1,0 +1,12 @@
+<content version="1.0">
+
+    <table name="configuration">
+        <row>
+            <cid key="true">{CID}</cid>
+            <package key="true">editor</package>
+            <name key="true">default.editor</name>
+            <value>tinymce</value>
+        </row>
+    </table>
+
+</content>

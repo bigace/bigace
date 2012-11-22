@@ -1,0 +1,35 @@
+INSTALLATION README
+====================
+
+Please read the Online Installation guide at:
+http://wiki.bigace.de/bigace:installation
+
+
+============
+QUICK GUIDE
+============
+For those how don't want to read first, here is the quick guide:
+
+1. Copy the two files to your webhost:
+   - install.php
+   - bigace_x.x.zip
+
+2. Open http://host/path/install.php in your browser
+   (you have to replace host and path with your own settings)
+
+3. Hit the "Install" Button, wait and then ... follow the instructions ;-)
+
+
+=====================
+IF THAT DOESN'T WORK
+=====================
+Not all systems support that auto-extracting feature. If your system doesn't 
+support it or you get errors, follow this 
+
+1. Extract the file bigace_x.x.zip manually
+
+2. Upload the contents to your webhoster via FTP
+
+3. Open http://host/path/install.php in your browser
+
+4. Hit the "Install" Button, wait and then ... follow the instructions ;-)

@@ -1,0 +1,273 @@
+<content version="1.0">
+
+    <table name="template">
+        <row>
+            <name key="true">Blogging</name>
+            <cid key="true">{CID}</cid>
+            <description>The Blogging main template.</description>
+            <inwork>0</inwork>
+            <include>0</include>
+            <timestamp function="true">unix_timestamp()</timestamp>
+            <userid>1</userid>
+            <filename>Blogging.tpl</filename>
+            <content><![CDATA[{load_item id="-1" itemtype="1" assign="topLevel"}{load_translation name="bigace}{include file="Blogging-Header.tpl"}
+		<div class="post">
+			<h2 class="title">Welcome to Blogging</h2>
+			<p class="date">01.23.09</p>
+			<div class="entry">
+				<p>This is <strong>Blogging</strong>, a free, fully standards-compliant CSS template designed by <a href="http://www.freecsstemplates.org/">Free CSS Templates</a>, released for free under the <a href="http://creativecommons.org/licenses/by/2.5/">Creative Commons Attribution 2.5</a> license. The photos in this design are from <a href="http://www.pdphoto.org/">PDPhoto.org</a>. You're free to use this template for anything as long as you link back to <a href="http://www.freecsstemplates.org/">my site</a>. Enjoy :)</p>
+				<p>Sed lacus. Donec lectus. Nullam pretium nibh ut turpis. Nam bibendum. In nulla tortor, elementum ipsum. Proin imperdiet est. Phasellus dapibus semper urna. Pellentesque ornare, orci in felis. Donec ut ante. In id eros. Suspendisse lacus turpis, cursus egestas at sem.Sed lacus. Donec lectus. </p>
+				<p class="links"><a href="#" class="comments">Comments (64)</a> &nbsp;&nbsp;&nbsp; <a href="#" class="permalink">Full article</a></p>
+			</div>
+		</div>
+		{*
+		<div class="post">
+			<h2 class="title">Lorem ipsum sed aliquam</h2>
+			<p class="date">01.23.09</p>
+			<div class="entry">
+				<p>Sed lacus. Donec lectus. Nullam pretium nibh ut turpis. Nam bibendum. In nulla tortor, elementum vel, tempor at, varius non, purus. Mauris vitae nisl nec metus placerat consectetuer. Donec ipsum. Proin imperdiet est. Phasellus <a href="#">dapibus semper urna</a>. Pellentesque ornare, orci in consectetuer hendrerit, urna elit eleifend nunc, ut consectetuer nisl felis ac diam. Etiam non felis. Donec ut ante. In id eros.</p>
+				<p class="links"><a href="#" class="comments">Comments (64)</a> &nbsp;&nbsp;&nbsp; <a href="#" class="permalink">Full article</a></p>
+			</div>
+		</div>
+		*}
+	</div>
+{include file="Blogging-Footer.tpl"}
+            ]]></content>
+        </row>
+        <row>
+            <name key="true">Blogging-Header</name>
+            <cid key="true">{CID}</cid>
+            <description>Header of the Blogging Design.</description>
+            <inwork>0</inwork>
+            <include>1</include>
+            <timestamp function="true">unix_timestamp()</timestamp>
+            <userid>1</userid>
+            <filename>Blogging-Header.tpl</filename>
+            <content><![CDATA[<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="{$MENU->getLanguageID()}" lang="{$MENU->getLanguageID()}">
+{*
+Design by Free CSS Templates
+http://www.freecsstemplates.org
+Released for free under a Creative Commons Attribution 2.5 License
+
+Name       : Blogging
+Description: A two-column, fixed-width design for 1024x768 screen resolutions.
+Version    : 1.0
+Released   : 20090208
+*}
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+{metatags item=$MENU}
+<link href="{stylesheet name="Blogging"}" rel="stylesheet" type="text/css" media="screen" />
+</head>
+<body>
+<div id="wrapper">
+	<div id="header">
+		<div id="menu">
+			<ul>
+				<li class="current_page_item"><a href="{link item=$topLevel}">{$topLevel->getName()}</a></li>
+                {navigation id=$topLevel->getID() prefix="<li>" suffix="</li>"}
+			</ul>
+		</div>
+
+		<div id="search">
+			<form method="get" action="">
+				<fieldset>
+				<input type="text" name="s" id="search-text" size="15" />
+				<input type="submit" id="search-submit" value="{translate key="search"}" />
+				</fieldset>
+			</form>
+		</div>
+
+	</div>
+
+	<div id="logo">
+		<h1><a href="#">{sitename}</a></h1>
+		<p><em> a template for the <a href="http://www.bigace.de" title="Free PHP Content Management System">BIGACE Web CMS</a></em></p>
+	</div>
+	<hr />
+
+<div id="page">
+	<div id="content">
+
+]]></content>
+        </row>
+        <row>
+            <name key="true">Blogging-Footer</name>
+            <cid key="true">{CID}</cid>
+            <description>Footer for the Blogging Design.</description>
+            <inwork>0</inwork>
+            <include>1</include>
+            <timestamp function="true">unix_timestamp()</timestamp>
+            <userid>1</userid>
+            <filename>Blogging-Footer.tpl</filename>
+            <content><![CDATA[
+	<div id="sidebar">
+		<ul>
+			<li>
+				<h2>Aliquam tempus</h2>
+				<p>Mauris vitae nisl nec metus placerat perdiet est. Phasellus dapibus semper urna. Pellentesque ornare, orci in consectetuer hendrerit, volutpat.</p>
+			</li>
+			{*
+			<li id="calendar">
+				<h2>Calendar</h2>
+				<div id="calendar_wrap">
+					<table summary="Calendar">
+						<caption>
+						March 2008
+						</caption>
+						<thead>
+							<tr>
+								<th abbr="Monday" scope="col" title="Monday">M</th>
+								<th abbr="Tuesday" scope="col" title="Tuesday">T</th>
+								<th abbr="Wednesday" scope="col" title="Wednesday">W</th>
+								<th abbr="Thursday" scope="col" title="Thursday">T</th>
+								<th abbr="Friday" scope="col" title="Friday">F</th>
+								<th abbr="Saturday" scope="col" title="Saturday">S</th>
+								<th abbr="Sunday" scope="col" title="Sunday">S</th>
+							</tr>
+						</thead>
+						<tfoot>
+							<tr>
+								<td abbr="February" colspan="3" id="prev"><a href="#" title="">&laquo; Feb</a></td>
+								<td class="pad">&nbsp;</td>
+								<td abbr="April" colspan="3" id="next"><a href="#" title="">Apr &raquo;</a></td>
+							</tr>
+						</tfoot>
+						<tbody>
+							<tr>
+								<td colspan="5" class="pad">&nbsp;</td>
+								<td>1</td>
+								<td>2</td>
+							</tr>
+							<tr>
+								<td>3</td>
+								<td>4</td>
+								<td>5</td>
+								<td>6</td>
+								<td>7</td>
+								<td>8</td>
+								<td>9</td>
+							</tr>
+							<tr>
+								<td>10</td>
+								<td id="today">11</td>
+								<td>12</td>
+								<td>13</td>
+								<td>14</td>
+								<td>15</td>
+								<td>16</td>
+							</tr>
+							<tr>
+								<td>17</td>
+								<td>18</td>
+								<td>19</td>
+								<td>20</td>
+								<td>21</td>
+								<td>22</td>
+								<td>23</td>
+							</tr>
+							<tr>
+								<td>24</td>
+								<td>25</td>
+								<td>26</td>
+								<td>27</td>
+								<td>28</td>
+								<td>29</td>
+								<td>30</td>
+							</tr>
+							<tr>
+								<td>31</td>
+								<td class="pad" colspan="6">&nbsp;</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</li>
+			*}
+			<li id="leftMenu">
+				<h2>{$MENU->getName()}</h2>
+				<ul>
+				    {if $MENU->getID() == $topLevel->getID()}
+                        {navigation id=$topLevel->getID() prefix="<li>" suffix="</li>"}
+				    {elseif $MENU->getParentID() == $topLevel->getID()}
+                        {navigation id=$MENU->getID() prefix="<li>" suffix="</li>"}
+				    {else}
+                        {navigation id=$MENU->getParentID() prefix="<li>" suffix="</li>"}
+				    {/if}
+					</ul>
+				</li>
+		</ul>
+	</div>
+	<!-- end #sidebar -->
+	<div style="clear: both;">&nbsp;</div>
+</div>
+<!-- end #page -->
+
+<div id="footer">
+	<p>Copyright (c) {$smarty.now|date_format:"%Y"} <a href="{link url="/"}">{configuration package="community" key="copyright.holder" default="Kevin Papst"}</a>. 
+	All rights reserved. Design by <a href="http://www.freecsstemplates.org/">Free CSS Templates</a>.</p>
+</div>
+
+</div>
+</body>
+</html>
+
+            ]]></content>
+        </row>
+	</table>    
+
+    <table name="stylesheet">
+        <row>
+            <name key="true">Blogging</name>
+            <cid key="true">{CID}</cid>
+            <description>CSS definitions for the Blogging Layout.</description>
+            <filename>Blogging/style.css</filename>
+            <editorcss>Blogging_Editor</editorcss>
+        </row>
+
+        <row>
+            <name key="true">Blogging_Editor</name>
+            <cid key="true">{CID}</cid>
+            <description>CSS definitions for the Blogging theme, used in any WYSIWYG Editor.</description>
+            <filename>Blogging/editor.css</filename>
+            <editorcss>Blogging_Editor</editorcss>
+        </row>
+    </table>    
+
+    <table name="design">
+        <row>
+            <name key="true">Blogging</name>
+            <cid key="true">{CID}</cid>
+            <description>The Blogging design.</description>
+            <stylesheet>Blogging</stylesheet>
+            <template>Blogging</template>
+            <portlets>0</portlets>
+        </row>
+    </table>
+
+    <table name="configuration">
+        <row>
+            <cid key="true">{CID}</cid>
+            <package key="true">templates</package>
+            <name key="true">application.footer</name>
+            <value>Blogging-Footer</value>
+            <type>tpl_inc</type>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <package key="true">templates</package>
+            <name key="true">application.header</name>
+            <value>Blogging-Header</value>
+            <type>tpl_inc</type>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <package key="true">Blogging.design</package>
+            <name key="true">copyright.footer</name>
+            <value>Kevin Papst</value>
+            <type>string</type>
+        </row>
+    </table>    
+
+</content>

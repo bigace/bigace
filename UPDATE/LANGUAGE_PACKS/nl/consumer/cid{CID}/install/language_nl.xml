@@ -1,0 +1,133 @@
+﻿<content version="1.0">
+
+    <table name="item_1" update="false">
+        <row>
+            <id key="true">-1</id>
+            <cid key="true">{CID}</cid>
+            <language key="true">nl</language>
+            <mimetype>text/html</mimetype>
+            <name>Top Level [nl]</name>
+            <parentid>-9999</parentid>
+            <description></description>
+            <catchwords></catchwords>
+            <createdate function="true">unix_timestamp()</createdate>
+            <createby>1</createby>
+            <modifieddate function="true">unix_timestamp()</modifieddate>
+            <modifiedby>1</modifiedby>
+            <workflow></workflow>
+            <unique_name>index_nl.html</unique_name>
+            <text_1>-1_nl.html</text_1>
+            <text_2>-1_nl.html</text_2>
+            <text_3>displayContent</text_3>
+            <text_4>BLIX</text_4>
+            <text_5><![CDATA[ 
+			]]></text_5>
+            <num_1 null="true" />
+            <num_2 null="true" />
+            <num_3>1</num_3>
+            <num_4>0</num_4>
+            <num_5>0</num_5>
+            <date_1>0</date_1>
+            <date_2>0</date_2>
+            <date_3>0</date_3>
+            <date_4>0</date_4>
+            <date_5>0</date_5>
+        </row>
+    </table>
+
+    <table name="item_4" update="false">
+        <row>
+            <id key="true">-1</id>
+            <cid key="true">{CID}</cid>
+            <language key="true">nl</language>
+            <mimetype>image/gif</mimetype>
+            <name>Top Level [nl]</name>
+            <parentid>-9999</parentid>
+            <description></description>
+            <catchwords></catchwords>
+            <createdate function="true">unix_timestamp()</createdate>
+            <createby>1</createby>
+            <modifieddate function="true">unix_timestamp()</modifieddate>
+            <modifiedby>1</modifiedby>
+            <workflow></workflow>
+            <unique_name></unique_name>
+            <text_1>empty.gif</text_1>
+            <text_2></text_2>
+            <text_3></text_3>
+            <text_4></text_4>
+            <text_5></text_5>
+            <num_1 null="true" />
+            <num_2 null="true" />
+            <num_3>0</num_3>
+            <num_4>0</num_4>
+            <num_5>0</num_5>
+            <date_1>0</date_1>
+            <date_2>0</date_2>
+            <date_3>0</date_3>
+            <date_4>0</date_4>
+            <date_5>0</date_5>
+        </row>
+    </table>    
+
+    <table name="item_5" update="false">
+        <row>
+            <id key="true">-1</id>
+            <cid key="true">{CID}</cid>
+            <language key="true">nl</language>
+            <mimetype>image/gif</mimetype>
+            <name>Top Level [nl]</name>
+            <parentid>-9999</parentid>
+            <description></description>
+            <catchwords></catchwords>
+            <createdate function="true">unix_timestamp()</createdate>
+            <createby>1</createby>
+            <modifieddate function="true">unix_timestamp()</modifieddate>
+            <modifiedby>1</modifiedby>
+            <workflow></workflow>
+            <unique_name></unique_name>
+            <text_1>empty.gif</text_1>
+            <text_2></text_2>
+            <text_3></text_3>
+            <text_4></text_4>
+            <text_5></text_5>
+            <num_1>0</num_1>
+            <num_2>0</num_2>
+            <num_3>0</num_3>
+            <num_4>0</num_4>
+            <num_5>0</num_5>
+            <date_1>0</date_1>
+            <date_2>0</date_2>
+            <date_3>0</date_3>
+            <date_4>0</date_4>
+            <date_5>0</date_5>
+        </row>
+    </table>    
+
+    <table name="unique_name" update="false">
+        <row>
+            <cid key="true">{CID}</cid>
+            <itemtype key="true">1</itemtype>
+            <itemid key="true">-1</itemid>
+            <language key="true">nl</language>
+            <name>index_nl.html</name>
+        </row>
+    </table>
+
+    <table name="item_project_text">
+        <row>
+            <itemtype key="true">1</itemtype>
+            <id key="true">-1</id>
+            <cid key="true">{CID}</cid>
+            <language key="true">nl</language>
+            <project_key key="true">portlet.config.column.1</project_key>
+            <project_value><![CDATA[<?xml version='1.0'?>
+<Portlets>
+	<ToolPortlet css="toolPortlet" login="1" home="" />
+	<NavigationPortlet css="navigationPortlet" hide.if.empty="1" language="" id="" />
+	<LastEditedItemsPortlet css="lastEditedItemsPortlet" language="" amount="5" />
+</Portlets>			
+           	]]></project_value>
+        </row>
+</table>
+        
+</content>

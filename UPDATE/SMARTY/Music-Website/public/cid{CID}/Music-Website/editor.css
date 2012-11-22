@@ -1,0 +1,112 @@
+* {
+	margin: 0px;
+	padding: 0px;
+}
+
+body {
+	font-family: verdana, arial, sans-serif;
+	font-size: 13px;
+	text-align: justify;
+	width: 555px;
+	color: #ddd;
+    background-color: #6c0528;		
+}
+
+a {
+	color: #b1b0ae;
+	text-decoration: underline;
+}
+
+img {
+	border: none;
+}
+
+ul { 
+    margin: 0 0 10px 25px; 
+}
+
+li {}
+
+p {
+	margin: 10px 0px 20px;
+	text-align: justify;
+	line-height: 14px;
+}
+
+.clearthis {
+	margin : 0px;
+	height : 1px;
+	clear : both;
+	float : none;
+	font-size : 1px;
+	line-height : 0px;
+	overflow : hidden;
+	visibility: hidden;
+}
+
+.link-more {
+	font-size: 10px;
+	font-family: tahoma, arial, sans-serif;
+	font-weight: bold;
+	text-align: right;
+	line-height: 10px;
+}
+
+.link-more a {
+	text-decoration: none;
+}
+
+.divider {
+	width: 555px;
+	height: 1px;
+	background: url('images/body_divider.gif') repeat-x 0px 0px;
+	overflow: hidden;
+}
+
+h2 {
+	font-size: 19px;
+    color: #ddd;
+	margin: 6px 0 2px 0;
+}
+
+/* Chartbusters */
+#chartbusters {
+	margin: 0px 1px 12px;
+	width: 553px;
+}
+
+.chartbusters_entry {
+	margin: 20px 0px 5px;
+	width: 553px;
+}
+
+.chartbusters_thumbnail {
+	margin-top: 2px;
+	float: left;
+}
+
+.chartbusters_thumbnail img {
+	border: 1px solid #978f8d;
+}
+
+.chartbusters_details {
+	float: right;
+	width: 450px;
+}
+
+.chartbusters_details p {
+	margin: 1px 0px 10px;
+}
+
+#chartbusters .link-more {
+	text-transform: lowercase;
+}
+
+#chartbusters .link-more a {
+	color: #ffa329;
+}
+
+#chartbusters .link-more a:hover {
+	color: #d88a23;
+}
+

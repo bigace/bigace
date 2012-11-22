@@ -1,0 +1,11 @@
+Version 0.9:
+------------
+- show hidden files (http://dev.bigace.org/jira/browse/BIGACE-22)
+- show parent page in menu browsing
+    - fixed problem that top-level page was not choosable 
+- added backlinks to allow easy browsing through menu structure
+- use same icons in items and categories
+- added language chooser 
+    - by default only item is currently choosen language are displayed
+    - switch language for all results
+    - switch results with current settings (like a choosen menu) 

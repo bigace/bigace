@@ -1,0 +1,22 @@
+#poststuff .postbox h3 {
+	padding-left: 27px;
+}
+
+* html #poststuff .postarea, * html #poststuff #titlediv {
+	width: 95%;
+	margin-left: 3%;
+}
+
+#postdiv, #poststuff, #titlediv, #post-body {
+	display: block;
+	zoom: 100%;
+}
+
+#poststuff h2 {
+	font-size: 1.6em;
+}
+
+* html #poststuff h2 {
+	margin-left: 0;
+}
+

@@ -1,0 +1,1 @@
+UPDATE {DB_PREFIX}comments SET `activated` = '1' WHERE id = {ID} AND cid = {CID}

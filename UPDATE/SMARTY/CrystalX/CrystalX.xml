@@ -1,0 +1,846 @@
+<content version="1.0">
+
+    <table name="template">
+        <row>
+            <name key="true">CrystalX</name>
+            <cid key="true">{CID}</cid>
+            <description>The CrystalX main template.</description>
+            <inwork>0</inwork>
+            <include>0</include>
+            <timestamp function="true">unix_timestamp()</timestamp>
+            <userid>1</userid>
+            <filename>CrystalX.tpl</filename>
+            <content><![CDATA[{portlets assign="CrystalXPortlets"}{include file="CrystalX-Header.tpl"}
+
+        <!-- Content -->
+{configuration package="CrystalX.design" key="XL" default=false assign="UseXL"}
+{if $UseXL}
+        <div id="content-XL">
+{else}
+        <div id="content">
+{/if}
+<!-- Show Template Help -->
+	{configuration package="CrystalX.design" key="Show.Template.Help" default=true assign="ShowHelp"}
+	{if $ShowHelp}
+	 {include file="CrystalX-Help.tpl"}
+	 {/if}
+<!-- /Show Template Help -->
+            <!-- Article -->
+            <div class="article">
+                <h2><span>{$MENU->getName()}</span></h2>
+                <p class="info noprint">
+                    <span class="langvers f-left">{link_item_languages item=$MENU images=true names=false locale=en}</span><span class="noscreen">,</span>
+                    <span class="date">{$MENU->getLastDate()|date_format:"%d. %B %Y"}</span><span class="noscreen">,</span>
+                    <span class="user">{user id=$MENU->getCreateByID()}</span><span class="noscreen">,</span>
+<!-- Show comments counter if enabled -->
+	{configuration package="CrystalX.design" key="Use.Comments" default=false assign="CommentsEnable"}
+	{if $CommentsEnable}
+	 	 {project_field item=$MENU type="num" name="allow_comments" assign="allow_comments" default=true}
+	 	 {if $allow_comments}{load_translation name="comments-form"}
+		{hooks_has_action name="comments_plugin" assign="commentsInstalled"}
+		{if $commentsInstalled}
+		<span class="comments"><a href="#comments">{comment_counter item=$MENU} {translate key="comment.formular.title"}</a></span>
+		{/if}{/if}	 
+	 {/if}
+{* Category are not used
+                    <span class="cat"><a href="#">Category</a></span><span class="noscreen">,</span>
+*}
+                </p>
+<!-- google_ad_section_start -->{modul menu=$MENU}<!-- google_ad_section_end -->
+{*
+                <p class="btn-more box noprint"><strong><a href="#">Continue</a></strong></p>
+*}
+<!-- Fetch comments template if enabled -->
+	{configuration package="CrystalX.design" key="Use.Comments" default=false assign="CommentsEnable"}
+	{if $CommentsEnable}
+		{hooks_has_action name="comments_plugin" assign="commentsInstalled"}
+		{if $commentsInstalled}
+	 	 {if $allow_comments}
+		{include file='Comments-Listing-Form.tpl'}
+		{/if}{/if}{/if}
+            </div><!-- /article -->
+           <hr class="noscreen" />
+            
+        </div> <!-- /content -->
+{include file="CrystalX-Footer.tpl"}]]></content>
+        </row>
+        <row>
+            <name key="true">CrystalX-Header</name>
+            <cid key="true">{CID}</cid>
+            <description>Header of the CrystalX Design.</description>
+            <inwork>0</inwork>
+            <include>1</include>
+            <timestamp function="true">unix_timestamp()</timestamp>
+            <userid>1</userid>
+            <filename>CrystalX-Header.tpl</filename>
+            <content><![CDATA[<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+{language id=$MENU->getLanguageID() assign="menuLocale"}
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="{$MENU->getLanguageID()}" lang="{$menuLocale->getFullLocale()}">
+<head>
+{configuration package="seo" key="google.site.verification" default="" assign="GoogleMeta"}
+{if is_null($GoogleMeta) || strlen(trim($GoogleMeta)) == 0}
+<!-- google.site.verification not configured, see help-page for use -->
+{else}
+<meta name="google-site-verification" content="{$GoogleMeta}" />
+{/if}
+{configuration package="seo" key="yahoo.site.explorer.y_key" default="" assign="YahooMeta1"}
+{if is_null($YahooMeta1) || strlen(trim($YahooMeta1)) == 0}
+<!-- yahoo.site.explorer.y_key not configured, see help-page for use -->
+{else}
+<meta name="y_key" content="{$YahooMeta1}" />
+{/if}
+{configuration package="seo" key="yahoo.site.explorer.verify-v1" default="" assign="YahooMeta2"}
+{if is_null($YahooMeta2) || strlen(trim($YahooMeta2)) == 0}
+<!-- yahoo.site.explorer.verify-v1 not configured, see help-page for use -->
+{else}
+<meta name="verify-v1" content="{$YahooMeta2}" />
+{/if}
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+{metatags item=$MENU}
+<meta name="keywords" content="{$MENU->getCatchwords()}" />
+<meta name="author" content="{user id=$MENU->getCreateByID()}" />
+<meta name="dc.date.created" scheme="ISO8601" content="{$MENU->getCreateDate()|date_format:"%Y-%m-%dT%T%Z"}" />
+<meta name="dc.date.modified" scheme="ISO8601" content="{$MENU->getLastDate()|date_format:"%Y-%m-%dT%T%Z"}" />
+<link rel="stylesheet" type="text/css" href="{stylesheet name="CrystalX_Main_Stylesheet"}" media="screen" />
+<link rel="stylesheet" type="text/css" href="{stylesheet name="CrystalX_Aural_Stylesheet"}" media="aural" />
+<link rel="stylesheet" type="text/css" href="{stylesheet name="CrystalX_Print_Stylesheet"}" media="print" />
+{configuration cache="CrystalX.design"}
+{configuration package="CrystalX.design" key="favicon.ico.file.ID" default="" assign="FaviconID"}
+{if is_null($FaviconID) || strlen(trim($FaviconID)) == 0}
+<link rel="shortcut icon" type="image/x-icon" href="{directory}favicon.ico" />
+<!-- Using FTP transfered favicon.ico, see help page for more information, or use the filemanager to upload a favicon.ico and record the ID number, enter this number in the favicon.ico.file.ID in the CrystalX.design configuration -->
+{else}
+{load_item itemtype="5" id="$FaviconID" assign="FavIcon_url"}
+<link rel="shortcut icon" type="image/x-icon" href="{link item=$FavIcon_url}" />
+<!-- Using uploaded favicon.ico -->
+{/if}
+{load_translation name="bigace"}
+{configuration package="CrystalX.design" key="XL" default=false assign="UseXL"}
+{configuration package="CrystalX.design" key="Use.As.Topmenu" assign=UseAsTop}
+{load_item itemtype="1" id="$UseAsTop" assign="topLevel"}
+{load_item_childs id=$topLevel->getID() assign="topMenus"}
+<!-- Portlet Javascripts -->
+	{configuration package="CrystalX.design" key="Use.Portlets" default=true assign="UsePortlets"}
+	{if $UsePortlets}
+	{if isset($CrystalXPortlets)}
+	{foreach from=$CrystalXPortlets item="myPortlet"}
+	   {$myPortlet->getJavascript()}
+	{/foreach}
+	{literal}
+	<script type="text/javascript">
+	function portletAdmin () 
+	{fenster = open ("{/literal}{link_portletadmin id=$MENU->getID() language=$MENU->getLanguageID()}","PortletAdministration"{literal},"menubar=no,toolbar=no,statusbar=no,directories=no,location=no,scrollbars=yes,resizable=no,height=510,width=650,screenX=0,screenY=0");bBreite=screen.width;bHoehe=screen.height;fenster.moveTo((bBreite-650)/2,(bHoehe-510)/2);}
+	</script>
+	{/literal}
+	{else}{/if}{/if}
+<!-- / Portlet Javascripts -->
+</head>
+
+<body>
+<!-- Main -->
+{if $UseXL}
+<div id="main-XL" class="box">
+{else}
+<div id="main" class="box">{/if}
+
+    <!-- Header -->
+{if $UseXL}
+    <div id="header-XL">
+{else}
+    <div id="header">
+    {/if}
+
+<!-- Logotyp -->
+	{configuration package="CrystalX.design" key="Use.sitename" assign="UseSiteName"}
+	{if $UseSiteName}
+        <h1 id="logo"><a href="./"><strong>{sitename|htmlspecialchars}</strong></a></h1>
+	{else}
+        <h1 id="logo"><a href="./"><strong>{configuration package="CrystalX.design" key="header.text" default="CrystalX"}</strong></a></h1>
+	 {/if}
+        <hr class="noscreen" />          
+
+<!-- Quick links -->
+        <div class="noscreen noprint">
+            <p><em>Quick links: <a href="#content">content</a>, <a href="#tabs">navigation</a>, <a href="#search">search</a>.</em></p>
+            <hr />
+        </div>
+<!-- Languages -->
+	 <div id="language" class="noprint f-right">
+	 {languages assign="lngs"}
+	 {foreach from=$lngs key="k" item="i"}
+	 {switch_language languages="$k" locale="$k" alt="$i" hideactive="false"}
+	 {/foreach}
+	 </div>
+<!-- Search -->
+	{configuration package="CrystalX.design" key="Use.Search" default="false" assign="showSearch"}
+	{if $showSearch}
+		 {load_translation name="search"}
+	 	 <div id="search" class="noprint">
+	 	 <form action="{link_search id=$MENU->getID()}" method="post">
+	 	 <input type="hidden" name="language" value="{$MENU->getLanguageID()}" />
+	 	 <input type="hidden" name="limit" value="{configuration package="search" key="minimum.word.length" default="3"}" />
+	 	 <fieldset><legend>Search</legend>
+	 	 <label><span class="noscreen">Find:</span>
+	 	 <span id="search-input-out"><input type="text" class="text" id="search-input" size="30" name="search" value="{translate key="search"}" /></span></label>
+	 	 <input type="image" src="{directory}/CrystalX/search_submit.gif" id="search-submit" value="" /></fieldset>
+	 	 </form>
+	 	 </div>
+	 {/if}
+<!-- /search -->
+    </div> 
+<!-- Main menu (tabs) -->
+     <div id="tabs" class="noprint">
+       <h3 class="noscreen">Navigation</h3>
+         <ul class="box">
+	 {configuration package="CrystalX.design" key="Home.In.Navigation" assign="homeInNavi"}
+	 {if $homeInNavi}
+		<li {if $MENU->getID() == $topLevel->getID()} id="active"{/if}><a href="{link item=$topLevel}">{$topLevel->getName()}<span class="tab-l"></span><span class="tab-r"></span></a></li>
+	 {/if}
+        {foreach from=$topMenus item="menuEntry"}
+		<li {if $MENU->getID() == $menuEntry->getID()} id="active"{/if}><a href="{link item=$menuEntry}">{$menuEntry->getName()}<span class="tab-l"></span><span class="tab-r"></span></a></li>
+        {/foreach} 
+	 </ul>
+        <hr class="noscreen" />
+     </div>
+<!-- /tabs -->
+    <!-- Page (2 columns) -->
+{if $UseXL}
+    <div id="page-XL" class="box">
+    <div id="page-in-XL" class="box">
+{else}
+    <div id="page" class="box">
+    <div id="page-in" class="box">
+{/if}
+        <div id="strip" class="box noprint">
+
+<!-- RSS / AddThis -->
+{* dont check for news yet
+	 {configuration package="news" key="root.id" assign="newsInstalled" default=""}
+	 {if !is_null($newsInstalled)&& $newsInstalled != ""}}
+            <p id="rss"><strong>RSS:</strong> <a href="#">articles</a> / <a href="#">comments</a></p>
+	 {else}
+*}
+	 {configuration package="seo" key="AddThis.UserName" default="" assign="addtuser"}
+	 {if is_null($addtuser) || strlen(trim($addtuser)) == 0}
+            <p id="addthis">&nbsp;&nbsp;{addthis_widget_drop}</p>
+	 {else}
+            <p id="addthis">&nbsp;&nbsp;{addthis_widget_drop username="$addtuser"}</p>
+	 {/if}{*{/if}*}
+            <hr class="noscreen" />
+<!-- Breadcrumbs -->
+	 {if $MENU->getID() == $topLevel->getID()}<!-- No Breadcrum in TopLevel -->{else}
+            <p id="breadcrumbs">{translate key="you_are_here"}:&nbsp;&nbsp;{breadcrumb id=$MENU->getID() suffix='»'}</p>{/if}
+            <hr class="noscreen" />
+            
+        </div> <!-- /strip -->
+<!-- /header -->]]></content>
+        </row>
+        <row>
+            <name key="true">CrystalX-Footer</name>
+            <cid key="true">{CID}</cid>
+            <description>Footer for the CrystalX Design.</description>
+            <inwork>0</inwork>
+            <include>1</include>
+            <timestamp function="true">unix_timestamp()</timestamp>
+            <userid>1</userid>
+            <filename>CrystalX-Footer.tpl</filename>
+            <content><![CDATA[<!-- Right column -->
+        <div id="col" class="noprint">
+            <div id="col-in">
+<!-- Submenu -->
+{configuration package="CrystalX.design" key="XL" default=false assign="UseXL"}
+{configuration package="CrystalX.design" key="Use.As.Topmenu" assign=UseAsTop}
+{load_item itemtype="1" id="$UseAsTop" assign="topLevel"}
+				{if $MENU->getID() == $topLevel->getID()}
+	 	 	 	 <h3><span>{$MENU->getName()}</span></h3>
+<!-- google_ad_section_start --><span class="desc">{$MENU->getDescription()}</span><!-- google_ad_section_end -->
+	 	 	 	 {else}
+{if $MENU->hasChildren()}
+                <h3><span>{$MENU->getName()}</span></h3><!-- google_ad_section_start -->
+                <ul id="menu">
+				{load_item_childs id=$MENU->getID() language=$MENU->getLanguageID() assign="lm"}
+				{if count($lm) > 0}
+					    {foreach from=$lm item="lmi"}
+					    <li><a href="{link item=$lmi}">{$lmi->getName()}</a></li>
+					    {/foreach}
+				{/if}
+            </ul><!-- google_ad_section_end -->
+{else}
+{if $MENU->getDescription() !=""}
+<h3><span>{$MENU->getName()}</span></h3><!-- google_ad_section_start -->
+<span class="desc">{$MENU->getDescription()}</span><!-- google_ad_section_end -->
+{/if}{/if}
+				{/if}
+<!-- Google AdSense Right Menu-->
+{configuration package="Google.AdSense" key="Google.AdSense.ID" default="" assign="UseGoogle_ad_client"}
+{if is_null($UseGoogle_ad_client) || strlen(trim($UseGoogle_ad_client)) == 0}
+<!-- google.AdSense.id not configured -->
+{else}
+{configuration package="CrystalX.design" key="Google.AD.in.Right.Menu" assign="UseGoogleRight"}
+{configuration package="Google.AdSense" key="Google.ad.id.120x240" assign="UseGoogle_ad_id_120x240"}
+{configuration package="Google.AdSense" key="Google.ad.id.160x90" assign="UseGoogle_ad_id_160x90"}
+{if $UseGoogleRight}<div class="noprint">
+<h3><span>Google AdSense</span></h3>
+<script type="text/javascript"><!--
+google_ad_client = "{$UseGoogle_ad_client}";
+/* 160x90, skapad 2010-11-23 */
+google_ad_slot = "{$UseGoogle_ad_id_160x90}";
+google_ad_width = 160;
+google_ad_height = 90;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<br /><br /><br />
+<script type="text/javascript"><!--
+google_ad_client = "{$UseGoogle_ad_client}";
+/* 120x240, skapad 2010-11-23 */
+google_ad_slot = "{$UseGoogle_ad_id_120x240}";
+google_ad_width = 120;
+google_ad_height = 240;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script></div>{else}<!-- Google Right Menu AD Disabled in Configuration-->{/if}{/if}
+<!-- /Google Adsense Right Menu-->				
+<!-- /Submenu -->
+{* Userdata
+                <!-- About Me -->
+                <h3><span><a href="#">About Me</a></span></h3>
+
+                <div id="about-me">
+                    <p><img src="design/tmp_photo.gif" id="me" alt="Yeah, it´s me!" />
+                    <strong>John Doe</strong><br />
+                    Age: 26<br />
+                    Dallas, TX<br />
+                    <a href="#">Profile on MySpace</a></p>
+                </div> <!-- /about-me -->
+
+ /Userdata *}
+ {*                <!-- Category -->
+                 <h3 ><span>Category</span></h3>
+ 
+                 <ul id="category">
+                     <li id="category-active"><a href="#">Selected category</a></li> <!-- Active -->
+                     <li><a href="#">Category</a></li>
+                     <li><a href="#">Category</a></li>
+                     <li><a href="#">Category</a></li>
+                     <li><a href="#">Category</a></li>
+                 </ul>
+*}
+{*                <!-- Archive -->
+                <h3><span>Archive</span></h3>
+
+                <ul id="archive">
+                   <li><a href="#">January 2007</a></li>
+                    <li><a href="#">December 2006</a></li>
+                    <li><a href="#">November 2006</a></li>
+                    <li><a href="#">October 2006</a></li>
+                    <li><a href="#">September 2006</a></li>
+                    <li id="archive-active"><a href="#">August 2006</a></li> <!-- Active -->
+                    <li><a href="#">July 2006</a></li>
+                    <li><a href="#">June 2006</a></li>
+                    <li><a href="#">May 2006</a></li>
+                    <li><a href="#">April 2006</a></li>
+                    <li><a href="#">March 2006</a></li>
+                    <li><a href="#">February 2006</a></li>
+                    <li><a href="#">January 2006</a></li>
+                </ul>
+
+*}
+<!-- Portlets -->
+	{configuration package="CrystalX.design" key="Use.Portlets" default=true assign="UsePortlets"}
+	{if $UsePortlets}
+{if isset($CrystalXPortlets)}
+{foreach from=$CrystalXPortlets item='myPortlet'}
+   <h3>{$myPortlet->getTitle()}</h3>
+   {$myPortlet->getHtml()}
+{/foreach}
+{else}{/if}{/if}
+<!-- /Portlets -->
+            </div> <!-- /col-in -->
+        </div> <!-- /col -->
+
+    </div> <!-- /page-in -->
+    </div> <!-- /page -->
+
+
+
+<!-- Footer -->
+{if $UseXL}
+<div id="footer-XL">
+{else}
+<div id="footer">
+{/if}
+        <div id="top" class="noprint"><p><span class="noscreen">Back on top</span> <a href="{if $UseXL}#header-XL{else}#header{/if}" title="Back on top ^">^<span></span></a></p></div>
+        <hr class="noscreen" />
+                <p id="copyrightprint" class="noscreen">Copyright &copy; {$smarty.now|date_format:"%Y"} {configuration package="Community" key="copyright.holder" default="Nuvio"}</p>
+        <p id="createdby" class="noprint">created by <a href="http://www.nuvio.cz">Nuvio | Webdesign</a> <!-- DON´T REMOVE, PLEASE! --></p>
+        <p id="copyright" class="noprint">Copyright &copy; {$smarty.now|date_format:"%Y"} {configuration package="Community" key="copyright.holder" default="Nuvio"}&nbsp;
+|&nbsp;Ported to <a href="http://www.bigace.de" target="_blank">BIGACE</a> by <a href="http://dragonslayer.se" target="_blank">DragonSlayer</a>&nbsp;
+        {if $USER->isAnonymous()}
+                    | <a rel="nofollow" target="_self" href="{link_login}">{translate key="login"}</a>
+        {else}
+	 	 <br />
+                    {permission_editcontent assign='allowEditor'}
+                    {if $allowEditor}
+                    | <a href="{link_editor id=$MENU->getID() language=$MENU->getLanguageID()}" target="_blank">{translate key="editor"}</a>
+                    {if $UsePortlets}| <a href="{link_portletadmin id=$MENU->getID() language=$MENU->getLanguageID()}" title="{translate key="portlet_admin"}" onclick="javascript:portletAdmin();return false;">{translate key="portlet_admin"}</a>{/if}
+                    {/if}
+                    | <a href="{link_admin}">{translate key="admin"}</a>
+                    | <a href="{link_logout}">{translate key="logout"}</a>
+        {/if}
+</p>
+    </div> <!-- /footer -->
+<!-- Google Bottom AD -->
+{configuration package="CrystalX.design" key="Google.AD.in.Bottom.Page" assign="UseGoogleBottom"}
+{configuration package="Google.AdSense" key="Google.ad.id.728x90" assign="UseGoogle_ad_id_728x90"}
+{configuration package="Google.AdSense" key="Google.AdSense.ID" assign="UseGoogle_ad_client"}
+{if $UseGoogleBottom}
+<div id="Google_leaderboard" class="noprint va-middle"><script type="text/javascript"><!--
+google_ad_client = "{$UseGoogle_ad_client}";
+/* 728x90, for CrystalX */
+google_ad_slot = "{$UseGoogle_ad_id_728x90}";
+google_ad_width = 728;
+google_ad_height = 90;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script></div>{else}<!-- Google Bottom AD disabled in Configuration -->{/if}
+<!-- /Google Bottom AD -->
+</div> <!-- /main -->
+	 {configuration package="seo" key="google.analytics" default="" assign="UseAnalytics"}
+	 {if is_null($UseAnalytics) || strlen(trim($UseAnalytics)) == 0}
+	 <!-- google_analytics id not configured -->
+	 {else}
+	 {google_analytics id="$UseAnalytics" track_user=true}
+	 {/if}
+</body>
+</html>]]></content>
+        </row>
+        <row>
+            <name key="true">CrystalX-Help</name>
+            <cid key="true">{CID}</cid>
+            <description>Help-Page for the CrystalX Design.</description>
+            <inwork>0</inwork>
+            <include>1</include>
+            <timestamp function="true">unix_timestamp()</timestamp>
+            <userid>1</userid>
+            <filename>CrystalX-Help.tpl</filename>
+            <content><![CDATA[
+{load_translation name="admin_menus"}
+<!-- The Help Page -->
+            <div class="article">
+                <h2><span>Template Help</span></h2>
+                <p class="info noprint">
+                    <span class="date">2010-11-22</span><span class="noscreen">,</span>
+                    <span class="user"><a href="http://forum.bigace.de/index.php?action=profile;u=155" title="Ported by" target="_blank">DragonSlayer</a></span><span class="noscreen">,</span>
+                    <span class="comments"><a href="http://forum.bigace.de/downloads/crystalx-design/" title="Give feedback in the bigace forum" target="_blank">{translate key="menu_feedback" default="feedback"}</a></span>
+                </p>
+{if $MENU->getLanguageID() == 'de'}
+<p>Diese Hilfeseite kann in der Administration deaktiviert werden unter {translate key="menu_index"}: {translate key="menu_system"} / {translate key="menu_configurations"}<br />
+	Der Eintrag <b>Show.Template.Help</b> muß dazu auf FALSE gesetzt werden.<br />
+	<a href="http://www.google.com/analytics" target="_blank">Google Analytics</a> und <a href="http://www.addthis.com/help/getting-started/analytics/" target="_blank">AddThis Analytics</a> werden benutzt, wenn ID/Benutzername in der Konfiguration hinterlegt sind.<br />
+	Das Ziel bei der Entwicklung war, niemals das Template editieren zu müssen.<br />
+	Speicher Dein favicon.ico unter {directory}favicon.ico<br />
+	Du kannst helfen diesen Hilfetext zu übersetzen (dazu das Template <b>CrystalX-Help.tpl</b> editieren), er existiert momentan in Schwedisch, Englisch und Deutsch.<br />
+	Das Template kann über die folgenden Konfigurationseinstellungen geändert werden:</p>
+
+{elseif $MENU->getLanguageID() == 'se'}
+	 <p>Den här Hjälpsidan stänger du av via {translate key="menu_index"}: {translate key="menu_system"} / {translate key="menu_configurations"}<br />
+	 Ändra Show.Template.Help till FALSE för att dölja hjälpsidan<br />
+	 <a href="http://www.google.com/analytics" target="_blank">Google Analytics</a> och <a href="http://www.addthis.com/help/getting-started/analytics/" target="_blank">AddThis Analytics</a> används ifall du har angett ID eller Username i konfigurationen<br />
+	 Målet med den här Templaten har varit att man aldrig skall behöva editera den manuellt<br />
+	 Har du förslag om vad mer kan göras med templaten får du gärna använda länken {translate key="menu_feedback" default="feedback"} här ovan!<br />
+	 Du kan även använda den för att lämna kritik (positiv eller negativ)<br />
+	 Placera din egen favicon.ico i {directory}favicon.ico<br />
+	 Det finns flera konfigurations inställningar för den här mallen:</p>
+
+{else}
+	 <p>This help page can be disabled from the {translate key="menu_index"}: {translate key="menu_system"} / {translate key="menu_configurations"}<br />
+	 Set the Show.Template.Help to FALSE for normal operation<br />
+	 <a href="http://www.google.com/analytics" target="_blank">Google Analytics</a> and <a href="http://www.addthis.com/help/getting-started/analytics/" target="_blank">AddThis Analytics</a> are used if ID/Username is specifyed in configuration<br />
+	 It support metatags for <a href="http://www.google.com/webmasters/tools/">Google Webmaster tools</a> and/or <a href="https://siteexplorer.search.yahoo.com/">Yahoo Site Explorer</a>.</br>
+	 The goal is to never ever need to modify the Template Manually<br />
+	 Use FTP to put your custom favicon.ico in {directory}favicon.ico or upload one using:<br />
+	 {translate key="menu_index"}:{translate key="menu_media"} / {translate key="menu_mediaUpload"}.<br />
+	 Record the ID number of the file, and insert it under {translate key="menu_index"}: {translate key="menu_system"} / {translate key="menu_configurations"} favicon.ico.file.ID <br />
+	 If using other language than english you could translate this helptext by editing <b>CrystalX-Help.tpl</b><br />
+	 And please leave {translate key="menu_feedback" default="feedback"} (positive or negative) in the link above<br />
+	 There are several configuration settings used from the bigace system:</p>
+
+{/if}
+<ul>
+	 <li>CrystalX.design: Show.Template.Help (<em>current setting</em>="<b>{configuration package="CrystalX.design" key="Show.Template.Help"}</b>")</li>
+	 <li>CrystalX.design: Use Search (<em>current setting</em>="<b>{configuration package="CrystalX.design" key="Use.Search"}</b>")</li>
+	 <li>CrystalX.design: XL (witdh 1024) (<em>current setting</em>="<b>{configuration package="CrystalX.design" key="XL"}</b>")</li>
+	 <li>CrystalX.design: header.text (<em>current setting</em>="<b>{configuration package="CrystalX.design" key="header.text"}</b>")</li>
+	 <li>CrystalX.design: favicon.ico.file.ID (<em>current setting</em>="<b>{configuration package="CrystalX.design" key="favicon.ico.file.ID"}</b>")</li>
+	 <li>CrystalX.design: Use.sitename (<em>current setting</em>="<b>{configuration package="CrystalX.design" key="Use.sitename"}</b>")</li>
+	 <li>CrystalX.design: Use.Comments (<em>current setting</em>="<b>{configuration package="CrystalX.design" key="Use.Comments"}</b>")</li>
+	 <li>CrystalX.design: Use.Portlets (<em>current setting</em>="<b>{configuration package="CrystalX.design" key="Use.Portlets"}</b>")</li>
+	 <li>CrystalX.design: Home.In.Navigation (<em>current setting</em>="<b>{configuration package="CrystalX.design" key="Home.In.Navigation"}</b>")</li>
+	 <li>CrystalX.design: Use.As.Topmenu (<em>current setting</em>="<b>{configuration package="CrystalX.design" key="Use.As.Topmenu"}</b>")</li>
+	 <li>CrystalX.design: Google.AD.in.Right.Menu (<em>current setting</em>="<b>{configuration package="CrystalX.design" key="Google.AD.in.Right.Menu"}</b>")</li>
+	 <li>CrystalX.design: Google.AD.in.Bottom.Page (<em>current setting</em>="<b>{configuration package="CrystalX.design" key="Google.AD.in.Bottom.Page"}</b>")</li>
+	 <li>Community: copyright.holder (<em>current setting</em>="<b>{configuration package="community" key="copyright.holder"}</b>")</li>
+	 <li>Community: sitename (<em>current setting</em>="<b>{sitename|htmlspecialchars}</b>")</li>
+	 <li>Search: minimum.word.length (<em>current setting</em>="<b>{configuration package="search" key="minimum.word.length"}</b>")</li>
+	 <li>seo: google.analytics (<em>current setting</em>="<b>{configuration package="seo" key="google.analytics"}</b>")</li>
+	 <li>seo: google.site.verification (<em>current setting</em>="<b>{configuration package="seo" key="google.site.verification"}</b>")</li>
+	 <li>seo: yahoo.site.explorer.verify-v1 (<em>current setting</em>="<b>{configuration package="seo" key="yahoo.site.explorer.verify-v1"}</b>")</li>
+	 <li>seo: yahoo.site.explorer.y_key (<em>current setting</em>="<b>{configuration package="seo" key="yahoo.site.explorer.y_key"}</b>")</li>
+	 <li>seo: AddThis.username (<em>current setting</em>="<b>{configuration package="seo" key="AddThis.UserName"}</b>")</li>
+	 <li>Google.AdSense: Google.AdSense.ID (<em>current setting</em>="<b>{configuration package="Google.AdSense" key="Google.AdSense.ID"}</b>")</li>
+	 <li>Google.AdSense: Google.AD.ID.728x90 (<em>current setting</em>="<b>{configuration package="Google.AdSense" key="Google.ad.id.728x90"}</b>")</li>
+	 <li>Google.AdSense: Google.AD.ID.160x90 (<em>current setting</em>="<b>{configuration package="Google.AdSense" key="Google.AD.ID.160x90"}</b>")</li>
+	 <li>Google.AdSense: Google.AD.ID.120x240 (<em>current setting</em>="<b>{configuration package="Google.AdSense" key="Google.AD.ID.120x240"}</b>")</li>
+
+	 </ul>
+<table cellspacing="0" cellpadding="0" align="center" border="0" >
+<caption>Recommended <a href"https://www.google.com/adsense/">Google Adsence</a> color</caption>
+    <tbody>
+        <tr>
+        <td>Border:</td>
+        <td>Title:</td>
+        <td>Background:</td>
+        <td>Text:</td>
+        <td>url:</td>
+        </tr>
+        <tr>
+        <td>#CEDBF9</td>
+        <td>#A0B9F3</td>
+        <td>#CEDBF9</td>
+        <td>#000000</td>
+        <td>#4F6AD7</td>
+        </tr>
+    </tbody>
+</table>
+<table cellspacing="0" cellpadding="0" width="200" align="center" border="0" >
+    <tbody>
+        <tr>
+            <td colspan="4">This Template theme is totaly free.. :) The "portation" have taken much time, but i have learnt alot about the BIGACE CMS. If you feel that you like this template and would like to donate some money, please use one of the buttons below</td>
+        </tr>
+        <tr>
+            <td><a href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&amp;business=donate%40dragonslayer%2ese&amp;item_name=Donation%20for%20CrystalX%20theme&amp;item_number=donation&amp;no_shipping=0&amp;cancel_return=http%3a%2f%2fdragonslayer%2ese%2ftack%2ehtml&amp;cn=Optional%20comments%3a&amp;tax=0&amp;currency_code=EUR&amp;bn=PP%2dDonationsBF&amp;charset=UTF%2d8"><img src="{directory}CrystalX/paypal_eu.gif" alt="Donate EURO" align="left" /></a></td>
+            <td><a href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&amp;business=donate%40dragonslayer%2ese&amp;item_name=Donation%20for%20CrystalX%20theme&amp;item_number=donation&amp;no_shipping=0&amp;cancel_return=http%3a%2f%2fdragonslayer%2ese%2ftack%2ehtml&amp;cn=Optional%20comments%3a&amp;tax=0&amp;currency_code=GBP&amp;bn=PP%2dDonationsBF&amp;charset=UTF%2d8"><img src="{directory}CrystalX/paypal_uk.gif" alt="Donate GB Pound" align="middle" /></a></td>
+            <td><a href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&amp;business=donate%40dragonslayer%2ese&amp;item_name=Donation%20for%20CrystalX%20theme&amp;item_number=donation&amp;no_shipping=0&amp;cancel_return=http%3a%2f%2fdragonslayer%2ese%2ftack%2ehtml&amp;cn=Optional%20comments%3a&amp;tax=0&amp;currency_code=USD&amp;bn=PP%2dDonationsBF&amp;charset=UTF%2d8"><img src="{directory}CrystalX/paypal_us.gif" alt="Donate US Dollar" align="right" /></a></td>
+            <td><a href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&amp;business=donate%40dragonslayer%2ese&amp;item_name=Donation%20för%20CrystalX%20Template&amp;item_number=donation&amp;no_shipping=0&amp;cancel_return=http%3a%2f%2fdragonslayer%2ese%2ftack%2ehtml&amp;cn=Optional%20comments%3a&amp;tax=0&amp;currency_code=SEK&amp;bn=PP%2dDonationsBF&amp;charset=UTF%2d8"><img src="{directory}CrystalX/paypal_sv.gif" alt="Donera Svenska Kronor" align="right" /></a></td>
+        </tr>
+    </tbody>
+</table><p>
+    <a href="http://validator.w3.org/check?uri=referer"><img
+        src="http://www.w3.org/Icons/valid-xhtml10"
+        alt="Valid XHTML 1.0 Transitional" height="31" width="88" /></a>
+  </p>
+	 <hr /><p class="info">Copyright&nbsp;&copy; {$smarty.now|date_format:"%Y"} Ported to <a href="http://www.bigace.de/" target="_blank">BIGACE</a> by DragonSlayer<br />
+Template originally created by <a href="http://www.nuvio.cz">Nuvio | Webdesign</a> <!-- DON´T REMOVE, PLEASE! --></p>
+	
+            </div><!-- /article -->
+           <hr class="noscreen" />
+
+            ]]></content>
+        </row>
+                <row>
+	            <name key="true">CrystalX-News-Entry</name>
+	            <cid key="true">{CID}</cid>
+	            <description>Display a single News item.</description>
+	            <inwork>0</inwork>
+	            <include>0</include>
+	            <timestamp function="true">unix_timestamp()</timestamp>
+	            <userid>1</userid>
+	            <filename>CrystalX-News-Entry.tpl</filename>
+	            <content><![CDATA[{portlets assign="CrystalXPortlets"}{include file="CrystalX-Header.tpl"}
+{configuration package="CrystalX.design" key="XL" default=false assign="UseXL"}
+	{news_item id=$MENU->getID() assign="newsPage"}
+{if $UseXL}
+<div id="content-XL">
+{else}
+<div id="content">
+{/if}	<div class="article">
+	    {if !is_null($newsPage->getImageID())}
+		{load_item itemtype=4 id=$newsPage->getImageID() assign="newsImage"}
+		{if isset($newsImage)}
+		<a href="{link item=$newsPage}" title="{$newsImage->getName()}">
+	    	<img src="{thumbnail id=$newsPage->getImageID() width="100"}" class="news-image" alt="{$newsImage->getName()}" align="left">
+		</a>
+		{/if}
+		{/if}
+		<h2><span>{$newsPage->getTitle()}</span></h2>
+                  <p class="info noprint">
+	         <span class="date">{$newsPage->getDate()|date_format:"%d. %B %Y"}</span>
+                 <span class="user">{user id=$newsPage->getCreateByID()}</span></p>
+		<p><b>{$newsPage->getTeaser()}</b></p>
+		<p>{$newsPage->getContent()}</p>
+		<p>published in: {news_category item=$newsPage suffix="," last=""} by {user id=$newsPage->getCreateByID()}</p>
+		
+		{hooks_has_action name="comments_plugin" assign="commentsInstalled"}
+		{if $commentsInstalled}
+		{include file='Comments-Listing-Form.tpl'}
+		{/if}
+	</div>            
+</div>	
+	{include file="CrystalX-Footer.tpl"}]]></content>
+	        </row>
+	        <row>
+	            <name key="true">CrystalX-News-Listing</name>
+	            <cid key="true">{CID}</cid>
+	            <description>Display all available News (aka News Home).</description>
+	            <inwork>0</inwork>
+	            <include>0</include>
+	            <timestamp function="true">unix_timestamp()</timestamp>
+	            <userid>1</userid>
+	            <filename>CrystalX-News-Listing.tpl</filename>
+	            <content><![CDATA[{portlets assign="CrystalXPortlets"}{include file="CrystalX-Header.tpl"}
+	
+{configuration package="CrystalX.design" key="XL" default=false assign="UseXL"}
+{if $UseXL}
+	<div id="content-XL">
+{else}
+	<div id="content">
+{/if}
+	{news assign="currentNews"}
+	{foreach from=$currentNews item="newsPage"}
+	  <div class="article">
+	    {if !is_null($newsPage->getImageID())}
+		{load_item itemtype=4 id=$newsPage->getImageID() assign="newsImage"}
+		<a href="{link item=$newsPage}" title="{$newsImage->getName()}">
+	    	<img src="{thumbnail id=$newsPage->getImageID() width="100"}" class="news-image" alt="{$newsImage->getName()}" align="left">
+		</a>
+		{/if}
+		<h2><span><a href="{link item=$newsPage}" title="{$newsPage->getName()}">{$newsPage->getTitle()}</a></span></h2>
+		<p class="info">
+			<span class="date">{$newsPage->getDate()|date_format:"%d. %B %Y"}</span> 
+                        <span class="user">{news_category item=$newsPage suffix="," last=" | "}
+		{user id=$newsPage->getCreateByID()} </span>
+	{configuration package="CrystalX.design" key="Use.Comments" default=false assign="CommentsEnable"}
+	{if $CommentsEnable}
+		{hooks_has_action name="comments_plugin" assign="commentsInstalled"}
+			{if $commentsInstalled}{project_field item=$newsPage type="num" name="allow_comments" assign="allow_comments" default=true}{if $allow_comments}{load_translation name="comments-form"}
+				<span class="comments"><a href="{link item=$newsPage}#comments">{comment_counter item=$newsPage} {translate key="comment.formular.title"}</a></span>
+			{/if}{/if}{/if}
+		</p>
+		<p>{$newsPage->getTeaser()}</p>
+		<p class="btn-more noprint"><a href="{link item=$newsPage}">Read more:{* &raquo;{$newsPage->getTitle()}&laquo;*}</a></p>
+	  </div>
+	{/foreach}
+	</div>            
+	
+	{include file="CrystalX-Footer.tpl"}
+]]></content>
+        </row> 
+        </table>    
+
+    <table name="stylesheet">
+        <row>
+            <name key="true">CrystalX_Main_Stylesheet</name>
+            <cid key="true">{CID}</cid>
+            <description>Main CSS definitions for the CrystalX Layout.</description>
+            <filename>CrystalX/main.css</filename>
+        </row>
+        <row>
+            <name key="true">CrystalX_Print_Stylesheet</name>
+            <cid key="true">{CID}</cid>
+            <description>Print CSS definitions for the CrystalX Layout.</description>
+            <filename>CrystalX/print.css</filename>
+        </row>
+        <row>
+            <name key="true">CrystalX_Aural_Stylesheet</name>
+            <cid key="true">{CID}</cid>
+            <description>Aural CSS definitions for the CrystalX Layout.</description>
+            <filename>CrystalX/aural.css</filename>
+        </row>
+    </table>    
+
+    <table name="design">
+        <row>
+            <name key="true">CrystalX</name>
+            <cid key="true">{CID}</cid>
+            <description>The CrystalX design.</description>
+            <stylesheet>CrystalX_Main_Stylesheet</stylesheet>
+            <template>CrystalX</template>
+            <portlets>1</portlets>
+        </row>
+        <row>
+            <name key="true">CrystalX-News-Entry</name>
+            <cid key="true">{CID}</cid>
+            <description>CrystalX for a News entry detail page.</description>
+            <stylesheet>CrystalX_Main_Stylesheet</stylesheet>
+            <template>CrystalX-News-Entry</template>
+            <portlets>0</portlets>
+        </row>
+        <row>
+            <name key="true">CrystalX-News-Home</name>
+            <cid key="true">{CID}</cid>
+            <description>CrystalX for the News start page.</description>
+            <stylesheet>CrystalX_Main_Stylesheet</stylesheet>
+            <template>CrystalX-News-Listing</template>
+            <portlets>0</portlets>
+        </row>
+    </table>
+
+    <table name="configuration">
+        <row update="true">
+            <cid key="true">{CID}</cid>
+            <package key="true">templates</package>
+            <name key="true">application.footer</name>
+            <value>CrystalX-Footer</value>
+            <type>tpl_inc</type>
+        </row>
+        <row update="true">
+            <cid key="true">{CID}</cid>
+            <package key="true">templates</package>
+            <name key="true">application.header</name>
+            <value>CrystalX-Header</value>
+            <type>tpl_inc</type>
+        </row>
+        <row update="false">
+            <cid key="true">{CID}</cid>
+            <package key="true">CrystalX.design</package>
+            <name key="true">header.text</name>
+            <value>CrystalX</value>
+            <type>string</type>
+        </row>
+        <row update="false">
+            <cid key="true">{CID}</cid>
+            <package key="true">CrystalX.design</package>
+            <name key="true">favicon.ico.file.ID</name>
+            <type>string</type>
+        </row>
+        <row update="true">
+            <cid key="true">{CID}</cid>
+            <package key="true">CrystalX.design</package>
+            <name key="true">Show.Template.Help</name>
+            <value>TRUE</value>
+            <type>boolean</type>
+        </row>
+        <row update="false">
+            <cid key="true">{CID}</cid>
+            <package key="true">CrystalX.design</package>
+            <name key="true">XL</name>
+            <value>0</value>
+            <type>boolean</type>
+        </row>
+        <row update="false">
+            <cid key="true">{CID}</cid>
+            <package key="true">CrystalX.design</package>
+            <name key="true">Home.In.Navigation</name>
+            <value>TRUE</value>
+            <type>boolean</type>
+        </row>
+        <row update="false">
+            <cid key="true">{CID}</cid>
+            <package key="true">CrystalX.design</package>
+            <name key="true">Use.Portlets</name>
+            <value>TRUE</value>
+            <type>boolean</type>
+        </row>
+        <row update="false">
+            <cid key="true">{CID}</cid>
+            <package key="true">CrystalX.design</package>
+            <name key="true">Use.As.Topmenu</name>
+            <value>-1</value>
+            <type>menu_id</type>
+        </row>
+        <row update="false">
+            <cid key="true">{CID}</cid>
+            <package key="true">CrystalX.design</package>
+            <name key="true">Use.Search</name>
+            <value>TRUE</value>
+            <type>boolean</type>
+        </row>
+        <row update="false">
+            <cid key="true">{CID}</cid>
+            <package key="true">CrystalX.design</package>
+            <name key="true">Use.sitename</name>
+            <value>0</value>
+            <type>boolean</type>
+        </row>
+        <row update="false">
+            <cid key="true">{CID}</cid>
+            <package key="true">CrystalX.design</package>
+            <name key="true">Use.Comments</name>
+            <value>0</value>
+            <type>boolean</type>
+        </row>
+        <row update="false">
+            <cid key="true">{CID}</cid>
+            <package key="true">CrystalX.design</package>
+            <name key="true">Google.AD.in.Right.Menu</name>
+            <value>0</value>
+            <type>boolean</type>
+        </row>
+        <row update="false">
+            <cid key="true">{CID}</cid>
+            <package key="true">CrystalX.design</package>
+            <name key="true">Google.AD.in.Bottom.Page</name>
+            <value>0</value>
+            <type>boolean</type>
+        </row>
+        <row update="false">
+            <cid key="true">{CID}</cid>
+            <package key="true">seo</package>
+            <name key="true">AddThis.UserName</name>
+            <type>string</type>
+        </row>
+        <row update="false">
+            <cid key="true">{CID}</cid>
+            <package key="true">seo</package>
+            <name key="true">google.site.verification</name>
+            <type>string</type>
+        </row>
+        <row update="false">
+            <cid key="true">{CID}</cid>
+            <package key="true">seo</package>
+            <name key="true">google.analytics</name>
+            <type>string</type>
+        </row>
+        <row update="false">
+            <cid key="true">{CID}</cid>
+            <package key="true">seo</package>
+            <name key="true">yahoo.site.explorer.y_key</name>
+            <type>string</type>
+        </row>
+        <row update="false">
+            <cid key="true">{CID}</cid>
+            <package key="true">seo</package>
+            <name key="true">yahoo.site.explorer.verify-v1</name>
+            <type>string</type>
+        </row>
+        <row update="false">
+            <cid key="true">{CID}</cid>
+            <package key="true">Google.AdSense</package>
+            <name key="true">Google.AdSense.ID</name>
+            <type>string</type>
+        </row>
+        <row update="false">
+            <cid key="true">{CID}</cid>
+            <package key="true">Google.AdSense</package>
+            <name key="true">Google.AD.ID.120x240</name>
+            <type>string</type>
+        </row>
+        <row update="false">
+            <cid key="true">{CID}</cid>
+            <package key="true">Google.AdSense</package>
+            <name key="true">Google.AD.ID.160x90</name>
+            <type>string</type>
+        </row>
+        <row update="false">
+            <cid key="true">{CID}</cid>
+            <package key="true">Google.AdSense</package>
+            <name key="true">Google.AD.ID.728x90</name>
+            <type>string</type>
+        </row>
+        <row update="true">
+            <cid key="true">{CID}</cid>
+            <package key="true">news</package>
+            <name key="true">template.news</name>
+            <value>CrystalX-News-Entry</value>
+            <type>design</type>
+        </row> 
+   </table>    
+
+</content>

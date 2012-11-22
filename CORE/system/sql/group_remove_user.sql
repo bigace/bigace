@@ -1,0 +1,1 @@
+DELETE FROM {DB_PREFIX}user_group_mapping WHERE group_id='{GROUP_ID}' AND userid='{USER_ID}' AND cid='{CID}'

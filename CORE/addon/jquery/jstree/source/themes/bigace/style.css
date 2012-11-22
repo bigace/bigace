@@ -1,0 +1,59 @@
+/* LOCKED */
+.tree-bigace .locked li a { color:gray; }
+/* DOTS */
+.tree-bigace ul { background-position:6px 1px; background-repeat:repeat-y; background-image:url("dot.gif"); }
+.tree-bigace li { background-position:7px 8px; background-repeat:no-repeat; background-image:url("li.gif"); }
+.tree-bigace li.last { background-position:5px top; background-repeat:no-repeat; background-image:url("lastli.gif"); }
+
+/* DOTS - RIGHT TO LEFT */
+.tree-bigace .rtl, .tree-bigace .rtl ul { background-position:right 1px; }
+.tree-bigace .rtl li { background-position:right 8px; }
+.tree-bigace .rtl li.last { background-image:url("lastli_rtl.gif"); background-position:right top; }
+
+/* NO DOTS */
+.tree-bigace .no_dots, .tree-bigace .no_dots ul { background:transparent; }
+.tree-bigace .no_dots li.leaf { background-image:none; background-color:transparent; }
+/* OPEN or CLOSED */
+.tree-bigace li.open { background:url("fminus.gif") 4px 6px no-repeat; }
+.tree-bigace li.closed, #jstree-dragged.tree-bigace li li.open { background:url("fplus.gif") 5px 5px no-repeat; }
+
+/* RIGHT TO LEFT */
+.tree-bigace .rtl li { margin-right:1px; }
+.tree-bigace .rtl li.last { margin-right:0; padding-right:16px; }
+.tree-bigace .rtl li.open { background:url("fminus_rtl.gif") right 6px no-repeat; margin-right:0; padding-right:16px; }
+.tree-bigace .rtl li.closed, #jstree-dragged.tree-bigace .rtl li li.open { background:url("fplus_rtl.gif") right 4px no-repeat; margin-right:0; padding-right:16px; }
+
+/* DEFAULT, HOVER, CLICKED, LOADING STATES */
+.tree-bigace li a, .tree-bigace li span { background-color:transparent; background-repeat:no-repeat; background-position:4px 1px; padding:1px 4px 1px 23px; background-image:url("f.png"); border-radius:3px; -moz-border-radius:3px; -webkit-border-radius:3px; }
+.tree-bigace li a:hover, .tree-bigace li a.hover { background-color: #e7f4f9; border:1px solid #d8f0fa; padding:0px 3px 0px 22px; background-position:3px 0px;  }
+.tree-bigace li a.clicked, .tree-bigace li a.clicked:hover, .tree-bigace li span.clicked { background-color: #beebff; border:1px solid #99defd; padding:0px 3px 0px 22px; background-position:3px 0px;  }
+.tree-bigace li span.clicked { padding:0px 3px 0px 20px; }
+.tree-bigace li a.loading { background-image:url("throbber.gif"); }
+
+/* DEFAULT, HOVER, CLICKED, LOADING STATES - RIGHT TO LEFT */
+.tree-bigace .rtl li a, .tree-bigace .rtl li span { padding:1px 23px 1px 4px; background-position:right 1px; margin-right:1px; }
+.tree-bigace .rtl li a:hover, .tree-bigace .rtl li a.hover { padding:0px 23px 0px 3px; background-position:right 0px; margin-right:0px; }
+.tree-bigace .rtl li a.clicked, .tree-bigace .rtl li a.clicked:hover, .tree-bigace .rtl li span.clicked { padding:0px 23px 0px 3px; background-position:right 0px;  margin-right:0px; }
+.tree-bigace .rtl li span.clicked { padding:0px 21px 0px 3px; }
+
+/* CONTEXT MENU */
+.tree-bigace-context { width:160px; background:#F0F0F0 url("context.gif") 22px 0 repeat-y; border:1px solid silver; position:absolute; }
+.tree-bigace-context a, .tree-bigace-context a.disabled:hover { display:block; text-decoration:none; color:black; line-height:20px; background-repeat: no-repeat; background-position:2px center; padding:1px 0 1px 25px; background-color:transparent; border:1px solid #f0f0f0; border-width:0 1px; margin:0; }
+.tree-bigace-context a:hover { background-color:#e7f4f9; border:1px solid #d8f0fa; padding:0 0 0 25px; margin:0; }
+.tree-bigace-context a.disabled, .tree-bigace-context a.disabled:hover { color:silver; opacity:0.5; -ms-filter:'alpha(opacity=50)'; filter:alpha(opacity=50); zoom:1; }
+.tree-bigace-context .separator { background:#FFFFFF;border-top:1px solid #E0E0E0;font-size:1px;height:1px;line-height:1px;margin:0 2px 0 24px;min-height:1px;display:block; }
+
+/* BIGACE EXTENSIONS */
+
+.tree-bigace li.leaf a, .tree-bigace li.leaf span { background-image:url("file.png"); }
+
+.tree-bigace li a.folder, .tree-bigace li span.folder { background-image:url("folder.png"); }
+.tree-bigace li a.folderhidden, .tree-bigace li span.folderhidden { background-image:url("folderhidden.png"); }
+.tree-bigace li a.folderhiddenworkflow, .tree-bigace li span.folderhiddenworkflow { background-image:url("folderhiddenworkflow.png"); }
+.tree-bigace li a.folderworkflow, .tree-bigace li span.folderworkflow { background-image:url("folderworkflow.png"); }
+
+.tree-bigace li a.file, .tree-bigace li span.file { background-image:url("file.png"); }
+.tree-bigace li a.filehidden, .tree-bigace li span.filehidden { background-image:url("filehidden.png"); }
+.tree-bigace li a.filehiddenworkflow, .tree-bigace li span.filehiddenworkflow { background-image:url("filehiddenworkflow.png"); }
+.tree-bigace li a.fileworkflow, .tree-bigace li span.fileworkflow { background-image:url("fileworkflow.png"); }
+

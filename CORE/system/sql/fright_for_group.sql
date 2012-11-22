@@ -1,0 +1,1 @@
+SELECT * FROM {DB_PREFIX}group_frights WHERE group_id='{GROUP_ID}' AND cid='{CID}'

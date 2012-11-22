@@ -1,0 +1,1 @@
+REPLACE INTO {DB_PREFIX}session (id,cid,userid,ip,data,timestamp) VALUES ('{SESSION_ID}', '{SESSION_CID}', '{SESSION_USER}', '{SESSION_IP}', '{SESSION_DATA}', '{SESSION_TIMESTAMP}')

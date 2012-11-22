@@ -1,0 +1,23 @@
+
+<b><u>Installation</u></b>
+Install the extension and then (if you activated URL Rewriting) add a rule ilke the following to your .htaccess:
+<b>RewriteRule ^latest-pages.xml$ ./addon/rss/latest-pages.php</b>
+
+Now open your community configuration and edit the entries for package "rss-latest".
+
+At last (to increase your traffic):
+1. Go to Feedburner and burn your feed with the URL http://yourDomain/latest-pages.xml
+2. And register it at your favourite RSS directories 
+
+Have fun!
+<hr/>
+
+<b><u>Changelog</u></b>
+Version 1.1:
+=============
+- opened to the public
+- translations
+
+Version 1.0:
+=============
+- initial release

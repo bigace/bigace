@@ -1,0 +1,9 @@
+
+Please read more about the Contact-Mailer at the documentation website:
+<a href="http://wiki.bigace.de/bigace:extensions:modul:contactmail" target="_blank">http://wiki.bigace.de/bigace:extensions:modul:contactmail</a>
+
+Version 1.7:
+--------------
+- assign permission "webmail_admin" to Administrator at installation
+- Using path constant
+- Now rendering in XHTML 

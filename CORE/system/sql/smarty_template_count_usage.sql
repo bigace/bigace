@@ -1,0 +1,1 @@
+SELECT count(name) as amount FROM {DB_PREFIX}design WHERE template={TEMPLATE} AND cid={CID}

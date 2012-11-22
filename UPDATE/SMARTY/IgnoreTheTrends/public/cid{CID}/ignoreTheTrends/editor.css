@@ -1,0 +1,69 @@
+/* andreas08 - an open source xhtml/css website layout by Andreas Viklund - http://andreasviklund.com . Free to use in any way and for any purpose as long as the proper credits are given to the original designer. Version: 1.0, November 28, 2005 */
+
+/**************** Body and tag styles ****************/
+
+body{
+font-family:Verdana,Tahoma,Arial,sans-serif;
+line-height:1.4em;
+color:#303030;
+background:#ffffff;
+float:left;
+font-size:0.9em;
+}
+
+a{
+color:#467aa7;
+font-weight:bold;
+text-decoration:none;
+background-color:inherit;
+}
+
+a:hover{color:#2a5a8a; text-decoration:none; background-color:inherit;}
+a img{border:none;}
+
+p{padding:0 0 1.6em 0;}
+p form{margin-top:0; margin-bottom:20px;}
+
+img.left,img.center,img.right{padding:4px; border:1px solid #a0a0a0;}
+img.left{float:left; margin:0 12px 5px 0;}
+img.center{display:block; margin:0 auto 5px auto;}
+img.right{float:right; margin:0 0 5px 12px;}
+
+/**************** Header and navigation styles ****************/
+
+h2{
+display:block;
+margin:0 0 16px 0;
+font-size:1.7em;
+font-weight:normal;
+letter-spacing:-1px;
+color:#505050;
+background-color:inherit;
+}
+
+h2 a{font-weight:normal;}
+h3{margin:0 0 5px 0; font-size:1.4em; letter-spacing:-1px;}
+a:hover{text-decoration:underline;}
+ul,ol{margin:0 5px 16px 35px;}
+dl{margin:0 5px 10px 25px;}
+dt{font-weight:bold; margin-bottom:5px;}
+dd{margin:0 0 10px 15px;}
+
+
+.splitcontentleft{float:left; width:48%;}
+.splitcontentright{float:right; width:48%;}
+.clear{clear:both;}
+.small{font-size:0.8em;}
+.hide{display:none;}
+.textcenter{text-align:center;}
+.textright{text-align:right;}
+.important{color:#f02025; background-color:inherit; font-weight:bold;}
+
+.box{
+margin:0 0 20px 0;
+padding:10px;
+border:1px solid #c0c0c0;
+background-color:#fafbfc;
+color:#505050;
+line-height:1.5em;
+}

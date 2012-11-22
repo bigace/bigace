@@ -1,0 +1,48 @@
+<!-- $Id: AdminUserList.tpl.htm,v 1.2 2008/07/14 23:08:34 kpapst Exp $ -->
+ 
+<table class="tablesorter" cellspacing="0">
+<col width=""/>
+<col width="50"/>
+<col width="100"/>
+<col width="100"/>
+<!-- BEGIN autoheader -->
+<thead>
+	<tr>
+		<th align="center">{TRANSLATION_name}</th>
+		<th align="center">{TRANSLATION_email}</th>
+		<th align="center">{TRANSLATION_id}</th>
+		<th align="center">{TRANSLATION_language}</th>
+		<th align="center">{TRANSLATION_state}</th>
+	</tr>
+</thead>
+<!-- END autoheader -->
+<tbody>
+    <!-- BEGIN outerrow -->
+    <!-- BEGIN activerow -->
+    <tr>
+        <td align="left"><a class="useredit" href="{ACTION_EDIT_USER}">{USER_NAME}</a></td>
+        <td align="center">{USER_EMAIL}</td>
+        <td align="center">{USER_ID}</td>
+        <td align="center"><img src="{AUTO_STYLE_DIR}languages/{LANG_LOCALE}.gif" border="0" alt="{LANG_NAME}" title="{LANG_NAME}"></td>
+        <td align="center"><img src="{AUTO_STYLE_DIR}user_active.png" border="0" alt="{TRANSLATION_user_active}" title="{TRANSLATION_user_active}"></td>
+    </tr>
+    <!-- END activerow -->
+    <!-- BEGIN deactiverow -->
+    <tr>
+        <td align="left"><a class="useredit" href="{ACTION_EDIT_USER}">{USER_NAME}</a></td>
+        <td align="center">{USER_EMAIL}</td>
+        <td align="center">{USER_ID}</td>
+        <td align="center"><img src="{AUTO_STYLE_DIR}languages/{LANG_LOCALE}.gif" border="0" alt="{LANG_NAME}" title="{LANG_NAME}"></td>
+        <td align="center"><img src="{AUTO_STYLE_DIR}user_inactive.png" border="0" alt="{TRANSLATION_user_inactive}" title="{TRANSLATION_user_inactive}"></td>
+    </tr>
+    <!-- END deactiverow -->
+    <!-- END outerrow -->
+	</tbody>
+</table>
+
+<script type="text/javascript">
+$(document).ready( function() { 
+        $(".tablesorter").tablesorter({ widgets: ['zebra'], headers: { 2: {sorter: false}, 3: {sorter: false}, 4: {sorter: false} } }); 
+    } 
+);
+</script>

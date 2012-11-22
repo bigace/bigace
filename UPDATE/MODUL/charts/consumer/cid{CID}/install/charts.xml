@@ -1,0 +1,87 @@
+<content version="1.0">
+<!--
+ *
+ * BIGACE - a PHP and MySQL based Web CMS.
+ * 
+ * BIGACE is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation; either version 2
+ * of the License, or (at your option) any later version.
+ * 
+ * BIGACE is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * 
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software Foundation, 
+ * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ * 
+ * For further information visit {@link http://www.bigace.de http://www.bigace.de}.
+ *
+ * @author Kevin Papst 
+ * @copyright Copyright (C) Kevin Papst
+ * @version $Id: charts.xml,v 1.1 2008/09/06 16:47:22 kpapst Exp $
+ *
+-->
+
+    <table name="frights">
+        <row>
+            <cid key="true">{CID}</cid>
+            <name key="true">charts.add</name>
+            <defaultvalue>N</defaultvalue>
+            <description>Allows to add FAQ entries.</description>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <name key="true">charts.edit</name>
+            <defaultvalue>N</defaultvalue>
+            <description>Allows to edit and delete chart entries.</description>
+        </row>
+    </table>    
+
+    <table name="group_frights">
+        <row update="false">
+            <cid key="true">{CID}</cid>
+            <group_id key="true">40</group_id>
+            <fright key="true">charts.add</fright>
+        </row>
+        <row update="false">
+            <cid key="true">{CID}</cid>
+            <group_id key="true">40</group_id>
+            <fright key="true">charts.edit</fright>
+        </row>
+    </table>
+
+    <table name="template">
+        <row>
+            <name key="true">Chart-Popup</name>
+            <cid key="true">{CID}</cid>
+            <description>Template used for the Chart Popup displaying a Canvas Bar Diagram</description>
+            <inwork>0</inwork>
+            <include>0</include>
+            <timestamp function="true">unix_timestamp()</timestamp>
+            <userid>1</userid>
+            <filename>chart-popup.tpl</filename>
+            <content><![CDATA[<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<title>Chart</title>
+</head>
+<body>
+{if isset($NAME)}
+	{if isset($TYPE)}
+		{protochart name=$NAME type=$TYPE}
+	{else}
+		{protochart name=$NAME}
+	{/if}
+{else}
+	{$message}
+{/if}
+</body>
+</html>
+            ]]></content>
+        </row>
+		    </table>
+
+</content>

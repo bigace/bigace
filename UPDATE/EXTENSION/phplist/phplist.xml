@@ -1,0 +1,12 @@
+<content version="1.0">
+
+    <table name="frights">
+        <row>
+            <cid key="true">{CID}</cid>
+            <name key="true">phplist</name>
+            <defaultvalue>N</defaultvalue>
+            <description>Allows to access the PHPlist admin panel through BIGACE administration.</description>
+        </row>
+    </table>    
+
+</content>

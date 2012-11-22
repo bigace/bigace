@@ -1,0 +1,133 @@
+<project name="Bigace-Hudson" default="hudson">
+
+    <description>
+        BIGACE - a PHP based Web CMS.
+        
+        Hudson CI - build file for BIGACE Web CMS 3.
+        See http://dev.bigace.org/ for further informations.
+    
+        Copyright (C) 2009-2010 Keleo (www.keleo.de).
+        Distributed under the terms of the GNU General Public License.
+        
+        $Id: hudson.xml,v 1.18 2010/12/28 11:34:04 kpapst Exp $
+    </description>
+
+    <!-- Location of the Hudson Job workspace directory -->
+    <property name="workspace" location="${basedir}/../" />
+            
+    <!-- Overwrite this build file setting, artifacts will be alyways be stored here -->
+    <property name="target.extensions.dir" value="${workspace}/hudson/artifacts/" />
+
+    <!-- Only works in Hudson with correct configuration -->
+    <import file="${basedir}/environment.xml" />
+    <import file="${basedir}/extensions.xml" />
+		
+    <!-- Create all necessary directories to story build infos -->
+    <target name="prepare">
+        <delete dir="${workspace}/hudson" />
+        <mkdir dir="${workspace}/hudson"/>
+        <mkdir dir="${workspace}/hudson/api"/>
+        <mkdir dir="${workspace}/hudson/coverage"/>
+        <mkdir dir="${workspace}/hudson/logs"/>
+        <mkdir dir="${workspace}/hudson/artifacts"/>
+        <mkdir dir="${workspace}/hudson/artifacts/temp"/>
+    </target>
+
+    <!-- copy all 3rd party libs -->
+    <target name="prepare-artifacts" depends="prepare">
+        <!-- antcall target="release.3rdparty-files">
+            <param name="release.path" value="${workspace}/CORE"/>
+            <param name="exclude.pattern" value="release.exclude.files"/>
+        </antcall -->
+    </target>
+
+    <target name="phpdoc" depends="prepare">
+        <exec dir="${workspace}" executable="phpdoc">
+            <arg line="-c ${workspace}/build/phpdoc.ini"/>
+        </exec>
+    </target>
+    
+    <!-- phpcpd: Copy and Paste Detection -->
+    <target name="phpcpd" depends="prepare">
+        <exec dir="${workspace}" executable="phpcpd">
+            <arg line="--log-pmd hudson/logs/pmd-cpd.xml CORE/"/>
+        </exec>
+    </target>
+    
+    <!-- pDepend: Static Code Analysis -->
+    <target name="pdepend" depends="prepare">
+        <exec dir="${workspace}" executable="pdepend">
+            <arg line="--jdepend-xml=hudson/logs/jdepend.xml CORE"/>
+        </exec>
+    </target>
+
+	<!-- pmd: Code Analysis -->
+    <target name="phpmd" depends="prepare">
+        <exec dir="${workspace}" executable="phpmd">
+            <arg line="CORE xml codesize,unusedcode --reportfile hudson/logs/pmd.xml" />
+        </exec>
+    </target>
+
+    <!-- This task removes all temporary resources after a complete build was processed -->
+    <target name="cleanup">
+        <delete dir="${workspace}/hudson/artifacts/temp" />
+    </target>
+
+    <!-- Create the download packages of Bigace -->
+    <target name="artifacts" depends="prepare-artifacts">
+        <antcall target="create.aps">
+            <param name="editor" value="${release.editor}"/>
+            <param name="release.path" value="${workspace}/hudson/artifacts/"/>
+        </antcall>
+        <antcall target="create.upgrade">
+            <param name="editor" value="${release.editor}"/>
+            <param name="release.path" value="${workspace}/hudson/artifacts/"/>
+        </antcall>
+        <antcall target="create.version">
+            <param name="editor" value="${release.editor}"/>
+            <param name="release.path" value="${workspace}/hudson/artifacts/"/>
+        </antcall>
+    	<antcall target="packages.editor" />
+        <antcall target="packages.languages" />
+        <antcall target="packages.extensions" />
+        <antcall target="packages.smarty" />
+        <antcall target="packages.beta" />
+    	<!-- ZIP the formerly created phpdoc folder -->
+        <zip destfile="${workspace}/hudson/artifacts/${release.api.filename}">
+            <fileset dir="${workspace}/hudson/api/" />
+        </zip>
+    </target>
+	
+    <!-- Installs the nightly build version -->
+    <target name="nightly" depends="artifacts">
+        <!-- Directory where we are going to install the Nightly Build -->
+        <property name="target.nightly.dir" location="${nightly.directory}/"/>
+        <!-- Directory where we store temporary files during installation -->
+        <property name="target.nightly.temp" location="${nightly.tempdir}/"/>
+    	
+        <delete dir="${target.nightly.temp}" />
+        <mkdir dir="${target.nightly.temp}" />
+        <unzip dest="${target.nightly.temp}" src="${workspace}/hudson/artifacts/${install.aps.filename}" />
+        <exec dir="${basedir}" executable="php">
+            <arg line="install.php remove" />
+        </exec>        
+        <delete dir="${target.nightly.dir}" />
+        <mkdir dir="${target.nightly.dir}" />
+    	<move todir="${target.nightly.dir}">
+    		<fileset dir="${target.nightly.temp}/htdocs/">
+    			<include name="**" />
+    		</fileset>
+    	</move>
+        <exec dir="${basedir}" executable="php">
+            <arg line="install.php install" />
+        </exec>        
+        <exec dir="${target.nightly.dir}" executable="chmod">
+            <arg line="-R a+w ${target.nightly.dir}" />
+        </exec>        
+        <delete dir="${target.nightly.temp}" />
+    </target>
+	
+	<!-- All tasks that will be executed using Hudson -->
+    <target name="hudson" depends="prepare,phpdoc,pdepend,phpcpd,phpmd,prepare-artifacts,artifacts,nightly,cleanup" />
+
+</project>

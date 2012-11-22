@@ -1,0 +1,9 @@
+#AuthType Basic
+#AuthName "BIGACE Installation"
+#require valid-user
+#AuthUserFile {REPLACE_BY_YOUR_PATH}/.htpasswd
+#
+# username/password for misc.htpasswd is:
+# bigace/bigace
+#
+deny from all

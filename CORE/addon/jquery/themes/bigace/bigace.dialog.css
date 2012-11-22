@@ -1,0 +1,99 @@
+/* This file skins dialog */
+
+#dialog {display:none;color:#000000}
+.bigace-dialog .ui-dialog,
+.bigace-dialog.ui-dialog {
+	background-color: #ffffff;
+	color:#000000;
+}
+
+.bigace-dialog .ui-dialog .ui-dialog-titlebar,
+.bigace-dialog.ui-dialog .ui-dialog-titlebar {
+	border-bottom: 1px solid #d8d2aa;
+	background-color: #cccccc;
+	padding: 0px;
+	height: 28px;
+	_height: 29px;
+}
+
+.bigace-dialog .ui-dialog.ui-draggable .ui-dialog-titlebar,
+.bigace-dialog.ui-dialog.ui-draggable .ui-dialog-titlebar {
+	cursor: move;
+}
+
+.bigace-dialog .ui-dialog .ui-dialog-titlebar-close,
+.bigace-dialog.ui-dialog .ui-dialog-titlebar-close {
+	width: 16px;
+	height: 16px;
+	position:absolute;
+	top: 6px;
+	right: 7px;
+	cursor: default;
+	font-weight:bold;
+	font-size:14px;
+	background: url(i/dialog-titlebar-close.png) no-repeat #cccccc;
+}
+
+.bigace-dialog .ui-dialog .ui-dialog-titlebar-close span,
+.bigace-dialog.ui-dialog .ui-dialog-titlebar-close span {
+	display: none;
+}
+
+.bigace-dialog .ui-dialog .ui-dialog-titlebar-close-hover,
+.bigace-dialog.ui-dialog .ui-dialog-titlebar-close-hover {
+	background: url(i/dialog-titlebar-close-hover.png) no-repeat #cccccc;
+}
+
+.bigace-dialog .ui-dialog .ui-dialog-title,
+.bigace-dialog.ui-dialog .ui-dialog-title {
+	margin-left: 5px;
+	color: #000000;
+	font-weight: bold;
+	position: relative;
+	top: 7px;
+	left: 4px;
+}
+
+.bigace-dialog .ui-dialog .ui-dialog-content,
+.bigace-dialog.ui-dialog .ui-dialog-content {
+	margin: 1.2em;
+}
+
+.bigace-dialog .ui-dialog .ui-dialog-buttonpane,
+.bigace-dialog.ui-dialog .ui-dialog-buttonpane {
+	position: absolute;
+	bottom: 8px;
+	right: 12px;
+	width: 100%;
+	text-align: right;
+}
+
+.bigace-dialog .ui-dialog .ui-dialog-buttonpane button,
+.bigace-dialog.ui-dialog .ui-dialog-buttonpane button {
+	margin: 6px;
+}
+
+/* Dialog handle styles */
+.bigace-dialog .ui-dialog .ui-resizable-n,
+.bigace-dialog.ui-dialog .ui-resizable-n { cursor: n-resize; height: 6px; width: 100%; top: 0px; left: 0px; background: transparent url(i/dialog-n.gif) repeat scroll center top; }
+
+.bigace-dialog .ui-dialog .ui-resizable-s,
+.bigace-dialog.ui-dialog .ui-resizable-s { cursor: s-resize; height: 8px; width: 100%; bottom: 0px; left: 0px; background: transparent url(i/dialog-s.gif) repeat scroll center top; }
+
+.bigace-dialog .ui-dialog .ui-resizable-e,
+.bigace-dialog.ui-dialog .ui-resizable-e { cursor: e-resize; width: 7px; right: 0px; top: 0px; height: 100%; background: transparent url(i/dialog-e.gif) repeat scroll right center; }
+
+.bigace-dialog .ui-dialog .ui-resizable-w,
+.bigace-dialog.ui-dialog .ui-resizable-w { cursor: w-resize; width: 7px; left: 0px; top: 0px; height: 100%; background: transparent url(i/dialog-w.gif) repeat scroll right center; }
+
+.bigace-dialog .ui-dialog .ui-resizable-se,
+.bigace-dialog.ui-dialog .ui-resizable-se { cursor: se-resize; width: 9px; height: 9px; right: 0px; bottom: 0px; background: transparent url(i/dialog-se.gif); }
+
+.bigace-dialog .ui-dialog .ui-resizable-sw,
+.bigace-dialog.ui-dialog .ui-resizable-sw { cursor: sw-resize; width: 9px; height: 9px; left: 0px; bottom: 0px; background: transparent url(i/dialog-sw.gif); }
+
+.bigace-dialog .ui-dialog .ui-resizable-nw,
+.bigace-dialog.ui-dialog .ui-resizable-nw { cursor: nw-resize; width: 9px; height: 29px; left: 0px; top: 0px; background: transparent url(i/dialog-nw.gif); }
+
+.bigace-dialog .ui-dialog .ui-resizable-ne,
+.bigace-dialog.ui-dialog .ui-resizable-ne { cursor: ne-resize; width: 9px; height: 29px; right: 0px; top: 0px; background: transparent url(i/dialog-ne.gif); }

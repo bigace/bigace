@@ -1,0 +1,182 @@
+<content version="1.0">
+
+    <table name="template">
+        <row>
+            <name key="true">Antique_Modern</name>
+            <cid key="true">{CID}</cid>
+            <description>BIGACE free Template 'Antique_Modern' by Don. Content and Submenu Column.</description>
+            <inwork>0</inwork>
+            <include>0</include>
+            <timestamp function="true">unix_timestamp()</timestamp>
+            <userid>1</userid>
+            <filename>Antique_Modern.tpl</filename>
+            <content><![CDATA[<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf8" />
+    <link rel="stylesheet" href="{stylesheet name="Antique_Modern"}" type="text/css" media="screen, projection" >
+	{metatags item=$MENU}
+  </head>
+  <body>
+    <div id="head">
+		<div id="title">{$MENU->getName()}</div>
+        <div id="menu">
+            <ul>
+            	{load_item id="-1" itemtype="1" assign="topLevel"}
+				<li{if $MENU->getID() == $topLevel->getID()} class="active"{/if}><a href="{link item=$topLevel}">{$topLevel->getName()}</a></li>
+               {navigation id="-1" prefix="<li>" suffix="</li>" active='<li class="active">'}
+            </ul>
+        </div>
+    </div>
+    <div id="body_wrapper">
+      <div id="body">
+        <div id="left">
+          <div class="top"></div>
+          <div class="content">
+			{if $MENU->getID() != -1}
+			<p style="margin-top:0px;font-size:75%">{breadcrumb id=$MENU->getID() suffix=' &raquo;'}</p><hr>
+			{/if}
+            {modul menu=$MENU}
+          </div>
+          <div class="bottom"></div>
+        </div>
+        <div id="right">
+          <div class="top"></div>
+          <div class="content">
+            <h4>Submenu</h4>
+			<ul>
+                {navigation id=$MENU->getID() prefix="<li>" suffix="</li>"}
+			</ul>
+			{if strlen($MENU->getDescription()) != ''}
+			<hr />
+            <h4>Description</h4>
+            {$MENU->getDescription()}
+            {/if}
+			<hr />
+            <h4>Links</h4>
+			<ul>
+			  <li><a href="http://www.bigace.de/" target="_blank">BIGACE CMS</a></li>
+			  <li><a href="http://www.bigace.de/forum/" target="_blank">Forum</a></li>
+			  <li><a href="http://wiki.bigace.de/" target="_blank">Wiki</a></li>
+    		</ul>
+			<hr />
+			<ul>
+              {if !$USER->isAnonymous()}
+               {permission_editcontent assign='allowEditor'}
+               {if $allowEditor}
+               <li><a href="{link_editor id=$MENU->getID() language=$MENU->getLanguageID()}">Edit Content</a></li>
+               {/if}
+               <li><a href="{link_admin}">Administration</a></li>
+               <li><a href="{link_logout}">Logout</a></li>
+              {else}
+               <li><a href="{link_login}">Login</a></li>
+              {/if}
+    		</ul>
+          </div>
+          <div class="bottom"></div>
+        </div>
+        <div class="clearer"></div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div id="end_body"></div>
+    <div id="footer">
+      &copy; <a href="mailto:youremail@server.com">Your Name</a> |
+      <a href="http://www.oswd.org/design/information/id/2782" target="_blank">Template</a> by 
+      <a href="http://aaron.ganschow.us/" target="_blank">Aaron Ganschow</a> |  
+      ported by <a href="http://www.kevinpapst.de/" target="_blank">Kevin Papst</a>
+    </div>
+  </body>
+</html>]]></content>
+        </row>
+        <row>
+            <name key="true">Antique_Modern (Content)</name>
+            <cid key="true">{CID}</cid>
+            <description>BIGACE free Template 'Antique Modern'. One Column for fullsize Content, no right menu.</description>
+            <inwork>0</inwork>
+            <include>0</include>
+            <timestamp function="true">unix_timestamp()</timestamp>
+            <userid>1</userid>
+            <filename>Antique_ModernContent.tpl</filename>
+            <content><![CDATA[<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf8" />
+    <meta name="Robots" content="index,follow" />
+    <title>Antique_Modern - {$MENU->getName()}</title>
+    <link rel="stylesheet" type="text/css" href="{$stylesheet}" />
+  </head>
+  <body>
+    <div id="head">
+		<div id="title">{$MENU->getName()}</div>
+        <div id="menu">
+            <ul>
+               {navigation id="-1" prefix="<li>" suffix="</li>" active='<li class="active">'}
+            </ul>
+        </div>
+    </div>
+    <div id="body_wrapper">
+      <div id="body"> 
+            <div id="all">
+                <div class="top"></div>
+				<div class="content">
+					{if $MENU->getID() != -1}
+					<p style="margin-top:0px;font-size:75%">{breadcrumb id=$MENU->getID() suffix=' &raquo;'}</p><hr>
+					{/if}
+    			    {modul menu=$MENU}
+				</div>
+				<div class="bottom"></div>
+            </div>
+        <div class="clearer"></div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div id="end_body"></div>
+    <div id="footer">
+      &copy; <a href="mailto:youremail@server.com">Your Name</a> |
+      <a href="http://www.oswd.org/design/information/id/2782" target="_blank">Template</a> by 
+      <a href="http://aaron.ganschow.us/" target="_blank">Aaron Ganschow</a> |  
+      ported by <a href="http://www.kevinpapst.de/" target="_blank">Kevin Papst</a>
+    </div>
+  </body>
+</html>]]></content>
+        </row>
+    </table>    
+
+    <table name="stylesheet">
+        <row>
+            <name key="true">Antique_Modern</name>
+            <cid key="true">{CID}</cid>
+            <description>Stylesheet for the 'Antique_Modern' Template.</description>
+            <filename>Antique_Modern/style.css</filename>
+            <editorcss>Antique_Modern-Editor</editorcss>
+        </row>
+        <row>
+            <name key="true">Antique_Modern-Editor</name>
+            <cid key="true">{CID}</cid>
+            <description>Editor Stylesheet for the 'Antique_Modern' Template.</description>
+            <filename>Antique_Modern/editor.css</filename>
+            <editorcss>Antique_Modern-Editor</editorcss>
+        </row>
+    </table>    
+
+    <table name="design">
+        <row>
+            <name key="true">Antique_Modern</name>
+            <cid key="true">{CID}</cid>
+            <description>Antique_Modern, 2 columns for Content and Submenu.</description>
+            <stylesheet>Antique_Modern</stylesheet>
+            <template>Antique_Modern</template>
+            <portlets>0</portlets>
+        </row>
+        <row>
+            <name key="true">Antique_Modern (Content)</name>
+            <cid key="true">{CID}</cid>
+            <description>Antique_Modern, 1 large content column.</description>
+            <stylesheet>Antique_Modern</stylesheet>
+            <template>Antique_Modern (Content)</template>
+            <portlets>0</portlets>
+        </row>
+    </table>    
+
+</content>

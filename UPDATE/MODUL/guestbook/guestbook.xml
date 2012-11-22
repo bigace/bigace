@@ -1,0 +1,36 @@
+<content version="1.0">
+
+    <table name="gaestebuch">
+        <row>
+            <id key="true">1</id>
+            <cid key="true">{CID}</cid>
+            <name>BIGACE Web CMS</name>
+            <email>feedback@bigace.de</email>
+            <homepage>http://www.bigace.de/</homepage>
+            <eintrag><![CDATA[ 
+                First test entry :-)
+            ]]></eintrag>
+            <timestamp function="true">unix_timestamp()</timestamp>
+        </row>
+    </table>    
+
+    <table name="frights">
+        <row>
+            <cid key="true">{CID}</cid>
+            <name key="true">guestbook_admin</name>
+            <defaultvalue>N</defaultvalue>
+            <description>Allows to edit and delete all Guestbook Entrys.</description>
+        </row>
+    </table>    
+
+    <table name="stylesheet">
+        <row>
+            <name key="true">Guestbook</name>
+            <cid key="true">{CID}</cid>
+            <description>Guestbook example stylesheet.</description>
+            <filename>guestbook/guestbook.css</filename>
+            <editorcss>dummy_stylesheet</editorcss>
+        </row>
+    </table>  
+    
+</content>

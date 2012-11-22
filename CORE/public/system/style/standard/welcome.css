@@ -1,0 +1,36 @@
+body, td, p, th {
+    font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-size:12px;
+}
+body {
+	margin: 0px;
+	padding: 0px;
+}
+.header {
+	background-image: url(style/bg.jpg);
+	background-repeat: repeat-x;
+	background-color: #7bb000;
+	padding: 0px 0px 0px 10px;
+    margin-bottom:0px;
+	border-bottom: 1px solid black;
+    height:60px;
+}
+.name {
+    font-weight:bold;
+    font-size:22px;
+}
+img {
+    border: 0;
+}
+.splashscreen {
+    margin-top:100px;
+    width: 400px;
+    border: 1px solid #000000;
+}
+.message {
+    padding:3px;
+}
+.version {
+    border-top:1px solid #000000;
+    padding:3px;
+	background-color: #eeeeee;
+}

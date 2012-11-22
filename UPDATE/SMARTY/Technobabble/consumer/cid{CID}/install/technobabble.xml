@@ -1,0 +1,118 @@
+<content version="1.0">
+
+    <table name="template">
+        <row>
+            <name key="true">Technobabble</name>
+            <cid key="true">{CID}</cid>
+            <description>Technobabble - a free Template by dreamLogic.</description>
+            <inwork>0</inwork>
+            <include>0</include>
+            <timestamp function="true">unix_timestamp()</timestamp>
+            <userid>1</userid>
+            <filename>Technobabble.tpl</filename>
+            <content><![CDATA[<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="{$MENU->getLanguageID()}" lang="{$MENU->getLanguageID()}">
+<head>
+	<!-- change this to the title you want to appear in browser title bar -->
+	<title>your website - {$MENU->getName()}</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link href="{stylesheet name="Technobabble"}" rel="stylesheet" type="text/css" />
+	<meta name="description" content="{$MENU->getDescription()}" />
+    <meta name="generator" content="{bigace_version full='true'}">
+	<meta name="robots" content="index, follow" />
+	<meta name="author" content="your name here" />
+</head>
+
+<body>
+
+{load_item id="-1" itemtype="1" assign="topLevel"}
+
+<div id="navcontainer">
+<!-- put your navigation links and text here -->
+<ul id="navlist">
+<li><a href="{link item=$topLevel}">{$topLevel->getName()}</a></li>
+{navigation id=$topLevel->getID() prefix="<li>" suffix="</li>"}
+</ul>
+<!-- end navigation -->
+</div>
+
+<div id="wrap">
+
+<div id="header"></div>
+
+<!-- the title that appear in the page header -->
+
+<div id="title">Website Name<br />v1.0</div>
+
+
+
+<div id="container">
+
+<div class="content">
+
+<!-- here is your page content -->
+
+<h3>{$MENU->getName()}</h3>
+{modul menu=$MENU}
+
+<!-- end page content -->
+
+</div>
+
+    <div id="footer"><br />
+    
+	<!-- it'd be super if you left this link intact -->    
+    <a href="http://www.dream-logic.com">Web Design by dreamLogic</a><br />
+	<!-- it'd be even better if you left the copyright notice intact -->    
+    {if $USER->isAnonymous()}
+    	Powered by <a href="http://www.bigace.de/" target="_blank">{bigace_version full='true'}</a> | 
+		<a href="{link_login id=$MENU->getID()}">Login</a>
+	{else}
+	    <a target="_blank" href="{link_admin id=$MENU->getID()}">Administration</a> | 
+		{permission_editcontent assign='allowEditor'}
+		{if $allowEditor}
+		    <a target="_blank" href="{link_editor id=$MENU->getID() language=$MENU->getLanguageID()}">Edit Page</a> | 
+		{/if}
+		<a href="{link_logout id=$MENU->getID()}">Logout</a>
+	{/if}
+    
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
+]]></content>
+        </row>
+    </table>    
+
+    <table name="stylesheet">
+        <row>
+            <name key="true">Technobabble</name>
+            <cid key="true">{CID}</cid>
+            <description>Stylesheet for the 'Technobabble' Template.</description>
+            <filename>technobabble/style.css</filename>
+            <editorcss>Technobabble-Editor</editorcss>
+        </row>
+        <row>
+            <name key="true">Technobabble-Editor</name>
+            <cid key="true">{CID}</cid>
+            <description>Editor Stylesheet for the 'Technobabble' Template.</description>
+            <filename>technobabble/editor.css</filename>
+            <editorcss>Technobabble-Editor</editorcss>
+        </row>
+    </table>    
+
+    <table name="design">
+        <row>
+            <name key="true">Technobabble</name>
+            <cid key="true">{CID}</cid>
+            <description>Technobabble - a free Template port.</description>
+            <stylesheet>Technobabble</stylesheet>
+            <template>Technobabble</template>
+            <portlets>0</portlets>
+        </row>
+    </table>    
+
+</content>

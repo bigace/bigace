@@ -1,0 +1,264 @@
+/* CSS by Studio7designs.com give me a shout @ aran@studio7designs.com  */
+
+#comments {
+	margin-top:20px;
+}
+#comments .comment {
+	margin-bottom:10px;
+	border:1px solid #eeeeee;
+	padding:5px;
+}
+#comments .commentMeta {
+	font-size:75%;
+}
+#comments .commentName {
+	font-weight:bold;	
+}
+#comments .commentHint {
+	padding:0px 10px 0px 10px;
+	font-size:75%;
+	color:#000000;
+	font-weight:bold;	
+}
+#commentForm .commentMissing {
+	color:red;
+	font-weight:bold;	
+}
+#commentForm input{
+	border:1px solid #cccccc;
+	width:300px;
+}
+#commentForm textarea {
+	border:1px solid #cccccc;
+	width:500px;
+	height:200px;
+}
+html, body {
+	margin: 0; padding: 0;
+	text-align: center;
+	background-color: #A1B3C9;
+}
+
+h1,h3,h3 {
+	margin: 0; padding: 0;
+}
+
+#content {
+	width: 760px;
+	text-align: left;
+	margin: auto;
+}
+
+#header{
+	width: 760px;
+	height: 50px;
+	text-align: left;
+	margin: auto;
+	}
+	
+#logo{
+	float: left;
+	height: auto;
+	width: 250px;
+	margin: 5px;
+	padding-top: 10px;
+	padding-right: 0px;
+	padding-bottom: 0px;
+	padding-left: 10px;
+
+}
+	
+#topmenu{
+	width: 400px;
+	top: 5px;
+	margin-left: 310px;
+	padding-top: 5px;
+	padding-right: 0px;
+	padding-left: 30px;
+	font-family:"Lucida Grande","Lucida Sans Unicode",arial,sans-serif;
+	font-size:1.0em;
+	color:#DBDFEE;
+	
+}
+
+#topmenu a{
+	text-decoration:none;
+	color:#DBDFEE;
+	
+}
+
+#topmenu a:hover{
+	color:#ffffff;
+	background-color:#939FB2;
+	
+}
+
+
+#content {
+	margin-top: 40px;
+	padding-bottom: 40px;
+}
+
+
+#maintext {
+	width: 520px;
+	margin-left: 20px;
+	text-align:justify;
+} 
+
+#maintext a{
+	text-decoration:none;
+	color:#ffffff;
+	border-bottom:1px dotted #ffffff;
+}
+
+#maintext a:hover{
+	color:#ffffff;
+	background-color:#939FB2;
+	
+}
+
+#rightcol {
+	width: 168px;
+	position: absolute;
+	top: 140px;
+	margin-left: 575px;
+	background: url(right_bg.gif) no-repeat;
+}
+
+
+#introduction{
+	float:right;
+	width:150px;
+	padding: 8px 8px 8px 8px;
+	margin:auto;
+	
+	text-align:center;
+	line-height:1.5em;
+	color:#ffffff;
+	font-size:0.8em;
+	font-family:"Lucida Grande","Lucida Sans Unicode",arial,sans-serif;
+	letter-spacing:0px;
+}
+
+#introduction ul, #introduction li {
+	text-align:center;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+
+#introduction  a{
+	text-decoration:none;
+	color:#ffffff;
+	border-bottom: none;
+}
+
+#introduction a:hover{
+	color:#ffffff;
+	background-color:#939FB2;
+	
+}
+
+#introduction h3{
+	text-align: center;
+	position:static;
+}
+
+
+html, body {
+	font: .95em/1.6em Arial, Helvetica, sans-serif;
+	color: #FFFFFF;
+}
+
+
+p {
+	margin-bottom: 1em;
+}
+
+#footer 
+{
+	width: 100%;
+	height: 60px;
+	clear: both;
+	padding-top: 8px;
+	text-align: center;
+	border-top: 1px solid #C6D4E6;
+	color: #000000;
+	font-size: .75em;
+	background-color: #414243;
+	background-image: url(footer.gif);
+}
+
+#footer a {
+	color: #888888;
+	text-decoration:none;
+
+}
+
+#footer p {color: #888888;}
+
+html, body {
+	background: #A1B3C9 url(bg_grad.gif) repeat-x;
+}
+
+#content {background: url(main_grad.gif) repeat-x;}
+
+
+
+html>body #content {
+	margin-top: 40px;
+}
+
+h1{
+	font-family:"Trebuchet MS",arial,sans-serif;
+	font-size:2.6em;
+	font-weight:normal;
+	background:#fff url(images/booksmall.gif) no-repeat bottom left;
+	padding:0 0 10px 50px;
+	margin:20px 5px 5px 5px;
+}
+
+h2{
+	font-family:"Lucida Grande","Lucida Sans Unicode",arial,sans-serif;
+	font-size:1.2em;
+	margin:auto;
+	text-transform:capitalize;
+	padding:0 2px;
+}
+
+h3{
+	color: #ffffff;
+	font-family:geneva,arial,sans-serif;
+	font-weight:normal;
+	text-transform:uppercase;
+	word-spacing:4px;
+	letter-spacing:3px;
+	font-size:0.9em;
+	font-weight:bold;
+	padding:0 2px;
+	margin:0;
+}
+
+
+
+blockquote 
+{	
+	border-left: 4px #c7d2ea solid;
+	padding:  0 0 0 10px;
+	margin: 10px 20px 10px 20px;
+	letter-spacing: 0px;
+	white-space:inherit;
+}
+
+h4 
+{
+	font-weight: bold;
+	font-size: 25px;
+	text-transform: capitalize;
+	color: #DBDFEE;
+	margin: 0;
+	padding: 0;
+	letter-spacing: 3px;
+}

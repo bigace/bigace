@@ -1,0 +1,1 @@
+SELECT * FROM {DB_PREFIX}unique_name WHERE cid = {CID} AND itemtype = {ITEMTYPE} AND itemid = {ITEM_ID} AND language = {LANGUAGE}

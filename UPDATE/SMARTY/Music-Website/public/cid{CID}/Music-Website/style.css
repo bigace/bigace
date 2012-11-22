@@ -1,0 +1,307 @@
+* {
+	margin: 0px;
+	padding: 0px;
+}
+
+body {
+	background: url('images/background.gif') #3e3437 repeat 0px 0px;
+	color: #b1b0ae;
+	font-family: verdana, arial, sans-serif;
+	font-size: 11px;
+	text-align: center;
+}
+
+a {
+	color: #b1b0ae;
+	text-decoration: underline;
+}
+
+a:hover {
+	color: #8b8a89;
+}
+
+img {
+	border: none;
+}
+
+#page_header ul {
+	list-style-type: none;
+}
+
+ul { 
+	margin: 0 0 10px 25px; 
+}
+
+li { }
+
+p {
+	margin: 10px 0px 20px;
+	text-align: justify;
+	line-height: 16px;
+}
+
+.clearthis {
+	margin : 0px;
+	height : 1px;
+	clear : both;
+	float : none;
+	font-size : 1px;
+	line-height : 0px;
+	overflow : hidden;
+	visibility: hidden;
+}
+
+
+
+#container {
+	margin: 0px auto;
+	width: 719px;
+	text-align: left;
+}
+
+.link-more {
+	font-size: 10px;
+	font-family: tahoma, arial, sans-serif;
+	font-weight: bold;
+	text-align: right;
+	line-height: 10px;
+}
+
+.link-more a {
+	text-decoration: none;
+}
+
+
+/* Page Title */
+
+#page_title {
+	padding: 12px 0px 12px;
+}
+
+#page_title h1 {
+	height: 34px;
+	padding-left: 60px;
+}
+
+
+/* Page Header Containers */
+
+#header_image {
+	position: absolute;
+	margin-left: 533px;
+	width: 136px;
+}
+
+#header_image span {
+	float: right;
+	display: block;
+	background: url('images/header_image.png') no-repeat 0px 0px;
+	position: relative;
+	top: -63px;
+	z-index: 1;
+	width: 187px;
+	height: 211px;
+}
+
+#header_container_left {
+	padding-left: 61px;
+}
+
+#header_container_right {
+	margin-right: 8px;
+	padding-right: 53px;
+}
+
+#header_container {
+	border: 1px solid #9d9898;
+}
+
+#page_header {
+	width: 595px;
+	height: 147px;
+	background: url('images/header_background.jpg') no-repeat 0px 0px;
+	color: #fbc551;
+	overflow: hidden;
+	font-size: 10px;
+	font-family: tahoma, arial, sans-serif;
+	font-weight: bold;
+	text-align: left;
+}
+
+#page_header a {
+	color: #fbc551;
+}
+
+#page_header a:hover {
+	color: #fbfe00;
+}
+
+#header_hidden {
+	width: 145px;
+	height: 147px;
+	float: right;
+	overflow: hidden;
+}
+
+/* Page Header Punchline */
+
+#header_punchline {
+	padding-top: 20px;
+	width: 290px;
+	float: right;
+}
+
+#header_punchline h3 {
+	width: 290px;
+	height: 13px;
+	font-size: 17px;
+}
+
+
+/* Header Navigation Menu */
+
+#header_menu {
+	padding-top: 13px;
+	width: 140px;
+	float: left;
+}
+
+#header_menu ul {
+	margin-left: 13px;
+}
+
+#header_menu li {
+	margin-bottom: 3px;
+	border: 1px solid #ea7711;
+	float: left;
+	height:20px;
+}
+
+#header_menu li a {
+	display: block;
+	width: 115px;
+	height: 18px;
+	text-decoration: none;
+	overflow: hidden;
+	background: url('images/menu_bg.gif') no-repeat 0px 0px;
+    font-size: 13px;
+    padding-top:2px;    
+	padding-left: 5px;
+}
+
+#header_menu li a:hover {
+	background-image: none;
+	background-color: #6c0528;
+}
+
+/* Page Header Links */
+
+#header_links {
+/*
+	padding-top: 25px;
+	width: 290px;
+	float: right;
+*/	
+    float: left;
+    padding: 25px 25px 25px 20px;
+    width: 243px;
+    font-size: 12px;
+}
+
+#header_links ul {
+	padding-left: 2px;
+}
+
+#header_links li {
+	padding-bottom: 3px;
+}
+
+
+/* Main Content Area */
+
+#maincontent_container {
+	margin: 5px 61px 1px 61px;
+	padding: 10px 20px 12px;
+	border: 1px solid #9d9898;
+	background-color: #6c0528;
+}
+
+#maincontent {
+	width: 555px;
+	color: #ddd;
+	font-size: 13px;
+}
+
+#maincontent .divider {
+	width: 555px;
+	height: 1px;
+	background: url('images/body_divider.gif') repeat-x 0px 0px;
+	overflow: hidden;
+}
+
+#maincontent h2 {
+	font-size: 19px;
+	color: #ddd;
+	margin: 6px 0 2px 0;
+}
+
+/* Chartbusters */
+
+#chartbusters {
+	margin: 0px 1px 12px;
+	width: 553px;
+}
+
+.chartbusters_entry {
+	margin: 20px 0px 5px;
+	width: 553px;
+}
+
+.chartbusters_thumbnail {
+	margin-top: 2px;
+	float: left;
+}
+
+.chartbusters_thumbnail img {
+	border: 1px solid #978f8d;
+}
+
+.chartbusters_details {
+	float: right;
+	width: 450px;
+}
+
+.chartbusters_details p {
+	margin: 1px 0px 10px;
+}
+
+#chartbusters .link-more {
+	text-transform: lowercase;
+}
+
+#chartbusters .link-more a {
+	color: #ffa329;
+}
+
+#chartbusters .link-more a:hover {
+	color: #d88a23;
+}
+
+
+/* Page Footer */
+
+#page_footer {
+	margin: 10px 61px 10px;
+	color: #fff;
+	font-family: tahoma, arial, sans-serif;
+	font-size: 11px;
+	text-align: center;
+}
+
+#page_footer a {
+	color: #fff;
+}
+
+#page_footer a:hover {
+	color: #ceced0;
+}

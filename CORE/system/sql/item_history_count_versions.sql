@@ -1,0 +1,1 @@
+SELECT count(id) FROM {DB_PREFIX}item_history WHERE itemtype='{ITEMTYPE}' AND id='{ITEM_ID}' AND cid='{CID}' AND language='{LANGUAGE_ID}'

@@ -1,0 +1,1 @@
+SELECT max(num_4) as max_position FROM {DB_PREFIX}{TABLE} WHERE cid='{CID}' AND parentid='{PARENT_ID}' AND language='{LANGUAGE_ID}'

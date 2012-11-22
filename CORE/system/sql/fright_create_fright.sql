@@ -1,0 +1,1 @@
+INSERT INTO {DB_PREFIX}frights (cid,name,defaultvalue,description) VALUES ('{CID}','{NAME}','{DEFAULT}','{DESCRIPTION}')

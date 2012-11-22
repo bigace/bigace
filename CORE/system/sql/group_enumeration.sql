@@ -1,0 +1,1 @@
+SELECT * FROM {DB_PREFIX}groups WHERE cid='{CID}' ORDER BY group_id ASC

@@ -1,0 +1,213 @@
+<content version="1.0">
+
+    <table name="template">
+        <row>
+            <name key="true">Andreas03</name>
+            <cid key="true">{CID}</cid>
+            <description>The Andreas03 main template.</description>
+            <inwork>0</inwork>
+            <include>0</include>
+            <timestamp function="true">unix_timestamp()</timestamp>
+            <userid>1</userid>
+            <filename>Andreas03.tpl</filename>
+            <content><![CDATA[{include file="Andreas03-Header.tpl"}
+	<div id="main">
+		{include file="Andreas03-Intro.tpl"}
+		<h2 class="headerstyle">{if $MENU->getCatchwords() != ""}{$MENU->getCatchwords()}{else}{$MENU->getName()}{/if}</h2>
+		{modul}
+{*		<p class="internallink">[ <a href="#top">Back to top</a> ]</p> *}
+	</div>
+
+{include file="Andreas03-Footer.tpl"}
+            ]]></content>
+        </row>
+        <row>
+            <name key="true">Andreas03-Header</name>
+            <cid key="true">{CID}</cid>
+            <description>Header of the Andreas03 Design.</description>
+            <inwork>0</inwork>
+            <include>1</include>
+            <timestamp function="true">unix_timestamp()</timestamp>
+            <userid>1</userid>
+            <filename>Andreas03-Header.tpl</filename>
+            <content><![CDATA[<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="{$MENU->getLanguageID()}" xml:lang="{$MENU->getLanguageID()}">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+	{metatags item=$MENU}
+	<link rel="stylesheet" type="text/css" href="{stylesheet name="Andreas03_Stylesheet"}" />
+</head>
+
+<body>
+<div id="top">
+	<p class="hide">Skip to: <a href="#sitemenu" accesskey="2">Site menu</a> | <a href="#maincontent" accesskey="3">Main content</a></p>
+</div>
+
+<div id="container">
+]]></content>
+        </row>
+        <row>
+            <name key="true">Andreas03-Intro</name>
+            <cid key="true">{CID}</cid>
+            <description>Intro of the Andreas03 Design with Logo + welcome text.</description>
+            <inwork>0</inwork>
+            <include>1</include>
+            <timestamp function="true">unix_timestamp()</timestamp>
+            <userid>1</userid>
+            <filename>Andreas03-Intro.tpl</filename>
+            <content><![CDATA[
+            {*
+		<div id="logo">
+			<h1>[<a href="{link url="/"}" accesskey="4">andreas03 v2.0</a>]</h1>
+			<span id="tagline">Speed and accessibility!</span>
+		</div>
+
+		<div id="intro">
+			<h2 id="maincontent">Presentation</h2>
+			<p>This free website template was built for all of you who want a quick-loading and solid XHTML/CSS website with light use of images and a strong focus on accessibility. It works in all common browser types including mobile phones and text-only browsers.</p>
+		</div>
+		*}
+]]></content>
+        </row>
+        <row>
+            <name key="true">Andreas03-Sidebar</name>
+            <cid key="true">{CID}</cid>
+            <description>Sidebar for the Andreas03 Design.</description>
+            <inwork>0</inwork>
+            <include>1</include>
+            <timestamp function="true">unix_timestamp()</timestamp>
+            <userid>1</userid>
+            <filename>Andreas03-Sidebar.tpl</filename>
+            <content><![CDATA[
+	<div id="sidebar">
+		{* <h2 id="sitemenu" class="sidelink menuheader">Site menu:</h2> *}
+		{if !isset($topLevel)}{load_item id="-1" assign="topLevel"}{/if}
+		<a class="sidelink" href="{link item=$topLevel}">{$topLevel->getName()}</a><span class="hide"> | </span>
+		{navigation id="-1" css="sidelink" suffix='<span class="hide"> | </span>'}
+		<a class="hide" href="#top" accesskey="1">Top of page</a>
+		{*
+		<h3>How to remove</h3>
+		<p>Edit the template Andreas03-Sidebar.tpl to get rid of all this stuff here.</p>
+
+		<h3>Important note</h3>
+		<p>This template conforms to <a href="http://www.section508.gov">Section 508</a> and to W3C's <a href="http://www.w3.org/TR/1999/WAI-WEBCONTENT-19990505">WCAG 1.0</a>, level AA. The code is valid XHTML 1.0 Strict and CSS (no warnings).</p>
+
+		<h3>Version info</h3>
+		<p>andreas03 v2.0<br />(April 24, 2008)</p>
+
+		<h3>Sample links</h3>
+		<ul>
+			<li><a href="http://www.kevinpapst.de/">Kevin Papst</a></li>
+			<li><a href="http://andreasviklund.com/templates/">Andreas Viklund</a></li>
+			<li><a href="http://www.bigace.de/" title="Free PHP Web CMS">BIGACE Web CMS</a></li>
+		</ul>
+		*}
+	</div>
+            ]]></content>
+        </row>
+        <row>
+            <name key="true">Andreas03-Footer</name>
+            <cid key="true">{CID}</cid>
+            <description>Footer for the Andreas03 Design.</description>
+            <inwork>0</inwork>
+            <include>1</include>
+            <timestamp function="true">unix_timestamp()</timestamp>
+            <userid>1</userid>
+            <filename>Andreas03-Footer.tpl</filename>
+            <content><![CDATA[
+	{include file="Andreas03-Sidebar.tpl"}
+	<div class="clear">&nbsp;</div>
+</div>
+
+<div id="footer">
+	<p>
+	{configuration package="Andreas03" key="footer.menu.id" assign="footerID"}
+	{navigation id=$footerID suffix=" | "}
+	
+	<a href="#top">Back to top</a> 
+	
+	{configuration package="Andreas03" key="footer.menu2.id" assign="footerID2"}
+	{if $footerID2 != -1}
+		<br />{navigation id=$footerID2 suffix=" | " last=""}
+	{/if}
+{*	<br />&copy; 2008 <a href="#">Your Name</a> | <a href="http://andreasviklund.com/templates/" title="Original CSS template design">Original design</a> by <a href="http://andreasviklund.com/" title="Andreas Viklund">Andreas Viklund</a> *}
+	{if !$USER->isAnonymous()}
+		<br />
+		{permission_editcontent assign="allowEditor"}
+		<a target="_blank" href="{link_admin}">Administration</a> | 
+		{if $allowEditor}
+		<a href="{link_editor id=$MENU->getID() language=$MENU->getLanguageID()}" target="_blank">Editor</a> |
+		{/if}
+		<a target="_self" href="{link_logout id=$MENU->getID()}">Logout</a>
+	{/if}
+	</p>
+</div>
+<div id="copyLinks">Powered by <a href="http://www.bigace.org/" href="_blank" title="Web CMS">BIGACE</a> | Template by <a href="http://andreasviklund.com/templates/" href="_blank" title="Templates">Andreas Viklund</a></div>
+
+</body>
+</html>
+            ]]></content>
+        </row>
+	</table>    
+
+    <table name="stylesheet">
+        <row>
+            <name key="true">Andreas03_Stylesheet</name>
+            <cid key="true">{CID}</cid>
+            <description>CSS definitions for the Andreas03 Layout.</description>
+            <filename>Andreas03/style.css</filename>
+            <editorcss>Andreas03_Editor</editorcss>
+        </row>
+
+        <row>
+            <name key="true">Andreas03_Editor</name>
+            <cid key="true">{CID}</cid>
+            <description>CSS definitions for the Andreas03 theme, used in any WYSIWYG Editor.</description>
+            <filename>Andreas03/editor.css</filename>
+            <editorcss>Andreas03_Editor</editorcss>
+        </row>
+    </table>    
+
+    <table name="design">
+        <row>
+            <name key="true">Andreas03</name>
+            <cid key="true">{CID}</cid>
+            <description>The Andreas03 design.</description>
+            <stylesheet>Andreas03_Stylesheet</stylesheet>
+            <template>Andreas03</template>
+            <portlets>0</portlets>
+        </row>
+    </table>
+
+    <table name="configuration">
+        <row>
+            <cid key="true">{CID}</cid>
+            <package key="true">templates</package>
+            <name key="true">application.footer</name>
+            <value>Andreas03-Footer</value>
+            <type>tpl_inc</type>
+        </row>
+        <row>
+            <cid key="true">{CID}</cid>
+            <package key="true">templates</package>
+            <name key="true">application.header</name>
+            <value>Andreas03-Header</value>
+            <type>tpl_inc</type>
+        </row>
+        <row update="false">
+            <cid key="true">{CID}</cid>
+            <package key="true">Andreas03</package>
+            <name key="true">footer.menu.id</name>
+            <value>-1</value>
+            <type>menu_id</type>
+        </row>
+        <row update="false">
+            <cid key="true">{CID}</cid>
+            <package key="true">Andreas03</package>
+            <name key="true">footer.menu2.id</name>
+            <value>-1</value>
+            <type>menu_id</type>
+        </row>
+    </table>    
+
+</content>

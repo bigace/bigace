@@ -1,0 +1,1 @@
+UPDATE {DB_PREFIX}{TABLE} SET modifiedby='{USER_ID}' {VALUES}, modifieddate='{TIMESTAMP}' WHERE id='{ITEM_ID}' AND cid='{CID}' AND language='{LANGUAGE_ID}'
