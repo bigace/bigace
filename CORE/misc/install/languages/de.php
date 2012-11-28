@@ -46,6 +46,20 @@ $LANG['form_tip_hide'] = 'Diese Hilfe nicht mehr anzeigen';
 $LANG['language_choose'] = 'Sprachauswahl';
 $LANG['language_text'] = 'Hier k&ouml;nnen Sie die Sprache einstellen, die w&auml;hrend der Installation benutzt wird.';
 $LANG['language_button'] = 'Sprache wechseln';
+
+$LANG['language_de'] = 'Deutsch (German)';
+$LANG['language_en'] = 'English';
+$LANG['language_it'] = 'Italiano (Italian)';
+$LANG['language_se'] = 'Svenska (Swedish)';
+$LANG['language_fi'] = 'Suomeksi (Finnish)';
+$LANG['language_ro'] = 'Românã (Romanian)';
+$LANG['language_tr'] = 'Türkçe (Turkish)';
+$LANG['language_hr'] = 'Hrvatski (Croatian)';
+$LANG['language_ru'] = 'Русский (Russian)';
+$LANG['language_pt'] = 'Português (Portuguese)';
+$LANG['language_nl'] = 'Nederlandse (Dutch)';
+$LANG['language_es'] = 'Español (Spanish)';
+$LANG['language_si'] = 'Slovensko (Slovene)';
 // -----------------------------------------------------------------------------
 
 $LANG['failure'] = 'Fehler traten auf';

@@ -28,7 +28,8 @@
  * This is the Main BIGACE Installation script.
  */
 
-error_reporting(E_ALL);
+error_reporting(-1);
+ini_set('display_errors', true);
 
 // Define General Array used in all Scripts
 $_BIGACE = array();
@@ -228,7 +229,11 @@ if (isset($_POST['INSTALL_LANGUAGE'])) {
 header( "Content-Type:text/html; charset=UTF-8");
 
 // load english
-require_once(_DIR_INSTALL_LANG.'en.php');
+if (file_exists(_DIR_INSTALL_LANG.'en.php')) {
+	require_once(_DIR_INSTALL_LANG.'en.php');
+} else {
+    require_once(_DIR_INSTALL_LANG.'de.php');
+}
 
 // load configured default language if not english and exists
 if($_INSTALL['LANGUAGE'] != 'en' && file_exists($_INSTALL['DIR']['languages']._INSTALL_LANGUAGE.'.php')) {
