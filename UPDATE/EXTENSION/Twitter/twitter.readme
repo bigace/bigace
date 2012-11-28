@@ -1,0 +1,23 @@
+This will install a Twitter follower Portlet for use in BigAce
+Originally created by Andy then expanded by Kevin and DragonSlayer
+
+Support for this download can be found at 
+http://forum.bigace.de/downloads/twitter-portlet/
+
+This portlet is currently forced to use the deprecated version 1.0 Api
+https://dev.twitter.com/docs/api/1/get/statuses/user_timeline
+
+Someone could convert this to Api 1.1
+https://dev.twitter.com/docs/api/1.1/get/statuses/user_timeline
+
+For Manual install:
+Copy the blogger.js file to your /adodon/ folder
+Copy the TwitterPortlet.php file to your /system/classes/portlet/ folder
+
+AutoInstall package created by DragonSlayer
+
+How to use:
+1. Download & Install
+2. Go to your Portlets Administration
+3. Choose Twitter, adjust your settings, add and save.
+4. Reload your page!
