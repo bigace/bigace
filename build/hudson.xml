@@ -124,9 +124,6 @@
         <exec dir="${target.nightly.dir}" executable="chmod">
             <arg line="-R a+w ${target.nightly.dir}" />
         </exec>
-        <exec dir="${target.nightly.dir}" executable="chown">
-            <arg line="-R jenkins:www-data ${target.nightly.dir}" />
-        </exec>
         <delete dir="${target.nightly.temp}" />
     </target>
 	
