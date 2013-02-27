@@ -25,7 +25,34 @@
 	    *}
 	    {modul menu=$MENU}
 		</div>
-{include file="Compromise-Footer.tpl"}
+{include file="Compromise-Footer.tpl" sidebar=true}
+            ]]></content>
+        </row>
+        <row>
+            <name key="true">Compromise-Single</name>
+            <cid key="true">{CID}</cid>
+            <description>Compromise template with one large content block</description>
+            <inwork>0</inwork>
+            <include>0</include>
+            <timestamp function="true">unix_timestamp()</timestamp>
+            <userid>1</userid>
+            <filename>Compromise-Single.tpl</filename>
+            <content><![CDATA[{include file="Compromise-Header.tpl"}
+		<div id="contentsingle">
+		{*
+			<div class="post">
+				<h1 class="title"><a href="#">Welcome to Compromise </a></h1>
+				<div class="entry">
+					<p>This is <strong>Compromise</strong>, a free, fully standards-compliant CSS template designed by FreeCssTemplates<a href="http://www.nodethirtythree.com/"></a> for <a href="http://www.freecsstemplates.org/">Free CSS Templates</a>. The photo used in this design is from <a href="http://www.pdphoto.org/">PDPhoto.rog</a>. This free template is released under a <a href="http://creativecommons.org/licenses/by/2.5/">Creative Commons Attributions 2.5</a> license, so you’re pretty much free to do whatever you want with it (even use it commercially) provided you keep the links in the footer intact. Aside from that, have fun with it :)</p>
+					<p>Sed lacus. Donec lectus. Nullam pretium nibh ut turpis. Nam bibendum. In nulla tortor, elementum ipsum. Proin imperdiet est. Phasellus dapibus semper urna. Pellentesque ornare, orci in felis. Donec ut ante. In id eros. Suspendisse lacus turpis, cursus egestas at sem.</p>
+				</div>
+				<p class="meta">Posted by <a href="#">Someone</a> on March 10, 2008
+					&nbsp;&bull;&nbsp; <a href="#" class="comments">Comments (64)</a> &nbsp;&bull;&nbsp; <a href="#" class="permalink">Full article</a></p>
+			</div>
+	    *}
+	    {modul menu=$MENU}
+		</div>
+{include file="Compromise-Footer.tpl" sidebar=false}
             ]]></content>
         </row>
         <row>
@@ -90,6 +117,7 @@ Link       : http://www.freecsstemplates.org/preview/compromise
             <userid>1</userid>
             <filename>Compromise-Footer.tpl</filename>
             <content><![CDATA[
+        {if isset($sidebar) && $sidebar === true}
 		<div id="sidebar">
 			<ul>
 				{if $MENU->getID() != -1}
@@ -142,6 +170,7 @@ Link       : http://www.freecsstemplates.org/preview/compromise
 				*}
 			</ul>
 		</div>
+        {/if}
 		<div style="clear: both;">&nbsp;</div>
 	</div>
 </div>
@@ -163,7 +192,7 @@ Link       : http://www.freecsstemplates.org/preview/compromise
 </html>
             ]]></content>
         </row>
-	</table>    
+    </table>
 
     <table name="stylesheet">
         <row>
@@ -182,16 +211,24 @@ Link       : http://www.freecsstemplates.org/preview/compromise
             <editorcss>Compromise_Editor</editorcss>
         </row>
     </table>
-    
+
     <table name="design_contents">
         <row update="false">
             <cid key="true">{CID}</cid>
             <design key="true">Compromise</design>
             <name key="true">Left-Column</name>
         </row>
-    </table>    
-    
+    </table>
+
     <table name="design">
+        <row>
+            <name key="true">Compromise-Single</name>
+            <cid key="true">{CID}</cid>
+            <description>The Compromise design.</description>
+            <stylesheet>Compromise_Stylesheet</stylesheet>
+            <template>Compromise-Single</template>
+            <portlets>0</portlets>
+        </row>
         <row>
             <name key="true">Compromise</name>
             <cid key="true">{CID}</cid>
@@ -217,6 +254,6 @@ Link       : http://www.freecsstemplates.org/preview/compromise
             <value>Compromise-Header</value>
             <type>tpl_inc</type>
         </row>
-    </table>    
+    </table>
 
 </content>
