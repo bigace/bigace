@@ -54,12 +54,12 @@ class SkypeOnlinePortlet extends Portlet
 
     function SkypeOnlinePortlet()
     {
-        // we could make the title dynamic if there wouldn't be the javascript encoding problem
-        // with spaces...
-//        $this->setTitle('Skype Online Status');
-        // we could also make the mode dynamic, but for now, we leave it on "call"
-		//$this->setSkypeMode('call');
-		$this->setSkypeUserID('');
+        // there is a javascript encoding problem if the dynamic title includes spaces
+        $this->setTitle('Skype Online Status');
+        // we can make the mode dynamic, but "call" is default
+        $this->setSkypeMode('call');
+        // the user id is empty by default
+        $this->setSkypeUserID('');
     }
 
     function getIdentifier() {
@@ -78,22 +78,6 @@ class SkypeOnlinePortlet extends Portlet
         return PORTLET_TYPE_STRING;
     }
 
-
-    /**
-     * Set the Title of this Portlet.
-     */
-    function setTitle($title) {
-        $this->setParameter(SKYPE_ONLINE_PARAM_TITLE, $title);
-    }
-
-    /**
-     *  Returns the Title of this Portlet.
-     */
-    function getTitle() {
-        return "Skype";
-        //return $this->getParameter(SKYPE_ONLINE_PARAM_TITLE, 'Skype Online Status');
-    }
-
     function needsJavascript() {
         return true;
     }
@@ -109,7 +93,7 @@ class SkypeOnlinePortlet extends Portlet
         return "\n" . '<p><a href="skype:'.$this->getSkypeUserID().'?'.$this->getSkypeMode().'"><img src="http://mystatus.skype.com/balloon/'.$this->getSkypeUserID().'" style="border: none;" width="150" height="60" alt="'.$this->getTitle().'" /></a></p>' . "\n";
     }
 
-	// ------------------------------------------------------------
+    // ------------------------------------------------------------
 
     /**
      * Sets the Skype User ID.
@@ -130,4 +114,18 @@ class SkypeOnlinePortlet extends Portlet
         return $this->getParameter( SKYPE_ONLINE_PARAM_MODE, 'call' );
     }
 
+    /**
+     * Set the Title of this Portlet.
+     */
+    function setTitle($title) {
+        $this->setParameter(SKYPE_ONLINE_PARAM_TITLE, $title);
+    }
+
+    /**
+     *  Returns the Title of this Portlet.
+     */
+    function getTitle() {
+        //return "Skype";
+        return $this->getParameter(SKYPE_ONLINE_PARAM_TITLE, 'Portlet title');
+    }
 }
