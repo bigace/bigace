@@ -55,7 +55,7 @@ class SkypeOnlinePortlet extends Portlet
     function SkypeOnlinePortlet()
     {
         // there is a javascript encoding problem if the dynamic title includes spaces
-        $this->setTitle('Skype Online Status');
+        $this->setTitle('Skype');
         // we can make the mode dynamic, but "call" is default
         $this->setSkypeMode('call');
         // the user id is empty by default
@@ -126,6 +126,6 @@ class SkypeOnlinePortlet extends Portlet
      */
     function getTitle() {
         //return "Skype";
-        return $this->getParameter(SKYPE_ONLINE_PARAM_TITLE, 'Portlet title');
+        return $this->getParameter(SKYPE_ONLINE_PARAM_TITLE, 'Skype');
     }
 }
