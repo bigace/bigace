@@ -240,7 +240,7 @@
         <antcall target="internal.3rdparty.zip">
             <param name="srcdir" value="${update.modul.src}"/>
             <param name="name" value="fotogallery"/>
-            <param name="version" value="1.8"/>
+            <param name="version" value="1.9"/>
         </antcall>
         <antcall target="internal.extension.zip">
             <param name="srcdir" value="${update.modul.src}"/>
