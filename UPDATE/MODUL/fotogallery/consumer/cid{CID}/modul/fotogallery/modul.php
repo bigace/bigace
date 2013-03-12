@@ -18,6 +18,115 @@
  * @author Kevin Papst
  */
 
+function getGallery($CUR_CAT, $configs)
+{
+    $IMG_SERVICE    = new ImageService();
+    $CAT_SERVICE    = new CategoryService();
+
+    // ... and now fetch all linked images
+    $search = $CAT_SERVICE->getItemsForCategory($IMG_SERVICE->getItemtype(), $CUR_CAT);
+
+    if ($search->count() <= 0)
+    {
+        return '<b>'.getTranslation('gallery_empty').'</b>';
+    }
+
+    $allImages = array();
+    $html = '';
+
+    // ---------------------------------
+    // sort images
+    if($configs['fotogallery_sort_name'])
+    {
+        while ($search->hasNext()) {
+            $temp = $search->next();
+            $temp = $IMG_SERVICE->getClass($temp['itemid']);
+            $allImages[$temp->getName()] = $temp;
+        }
+        if ($configs['fotogallery_sort_reverse']) {
+            krsort($allImages, SORT_STRING);
+        } else {
+            ksort($allImages, SORT_STRING);
+        }
+    }
+    else if($configs['fotogallery_sort_position'])
+    {
+        while ($search->hasNext()) {
+            $temp = $search->next();
+            $temp = $IMG_SERVICE->getClass($temp['itemid']);
+            $allImages[$temp->getPosition()] = $temp;
+        }
+        if ($configs['fotogallery_sort_reverse']) {
+            krsort($allImages, SORT_NUMERIC);
+        } else {
+            ksort($allImages, SORT_NUMERIC);
+        }
+    }
+    else
+    {
+        while ($search->hasNext()) {
+            $temp = $search->next();
+            $temp = $IMG_SERVICE->getClass($temp['itemid']);
+            $allImages[$temp->getID()] = $temp;
+        }
+        if ($configs['fotogallery_sort_reverse']) {
+            krsort($allImages, SORT_NUMERIC);
+        } else {
+            ksort($allImages, SORT_NUMERIC);
+        }
+    }
+
+    // ---------------------------------
+    // render gallery
+    $html .=  '<div id="'.$configs['fotogallery_css_id'].'">';
+
+    foreach ($allImages AS $key => $temp_image)
+    {
+        $temp    = $search->next();
+        $link    = LinkHelper::getCMSLinkFromItem($temp_image);
+        $imgLink = LinkHelper::getUrlFromCMSLink($link);
+
+        $thumbLink = new ThumbnailLink();
+        $thumbLink->setHeight($configs['fotogallery_thumb_height_px']);
+        $thumbLink->setItemID($temp_image->getID());
+        $thumbLink->setLanguageID($temp_image->getLanguageID());
+        $thumbUrl = LinkHelper::getUrlFromCMSLink($thumbLink);
+
+        $html .= '
+        <div class="thumbnail">
+        <a class="imgLink" href="' . $imgLink . '" rel="lightbox-imggal" title="';
+
+           if ($configs['fotogallery_show_description_popup']) {
+               $html .=  $temp_image->getDescription();
+           } else {
+               $html .=  $temp_image->getName();
+           }
+
+        $html .= '"><img src="' . $thumbUrl . '" alt="' .$temp_image->getName() . '" height="'
+               . $configs['fotogallery_thumb_height_px'] . '"></a>';
+
+        if($configs['fotogallery_show_name'] || $configs['fotogallery_show_description'])
+        {
+            $html .= '<div class="caption">';
+                if($configs['fotogallery_show_name']) {
+                    $html .= '<a href="' . $imgLink . '" rel="lightbox-gal" class="thumnailLink" title="' . $temp_image->getName() . '">' . $temp_image->getName() . '</a>';
+                }
+                if($configs['fotogallery_show_description']) {
+                    if ($configs['fotogallery_show_name']) {
+                        $html .= '<br>';
+                    }
+                    $html .= $temp_image->getDescription();
+                }
+            $html .= '</div>';
+        }
+    $html .= '</div>';
+    }
+    $html .= '</div><br style="clear:both">';
+
+    return $html;
+}
+
+
 // ----------------------------------------------------------
 // Module code starts here
 import('classes.util.LinkHelper');
@@ -42,14 +151,14 @@ $defaultGallery = array(
     'fotogallery_thumb_height_px'        => 100,
     'fotogallery_sort_position'          => false,
     'fotogallery_sort_name'              => false,
-    'fotogallery_sort_reverse'           => false
+    'fotogallery_sort_reverse'           => false,
+    'fotogallery_css_id'                 => 'fgallery',
+    'fotogallery_shortcode'              => ''
 );
 
 loadLanguageFile("bigace");
 
 $modul          = new Modul($MENU->getModulID());
-$CAT_SERVICE    = new CategoryService();
-$IMG_SERVICE    = new ImageService();
 $modService     = new ModulService();
 $configs        = $modService->getModulProperties($MENU, $modul, $defaultGallery);
 $CUR_CAT        = isset($configs['fotogallery_image_category']) ? $configs['fotogallery_image_category'] : null;
@@ -132,8 +241,6 @@ else
         $configs['fotogallery_sort_reverse'] = false;
     }
 
-    // ... and now fetch all linked images
-    $search = $CAT_SERVICE->getItemsForCategory($IMG_SERVICE->getItemtype(), $CUR_CAT);
 
     ?>
 
@@ -142,107 +249,23 @@ else
     <script type="text/javascript" src="<?php echo _BIGACE_DIR_ADDON_WEB; ?>jquery/jquery.js"></script>
     <script type="text/javascript" src="<?php echo LIGHTBOX_WEB; ?>js/slimbox2.js"></script>
 
-    <p><?php echo $MENU->getContent(); ?></p>
     <?php
 
-    if ($search->count() > 0) {
-    	$allImages = array();
+    $gallery = getGallery($CUR_CAT, $configs);
 
-    	// ---------------------------------
-    	// sort images
-    	if($configs['fotogallery_sort_name'])
-    	{
-        	while ($search->hasNext()) {
-        		$temp = $search->next();
-        		$temp = $IMG_SERVICE->getClass($temp['itemid']);
-        		$allImages[$temp->getName()] = $temp;
-        	}
-        	if ($configs['fotogallery_sort_reverse']) {
-	        	krsort($allImages, SORT_STRING);
-        	} else {
-	        	ksort($allImages, SORT_STRING);
-        	}
-    	}
-    	else if($configs['fotogallery_sort_position'])
-    	{
-        	while ($search->hasNext()) {
-        		$temp = $search->next();
-        		$temp = $IMG_SERVICE->getClass($temp['itemid']);
-        		$allImages[$temp->getPosition()] = $temp;
-        	}
-        	if ($configs['fotogallery_sort_reverse']) {
-	        	krsort($allImages, SORT_NUMERIC);
-        	} else {
-        		ksort($allImages, SORT_NUMERIC);
-        	}
-    	}
-    	else
-    	{
-        	while ($search->hasNext()) {
-        		$temp = $search->next();
-        		$temp = $IMG_SERVICE->getClass($temp['itemid']);
-        		$allImages[$temp->getID()] = $temp;
-        	}
-        	if ($configs['fotogallery_sort_reverse']) {
-	        	krsort($allImages, SORT_NUMERIC);
-        	} else {
-        		ksort($allImages, SORT_NUMERIC);
-        	}
-    	}
-    	// ---------------------------------
-
-        echo '<div id="fgallery">';
-        foreach ($allImages AS $key => $temp_image)
-        {
-            $temp    = $search->next();
-            $link    = LinkHelper::getCMSLinkFromItem($temp_image);
-            $imgLink = LinkHelper::getUrlFromCMSLink($link);
-
-            $thumbLink = new ThumbnailLink();
-            $thumbLink->setHeight($configs['fotogallery_thumb_height_px']);
-            $thumbLink->setItemID($temp_image->getID());
-            $thumbLink->setLanguageID($temp_image->getLanguageID());
-            $thumbUrl = LinkHelper::getUrlFromCMSLink($thumbLink);
-
-            ?>
-            <div class="thumbnail">
-                <a class="imgLink" href="<?php echo $imgLink; ?>" rel="lightbox-imggal"
-                    title="<?php
-                        if ($configs['fotogallery_show_description_popup']) {
-                            echo $temp_image->getDescription();
-                        } else {
-                            echo $temp_image->getName();
-                        }
-                    ?>"><img src="<?php echo $thumbUrl; ?>" alt="<?php echo $temp_image->getName(); ?>"
-                    height="<?php echo $configs['fotogallery_thumb_height_px']; ?>"></a>
-				<?php
-	            if($configs['fotogallery_show_name'] || $configs['fotogallery_show_description']) {
-            	?>
-                <div class="caption">
-					<?php
-		            if($configs['fotogallery_show_name']) {
-			            ?>
-	                    <a href="<?php echo $imgLink; ?>" rel="lightbox-gal" class="thumnailLink" title="<?php echo $temp_image->getName(); ?>"><?php echo $temp_image->getName(); ?></a>
-	                    <?php
-					}
-                    if($configs['fotogallery_show_description']) {
-		            	if ($configs['fotogallery_show_name']) {
-                    		echo '<br>';
-		            	}
-                        echo $temp_image->getDescription();
-                    }
-                    ?>
-                </div>
-                <?php
-				}
-				?>
-            </div>
-            <?php
-        }
-        echo '</div><br style="clear:both">';
+    if (!empty($configs['fotogallery_shortcode']))
+    {
+        echo '<div>';
+        echo str_replace($configs['fotogallery_shortcode'], $gallery, $MENU->getContent());
+        echo '</div>';
     }
     else
     {
-        echo '<b>'.getTranslation('gallery_empty').'</b>';
+        echo '<div>';
+        echo $MENU->getContent();
+        echo '</div>';
+        echo $gallery;
     }
+
+
 }
