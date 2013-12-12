@@ -303,7 +303,7 @@ class Logger
                     $err .= ' by "' . $value . '"';
                     break;
                 case 'args':
-                    $err .= ' with "' . $value . '"';
+                    $err .= ' with "' . (is_array($value) ? print_r($value, true) : $value). '"';
                     break;
                 case 'object':
                     break;
