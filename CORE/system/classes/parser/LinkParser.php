@@ -98,9 +98,23 @@ class LinkParser
     function splitID($idToParse, $findUniqueID = false) {
 
             if($findUniqueID) {
-            	import('classes.seo.UniqueNameService');
+                import('classes.seo.UniqueNameService');
                 $this->id = $idToParse;
-                $res = bigace_unique_name_raw($idToParse);
+
+                // if the given url starts with a leading slash (fastcgi) we try to remove it first
+                if (strlen($idToParse) > 1 && $idToParse[0] == '/') {
+                    $tempId = substr($idToParse,1);
+                    $res = bigace_unique_name_raw($tempId);
+                    if (!is_null($res)) {
+                        $idToParse = $tempId;
+                        $this->id = $idToParse;
+                    }
+                }
+
+                // the leading slash was no problem, check given id
+                if(is_null($res)) {
+                    $res = bigace_unique_name_raw($idToParse);
+                }
 
                 // if the given url does not exist, check if only trailing slash is missing
                 if(is_null($res)) {
@@ -117,8 +131,8 @@ class LinkParser
                     }
                 }
 
-	            // if the given url does not exist, try add trailing slash
-				if(is_null($res)) {
+                // if the given url does not exist, try add trailing slash
+                if(is_null($res)) {
 					$t = strrpos($idToParse, '/');
     				if($t == (strlen($idToParse)-1)) {
 	        			$this->id = substr_replace($idToParse, '', -1, 1);
@@ -131,7 +145,7 @@ class LinkParser
         				}
     				}
 				}
-                
+
                 // found unique name - fetch values from result
                 if(!is_null($res)) {
                     $itemtype = new Itemtype($res['itemtype']);
