@@ -61,10 +61,9 @@ if ($ITEM_RIGHT->canRead())
     header('Content-Type: '. $FILE->getMimetype());
     header('Content-Disposition: inline; filename='.urlencode($FILE->getOriginalName()));
 //    header('Content-Length: ' . filesize($FILE->getFullURL()));
+    ob_end_clean();
     readfile ($FILE->getFullURL());
 }
 
 flush();
 exit;
-
-?>

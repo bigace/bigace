@@ -277,6 +277,7 @@ function show_image($cache_file, $mime_type, $filename) {
 		header( "Etag: " . md5($fileSize . $gmdate_mod) );
 		header( "Expires: " . gmdate( "D, d M Y H:i:s", time() + 9999 ) . "GMT" );
 */
+        ob_end_clean();
 		readfile($cache_file);
         flush();
 		exit;
@@ -300,5 +301,3 @@ function open_image($mime_type, $src) {
     }
     return null;
 }
-
-?>

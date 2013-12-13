@@ -124,11 +124,10 @@ if(strpos(strtolower($filename), ".zip") === false)
 // send it to the browser
 header('Content-Type: application/zip');
 header( 'Content-Disposition: inline; filename=' . urlencode($filename) );
+ob_end_clean();
 echo $zip->file();
 
 unset ($zip);
 
 flush();
 exit;
-
-?>
