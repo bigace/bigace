@@ -27,12 +27,13 @@
         UPDATED - these extensions are ready for production, but not yet released 
     -->
     <target name="updated" description="Changed but NOT yet deployed extensions">
+        <!-- NEW: -->
     	<!-- NEW: HTML Block -->
         <!-- NEW: smarty template - add footer links before release -->
         <antcall target="extension.smarty.blogging" />
     	<!-- NEW: RSS-LatestPages 1.1 -->
 
-    	<!-- Fotogallery 1.8 -->
+    	<!-- Fotogallery 1.9 -->
 
     	<!-- fixed path to new constant with 2.7 -->
         <antcall target="extension.rssreader" />
@@ -54,7 +55,7 @@
         <antcall target="extension.tinymce" />
         <!-- brand new -->
         <antcall target="extension.phplist" />
-        <!-- News-Map - has that even a ant target? -->
+        <!-- News-Map - has that even a ant target -->
     </target>
 
 	<!--

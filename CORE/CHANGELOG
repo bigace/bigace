@@ -1,3 +1,10 @@
+2.7.9
+======
+
+- SkypePortlet has dynamic title - http://forum.bigace.de/feature-requests/changes-to-the-skype-portlet/
+- Fixes for output buffering in fastcgi environments
+- Support for rewrite rules in nginx environments
+
 2.7.6
 ======
 
