@@ -1,1 +1,0 @@
-SELECT * FROM {DB_PREFIX}tipoftheday WHERE id='{ID}' AND cid='{CID}'

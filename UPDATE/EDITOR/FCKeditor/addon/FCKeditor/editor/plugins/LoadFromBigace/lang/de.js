@@ -1,2 +1,0 @@
-
-FCKLang['DlgLoadFromBigaceTitle']		= 'Lade Seite' ;
