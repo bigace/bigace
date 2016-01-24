@@ -1,1 +1,0 @@
-SELECT id FROM {DB_PREFIX}tipoftheday WHERE cid='{CID}' ORDER BY id DESC {LIMIT}

@@ -1,0 +1,21 @@
+2.7.9
+======
+
+- SkypePortlet has dynamic title - http://forum.bigace.de/feature-requests/changes-to-the-skype-portlet/
+- Fixes for output buffering in fastcgi environments
+- Support for rewrite rules in nginx environments
+
+2.7.6
+======
+
+This changelog will be purged as soon as 2.7.6 is released. It just extends the tasks 
+that where logged in Jira: http://dev.bigace.org/jira/browse/BIGACE/fixforversion/10020
+
+- Improved {random_image} and added Parameter $amount
+- added public/system/css/links.css to demonstrate how to auto-link download links
+- changed primary index on design_portlets to include column name
+    - SQL see http://dev.bigace.org/jira/browse/BIGACE-60
+- image command send filename in header
+- fixed setlocale problem, which did not work on all server
+    - see http://forum.bigace.de/general/setlocale-(initsession)/
+- improved GenericListing for easier usage (used by new SimpleAds and FAQ)

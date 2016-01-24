@@ -1,1 +1,0 @@
-<div class="menufooter">&nbsp;<?php echo $MENU->getDescription(); ?>&nbsp;</div>
