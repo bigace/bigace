@@ -2,8 +2,6 @@
 <script type="text/javascript">
 <!--
 {literal}
-	var counter = 1;
-
     function setParent(id, language, tname) 
     {
         document.getElementById('parentid').value = id;
@@ -47,21 +45,30 @@
 		var neueBoexliName = document.createAttribute("name");
 		neueBoexliName.nodeValue = "userfile[]";
 		neueBoexli.setAttributeNode(neueBoexliName);
+		var neueBoexliMultiple = document.createAttribute("multiple");
+		neueBoexliMultiple.nodeValue = "multiple";
+		neueBoexli.setAttributeNode(neueBoexliMultiple);
+		var neueBoexliOnChange = document.createAttribute("onChange");
+		neueBoexliOnChange.nodeValue = "addNamingInfo()";
+		neueBoexli.setAttributeNode(neueBoexliOnChange);
 		boexli.insertBefore(neueBR,document.getElementById('endSpacer'));
 		boexli.insertBefore(neueBoexli,document.getElementById('endSpacer'));
-		counter++;
-		if(counter == 2) {
-            addUploadInfo("namingMethod");
+                addNamingInfo();
 		}
-	}
 
-    function addUploadInfo(myElement)
+    function addNamingInfo()
     {
+	var boexli2 = document.getElementById("namingMethod");
+        var boexli3 = document.getElementsByName("userfile[]");
+        if (boexli2.hasChildNodes()) {
+            return;
+        }
+        if (boexli3[0].files && boexli3[0].files.length > 1 || boexli3.length > 1) {
 {/literal}
-			boexli2 = document.getElementById(myElement);
 			boexli2.innerHTML = '<input type="radio" name="namingType" value="namingFile" checked="checked" id="namingFile"> <label for="namingFile">{translate key="naming_filename}</label>'
                              + '<br><input type="radio" name="namingType" value="namingCount" id="namingCount"> <label for="namingCount">{translate key="naming_count}</label>';
 {literal}
+        }
     }
 {/literal}
 // -->
@@ -95,7 +102,7 @@
 	                (max. {$MAX_FILE_SIZE} / File)
 	            </td>
 		        <td align="left" id="uploadFileBox">
-				    <input type="file" size="50" name="userfile[]" />
+				    <input type="file" size="50" name="userfile[]" multiple="multiple" onChange="addNamingInfo()"/>
 				    <span id="endSpacer"></span>
 				    <a href="#" onClick="addUploadBox();return false;"><br />[+] {translate key="choose_more_files"}</a>
 			    </td>
